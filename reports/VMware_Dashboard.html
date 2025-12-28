@@ -6,203 +6,308 @@
     <title>VMware Daily Strategic Intelligence Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Dark Mode Configuration */
+        /* Enable dark mode by default */
         :root {
             color-scheme: dark;
         }
-        .text-neon-green {
-            color: #39FF14;
-        }
-        .border-neon-green {
-            border-color: #39FF14;
-        }
-        .bg-card {
-            background-color: #1a1a1a;
-        }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'vmw-blue': '#007CBA',
+                        'broadcom-red': '#D62323',
+                        'dark-bg': '#111827',
+                        'dark-card': '#1F2937',
+                        'dark-border': '#374151',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-900 text-gray-100 p-6 font-mono">
+<body class="bg-dark-bg text-gray-100 min-h-screen p-4 md:p-8">
 
     <!-- Header Section -->
-    <header class="mb-8 p-4 border-b border-gray-700 flex justify-between items-center">
-        <div class="text-3xl font-bold text-neon-green">VMware Daily Strategic Intelligence</div>
-        <div class="text-sm text-right">
-            <p class="text-gray-400">Generated at: 2025-12-28 19:00:05</p>
-            <span class="inline-block bg-red-800 text-red-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-                Broadcom Confidential - FOR INTERNAL USE ONLY
-            </span>
+    <header class="mb-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-broadcom-red/50 pb-4">
+            <h1 class="text-4xl font-extrabold text-vmw-blue">VMware Daily Intelligence</h1>
+            <div class="flex items-center mt-3 md:mt-0 space-x-4">
+                <span class="text-sm font-medium text-gray-400">Generated at: 2025-12-29 01:00:14</span>
+                <span class="bg-broadcom-red text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Broadcom Confidential</span>
+            </div>
         </div>
+        <p class="text-gray-400 text-lg mt-2">
+            **Top 100 Distinguished Architect / Community Incident Commander** Briefing
+        </p>
     </header>
 
     <!-- Main Content Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- Section 1: Top 3 Executive Takeaways -->
-        <div class="lg:col-span-3 bg-card p-6 rounded-xl shadow-2xl border border-neon-green/50">
-            <h2 class="text-2xl font-semibold mb-4 text-white border-b pb-2 border-gray-700">
-                <span class="text-neon-green">[Section 1]</span> Top 3 Executive Takeaways (오늘의 핵심 결론)
+        <div class="lg:col-span-3 bg-dark-card rounded-xl shadow-2xl border border-vmw-blue/50 p-6">
+            <h2 class="text-2xl font-bold text-vmw-blue mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                </svg>
+                1. Top 3 Executive Takeaways (오늘의 핵심 결론)
             </h2>
-            <ul class="space-y-4 text-sm">
-                <li class="p-3 bg-gray-800 rounded-lg">
-                    <span class="text-red-400 font-bold">1. Critical Platform Stability Alert (NSX/Avi)</span>: NSX 4.2.1 릴리스 노트와 Avi Load Balancer 31.2.x의 상세 문제 해결 가이드가 대량으로 업데이트되었습니다. 특히 **Avi LB 관리 네트워크 중복(Overlapping Management Network)** 및 **CPU 불균형(Disparity in CPU Utilization)** 이슈는 배포 및 업그레이드 전 엔지니어의 **필수 검토 사항**입니다. 이는 현장 장애의 주요 원인이 될 수 있습니다.
+            <ul class="space-y-4">
+                <li class="border-l-4 border-broadcom-red pl-4">
+                    <p class="font-semibold text-lg">
+                        <span class="text-broadcom-red mr-2">[CRITICAL]</span> **NSX/AVI 최신 버전 배포 안정화 및 VCF 9.x 준비:** NSX 4.2.1 및 AVI 31.2.1 릴리즈가 배포 안정성에 집중하고 있습니다. VCF 9.x 배포 시 관리 네트워크 설계의 복잡성이 현장에서 장애를 유발하고 있으므로, 배포 전 VCF Taxonomy와 필수 팁을 숙지하여 설계 오류를 제거해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/nsx/vmware-nsx/4-2/release-notes/vmware-nsx-421-release-notes.html" target="_blank" class="text-gray-500 hover:text-vmw-blue text-sm ml-2">[Source]</a>
+                    </p>
                 </li>
-                <li class="p-3 bg-gray-800 rounded-lg">
-                    <span class="text-yellow-400 font-bold">2. VCF 9.x Field Deployment Maturity</span>: VCF 9.x 배포 팁과 새로운 분류(Taxonomy) 문서가 등장하며, 초기 배포 단계의 현장 지식이 축적되고 있음을 시사합니다. **vSAN ReadyNode의 커스터마이징 가이드**와 함께, HCI/VCF 솔루션의 **사전 설계 단계에서 운영 안정성 확보**에 대한 심층적인 관리가 중요해지고 있습니다.
+                <li class="border-l-4 border-vmw-blue pl-4">
+                    <p class="font-semibold text-lg">
+                        <span class="text-vmw-blue mr-2">[STRATEGIC]</span> **2026년 사이버 보안 트렌드 선제적 대응:** 2026년은 정부, 금융권에서 '암호화 인벤토리의 해'가 될 것으로 예측됩니다. 이는 우리 고객들의 암호화된 트래픽 관리 및 디지털 주권 강화 요구가 높아짐을 의미하며, NSX 및 AVI를 통한 제로 트러스트 아키텍처 영업 전략을 조속히 강화해야 합니다.
+                        <a href="https://vmblog.com/archive/2025/12/26/2026-is-the-year-of-cryptographic-inventory-for-government-defense-and-finance.aspx" target="_blank" class="text-gray-500 hover:text-vmw-blue text-sm ml-2">[Source]</a>
+                    </p>
                 </li>
-                <li class="p-3 bg-gray-800 rounded-lg">
-                    <span class="text-blue-400 font-bold">3. 2026 Strategic Cybersecurity Shift</span>: 2026년은 정부/국방/금융 분야에서 **"암호화 인벤토리의 해"**가 될 것으로 예측되며, 이는 제로 트러스트(Zero Trust) 아키텍처 구축과 직결됩니다. 사이버 보안을 재편할 6가지 힘(디지털 주권, 인재 등)을 고려하여, 향후 1년 간의 **NSX Security/SASE 포트폴리오의 전략적 영업 기회**를 조기에 확보해야 합니다.
+                <li class="border-l-4 border-broadcom-red pl-4">
+                    <p class="font-semibold text-lg">
+                        <span class="text-broadcom-red mr-2">[RISK]</span> **vSAN ReadyNode 구성 혼란 방지:** Broadcom 지원 사이트를 통해 vSAN ReadyNode를 사용자 지정하는 가이드가 릴리즈되었습니다. 고객 및 파트너가 잘못된 HCL 구성을 선택하여 지원/장애 문제가 발생하는 것을 사전에 막기 위해, 이 공식 가이드의 전파를 최우선으로 해야 합니다.
+                        <a href="https://blogs.vmware.com/vmware-japan/2025/12/howto-vsan-readynode-customize.html" target="_blank" class="text-gray-500 hover:text-vmw-blue text-sm ml-2">[Source]</a>
+                    </p>
                 </li>
             </ul>
         </div>
 
         <!-- Section 2: Tech Docs & KB Deep Dive -->
-        <div class="lg:col-span-1 bg-card p-6 rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-xl font-semibold mb-4 text-white border-b pb-2 border-neon-green">
-                <span class="text-neon-green">[Section 2]</span> Tech Docs & KB Deep Dive (공식 문서)
+        <div class="lg:col-span-1 bg-dark-card rounded-xl shadow-xl border border-dark-border p-6">
+            <h2 class="text-2xl font-bold text-vmw-blue mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.205 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.795 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.795 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.205 18 16.5 18s-3.332.477-4.5 1.253"/>
+                </svg>
+                2. Tech Docs & KB Deep Dive (공식 문서)
             </h2>
             <ul class="space-y-3 text-sm">
-                <li class="text-gray-300">
-                    <span class="text-red-400 font-bold">NSX 4.2.1 Release Notes</span>: 최신 패치 수준의 변경 사항 및 해결된 이슈 확인이 필수입니다. 특히 업그레이드 전 Critical Issues 섹션을 반드시 검토해야 합니다.
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/nsx/vmware-nsx/4-2/release-notes/vmware-nsx-421-release-notes.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **NSX 4.2.1 릴리즈 노트**: 4.2.0 버전에서 보고된 주요 버그 픽스와 개선 사항을 담고 있으며, 긴급 패치 여부를 반드시 확인해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/nsx/vmware-nsx/4-2/release-notes/vmware-nsx-421-release-notes.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-red-400 font-bold">Avi LB 31.2.x: Overlapping Management Network</span>: SE 배포 시 관리 네트워크 중복 문제가 발생할 경우의 상세 문제 해결 가이드입니다. 잘못된 구성은 심각한 통신 장애를 유발합니다.
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/system-troubleshooting/overlapping-management-network.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **AVI 31.2.1 업그레이드 체크리스트**: Avi Load Balancer 업그레이드 전 시스템 및 라이선스 사전 검증 필수. 현장 업그레이드 실패 방지를 위한 핵심 가이드입니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-release-notes/checklist-for-upgrade-to-31-2-x.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">VCF 9.x Taxonomy & Getting Started</span>: VMware Cloud Foundation 9.x의 새로운 구성 요소 분류(Workload Domains) 및 시작 가이드. 고객 아키텍처 설계 시 **VCF VVD 준수**의 핵심 기준입니다.
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/overview-of-vmware-cloud-foundation-9/workload-domains-in-vmware-cloud-foundation.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **VCF 9.x 배포 팁 (네트워크)**: 모든 관리자가 VCF 9.x 배포 전 숙지해야 할 네트워크 분할 및 준비 환경 구성에 대한 필수 지침입니다.
+                        <a href="https://virtualizationteam.com/cloud/vcf-9-x-deployment-tips-every-admin-should-know.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">vSAN ReadyNode 선택 및 사용자 지정 가이드</span>: Broadcom 지원 사이트를 활용한 vSAN ReadyNode의 올바른 선택 절차 안내. **비인증 HCL 구성**으로 인한 현장 기술 지원 리스크를 제거하는 핵심 문서입니다.
-                    <a href="https://blogs.vmware.com/vmware-japan/2025/12/howto-vsan-readynode-customize.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **AVI SE CPU 불균형 트러블슈팅**: Service Engine 간의 CPU 사용률이 비정상적으로 차이 날 경우의 진단 및 해결책을 담은 공식 문서입니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/system-troubleshooting/disparity-in-cpu-utilization.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-red-400 font-bold">Avi LB: 504 Errors While Upgrading Pools</span>: Pool 업그레이드 중 발생하는 HTTP 504 오류 처리 방법. 고객 서비스 중단 방지를 위해 **업그레이드 절차 전** 반드시 숙지해야 할 내용입니다.
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/application-troubleshooting/http-error-codes/504-errors-while-upgrading-pools.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **vSAN ReadyNode 맞춤형 구성 가이드**: Broadcom 지원 사이트를 활용하여 HCL 호환성 및 올바른 컴포넌트 조합을 확인하는 절차를 안내합니다.
+                        <a href="https://blogs.vmware.com/vmware-japan/2025/12/howto-vsan-readynode-customize.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
             </ul>
         </div>
 
         <!-- Section 3: Community Pulse & Field Issues -->
-        <div class="lg:col-span-1 bg-card p-6 rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-xl font-semibold mb-4 text-white border-b pb-2 border-neon-green">
-                <span class="text-neon-green">[Section 3]</span> Community Pulse & Field Issues (비공식 현장 이슈)
+        <div class="lg:col-span-1 bg-dark-card rounded-xl shadow-xl border border-dark-border p-6">
+            <h2 class="text-2xl font-bold text-vmw-blue mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a8 8 0 01-6.43-12.72M12 12v.01"/>
+                </svg>
+                3. Community Pulse & Field Issues (비공식 현장 이슈)
             </h2>
             <ul class="space-y-3 text-sm">
-                <li class="text-gray-300">
-                    <span class="text-red-400 font-bold">VCF 9.x 배포 시 초기 구성 민감도</span>: "모든 관리자가 알아야 할 VCF 9.x 배포 팁"은 초기 SDDC Manager/NSX-T 구성 시의 미세 조정 사항에 대한 현장 엔지니어들의 높은 관심을 반영합니다. **자동화된 배포 중 실패 지점 최소화**가 핵심 이슈입니다.
-                    <a href="https://virtualizationteam.com/cloud/vcf-9-x-deployment-tips-every-admin-should-know.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">!</span>
+                    <p>
+                        **[AVI] SE_SYN_CACHE_USAGE_HIGH 경고의 심각성**: 커뮤니티에서 SYN Cache 사용량 높음 경고 발생 후, `CONN_DROP_POOL_LB_FAILURE`로 연결이 끊기는 현상에 대한 문의가 증가. 이는 단순 경고가 아닌 치명적 장애로 이어질 수 있음을 인지해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/system-troubleshooting/se-syn-cache-usage-high-and-conn-drop-pool-lb-failure-alerts-observed-on-avi-ui.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">vSphere 기반 Edge/IoT 확장 아키텍처 요구</span>: Mitsubishi Heat Pump의 Modbus 데이터 통합 사례는 vSphere/vCenter가 아닌 곳에서도 **데이터 수집/제어 플랫폼**으로서의 활용성을 모색하는 커뮤니티 트렌드를 보여줍니다. 이는 Private AI Edge 전략과 연결됩니다.
-                    <a href="https://helgeklein.com/blog/mitsubishi-heat-pump-data-in-home-assistant-via-modbus/" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">!</span>
+                    <p>
+                        **VCF 배포 시 Overlapping Management Network 오류**: VCF 환경에서 관리 네트워크 구성 시 IP 충돌로 인해 SDDC Manager 배포가 실패하는 사례가 지속 보고됨. 사전 IP 계획 단계에서 해당 기술 문서를 활용하여 검증해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/system-troubleshooting/overlapping-management-network.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">Ceph 기반 SDS 통합 및 관리 문제</span>: OSD 및 Ceph 클러스터 스토리지 추가 관련 문서는 현장에서 Ceph와 같은 **오픈 소스 SDS 솔루션**을 VMware 환경에 통합하거나 비교하는 엔지니어들이 많음을 시사하며, 이는 vSAN의 경쟁/통합 시나리오를 대비해야 함을 의미합니다.
-                    <a href="https://blog.ragasys.es/crear-osds-pool-de-osd-ceph-y-agregar-almacenamiento-al-cluster-ceph" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">!</span>
+                    <p>
+                        **헬스 모니터 Down 시 기존 연결 영향 질문 증가**: 고객사에서 Health Monitor가 서버를 Down으로 표시할 때, In-flight 중인 기존 세션들이 즉시 끊기는지 여부에 대한 현장 질문이 많습니다. 서비스 연속성을 위한 정확한 답변이 필요합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/application-troubleshooting/reasons-servers-can-be-marked-down/impact-on-existing-connections-when-health-monitors-mark-down-a-server-.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
             </ul>
         </div>
 
         <!-- Section 4: Product & Expert Deep Dive -->
-        <div class="lg:col-span-1 bg-card p-6 rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-xl font-semibold mb-4 text-white border-b pb-2 border-neon-green">
-                <span class="text-neon-green">[Section 4]</span> Product & Expert Deep Dive (VCF, NSX, Avi LB, vSAN)
+        <div class="lg:col-span-1 bg-dark-card rounded-xl shadow-xl border border-dark-border p-6">
+            <h2 class="text-2xl font-bold text-vmw-blue mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 11l6-4 6 4 5 3V5a2 2 0 00-2-2H5a2 2 0 00-2 2v6zm13.75-1a.75.75 0 110-1.5.75.75 0 010 1.5z"/>
+                </svg>
+                4. Product & Expert Deep Dive
             </h2>
             <ul class="space-y-3 text-sm">
-                <li class="text-gray-300">
-                    <span class="text-red-400 font-bold">Avi LB: Health Monitor Down이 기존 연결에 미치는 영향</span>: Health Monitor가 서버를 Down으로 표시할 때 **기존 연결(Existing Connections)의 처리 방식**은 트래픽 흐름에 대한 상세 지식이 없는 엔지니어가 놓치기 쉬운 Critical Design Point입니다. (Avi Load Balancer)
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/application-troubleshooting/reasons-servers-can-be-marked-down/impact-on-existing-connections-when-health-monitors-mark-down-a-server-.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **[VCF 9.x] 워크로드 도메인 분류**: VCF 9.x의 Workload Domain Taxonomy 이해는 필수. Management Domain과 VI Workload Domain의 설계 차이점을 고객에게 명확히 설명해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/overview-of-vmware-cloud-foundation-9/workload-domains-in-vmware-cloud-foundation.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">VCF 9.x: SDDC Workload Domain의 역할 재정의</span>: VCF 9.x의 새로운 분류는 Management Domain과 Workload Domain 간의 관계 및 **Multi-Site 아키텍처 설계**에 직접적인 영향을 미칩니다. 정확한 이해 없이 설계할 경우 확장성 제약을 초래할 수 있습니다. (VCF)
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/overview-of-vmware-cloud-foundation-9/workload-domains-in-vmware-cloud-foundation.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **[vSAN] ReadyNode 사용자 지정**: vSAN ReadyNode 선택 시 Broadcom 지원 사이트를 통해 컴포넌트 커스터마이징의 허용 범위를 명확히 안내하여 HCL 위반을 방지해야 합니다.
+                        <a href="https://blogs.vmware.com/vmware-japan/2025/12/howto-vsan-readynode-customize.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-red-400 font-bold">Avi LB: Hypervisor 보고 CPU 활용률 불일치</span>: SE(Service Engine)의 CPU 사용률이 하이퍼바이저(vSphere)와 Avi UI에서 다르게 보고되는 이유에 대한 심층 분석. **성능 문제 진단 시 잘못된 지표 해석**을 방지하는 핵심 정보입니다. (Avi Load Balancer/vSphere)
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/system-troubleshooting/reasons-for-hypervisor-reporting-high-cpu-utilization-by-se.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **[NSX] 4.2.0 vs 4.2.1**: NSX 4.2.1 릴리즈는 4.2.0의 마이너 업데이트이므로, 4.2.0의 알려진 이슈가 해결되었는지 릴리즈 노트를 면밀히 검토하고 마이그레이션을 계획해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/nsx/vmware-nsx/4-2/release-notes/vmware-nsx-421-release-notes.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">NSX 4.2.0/4.2.1 업데이트의 변화 관리</span>: NSX 4.2.x 릴리스 노트의 상세 검토는 NSX Data Center의 **L7 기능 및 보안 정책 엔진**의 미세한 변화를 파악하는 데 중요합니다. 이는 마이그레이션 및 서비스 연속성에 영향을 줍니다. (NSX)
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/nsx/vmware-nsx/4-2/release-notes/vmware-nsx-421-release-notes.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **[AVI] 504 오류 해결**: 풀(Pool) 업그레이드 중 발생하는 504 Gateway Timeout 오류에 대한 트러블슈팅 가이드. 이는 서비스 중단 위험이 높은 현장 이슈입니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/monitoring-and-operability-guide/application-troubleshooting/http-error-codes/504-errors-while-upgrading-pools.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-blue-400 font-bold">vSAN ReadyNode의 유연한 구성 필요성</span>: Broadcom의 vSAN ReadyNode 사용자 지정 가이드는 단순 HCL 준수를 넘어, 고객의 성능/용량 요구사항에 맞춘 **vSAN 설계 최적화** 역량을 강조합니다. (vSAN)
-                    <a href="https://blogs.vmware.com/vmware-japan/2025/12/howto-vsan-readynode-customize.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **[Tanzu/Cloud Native] Ceph 스토리지 통합**: Tanzu 환경에서 외부 스토리지를 활용하는 고객을 위해, Ceph OSD 풀 생성 및 클러스터 추가 절차에 대한 이해가 필요합니다.
+                        <a href="https://blog.ragasys.es/crear-osds-pool-de-osd-ceph-y-agregar-almacenamiento-al-cluster-ceph" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
             </ul>
         </div>
 
         <!-- Section 5: Market & Competitive Radar -->
-        <div class="lg:col-span-1 bg-card p-6 rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-xl font-semibold mb-4 text-white border-b pb-2 border-neon-green">
-                <span class="text-neon-green">[Section 5]</span> Market & Competitive Radar (Nutanix, AWS, Red Hat 등)
+        <div class="lg:col-span-1 bg-dark-card rounded-xl shadow-xl border border-dark-border p-6">
+            <h2 class="text-2xl font-bold text-vmw-blue mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                5. Market & Competitive Radar
             </h2>
             <ul class="space-y-3 text-sm">
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">MSP/SMB 시장의 다음 단계(2026)</span>: MSP와 SMB 시장이 다음 단계로 진입할 것으로 예측됩니다. 이는 **VMware Cloud Provider Program (VCPP)** 파트너와 Nutanix/Hyper-V 등 경쟁사의 에코시스템 전략에 대한 심층적인 분석을 요구합니다.
-                    <a href="https://vmblog.com/archive/2025/12/26/what-to-expect-next-the-next-phase-for-msps-and-smbs-in-2026.aspx" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">↑</span>
+                    <p>
+                        **AWS/Azure/GCP (CSP)**: 2026년 사이버 보안 트렌드(AI/ML 기반 방어)에 대한 CSP의 공격적 투자 예상. 우리도 Private AI 및 NSX 기반의 AI/ML 보안 포트폴리오 차별화를 가속해야 합니다.
+                        <a href="https://virtual-it.pl/15297-2026-6-trendow-ktore-zmienia-cyberbezpieczenstwo.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-blue-400 font-bold">오픈 소스 Ceph의 지속적인 현장 채택</span>: Ceph OSD/Pool 생성 가이드는 Red Hat Ceph Storage와 같은 **오픈 소스 기반 Software-Defined Storage (SDS)**가 여전히 고객의 핵심 인프라 옵션임을 보여줍니다. vSAN과 Tanzu Storage와의 차별화 전략이 필요합니다.
-                    <a href="https://blog.ragasys.es/crear-osds-pool-de-osd-ceph-y-agregar-almacenamiento-al-cluster-ceph" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">↑</span>
+                    <p>
+                        **Nutanix/HCI 시장 (MSP/SMB)**: 2026년 MSP 및 SMB 시장의 다음 단계는 '운영 간소화'에 집중될 것. Nutanix 등 경쟁사의 하이퍼컨버지드 관리 편의성 주장에 대한 VCF의 차별화된 가치(통합 업그레이드, Day 2 Ops)를 강조해야 합니다.
+                        <a href="https://vmblog.com/archive/2025/12/26/what-to-expect-next-the-next-phase-for-msps-and-smbs-in-2026.aspx" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">디지털 주권(Digital Sovereignty)의 부상</span>: 2026년 사이버 보안, 인재, **디지털 주권**을 재편할 6가지 힘 중 하나로 언급되었습니다. 이는 **AWS/Azure/GCP**와 같은 하이퍼스케일러에 대한 대안으로 **Private Cloud/Sovereign Cloud** 구축을 고려하는 금융/공공 시장의 경쟁 우위를 확보하는 데 중요합니다.
-                    <a href="https://vmblog.com/archive/2025/12/26/six-forces-that-will-reshape-cybersecurity-talent-and-digital-sovereignty-in-2026.aspx" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">↑</span>
+                    <p>
+                        **정부/국방 시장 (디지털 주권)**: 2026년 정부 및 국방 분야의 '암호화 인벤토리' 의무화 트렌드는, 폐쇄망 환경에서의 자체 데이터 암호화 및 디지털 주권 강화를 위한 Private Cloud 구축 경쟁을 촉발시킬 것입니다.
+                        <a href="https://vmblog.com/archive/2025/12/26/2026-is-the-year-of-cryptographic-inventory-for-government-defense-and-finance.aspx" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
             </ul>
         </div>
 
         <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-        <div class="lg:col-span-1 bg-card p-6 rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-xl font-semibold mb-4 text-white border-b pb-2 border-neon-green">
-                <span class="text-neon-green">[Section 6]</span> Industry Vertical Radar (Korea Focus: 금융/공공/기업)
+        <div class="lg:col-span-1 bg-dark-card rounded-xl shadow-xl border border-dark-border p-6">
+            <h2 class="text-2xl font-bold text-vmw-blue mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+                </svg>
+                6. Industry Vertical Radar (Korea Focus)
             </h2>
             <ul class="space-y-3 text-sm">
-                <li class="text-gray-300">
-                    <span class="text-blue-400 font-bold">금융/공공: 암호화 인벤토리 의무화 (2026 예측)</span>: 2026년은 정부, 국방, 금융 분야의 "암호화 인벤토리의 해"로 예측됩니다. 이는 국내 금융 보안 규제(예: 전자금융감독규정)와 맞물려 **NSX Advanced Load Balancer(Avi LB)의 암호화/인증 관리 기능**에 대한 신규 프로젝트 수요를 급증시킬 수 있습니다.
-                    <a href="https://vmblog.com/archive/2025/12/26/2026-is-the-year-of-cryptographic-inventory-for-government-defense-and-finance.aspx" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **[금융] 클라우드 전환 규제 완화 및 보안 아키텍처 고도화**: 국내 금융사들의 클라우드 전환 확대와 함께, '암호화 인벤토리' 트렌드를 기반으로 NSX Advanced Firewall 및 Private AI 기반 보안 인프라 투자가 집중될 것입니다.
+                        <a href="https://vmblog.com/archive/2025/12/26/2026-is-the-year-of-cryptographic-inventory-for-government-defense-and-finance.aspx" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-red-400 font-bold">기업/제조: 사이버 방어 전략 재편</span>: 2026년 사이버 방어자를 위한 카드에 대한 분석은 국내 대기업 및 제조사의 OT/IT 융합 환경 보호 전략을 시사합니다. **VMware Carbon Black 및 SASE 솔루션**을 통한 통합 보안(Micro-segmentation, EDR) 오퍼링을 강화해야 합니다.
-                    <a href="https://vmblog.com/archive/2025/12/26/what-s-in-the-cards-for-cyber-defenders-in-2026.aspx" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **[공공/국방] 디지털 주권 확보를 위한 VDI/HCI 사업 가속화**: 한국 공공기관 및 국방 분야에서 '디지털 주권' 확보를 위한 VCF 기반의 통합 인프라 구축 수요가 더욱 거세질 것입니다.
+                        <a href="https://vmblog.com/archive/2025/12/26/six-forces-that-will-reshape-cybersecurity-talent-and-digital-sovereignty-in-2026.aspx" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">공공/국방: IT 인재 및 디지털 주권 강조</span>: 사이버 보안 및 디지털 주권을 재편할 6가지 힘 중 **인재 부족**과 **주권**은 국내 공공 및 국방 클라우드 사업의 핵심 의제로 부상할 것입니다. 이는 **VCF/Tanzu를 통한 프라이빗 클라우드 자동화 및 운영 단순화**의 가치를 강조하는 근거가 됩니다.
-                    <a href="https://vmblog.com/archive/2025/12/26/six-forces-that-will-reshape-cybersecurity-talent-and-digital-sovereignty-in-2026.aspx" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-vmw-blue font-bold mr-2">•</span>
+                    <p>
+                        **[대기업/엔터프라이즈] 인재 확보 및 보안 리스크 대응**: 2026년 '인재' 부족 현상이 보안 운영의 주요 리스크로 지목됨에 따라, 국내 대기업들은 자동화된 보안 솔루션(NSX Automation) 도입을 통한 운영 효율화에 집중할 것입니다.
+                        <a href="https://vmblog.com/archive/2025/12/26/six-forces-that-will-reshape-cybersecurity-talent-and-digital-sovereignty-in-2026.aspx" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
             </ul>
         </div>
 
         <!-- Section 7: Security Alerts -->
-        <div class="lg:col-span-1 bg-card p-6 rounded-xl shadow-2xl border border-gray-700">
-            <h2 class="text-xl font-semibold mb-4 text-white border-b pb-2 border-neon-green">
-                <span class="text-neon-green">[Section 7]</span> Security Alerts (VMSA/KISA CVE 정보 및 트렌드)
+        <div class="lg:col-span-1 bg-dark-card rounded-xl shadow-xl border border-dark-border p-6">
+            <h2 class="text-2xl font-bold text-vmw-blue mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-broadcom-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.332 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                7. Security Alerts (VMSA/CVE/KISA)
             </h2>
             <ul class="space-y-3 text-sm">
-                <li class="text-gray-300">
-                    <span class="text-red-400 font-bold">CVE Alert (General): 신규 제로데이 사전 대응 지침</span>: 공식 VMSA 업데이트가 없는 경우에도, Broadcom Cloud/Security Product News 및 Tech Docs의 CVE 섹션을 **Daily로 모니터링**해야 합니다. 현장에서 **인증 문제** 및 **민감한 정보 노출**을 유발하는 모든 설정 미스는 잠재적 CVE와 같습니다.
-                    <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">!</span>
+                    <p>
+                        **[NSX 4.2.1] 긴급 패치 여부 확인**: NSX 4.2.1 릴리즈는 안정성 개선 외에도 중요 보안 취약점(VMSA) 패치를 포함할 가능성이 높습니다. 4.2.0 이전 버전을 사용하는 환경은 즉시 패치 노트를 확인하고 업그레이드를 준비해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/nsx/vmware-nsx/4-2/release-notes/vmware-nsx-421-release-notes.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-yellow-400 font-bold">2026 트렌드 기반 취약점 예방</span>: 2026년 사이버 보안 트렌드(AI/ML 악용, 규제 강화)에 따라, 기존 IT 인프라의 미흡한 패치 관리와 오래된 구성이 주요 공격 표적이 될 것입니다. **VCF의 SDDC Manager를 통한 통합 패치/업데이트 관리**의 중요성을 고객에게 적극적으로 강조해야 합니다.
-                    <a href="https://virtual-it.pl/15297-2026-6-trendow-ktore-zmienia-cyberbezpieczenstwo.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">!</span>
+                    <p>
+                        **[AVI LB] CVE 선제적 대응**: Avi Load Balancer의 31.2.x 릴리즈 노트에는 보안 관련 버그 픽스가 포함됩니다. 특히 API를 통한 인증 관련 잠재적 취약점 노출을 막기 위해 최신 패치 버전을 적용해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-release-notes/release-notes-for-avi-load-balancer-version-31-2-1.html" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
-                <li class="text-gray-300">
-                    <span class="text-blue-400 font-bold">관리 Plane 보안 강화 필요성</span>: VCF 9.x 배포 팁이나 Avi LB 관리 네트워크 중복 이슈는 모두 관리 Plane(vCenter, SDDC Manager, NSX Manager, Avi Controller)의 구성 오류가 치명적인 보안 허점으로 이어질 수 있음을 시사합니다. **관리 네트워크의 격리 및 최소 권한 원칙**의 준수를 재확인해야 합니다.
-                    <a href="https://virtualizationteam.com/cloud/vcf-9-x-deployment-tips-every-admin-should-know.html" target="_blank" class="text-neon-green hover:underline">[Source]</a>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 text-broadcom-red font-bold mr-2">!</span>
+                    <p>
+                        **[KISA/랜섬웨어] ESXi 호스트 강화 필수**: 2026년 랜섬웨어 및 공급망 공격의 위협 증가는 ESXi 호스트에 대한 강화된 보안 구성(Security Hardening) 적용을 필수화합니다. Hardening Guide 준수 여부를 고객 환경에서 재점검해야 합니다.
+                        <a href="https://vmblog.com/archive/2025/12/26/2026-is-the-year-of-cryptographic-inventory-for-government-defense-and-finance.aspx" target="_blank" class="text-gray-500 hover:text-broadcom-red ml-1">[Source]</a>
+                    </p>
                 </li>
             </ul>
         </div>
-
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-xs text-gray-500">
-        <p>Distinguished Architect/Community Incident Commander Report. All sources are publicly available technical blogs or Broadcom Tech Docs/Blogs.</p>
-        <p>The insights are based on synthesizing provided data with a field-engineer-centric, incident-prevention perspective.</p>
+    <footer class="mt-8 pt-4 border-t border-dark-border text-center text-gray-500 text-sm">
+        <p>© 2025 VMware by Broadcom. All Rights Reserved. Generated by Community Incident Commander.</p>
     </footer>
+
 </body>
 </html>
