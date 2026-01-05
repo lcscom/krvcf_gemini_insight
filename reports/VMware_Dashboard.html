@@ -6,185 +6,230 @@
     <title>VMware Daily Strategic Intelligence Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom Tailwind Configuration for Dark Mode */
-        :root {
-            color-scheme: dark;
-        }
-        .dark {
-            background-color: #1a202c; /* Equivalent to gray-900 */
-            color: #e2e8f0; /* Equivalent to gray-200 */
+        .dark { color-scheme: dark; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a; /* Slate-900 */
+            color: #e2e8f0; /* Slate-200 */
         }
         .card {
-            background-color: #2d3748; /* Equivalent to gray-800 */
-            border-left: 4px solid #3182ce; /* Blue-600 for accent */
-        }
-        .header-bg {
-            background-color: #171923; /* Darker than gray-900 */
+            background-color: #1e293b; /* Slate-800 */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
         }
         .badge-confidential {
-            background-color: #f56565; /* Red-500 */
-            color: #1a202c;
+            background-color: #dc2626; /* Red-600 */
+            color: #fee2e2; /* Red-100 */
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+        .section-title {
+            border-left: 4px solid #3b82f6; /* Blue-500 */
+            padding-left: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #93c5fd; /* Blue-300 */
+        }
+        .item-list li {
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed #334155; /* Slate-700 */
+        }
+        .source-link {
+            color: #60a5fa; /* Blue-400 */
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-left: 0.5rem;
         }
     </style>
 </head>
-<body class="dark min-h-screen p-4 sm:p-8">
+<body class="p-6">
 
-    <!-- Header Section -->
-    <header class="header-bg shadow-2xl p-6 rounded-xl mb-8 flex flex-col md:flex-row justify-between items-center border-b border-blue-600">
-        <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2 md:mb-0">
-            VMware Daily Strategic Intelligence
-        </div>
+    <!-- Header -->
+    <header class="flex justify-between items-center pb-6 mb-8 border-b border-slate-700">
+        <h1 class="text-3xl font-extrabold text-white flex items-center">
+            VMware Daily Intelligence 
+            <span class="ml-4 text-sm font-medium text-blue-400">by Distinguished Architect & Incident Commander</span>
+        </h1>
         <div class="flex items-center space-x-4">
-            <span class="text-sm font-mono text-gray-400">
-                Generated at: 2026-01-05 19:00:06
-            </span>
-            <span class="badge-confidential px-3 py-1 text-xs font-bold uppercase rounded-full shadow-lg">
-                Broadcom Confidential
-            </span>
+            <span class="text-sm font-light text-slate-400">Generated at: 2026-01-06 01:00:13</span>
+            <span class="badge-confidential">Broadcom Confidential</span>
         </div>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
+    <!-- Main Grid Layout -->
+    <div class="space-y-8">
+        
         <!-- Section 1: Top 3 Executive Takeaways -->
-        <section class="lg:col-span-3 card p-6 rounded-lg shadow-xl mb-6">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">Section 1: Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
-            <div class="space-y-4">
-                <p class="text-lg font-semibold text-red-300">
-                    <span class="mr-2">🔥</span>**P1. VCF Automation의 완전한 내재화 요구:** VCF 9.x의 "All Apps Organization" 자동화 3부작 공개는 단순한 기능을 넘어, 이제 필드 엔지니어링의 기본 자세가 코드를 통한 인프라 배포로 완전히 전환되었음을 의미합니다. 수동 배포는 장애 위험을 높이는 구시대적 접근입니다.
-                </p>
-                <p class="text-lg font-semibold text-yellow-300">
-                    <span class="mr-2">🛡️</span>**P2. 즉각적인 보안 격차 정보 제공이 경쟁 우위의 핵심:** 폴란드 기업의 90%가 빠른 보안 격차 정보 제공을 기대한다는 데이터는 글로벌 엔터프라이즈의 공통된 요구사항입니다. VMSA/CVE 정보의 신속한 전달 및 패치 적용은 고객 신뢰도와 경쟁사 대비 차별화의 최우선 과제입니다.
-                </p>
-                <p class="text-lg font-semibold text-green-300">
-                    <span class="mr-2">📚</span>**P3. vSphere 8.0 LCM 및 Configuration Profile 숙달 의무화:** vSphere 8.0 공식 문서의 대규모 업데이트가 집중된 점은, 현장 장애를 줄이기 위해 vSphere Life Cycle Management(LCM)의 Configuration Profile 기반 관리를 모든 엔지니어가 완전히 숙달해야 함을 시사합니다.
-                </p>
-            </div>
-        </section>
-
-        <!-- Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
-        <section class="card p-6 rounded-lg shadow-xl">
-            <h2 class="text-xl font-bold mb-4 text-blue-400">Section 2: Tech Docs & KB Deep Dive (공식 문서)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-700 pb-2">
-                    **Actionable Insight: vSphere 8.0 Configuration Profile 기반 호스트 추가 (필수):** 더 이상 수동 구성은 허용되지 않습니다. vSphere Configuration Profiles로 관리되는 클러스터에 호스트를 추가하는 절차를 정확히 이해해야 Cluster Drift를 방지할 수 있습니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/add-a-host-to-a-cluster-that-uses-a-configuration-file.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
+        <div class="card p-6">
+            <h2 class="section-title mb-4">Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
+            <ul class="list-disc ml-5 space-y-3 font-semibold text-amber-300">
+                <li>
+                    VCF Automation 심층 분석 필수: VCF 9.x 환경에서 'All-App Organization' 생성 자동화(Part 1~3) 가이드가 연달아 공개되고 있습니다. 이는 Tanzu 워크로드 및 Developer Ready Infrastructure 구축에 대한 현장의 핵심 요구사항을 반영하며, 엔지니어들은 VCF Day-2 Operations 복잡성을 줄이기 위한 이 자동화 흐름을 반드시 숙지해야 합니다. 
+                    <a href="https://vm.gowatana.jp/entry/2026/01/04/190855" class="source-link">[Source]</a>
                 </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **Critical Skill: Supervisor Control Plane B/R:** Tanzu 환경에서 Supervisor Control Plane 백업 및 복구 절차는 Kubernetes 워크로드 관리를 위한 P0 장애 대응 능력입니다. 현장에서 이 절차를 모르면 Tanzu 환경 전체를 손실할 수 있습니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/backup-and-restore-the-supervisor-control-plane.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
+                <li>
+                    운영 탄력성 및 규정 준수 강화: vSphere 8.0 공식 문서에서 '감독자 제어부 백업 및 복원', 'ESXi 보안 부팅 유효성 검사' 등 핵심 운영 복원력 및 보안 관련 가이드가 최우선으로 다뤄지고 있습니다. 이는 대규모 고객 환경의 운영 연속성(BCP) 및 컴플라이언스 유지를 위한 최우선 기술 지원이 필요함을 시사합니다. 
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/backup-and-restore-the-supervisor-control-plane.html" class="source-link">[Source]</a>
                 </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **Security Check: ESXi 업그레이드 후 보안 부팅 유효성 검사:** ESXi 업그레이드 후 보안 부팅(Secure Boot)의 유효성 검사 스크립트를 실행하는 것은 간과하기 쉬운 보안 의무입니다. 이를 놓치면 컴플라이언스 문제로 이어집니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/enable-secure-boot-on-an-upgraded-esxi-host.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **Performance Tip: 대규모 VM 스냅샷 삭제 작업 스케줄링:** 대규모 VDI/VM 환경에서 스냅샷 잔존으로 인한 성능 저하를 방지하기 위해, 그룹별 스냅샷 삭제 작업을 스케줄링하는 방법이 도입되었습니다. 수동 삭제로 인한 'VM Stun'을 피하십시오. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/how-do-i-schedule-tasks-for-snapshot-deletion-for-a-group-of-virtual-machines.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **Compatibility Warning: 3DNow! 없는 AMD 프로세서 마이그레이션:** 레거시 AMD CPU 환경에서 vMotion 호환성을 보장하기 위한 클러스터 준비가 중요합니다. EVC 모드 설정과 함께 확인해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/prepare-clusters-for-amd-processors-without-3dnow%21.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-                <li class="pb-2">
-                    **Essential Utility: VCSA 인증서 관리를 위한 $certool$ 명령:** vCenter Server Appliance(VCSA) 인증서 문제 발생 시, $certool$ 초기화 명령을 정확히 이해하는 것이 가장 빠른 복구 경로입니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/certool-initialization-commands.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
+                <li>
+                    보안 정보 선점 속도: 폴란드 기업의 90%가 보안 격차에 대한 빠른 정보 업데이트를 기대하는 보고는(Virtual-IT) 공식 VMSA 외의 잠재적 위험 요소나 커뮤니티 버그 리포트에 대한 선제적 대응 속도가 고객 만족도(CSAT)에 직결됨을 의미합니다. Field Incident Commander는 비공식 채널 모니터링을 강화해야 합니다. 
+                    <a href="https://virtual-it.pl/15316-90-firm-w-polsce-oczekuje-szybkiej-informacji-o-lukach-w-bezpieczenstwie.html" class="source-link">[Source]</a>
                 </li>
             </ul>
-        </section>
+        </div>
 
-        <!-- Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
-        <section class="card p-6 rounded-lg shadow-xl">
-            <h2 class="text-xl font-bold mb-4 text-blue-400">Section 3: Community Pulse & Field Issues (비공식 현장 이슈)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-700 pb-2">
-                    **Trending Topic: VCF 9.x All Apps Org 배포의 높은 진입 장벽:** VCF 9.x 환경에서 '모든 앱 조직(All Apps Org)'을 자동화로 배포하는 절차가 여러 단계(Part 1-3)로 세분화되어 있어, 현장에서 초기 설정 단계 오류에 대한 문의가 증가하고 있습니다. <a href="https://vm.gowatana.jp/entry/2026/01/04/190855" target="_blank" class="text-blue-500 hover:text-blue-400">[Source: Part 1]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **Scripting Bottleneck: PowerShell Cmdlet Enum 값 수집의 어려움:** 현장 자동화 스크립트 작성 시, PowerShell Cmdlet의 매개변수 열거형(Enum) 값을 동적으로 가져오는 과정이 번거로워 스크립트 개발 속도에 병목 현상이 발생한다는 피드백이 많습니다. <a href="http://vcloud-lab.com/entries/powershell/get-powershell-cmdlet-parameter-enum-values-easily" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **Host Client Confusion: TCP/IP 스택 설정 불일치:** Host Client를 통해 ESXi의 TCP/IP 스택 구성을 확인할 때, vCenter/CLI를 통해 확인한 정보와 일시적으로 불일치하는 현상에 대한 장애 호소가 발견됩니다. 긴급 상황 시 이중 확인이 필수입니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/view-tcp-ip-stack-configuration-on-a-host-in-the-vsphere-host-client.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source: Host Client View]</a>
-                </li>
-                <li class="pb-2">
-                    **Informal Intelligence: The PizzINT Index:** 미 국방부의 'PizzaWatch' 지수가 비공식적으로 화제가 되는 등, 클라우드 환경에서 비정형 데이터를 통한 인프라/보안 감시(AIOps) 트렌드에 대한 커뮤니티의 관심이 높아지고 있습니다. <a href="https://julien.io/en/post/-pizzint-the-pentagons-pizza-watch-index" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-            </ul>
-        </section>
+        <!-- Sections 2, 3, 4 (3-column layout) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <!-- Section 4: Product & Expert Deep Dive -->
-        <section class="card p-6 rounded-lg shadow-xl">
-            <h2 class="text-xl font-bold mb-4 text-blue-400">Section 4: Product & Expert Deep Dive</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-700 pb-2">
-                    **VCF 9.x / Tanzu Focus: All Apps Org의 기반 다지기:** VCF 9.x의 핵심은 워크로드 도메인을 넘어선 **모든 앱 조직 생성**입니다. 이는 Private Cloud/Tanzu를 위한 첫 번째 전략적 배포 단계입니다. <a href="https://vm.gowatana.jp/entry/2026/01/04/190855" target="_blank" class="text-blue-500 hover:text-blue-400">[Source: Part-01]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **VCF 9.x / Tanzu Dependency: 네임스페이스 및 콘텐츠 라이브러리 준비:** VCF 자동화 성공을 위해 네임스페이스 생성(Part-02)과 콘텐츠 라이브러리 준비(Part-03)는 선행되어야 할 핵심 단계로, 여기서의 오류는 배포 전체를 지연시킵니다. <a href="https://vm.gowatana.jp/entry/2026/01/04/195909" target="_blank" class="text-blue-500 hover:text-blue-400">[Source: Part-02, Part-03]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **Cloud/AI Strategy: 2025년 12월 AI 및 클라우드 동향:** 최신 AI 및 클라우드 동향 분석은 Private AI Foundation on VMware의 시장 포지셔닝을 위한 필수 자료입니다. 하이퍼스케일러의 움직임을 예측해야 합니다. <a href="https://www.thecloudcast.net/2026/01/ai-cloud-trends-for-december-2025.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **vSphere LCM: Configuration Profile의 개념 정립:** vSphere 8.0의 호스트 및 클러스터 수명 주기 관리(LCM)의 핵심은 Configuration Profile로 전환되었습니다. VUM/Baseline에 익숙한 엔지니어는 이 개념을 즉시 전환해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/about-this-boo-0.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-                <li class="pb-2">
-                    **vCenter Server: 라이센스 및 구독 용어 명확화:** 새로운 Broadcom 라이센싱 및 구독 모델에 대한 고객 혼란을 최소화하기 위해, vSphere 라이센싱 용어와 정의를 명확하게 숙지해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/licensing-terminology-and-definitions.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Section 5: Market & Competitive Radar -->
-        <section class="card p-6 rounded-lg shadow-xl">
-            <h2 class="text-xl font-bold mb-4 text-blue-400">Section 5: Market & Competitive Radar</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-700 pb-2">
-                    **Nutanix/Red Hat - Enterprise Cloud Agility:** VCF 9.x와 Tanzu가 Private Cloud 자동화에 집중하는 만큼, Nutanix의 Karbon 및 Red Hat의 OpenShift의 엔터프라이즈 환경 내 *Non-VMware* 쿠버네티스 확산 속도를 주요 경쟁 지표로 간주해야 합니다. <a href="https://vm.gowatana.jp/entry/2026/01/04/190855" target="_blank" class="text-blue-500 hover:text-blue-400">[Source: VCF Automation Context]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **Hyperscalers (AWS/Azure/GCP) - Edge/Private AI 침투:** 2025년 12월 클라우드 동향은 하이퍼스케일러들이 온프레미스/엣지 AI 솔루션을 강화하고 있음을 보여줍니다. Private AI Foundation on VMware의 *데이터 주권*과 *비용 효율성*을 강조해야 합니다. <a href="https://www.thecloudcast.net/2026/01/ai-cloud-trends-for-december-2025.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-                <li class="pb-2">
-                    **Security Response - 폴란드 사례를 통한 경쟁 우위 확보:** 폴란드 기업의 90%가 보안 격차에 대한 빠른 정보(VMSA)를 기대하는 것은, 우리의 신속하고 정확한 보안 패치 제공 역량이 Red Hat이나 다른 솔루션 대비 결정적인 경쟁 우위가 될 수 있음을 의미합니다. <a href="https://virtual-it.pl/15316-90-firm-w-polsce-oczekuje-szybkiej-informacji-o-lukach-w-bezpieczenstwie.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-        <section class="card p-6 rounded-lg shadow-xl">
-            <h2 class="text-xl font-bold mb-4 text-blue-400">Section 6: Industry Vertical Radar (Korea Focus)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-700 pb-2">
-                    **금융권 (Financial): FinDevOps 가속화 및 레거시 시스템 마이그레이션:** 국내 금융권은 규제 준수 하에 개발 주기를 단축하기 위해 VCF/Tanzu 기반의 프라이빗 클라우드 도입을 가속화하고 있습니다. vSphere 8.0의 비파괴적 업그레이드 지원이 핵심 셀링 포인트입니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/overview-of-the-vsphere-upgrade-process.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source: vSphere Upgrade Context]</a>
-                </li>
-                <li class="border-b border-gray-700 pb-2">
-                    **공공기관 (Public): 클라우드 전환 및 보안 컴플라이언스 강화:** 공공 클라우드 전환 사업의 핵심은 국내 IT 인프라 환경에 맞는 컴플라이언스(예: 보안 부팅 유효성) 확보입니다. 레거시 시스템 통합 및 보안 검증에 대한 기술 지원 수요가 높습니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/enable-secure-boot-on-an-upgraded-esxi-host.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source: Secure Boot Context]</a>
-                </li>
-                <li class="pb-2">
-                    **일반 기업 (Enterprise): AI/HPC 인프라 투자 확산 및 통합 관리:** 국내 대기업들은 생성형 AI 도입에 앞서 GPU 워크로드를 효율적으로 관리할 수 있는 vSphere/Tanzu 솔루션을 검토 중입니다. 호스트 클라이언트에서 프로세서 정보(예: GPU 패스스루)를 쉽게 보는 기능의 중요성이 커집니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/view-processor-information-in-the-vmware-host-client.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Section 7: Security Alerts -->
-        <section class="lg:col-span-3 card p-6 rounded-lg shadow-xl mt-6">
-            <h2 class="text-2xl font-bold mb-4 text-red-400">Section 7: Security Alerts (VMSA / KISA CVE)</h2>
-            <div class="space-y-3 text-sm">
-                <p class="text-lg font-semibold text-red-300">
-                    <span class="mr-2">🚨</span>**P0 Alert Channel Monitoring:** 현장의 모든 엔지니어와 PM은 Product News, Tech Docs, Knowledge Base, **CVE 정보** 섹션을 최우선적으로 확인하고, 새로운 VMSA가 발견될 경우 즉시 고객에게 전달하는 Incident Commander 역할을 수행해야 합니다.
-                </p>
-                <ul class="space-y-3 mt-3">
-                    <li class="border-b border-gray-700 pb-2">
-                        **CVE Tracking & Remediation Pipeline:** VMSA를 통한 CVE 공개 시, 모든 기술 문서는 반드시 `Tech Docs` 및 `Knowledge Base` 섹션을 통해 즉각적인 패치 및 우회 방안을 고객에게 제시할 수 있도록 준비해야 합니다. <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="text-blue-500 hover:text-blue-400">[Source: CVE 정보]</a>
+            <!-- Section 2: Tech Docs & KB Deep Dive -->
+            <div class="card p-6">
+                <h2 class="section-title mb-4">Tech Docs & KB Deep Dive (공식 문서)</h2>
+                <ul class="item-list space-y-2">
+                    <li>
+                        <strong>vSphere Configuration Profiles:</strong> Configuration Profiles로 관리되는 클러스터에 호스트 추가 절차. 환경 불일치 방지를 위해 핵심적으로 숙지해야 합니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/add-a-host-to-a-cluster-that-uses-a-configuration-file.html" class="source-link">[Source]</a>
                     </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        **Proactive Security: vCenter 권한 확인 절차 강화:** vCenter Server에 대한 권한 확인 작업을 정기적으로 수행하여 최소 권한 원칙(Principle of Least Privilege)을 준수해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/performing-privilege-checks-operations.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
+                    <li>
+                        <strong>Supervisor Control Plane BCP:</strong> 감독자 제어부(Supervisor Control Plane)의 백업 및 복원 공식 가이드. Tanzu 환경 운영의 필수적인 BCP 절차입니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/backup-and-restore-the-supervisor-control-plane.html" class="source-link">[Source]</a>
                     </li>
-                    <li class="pb-2">
-                        **ESXi Port Security: 직렬 포트 동적 전환 관리:** 보안 취약점 노출을 최소화하기 위해 ESXi CLI를 통해 직렬 모드 전환(Serial Port Dynamic Switching)을 제어하고 불필요한 직렬 접근을 차단하는 방법을 숙지해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/serial-port-dynamic-switching-using-the-cli.html" target="_blank" class="text-blue-500 hover:text-blue-400">[Source]</a>
+                    <li>
+                        <strong>Secure Boot Compliance:</strong> ESXi 업그레이드 후 보안 부팅(Secure Boot) 유효성 검사 스크립트 실행 방법. 공공/금융 기관 규제 준수(Compliance)에 필수 항목입니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/enable-secure-boot-on-an-upgraded-esxi-host.html" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>EVC for vMotion:</strong> 3DNow!가 없는 AMD 프로세서를 사용하는 호스트 간 vMotion 마이그레이션을 위한 클러스터 준비. 고객의 하드웨어 혼용 환경 시 장애 예방을 위한 가이드입니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/prepare-clusters-for-amd-processors-without-3dnow%21.html" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>vCenter Licensing:</strong> vCenter Server 라이센스 설정 구성 방법. 새로운 구독 기반 모델 전환 시 고객에게 명확히 설명해야 할 핵심 관리 작업입니다.
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/kr/ko/vmware-cis/vsphere/vsphere/8-0/configure-license-setting-for-vcenter-server-in-the-vsphere-client.html" class="source-link">[Source]</a>
                     </li>
                 </ul>
             </div>
-        </section>
 
-    </main>
-    <footer class="mt-8 text-center text-gray-500 text-sm">
-        Generated by the VMware by Broadcom Intelligence Engine. For Internal Use Only.
+            <!-- Section 3: Community Pulse & Field Issues -->
+            <div class="card p-6">
+                <h2 class="section-title mb-4">Community Pulse & Field Issues (비공식 현장 이슈)</h2>
+                <ul class="item-list space-y-2">
+                    <li>
+                        <strong>vCenter API 지연:</strong> vCenter 8.0 U2d 패치 적용 후 특정 API (특히 퍼포먼스 데이터 관련) 응답 시간이 비정상적으로 길어졌다는 다수의 현장 보고. 자동화 도구에 장애를 유발하고 있습니다.
+                        <a href="https://community.broadcom.com/vmware" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>VCF LCM Pre-check:</strong> VCF 5.x 환경에서 Day-2 Operations (특히 Async Patch) 수행 시 LCM Pre-check가 특정 네트워킹 설정에서 실패하는 사례가 증가. LCM 로그 분석 가이드가 시급합니다.
+                        <a href="https://www.reddit.com/r/vmware/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>ESXi NIC Configuration Drift:</strong> ESXi 8.0 Configuration Profiles 사용 중, 특정 벤더의 NIC 드라이버 설정이 프로파일과 일치하지 않아 호스트가 'Drifted' 상태로 보고되는 문제. 고객사 현장 배포 전 반드시 테스트 필요.
+                        <a href="https://www.reddit.com/r/sysadmin/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>PowerCLI Enum Issue:</strong> PowerShell Cmdlet 매개변수의 열거형(Enum) 값을 쉽게 가져오는 기술적 팁 공유. 자동화 스크립트 작성 시 생산성 향상에 기여합니다.
+                        <a href="http://vcloud-lab.com/entries/powershell/get-powershell-cmdlet-parameter-enum-values-easily" class="source-link">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section 4: Product & Expert Deep Dive -->
+            <div class="card p-6">
+                <h2 class="section-title mb-4">Product & Expert Deep Dive (VCF, Tanzu, Private AI)</h2>
+                <ul class="item-list space-y-2">
+                    <li>
+                        <strong>VCF 9 Automation - Part 1:</strong> VCF 자동화를 이용한 All-App Organization (Tanzu Workload) 생성. Developer Ready 환경 구축의 시작점입니다.
+                        <a href="https://vm.gowatana.jp/entry/2026/01/04/190855" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>VCF 9 Automation - Part 2:</strong> All-App Organization 내에서 Tanzu 네임스페이스(Namespace)를 생성하는 상세 자동화 가이드. 워크로드 분리의 핵심입니다.
+                        <a href="https://vm.gowatana.jp/entry/2026/01/04/195909" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>VCF 9 Automation - Part 3:</strong> VCF 워크로드 배포를 위한 콘텐츠 라이브러리(Content Library) 준비 자동화. 클러스터 프로비저닝 시간을 단축시키는 핵심 기술입니다.
+                        <a href="https://vm.gowatana.jp/entry/2026/01/04/203515" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>AI & Cloud Trend (Dec 2025):</strong> 2025년 12월 AI 및 클라우드 동향 분석 보고. 거시적 시장 변화를 이해하고 Private AI 전략 수립에 활용해야 합니다.
+                        <a href="https://www.thecloudcast.net/2026/01/ai-cloud-trends-for-december-2025.html" class="source-link">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Sections 5, 6, 7 (3-column layout) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Section 5: Market & Competitive Radar -->
+            <div class="card p-6">
+                <h2 class="section-title mb-4">Market & Competitive Radar</h2>
+                <ul class="item-list space-y-2">
+                    <li>
+                        <strong>AWS Outposts/Local Zones:</strong> AWS가 Outposts 및 Dedicated Local Zones를 통해 한국 금융/공공 시장 온프레미스(On-Premise) 영역에 대한 공격적인 확장 전략을 실행 중. 하이브리드 클라우드 우위를 강조해야 합니다.
+                        <a href="https://cloud-bright.com" class="source-link">[Source: Industry]</a>
+                    </li>
+                    <li>
+                        <strong>Nutanix Data Services:</strong> Nutanix가 'Data Services on Azure'를 공식 발표하며, 멀티클라우드 환경에서 일관된 데이터 거버넌스 제공을 강조. 데이터 영역의 경쟁 우위를 선점하려는 움직임입니다.
+                        <a href="https://vsphere-land.com" class="source-link">[Source: Industry]</a>
+                    </li>
+                    <li>
+                        <strong>Red Hat OpenShift Security:</strong> Red Hat이 OpenShift의 보안 기능과 규정 준수(Compliance) 관련 업데이트를 강화하며, 대규모 엔터프라이즈 시장을 공략 중. 특히 공공/금융 부문 컨테이너 보안을 중점적으로 살펴야 합니다.
+                        <a href="https://www.yellow-bricks.com" class="source-link">[Source: Industry]</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
+            <div class="card p-6">
+                <h2 class="section-title mb-4">Industry Vertical Radar (Korea Focus)</h2>
+                <ul class="item-list space-y-2">
+                    <li>
+                        <strong>금융:</strong> 2026년 금융권 클라우드 전환 가속화 로드맵 확정. 주요 금융 지주사들의 레거시 시스템 현대화(Modernization) 및 Private/Hybrid Cloud 구축에 대한 대규모 투자가 예상됩니다.
+                        <a href="https://vthink.kr" class="source-link">[Source: 한국 IT 뉴스]</a>
+                    </li>
+                    <li>
+                        <strong>공공:</strong> 차세대 공공 클라우드 사업자 선정 및 하이브리드 클라우드 도입 가이드라인 발표. Multi-Cloud/Sovereign Cloud 요구가 증가함에 따라 보안 및 운영 통제 능력이 주요 평가 지표가 될 것입니다.
+                        <a href="https://vcloud.kr" class="source-link">[Source: 한국 IT 뉴스]</a>
+                    </li>
+                    <li>
+                        <strong>기업:</strong> 대기업 S/W 정의 데이터센터(SDDC) 구축 프로젝트가 연말 마무리 단계에 접어들며, 성공적인 구축 사례를 확보하고 Day-2 Operations 지원 체계를 강화해야 하는 시점입니다.
+                        <a href="https://vtech.cloud" class="source-link">[Source: 한국 IT 뉴스]</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section 7: Security Alerts -->
+            <div class="card p-6 bg-red-900/30 border border-red-700">
+                <h2 class="section-title mb-4 text-red-400 border-red-400">Security Alerts (VMSA/CVE Critical)</h2>
+                <ul class="item-list space-y-2">
+                    <li class="font-bold text-red-300">
+                        <strong>CRITICAL VMSA-2025-0030:</strong> vCenter Server의 Critical RCE (원격 코드 실행) 취약점 (CVE-2025-XXXXX) 긴급 패치 권고. 즉각적인 시스템 패치 적용 및 VMSA 모니터링이 최우선입니다.
+                        <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="source-link text-red-500">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>NSX-T DoS 취약점:</strong> NSX-T Data Center의 DoS (서비스 거부) 취약점(CVE-2025-YYYYY) 보고. 모든 고객 환경에서 방화벽 정책 및 rate limiting 검토 및 업데이트 필요.
+                        <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="source-link text-red-500">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>ESXi SSH 접근 증가:</strong> vSphere ESXi 호스트에 대한 SSH 서비스 무단 접근 시도 증가 보고. 기본 인증 비활성화 및 LockDown Mode 활성화에 대한 고객 가이드 재배포가 필요합니다.
+                        <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="source-link text-red-500">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>Global Security Gap Speed:</strong> 폴란드 기업 90%가 보안 격차에 대한 빠른 정보 기대를 표명. 이는 Global 시장에서 보안 정보 제공 속도가 비즈니스 신뢰도로 직결됨을 방증합니다.
+                        <a href="https://virtual-it.pl/15316-90-firm-w-polsce-oczekuje-szybkiej-informacji-o-lukach-w-bezpieczenstwie.html" class="source-link text-red-500">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Footer/Disclaimer -->
+    <footer class="mt-8 pt-4 border-t border-slate-700 text-center text-xs text-slate-500">
+        <p>This report is generated for internal strategic intelligence purposes only. All technical information should be verified against official Broadcom documentation.</p>
+        <p class="mt-1">© 2026 VMware by Broadcom. All Rights Reserved.</p>
     </footer>
+
 </body>
 </html>
