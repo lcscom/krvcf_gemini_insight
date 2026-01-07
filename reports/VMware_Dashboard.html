@@ -3,286 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VMware Daily Strategic Intelligence Dashboard</title>
-    <!-- Tailwind CSS CDN (for simple deployment, assume dark mode by default) -->
+    <title>VMware Daily Strategic Intelligence Dashboard (Confidential)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar for modern feel */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Custom Dark Mode Configuration */
+        :root {
+            color-scheme: dark;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #4b5563; /* Gray-600 */
-            border-radius: 10px;
+        body {
+            background-color: #0f172a; /* Slate-900 */
+            color: #f1f5f9; /* Slate-100 */
         }
-        ::-webkit-scrollbar-track {
-            background: #1f2937; /* Gray-800 */
+        .card {
+            background-color: #1e293b; /* Slate-800 */
+            border-left: 4px solid #0ea5e9; /* Sky-500 for emphasis */
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        /* Custom card style */
-        .info-card {
-            transition: transform 0.3s, box-shadow 0.3s;
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
         }
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        .section-header {
+            color: #38bdf8; /* Sky-400 */
+        }
+        .source-link {
+            color: #94a3b8; /* Slate-400 */
         }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class', // Enable dark mode
-        }
-    </script>
 </head>
-<body class="bg-gray-900 text-white min-h-screen p-4 lg:p-8 dark">
+<body class="p-6 font-sans">
 
-    <!-- Header Section -->
-    <header class="max-w-7xl mx-auto mb-8">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-yellow-500 pb-4">
-            <h1 class="text-3xl lg:text-4xl font-extrabold text-yellow-400">VMware Daily Strategic Intelligence</h1>
-            <div class="mt-2 sm:mt-0 text-right">
-                <p class="text-sm text-gray-400">Generated at: 2026-01-08 01:00:13</p>
-                <span class="inline-flex items-center px-3 py-1 text-xs font-semibold leading-5 uppercase bg-red-800 text-white rounded-full shadow-lg">
-                    Broadcom Confidential
-                </span>
-            </div>
+    <!-- 1. Header -->
+    <header class="mb-8 border-b border-sky-500 pb-4 flex justify-between items-center">
+        <h1 class="text-4xl font-extrabold text-white">VMware Daily Strategic Intelligence</h1>
+        <div class="text-right">
+            <p class="text-sm font-light text-slate-400">Generated at: 2026-01-08 07:00:06</p>
+            <span class="inline-block bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">Broadcom Confidential</span>
         </div>
-        <p class="text-lg mt-3 text-gray-300 font-semibold">
-            Status: <span class="text-green-400">Code Green (Minor Incident Command Active)</span> - VCF SSO 손상 이슈 집중 모니터링
-        </p>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="max-w-7xl mx-auto">
+    <div class="space-y-12">
         
-        <!-- Section 1: Top 3 Executive Takeaways -->
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold border-l-4 border-yellow-500 pl-3 mb-5 text-yellow-400">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
+        <!-- 2. Section 1: Top 3 Executive Takeaways -->
+        <section>
+            <h2 class="section-header text-2xl font-bold mb-4">⭐ Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <!-- Takeaway 1 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border border-red-600">
-                    <p class="text-xl font-bold mb-2 text-red-400">🚨 VCF SSO Critical Incident</p>
-                    <p class="text-gray-300">VCF 환경에서 SSO 인증 실패(Broken) 이슈가 커뮤니티 및 현장에서 보고됨. 이는 vCenter/SDDC Manager 접근 장애로 이어지는 치명적인 문제이므로, 현장 엔지니어는 'vCenter Server 재설정 퀵 팁'을 숙지하고 긴급 대응 체계를 가동해야 합니다. **미숙지 시 고객 환경 다운타임 직결.**</p>
-                    <a href="https://www.lab2prod.com.au/2026/01/authentication-failure-vcf-sso-broken.html?utm_source=rss&utm_medium=rss&utm_campaign=authentication-failure-vcf-sso-broken" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-5 rounded-lg shadow-xl">
+                    <p class="font-semibold text-lg text-white mb-2">VCF, VM-컨테이너 단일 플랫폼 전략 가속화</p>
+                    <p class="text-slate-300 text-sm italic">현대 IT 환경에서 VM과 컨테이너를 아우르는 VCF 기반 단일 플랫폼이 미래라는 핵심 메시지입니다. 현장에서는 vSphere with Tanzu 기반의 통합 아키텍처 제안을 최우선으로 해야 합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/06/why-a-single-platform-for-vms-and-containers-is-the-future-of-modern-it/" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
                 
-                <!-- Takeaway 2 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border border-green-600">
-                    <p class="text-xl font-bold mb-2 text-green-400">🚀 전략 방향: VM/Container 단일 플랫폼</p>
-                    <p class="text-gray-300">VM 및 컨테이너를 위한 '단일 플랫폼'이 현대 IT의 미래라는 공식 블로그 포스팅은 VCF와 Tanzu 기반 전략의 정당성을 재확인합니다. 엔지니어는 더 이상 VM과 컨테이너를 분리된 사일로로 보지 말고 통합된 아키텍처 관점에서 고객을 지원해야 합니다.</p>
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/06/why-a-single-platform-for-vms-and-containers-is-the-future-of-modern-it/" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-5 rounded-lg shadow-xl">
+                    <p class="font-semibold text-lg text-white mb-2">Private AI Foundation with NVIDIA 공식화 및 GTM 준비</p>
+                    <p class="text-slate-300 text-sm italic">NVIDIA와의 협력으로 VMware Private AI Foundation이 공식적인 법적 고지 문서를 통해 확인되었습니다. 이는 AI 관련 GTM(Go-to-Market) 전략이 본격화됨을 시사합니다. 고객의 데이터 주권 및 보안을 강조하는 Private AI 제안을 즉시 준비해야 합니다.</p>
+                    <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24368" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
                 
-                <!-- Takeaway 3 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border border-purple-600">
-                    <p class="text-xl font-bold mb-2 text-purple-400">💡 Private AI 및 HW 시장 불안정성</p>
-                    <p class="text-gray-300">VMware Private AI Foundation with NVIDIA의 공식 문서 배포는 AI 인프라 시장 선점을 위한 시그널입니다. 동시에 AI 붐이 PC/SSD 시장의 불안정을 야기하고 있어, 향후 VDI 및 HCI 구축 시 하드웨어 수급과 가격 변동에 대한 사전 예측이 필수적입니다.</p>
-                    <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24368" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-5 rounded-lg shadow-xl">
+                    <p class="font-semibold text-lg text-white mb-2">규제 산업 대상 소프트웨어 공급망 보안 강조</p>
+                    <p class="text-slate-300 text-sm italic">Tanzu 블로그에서 금융/공공과 같이 규제가 엄격한 산업의 공급망 보안 중요성을 다뤘습니다. 이는 VMware의 클라우드 네이티브 솔루션이 단순 개발 환경을 넘어 컴플라이언스 및 보안 관점에서도 핵심임을 증명하는 포인트입니다.</p>
+                    <a href="https://blogs.vmware.com/tanzu/what-good-software-supply-chain-security-looks-like-for-highly-regulated-industries/" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
+                
             </div>
         </section>
 
-        <!-- Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold border-l-4 border-blue-500 pl-3 mb-5 text-blue-400">2. Tech Docs & KB Deep Dive (공식 문서)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Item 1 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-red-500">
-                    <p class="font-bold text-lg">CRITICAL: VCF SSO 인증 실패 문제 발생</p>
-                    <p class="text-gray-400">VCF 환경에서 SSO 인증 실패(Broken)가 발생할 수 있으며, 이는 관리 접근 장애로 이어집니다. 현장에서 해당 오류를 인지 즉시 <span class="text-red-400">긴급 패치 또는 재설정 절차</span>를 준비해야 합니다.</p>
-                    <a href="https://www.lab2prod.com.au/2026/01/authentication-failure-vcf-sso-broken.html?utm_source=rss&utm_medium=rss&utm_campaign=authentication-failure-vcf-sso-broken" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+        <!-- 3. Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
+        <section>
+            <h2 class="section-header text-2xl font-bold mb-4">🛠️ Tech Docs & KB Deep Dive (공식 문서)</h2>
+            <div class="space-y-4">
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">NSX ALB (Avi) 배포 문제 해결: vCenter 통합 로그인 및 SE 생성 오류</p>
+                    <p class="text-slate-300 text-sm mt-1">현장 장애 1순위 문제. Avi Controller와 vCenter 간의 시간 동기화(Time Skew), 로그인 자격 증명 오류, 서비스 엔진(SE) 생성 실패 시의 명확한 진단 및 해결 방법입니다. **장애 발생 시 이 문서를 최우선으로 참고하십시오.**</p>
+                    <a href="https://techdocs.broadcom.com/content/.../troubleshooting-avi-vantage-deployment-into-vmware" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
-                <!-- Item 2 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-yellow-500">
-                    <p class="font-bold text-lg">NSX ALB(Avi) SE 배치 Anti-affinity 요구사항</p>
-                    <p class="text-gray-400">고가용성을 위해 Service Engine(SE) 배치 시 안티-어피니티(Anti-affinity) 설정을 검토해야 합니다. 이를 무시하고 구성할 경우 <span class="text-yellow-400">단일 호스트 장애 시 L4/L7 서비스 중단 위험</span>이 높아집니다.</p>
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-installation-guide/anti-affinity-for-service-engine-placement.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">NSX ALB vCenter Cloud 업그레이드 전 22.1.1 이전 버전과의 주요 고려 사항</p>
+                    <p class="text-slate-300 text-sm mt-1">Avi 22.1.1 이전 버전에서 업그레이드할 때 vCenter Cloud 구성 요소에 대한 특별한 고려사항이 필요합니다. 업그레이드 전 반드시 확인하여 데이터 불일치 및 연동 오류를 방지해야 합니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/considerations-for-vcenter-cloud-while-upgrading-from-releases-prior-to-22-1-1.html" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
-                <!-- Item 3 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-green-500">
-                    <p class="font-bold text-lg">NSX ALB: vCenter 클라우드 통합 시 'Time Skew' 오류</p>
-                    <p class="text-gray-400">ESXi의 시간 동기화(Time Sync) 문제로 인해 Controller와 vCenter 간의 <span class="text-green-400">시간 불일치(Time Skew)가 발생하여 컨트롤러 큐잉에 부정적인 영향</span>을 줄 수 있습니다. 문제 발생 시 NTP 설정을 최우선으로 점검해야 합니다.</p>
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/30-1/vmware-avi-load-balancer-installation-guide/installing-nsx-alb-in-vmware-vsphere-environments/additional-deployment-options-for-vmware-vcenter-integration/troubleshooting-avi-vantage-deployment-into-vmware/vmware-esx-time-sync-causing-time-skew.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">NSX ALB (Avi) Service Engine 배치를 위한 Anti-affinity 설정 가이드</p>
+                    <p class="text-slate-300 text-sm mt-1">로드밸런싱 서비스의 고가용성(HA)을 보장하는 설계 필수 요소입니다. 단일 ESXi 호스트 장애 시에도 SE가 격리되도록 배치하는 방법을 이해하고 설계에 반영해야 합니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-installation-guide/anti-affinity-for-service-engine-placement.html" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
-                <!-- Item 4 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-red-500">
-                    <p class="font-bold text-lg">NSX ALB: Service Engine 생성 오류 트러블슈팅</p>
-                    <p class="text-gray-400">SE 생성 실패는 네트워킹, 권한, vCenter 연결 등 다양한 원인으로 발생합니다. Deployment 실패 시 <span class="text-red-400">로그인 오류 및 vCenter Discovery 진행 오류</span>와 연계하여 포괄적인 진단이 필요합니다.</p>
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-installation-guide/installing-nsx-alb-in-vmware-vsphere-environments/avi-load-balancer-in-write-access-mode/configuring-a-vcenter-cloud/additional-deployment-options-for-vmware-vcenter-integration/troubleshooting-avi-vantage-deployment-into-vmware/resolving-service-engine-creation-errors.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">NSX ALB IPv6 배포 시나리오 (Dual Stack, L2 Scale In/Out)</p>
+                    <p class="text-slate-300 text-sm mt-1">차세대 네트워크 환경에서 필수적인 IPv6 지원에 대한 상세한 사용 사례(IPv6 VIP, Dual Stack 구성, L2 기반 스케일 조정)를 제공합니다. 금융/공공 기관의 IPv6 전환 프로젝트에 대비해야 합니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-installation-guide/advanced-network-configuration/ipv6-in-nsx-advanced-load-balancer-for-vmware-linux-server-cloud.html" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
-                <!-- Item 5 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-yellow-500">
-                    <p class="font-bold text-lg">규제가 엄격한 산업의 소프트웨어 공급망 보안</p>
-                    <p class="text-gray-400">금융, 공공 등 규제가 엄격한 산업을 대상으로 우수한 소프트웨어 공급망 보안을 달성하기 위한 Tanzu 기반의 전략 및 모범 사례를 이해하는 것이 중요합니다. 이는 <span class="text-yellow-400">향후 컴플라이언스 및 수주에 직결</span>됩니다.</p>
-                    <a href="https://blogs.vmware.com/tanzu/what-good-software-supply-chain-security-looks-like-for-highly-regulated-industries/" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
-                <!-- Item 6 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-green-500">
-                    <p class="font-bold text-lg">NSX ALB: IPv6 듀얼 스택(Dual Stack) 구성 가이드</p>
-                    <p class="text-gray-400">IPv4v6 VIP(Dual Stack)를 IPv6 및 IPv4 백엔드와 함께 사용하는 Use Case-2 구성 가이드가 업데이트되었습니다. 공공 및 통신 분야의 <span class="text-green-400">차세대 네트워크 전환 고객 지원 시 필수 지식</span>입니다.</p>
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-installation-guide/advanced-network-configuration/ipv6-in-nsx-advanced-load-balancer-for-vmware-linux-server-cloud/use-case-2-ipv4v6-vip-dual-stack-with-ipv6-ipv4-backend.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
+
             </div>
         </section>
 
-        <!-- Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold border-l-4 border-orange-500 pl-3 mb-5 text-orange-400">3. Community Pulse & Field Issues (비공식 현장 이슈)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 4. Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
+        <section>
+            <h2 class="section-header text-2xl font-bold mb-4">📢 Community Pulse & Field Issues (비공식 현장 이슈)</h2>
+            <div class="space-y-4">
                 
-                <!-- Item 1 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-red-500">
-                    <p class="font-bold text-lg">VCF SSO 장애 후 '관리형 작업에서 vCenter Server 재설정' 문의 폭주</p>
-                    <p class="text-gray-400">VCF SSO 손상 이슈에 대한 임시 또는 복구 조치로, 이전에 VCF에서 관리했던 vCenter Server를 재설정하는 방법에 대한 문의가 활발합니다. **장애 발생 시 서비스 복구 시간을 단축하는 핵심 팁**입니다.</p>
-                    <a href="https://williamlam.com/2026/01/quick-tip-reset-vcenter-server-from-previously-managed-vcf-operations-for-vcf-single-sign-on-sso.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-4 rounded-lg border-l-4 border-red-500">
+                    <p class="font-medium text-red-400">🚨 VCF SSO 인증 실패 문제: 인증 실패 및 'Broken' 이슈 보고</p>
+                    <p class="text-slate-300 text-sm mt-1">VCF 환경에서 SSO(Single Sign-On) 인증이 손상(broken)되어 인증에 실패하는 치명적인 현장 문제가 보고되었습니다. 이는 VCF 운영의 핵심 기능이므로, 긴급 대응팀은 이 이슈를 최우선으로 검토해야 합니다. (VCF SSO Broken Incident) </p>
+                    <a href="https://www.lab2prod.com.au/2026/01/authentication-failure-vcf-sso-broken.html?utm_source=rss&utm_medium=rss&utm_campaign=authentication-failure-vcf-sso-broken" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
                 
-                <!-- Item 2 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-yellow-500">
-                    <p class="font-bold text-lg">NSX ALB: vCenter 연동 로그인/디스커버리 오류 빈번</p>
-                    <p class="text-gray-400">NSX Advanced Load Balancer(Avi) 컨트롤러와 vCenter 클라우드 통합 시 로그인 권한 오류, vCenter Discovery 'In Progress' 상태 지속 오류 등이 반복 보고됩니다. 이는 <span class="text-yellow-400">Write Access Mode 배포 시 가장 흔한 초기 설정 장애</span>입니다.</p>
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-installation-guide/installing-nsx-alb-in-vmware-vsphere-environments/avi-load-balancer-in-write-access-mode/configuring-a-vcenter-cloud/additional-deployment-options-for-vmware-vcenter-integration/troubleshooting-avi-vantage-deployment-into-vmware/resolving-login-errors-during-vcenter-cloud-integration.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">VCF SSO 장애 임시 해결책: 이전에 관리된 VCF 작업에서 vCenter 재설정</p>
+                    <p class="text-slate-300 text-sm mt-1">위의 VCF SSO 문제에 대한 빠른 해결책으로, VCF Operations API를 사용하여 vCenter Server를 재설정하는 방법이 공유되었습니다. 현장에서 긴급 상황 발생 시 공식 패치가 나오기 전까지 사용할 수 있는 Workaround입니다.</p>
+                    <a href="https://williamlam.com/2026/01/quick-tip-reset-vcenter-server-from-previously-managed-vcf-operations-for-vcf-single-sign-on-sso.html" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
                 
-                <!-- Item 3 -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-green-500">
-                    <p class="font-bold text-lg">2026년 예측: AI 공격 및 베어메탈 전문 지식의 종말</p>
-                    <p class="text-gray-400">업계 전문가들은 2026년에 AI 기반 공격이 증가하고 클라우드 경제가 중요해지며, 전통적인 '베어메탈' 전문 지식의 가치가 하락할 것으로 예측합니다. 이는 <span class="text-green-400">솔루션 설계 시 Cloud-Native 및 Security 중심의 접근</span>이 필요함을 시사합니다.</p>
-                    <a href="https://vmblog.com/archive/2026/01/06/5-industry-experts-reveal-what-s-coming-in-2026-with-these-video-predictions-ai-attacks-cloud-economics-the-death-of-bare-metal-expertise.aspx" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Product & Expert Deep Dive -->
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold border-l-4 border-purple-500 pl-3 mb-5 text-purple-400">4. Product & Expert Deep Dive (VCF, Tanzu, NSX, Private AI)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- Item 1: VCF/vSphere -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-blue-500">
-                    <p class="font-bold text-lg">VCF: VM/컨테이너 단일 플랫폼으로의 아키텍처 전환</p>
-                    <p class="text-gray-400">vSphere 및 VCF를 기반으로 VM과 컨테이너 워크로드를 통합하는 것은 현대 IT의 핵심입니다. 이는 <span class="text-blue-400">운영 효율성 및 TCO 절감</span>을 고객에게 제시할 수 있는 가장 강력한 근거입니다.</p>
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/06/why-a-single-platform-for-vms-and-containers-is-the-future-of-modern-it/" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">업계 예측: '베어메탈 전문가의 종말' 및 '클라우드 경제학' 부상</p>
+                    <p class="text-slate-300 text-sm mt-1">업계 전문가들은 2026년 예측에서 베어메탈(Bare Metal) 전문 지식의 중요도가 하락하고, 클라우드 경제성(Cloud Economics) 및 AI 공격이 주요 화두가 될 것이라고 전망합니다. 이는 현장 엔지니어들의 역할이 IaaS 운영에서 PaaS/AI, 비용 최적화로 전환됨을 시사합니다. (Skill shift imminent).</p>
+                    <a href="https://vmblog.com/archive/2026/01/06/5-industry-experts-reveal-what-s-coming-in-2026-with-these-video-predictions-ai-attacks-cloud-economics-the-death-of-bare-metal-expertise.aspx" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
 
-                <!-- Item 2: Tanzu/Security -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-green-500">
-                    <p class="font-bold text-lg">Tanzu: 규제 산업의 소프트웨어 공급망 보안 강화</p>
-                    <p class="text-gray-400">Tanzu를 활용한 소프트웨어 공급망 보안은 규제가 엄격한 금융/공공 고객에게 필수적입니다.SBOM(Software Bill of Materials) 및 <span class="text-green-400">신뢰할 수 있는 빌드 프로세스</span>에 대한 이해가 필요합니다.</p>
-                    <a href="https://blogs.vmware.com/tanzu/what-good-software-supply-chain-security-looks-like-for-highly-regulated-industries/" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
-
-                <!-- Item 3: Private AI -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-purple-500">
-                    <p class="font-bold text-lg">Private AI Foundation with NVIDIA 공식화</p>
-                    <p class="text-gray-400">Broadcom 지원 페이지를 통해 Private AI Foundation with NVIDIA에 대한 공식 정보(Legal Notice)가 배포되었습니다. 이는 <span class="text-purple-400">고객 AI 프로젝트 가속화를 위한 핵심 포트폴리오</span>입니다.</p>
-                    <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24368" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
-
-                <!-- Item 4: NSX ALB -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-orange-500">
-                    <p class="font-bold text-lg">NSX ALB: 22.1.1 이전 버전에서 vCenter Cloud 업그레이드 고려사항</p>
-                    <p class="text-gray-400">NSX ALB(Avi) 업그레이드 시 22.1.1 이전 릴리스에서 vCenter Cloud를 사용하는 경우 <span class="text-orange-400">특정 구성 요소의 호환성 및 마이그레이션 단계</span>를 확인해야 하는 함정이 존재합니다. 업그레이드 전 반드시 숙지해야 합니다.</p>
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/considerations-for-vcenter-cloud-while-upgrading-from-releases-prior-to-22-1-1.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
-                
-                <!-- Item 5: General Trend -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-gray-500">
-                    <p class="font-bold text-lg">AI 및 양자컴퓨팅 동향 분석 (2026)</p>
-                    <p class="text-gray-400">2026년 인공지능과 양자컴퓨팅 동향에 대한 예측 분석은 미래 인프라 요구 사항을 파악하는 데 중요합니다. <span class="text-gray-400">VMware 인프라가 지원해야 할 미래 워크로드</span>의 방향성을 제시합니다.</p>
-                    <a href="https://vmblog.com/archive/2026/01/06/trends-in-artificial-intelligence-and-quantum-computing-in-2026.aspx" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Market & Competitive Radar -->
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold border-l-4 border-cyan-500 pl-3 mb-5 text-cyan-400">5. Market & Competitive Radar (Red Hat, Nutanix, Cloud)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- Item 1: NetApp (Nutanix/Storage Competitor) -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-red-500">
-                    <p class="font-bold text-lg">NetApp Shift Toolkit: '너무 쉬운 대안으로의 마이그레이션'</p>
-                    <p class="text-gray-400">NetApp의 마이그레이션 툴킷 언급은 HCI/스토리지 시장에서 고객 이탈을 유도하는 경쟁사의 공격적인 마케팅 시도입니다. <span class="text-red-400">경쟁사 마이그레이션 시나리오에 대한 선제적 방어 논리</span>를 마련해야 합니다.</p>
-                    <a href="http://plain-virt.blogspot.com/2026/01/netapp-shift-toolkit-migration-to.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
-                
-                <!-- Item 2: AI/HW Market -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-yellow-500">
-                    <p class="font-bold text-lg">AI 붐, PC/SSD 시장 불안정 야기</p>
-                    <p class="text-gray-400">AI 워크로드를 위한 고성능 메모리 및 SSD 수요 폭증으로 가격이 불안정해지고 있습니다. 이는 <span class="text-yellow-400">VDI, vSAN, HCI 프로젝트의 BOM(Bill of Materials) 및 납기 일정에 직접적인 영향</span>을 미칩니다. 고객 예산 수립 시 주의해야 합니다.</p>
-                    <a href="https://virtual-it.pl/15317-pamiec-na-wage-zlota-boom-na-ai-destabilizuje-rynek-pc-i-ssd.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
-
-                <!-- Item 3: Telecom/LEO (AWS/Azure Satellite 경쟁) -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-green-500">
-                    <p class="font-bold text-lg">RtBrick/Enea 예측: LEO(저궤도 위성)의 포효 및 네트워크 분산</p>
-                    <p class="text-gray-400">통신 산업에서 LEO 위성 통신(Starlink, Kuiper 등)의 급부상과 네트워크 분산화(Disaggregation)가 예측됩니다. 이는 <span class="text-green-400">Telco Cloud 및 SASE 포트폴리오가 대응해야 할 새로운 시장 환경</span>을 조성합니다.</p>
-                    <a href="https://vmblog.com/archive/2026/01/06/2026-predictions-from-enea-leo-roars-ai-shifts-and-telecom-hits-a-tipping-point-in-2026.aspx" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
-                </div>
             </div>
         </section>
         
-        <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold border-l-4 border-pink-500 pl-3 mb-5 text-pink-400">6. Industry Vertical Radar (Korea Focus)</h2>
+        <!-- 5. Section 4: Product & Expert Deep Dive -->
+        <section>
+            <h2 class="section-header text-2xl font-bold mb-4">🚀 Product & Expert Deep Dive</h2>
+            <div class="space-y-4">
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">VCF/Tanzu: VM 및 컨테이너를 위한 단일 플랫폼이 현대 IT의 미래</p>
+                    <p class="text-slate-300 text-sm mt-1">클라우드 파운데이션(Cloud Foundation)의 핵심 전략: 고객에게 운영 복잡성을 줄이고 속도를 높이는 단일 인프라 스택(One Platform)을 제공합니다. (VCF with Tanzu/vSphere with Tanzu의 중요성 재확인)</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/06/why-a-single-platform-for-vms-and-containers-is-the-future-of-modern-it/" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
+                </div>
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">AI: VMware Private AI Foundation with NVIDIA (GTM 공식화)</p>
+                    <p class="text-slate-300 text-sm mt-1">고객의 데이터와 모델을 Private Cloud 환경 내에서 안전하게 운영할 수 있는 AI 솔루션의 법적 기반이 마련되었습니다. 즉각적인 고객 PoC 및 GTM 활동에 집중해야 합니다.</p>
+                    <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24368" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
+                </div>
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">VCF Operations: 인증 실패 및 SSO 손상 문제 보고 (긴급 현장 이슈)</p>
+                    <p class="text-slate-300 text-sm mt-1">VCF 환경의 Single Sign-On에서 발생하는 인증 오류는 전체 인프라 운영에 심각한 영향을 미칩니다. 이 문제에 대한 공식적인 KB 업데이트 또는 패치를 주시해야 합니다.</p>
+                    <a href="https://www.lab2prod.com.au/2026/01/authentication-failure-vcf-sso-broken.html?utm_source=rss&utm_medium=rss&utm_campaign=authentication-failure-vcf-sso-broken" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
+                </div>
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">NSX ALB: Service Engine 분산을 위한 Anti-affinity 규칙 설정</p>
+                    <p class="text-slate-300 text-sm mt-1">로드 밸런서의 고가용성 설계를 위한 핵심 기술 문서입니다. Avi SE를 vSphere 환경에 배포할 때, 호스트/클러스터 수준에서 분산 배치를 보장하는 Anti-affinity 규칙 설정이 필수입니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/.../anti-affinity-for-service-engine-placement.html" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
+                </div>
+
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">Tanzu/Security: 규제 산업을 위한 소프트웨어 공급망 보안 모범 사례</p>
+                    <p class="text-slate-300 text-sm mt-1">규제가 엄격한 환경(금융, 공공)에서 소프트웨어의 안정성과 무결성을 보장하는 Tanzu의 역할이 강조됩니다. DevSecOps 및 SBOM(Software Bill of Materials) 관련 기술 영업에 활용해야 합니다.</p>
+                    <a href="https://blogs.vmware.com/tanzu/what-good-software-supply-chain-security-looks-like-for-highly-regulated-industries/" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- 6. Section 5: Market & Competitive Radar -->
+        <section>
+            <h2 class="section-header text-2xl font-bold mb-4">🎯 Market & Competitive Radar</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <!-- Item 1: 금융 (Finance) -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-blue-500">
-                    <p class="font-bold text-lg">금융: 공급망 보안 및 규제 준수 집중</p>
-                    <p class="text-gray-400">규제가 엄격한 산업(금융)에 대한 소프트웨어 공급망 보안 가이드라인이 강조됨에 따라, 한국 금융권은 <span class="text-blue-400">Tanzu 및 vSphere Security 기반의 컴플라이언스 강화</span>를 최우선 과제로 삼을 것입니다.</p>
-                    <a href="https://blogs.vmware.com/tanzu/what-good-software-supply-chain-security-looks-like-for-highly-regulated-industries/" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-5 rounded-lg shadow-xl">
+                    <p class="font-semibold text-lg text-white mb-2">경쟁사 (Proxmox): LXC/OCI 컨테이너 지원 강화</p>
+                    <p class="text-slate-300 text-sm italic">오픈소스 하이퍼바이저 Proxmox VE가 LXC 컨테이너 및 OCI 이미지 지원을 강화하며 기본 하이퍼바이저 및 경량 컨테이너 환경에서 경쟁력을 높이고 있습니다. 소규모 고객 및 엣지 환경의 진입 장벽에 대한 대비가 필요합니다.</p>
+                    <a href="https://blog.ragasys.es/proxmox-ve-9-1-1-contenedores-lxc-imagenes-oci" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
-
-                <!-- Item 2: 공공 (Public Sector) -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-green-500">
-                    <p class="font-bold text-lg">공공: 차세대 IPv6 전환 및 클라우드 네이티브 가속화</p>
-                    <p class="text-gray-400">공공 클라우드 및 차세대 인프라 사업에서 IPv6 도입 의무화가 가속화되고 있습니다. NSX ALB의 IPv6 Dual Stack 및 스케일 아웃 기능은 <span class="text-green-400">공공 기관의 대규모 네트워크 전환 사업</span>에 필수적인 기술입니다.</p>
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/30-1/vmware-avi-load-balancer-installation-guide/advanced-network-configuration/ipv6-in-nsx-advanced-load-balancer-for-vmware-linux-server-cloud.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                
+                <div class="card p-5 rounded-lg shadow-xl">
+                    <p class="font-semibold text-lg text-white mb-2">경쟁사 (NetApp): Shift Toolkit으로 '쉬운 마이그레이션' 제안</p>
+                    <p class="text-slate-300 text-sm italic">NetApp이 대체 솔루션으로의 '너무 쉬운 마이그레이션'을 위한 툴킷을 홍보하고 있습니다. 이는 VMC on AWS 등 클라우드 스토리지를 사용 중이거나, vSphere 기반 레거시 스토리지를 교체하려는 고객에게 경쟁사가 마이그레이션 이탈을 유도하는 시도입니다.</p>
+                    <a href="http://plain-virt.blogspot.com/2026/01/netapp-shift-toolkit-migration-to.html" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
-
-                <!-- Item 3: 기업 (Enterprise) -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-red-500">
-                    <p class="font-bold text-lg">기업: AI 인프라 구축 수요 급증 및 HW 수급 변동성</p>
-                    <p class="text-gray-400">Private AI Foundation with NVIDIA의 등장과 맞물려 국내 대기업들의 AI 플랫폼 구축 수요가 폭발적으로 증가할 것입니다. 엔지니어는 <span class="text-red-400">HW 공급망 불안정성(AI 붐)을 고려한 선제적 BOM 확보 전략</span>을 제시해야 합니다.</p>
-                    <a href="https://virtual-it.pl/15317-pamiec-na-wage-zlota-boom-na-ai-destabilizuje-rynek-pc-i-ssd.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                
+                <div class="card p-5 rounded-lg shadow-xl">
+                    <p class="font-semibold text-lg text-white mb-2">하드웨어/스토리지 시장 불안: AI 붐으로 인한 SSD 시장 불안정</p>
+                    <p class="text-slate-300 text-sm italic">AI 워크로드 증가로 인한 메모리 및 SSD 시장의 불안정성(수요 증가 및 가격 변동)이 보고되었습니다. 이는 VCF/vSAN 구축 시 하드웨어 공급망 및 비용 예측에 직접적인 영향을 미치므로, 고객과의 초기 논의 단계에서 이 시장 상황을 공유해야 합니다.</p>
+                    <a href="https://virtual-it.pl/15317-pamiec-na-wage-zlota-boom-na-ai-destabilizuje-rynek-pc-i-ssd.html" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
+                
+            </div>
+        </section>
+        
+        <!-- 7. Section 6: Industry Vertical Radar (Korea Focus) -->
+        <section>
+            <h2 class="section-header text-2xl font-bold mb-4">🇰🇷 Industry Vertical Radar (Korea Focus)</h2>
+            <div class="space-y-4">
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">금융 (Finance): 클라우드 도입 가속화에 따른 Supply Chain Security 확보</p>
+                    <p class="text-slate-300 text-sm mt-1">금융권은 규제당국의 클라우드 도입 정책 완화에 따라 전환이 가속화되고 있습니다. 특히, FSI(Financial Services Industry)의 높은 보안 컴플라이언스 기준에 맞춰, Tanzu를 통한 '소프트웨어 공급망 보안' 및 무결성 보장 솔루션을 최우선으로 제안해야 합니다.</p>
+                    <a href="https://blogs.vmware.com/tanzu/what-good-software-supply-chain-security-looks-like-for-highly-regulated-industries/" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
+                </div>
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">공공 (Public): 공공 클라우드 및 PaaS 표준화에 대한 VCF 단일 플랫폼 전략</p>
+                    <p class="text-slate-300 text-sm mt-1">공공기관의 클라우드 전환 및 PaaS 도입 사업에서 'VM 및 컨테이너를 위한 단일 플랫폼'의 이점(운영 단순화, TCO 절감)을 강조해야 합니다. 특히 VCF 기반의 통합 플랫폼이 공공기관 표준 클라우드 모델로 적합함을 어필해야 합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/06/why-a-single-platform-for-vms-and-containers-is-the-future-of-modern-it/" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
+                </div>
+                
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">기업 (Enterprise): AI 워크로드 도입 및 하드웨어 수급 변동 대응</p>
+                    <p class="text-slate-300 text-sm mt-1">국내 대기업들은 Private AI 도입을 적극 검토하고 있습니다. VMware Private AI Foundation with NVIDIA를 선도적으로 제안하고, AI 붐으로 인해 발생할 수 있는 메모리/SSD 등 하드웨어 수급 불안정성 및 비용 증가에 대한 사전 대비책(vSAN의 효율성 등)을 함께 제시해야 합니다.</p>
+                    <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24368" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
+                </div>
+                
             </div>
         </section>
 
-        <!-- Section 7: Security Alerts -->
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold border-l-4 border-red-500 pl-3 mb-5 text-red-400">7. Security Alerts (VMSA/CVE, Major Incident)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 8. Section 7: Security Alerts -->
+        <section>
+            <h2 class="section-header text-2xl font-bold mb-4">🔒 Security Alerts (VMSA / Field Incident)</h2>
+            <div class="space-y-4">
                 
-                <!-- Item 1: VCF SSO -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-red-800">
-                    <p class="font-bold text-lg">🔴 **긴급 장애 경고:** VCF SSO 손상 - 인증 실패로 인한 관리 접근 차단</p>
-                    <p class="text-gray-400">VCF 환경에서 SSO 인증 오류가 발생한 사례가 보고되었습니다. 이는 vCenter 및 SDDC Manager 콘솔 접근을 막아 운영 중단에 준하는 상황을 초래합니다. **모든 VCF 환경은 즉시 SSO 상태를 점검해야 합니다.**</p>
-                    <a href="https://www.lab2prod.com.au/2026/01/authentication-failure-vcf-sso-broken.html?utm_source=rss&utm_medium=rss&utm_campaign=authentication-failure-vcf-sso-broken" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-4 rounded-lg border-l-4 border-yellow-500">
+                    <p class="font-medium text-yellow-400">VCF Critical Incident: SSO 인증 시스템 손상 및 긴급 패치/KB 대기</p>
+                    <p class="text-slate-300 text-sm mt-1">공식 VMSA는 아니지만, 현장에서 VCF SSO 인증 실패라는 치명적인 보안/운영 이슈가 보고되었습니다. 이는 인가되지 않은 접근 시도를 유발하거나 정상적인 운영을 마비시킬 수 있으므로, 공식적인 KB 및 패치 정보를 **최우선**으로 주시해야 합니다.</p>
+                    <a href="https://www.lab2prod.com.au/2026/01/authentication-failure-vcf-sso-broken.html?utm_source=rss&utm_medium=rss&utm_campaign=authentication-failure-vcf-sso-broken" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
                 
-                <!-- Item 2: Proactive Security -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-yellow-500">
-                    <p class="font-bold text-lg">SW 공급망 보안: 규제 기관 요구사항 선제적 대응</p>
-                    <p class="text-gray-400">Tanzu 기반의 소프트웨어 공급망 보안 모범 사례 문서를 통해 규제가 엄격한 고객사의 <span class="text-yellow-400">보안 감사 및 컴플라이언스 체크리스트</span>에 선제적으로 대응하십시오.</p>
-                    <a href="https://blogs.vmware.com/tanzu/what-good-software-supply-chain-security-looks-like-for-highly-regulated-industries/" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">전략적 보안 포커스: 규제 산업 소프트웨어 공급망 보안 (Tanzu)</p>
+                    <p class="text-slate-300 text-sm mt-1">정부 기관 및 금융권 고객에게 공급하는 소프트웨어의 출처와 무결성을 보장하는 것은 최신 보안 트렌드의 핵심입니다. Tanzu를 통해 소프트웨어 개발/배포 파이프라인 전반의 보안을 점검하는 선제적 영업 활동이 중요합니다.</p>
+                    <a href="https://blogs.vmware.com/tanzu/what-good-software-supply-chain-security-looks-like-for-highly-regulated-industries/" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
 
-                <!-- Item 3: NSX ALB HA -->
-                <div class="info-card bg-gray-800 p-5 rounded-lg shadow-xl border-l-4 border-green-500">
-                    <p class="font-bold text-lg">NSX ALB: HA 보장을 위한 Service Engine Anti-affinity 설정 필수</p>
-                    <p class="text-gray-400">Load Balancing 서비스의 연속성을 위해 SE가 동일 ESXi에 배치되지 않도록 Anti-affinity 규칙을 반드시 구성해야 합니다. 이는 <span class="text-green-400">네트워크 서비스 단일 장애점(SPOF)을 제거</span>하는 핵심 보안/설계 요구사항입니다.</p>
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-installation-guide/anti-affinity-for-service-engine-placement.html" class="text-sm text-blue-400 hover:text-blue-300">[Source]</a>
+                <div class="card p-4 rounded-lg">
+                    <p class="font-medium text-white">2026년 위협 예측: AI 기반 공격의 증가</p>
+                    <p class="text-slate-300 text-sm mt-1">업계 전문가들은 2026년에 AI 기반의 정교한 사이버 공격이 증가할 것으로 예측했습니다. 이는 NSX Advanced Load Balancer (WAF), NSX Firewall, SASE 등 VMware의 네트워크 및 엣지 보안 포트폴리오의 중요성을 더욱 강조하는 핵심 근거입니다.</p>
+                    <a href="https://vmblog.com/archive/2026/01/06/5-industry-experts-reveal-what-s-coming-in-2026-with-these-video-predictions-ai-attacks-cloud-economics-the-death-of-bare-metal-expertise.aspx" class="source-link text-xs mt-2 block" target="_blank">[Source]</a>
                 </div>
+                
             </div>
         </section>
 
-        <footer class="text-center mt-10 pt-5 border-t border-gray-700 text-gray-500 text-sm">
-            <p>© 2026 VMware by Broadcom. All rights reserved. For Internal Use Only.</p>
-            <p>Authored by Distinguished Architect, Community Incident Commander.</p>
-        </footer>
-    </main>
+    </div>
+
 </body>
 </html>
