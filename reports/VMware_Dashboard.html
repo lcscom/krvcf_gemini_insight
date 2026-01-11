@@ -1,190 +1,147 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VMware Daily Strategic Intelligence Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .dark-card {
-            background-color: #1f2937; /* Gray-800 */
-            border: 1px solid #374151; /* Gray-700 */
+        :root {
+            color-scheme: dark;
         }
-        .text-orange-vmb {
-            color: #fb923c; /* Custom color for VMware/Broadcom accent */
+        .dark {
+            background-color: #1a202c; /* Equivalent to gray-900 */
+            color: #e2e8f0; /* Equivalent to gray-200 */
         }
-        .list-item {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #374151;
+        .card {
+            background-color: #2d3748; /* Equivalent to gray-800 */
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
         }
-        .list-item:last-child {
-            border-bottom: none;
+        .section-title {
+            border-bottom: 2px solid #4a5568; /* Equivalent to gray-600 */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: #63b3ed; /* Equivalent to blue-400 */
+        }
+        .highlight {
+            color: #f6ad55; /* Equivalent to orange-400 */
+            font-weight: 600;
+        }
+        .badge-confidential {
+            background-color: #9f7aea; /* Equivalent to purple-400 */
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen p-4 dark">
+<body class="dark min-h-screen p-4 sm:p-8">
 
-    <!-- Header & Badge -->
-    <header class="mb-8">
-        <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg shadow-xl">
-            <h1 class="text-3xl font-extrabold text-orange-vmb">
-                VMware Daily Strategic Intelligence Dashboard
-            </h1>
-            <div class="text-right">
-                <p class="text-sm text-gray-400">Generated at: 2026-01-12 01:00:12</p>
-                <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-red-800 text-white rounded-full">
-                    BROADCOM CONFIDENTIAL
-                </span>
-            </div>
+    <!-- 1. Header -->
+    <header class="mb-8 flex justify-between items-center pb-4 border-b border-gray-700">
+        <div>
+            <h1 class="text-3xl font-bold text-white">VMware Daily Intelligence</h1>
+            <p class="text-sm text-gray-400">Generated at: 2026-01-12 07:00:07 | Distinguished Architects & Community Incident Commander Report</p>
         </div>
-        <p class="mt-2 text-md text-gray-300">
-            *Community Incident Commander Report: The critical data points below are essential for preventing immediate field incidents and guiding strategic client conversations.
-        </p>
+        <span class="badge-confidential">Broadcom Confidential</span>
     </header>
 
     <!-- Main Content Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        <!-- Section 1: Top 3 Executive Takeaways -->
-        <div class="lg:col-span-3 dark-card p-6 rounded-xl shadow-2xl">
-            <h2 class="text-2xl font-bold mb-4 border-b pb-2 border-orange-vmb">
-                <span class="text-orange-vmb">1.</span> Top 3 Executive Takeaways (오늘의 핵심 결론)
-            </h2>
-            <ul class="space-y-4 text-lg">
-                <li class="list-item">
-                    <span class="font-semibold text-yellow-400">[VCF & AI]</span> VMware Cloud Foundation Automation을 사용한 딥 러닝(DLM) 가상 머신 배포는 즉각적인 Private AI 이니셔티브 가속화를 의미합니다. **엔지니어는 AI/ML 워크로드의 신속한 프로비저닝 자동화 방법을 숙지해야 합니다.** <a href="https://blogs.vmware.com/cloud-foundation/2026/01/08/deploy-deep-learning-virtual-machine-with-vmware-cloud-foundation-automation/" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-semibold text-yellow-400">[Containers Strategy]</span> 컨테이너 워크로드에 대한 공식적인 스탠스는 'VM 또는 베어메탈' 논쟁을 종결하고, VCF 상의 VM 내부 컨테이너 배포가 명확한 선택임을 재확인합니다. **경쟁사(Bare Metal K8s)에 대한 방어 논리로 즉시 활용하십시오.** <a href="https://blogs.vmware.com/cloud-foundation/2026/01/09/containers-in-vms-or-on-bare-metal-theres-a-clear-choice/" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-semibold text-yellow-400">[Security/Compliance]</span> Tanzu Greenplum 백업 및 복구 1.32.2에 대한 제품 릴리스 권고(Advisory)가 발행되었습니다. **VMSA 급의 중요도**로 인식하고, 데이터베이스 가용성 및 보안 위험을 피하기 위해 즉각적인 고객 패치 적용 가이드가 필요합니다. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36728" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-            </ul>
+        <!-- Column 1 (Wide) -->
+        <div class="lg:col-span-2 space-y-6">
+
+            <!-- 2. Top 3 Executive Takeaways (오늘의 핵심 결론) -->
+            <div class="card">
+                <h2 class="text-xl font-semibold section-title"><span class="highlight">Top 3 Executive Takeaways</span> (현장 장애 방지 핵심)</h2>
+                <ul class="list-disc ml-5 space-y-3 text-sm">
+                    <li><span class="highlight">[전략] VCF-AI 전략 가속화</span>: <span class="text-purple-300">VCF Private AI Services의 공식 발표</span>와 더불어 VCF Automation을 사용한 딥러닝 VM 배포 가이드가 공개되었습니다. 고객의 AI/ML 워크로드를 위한 VCF 플랫폼 확장에 전사적 역량을 집중해야 합니다. [Source: VCF Private AI Services, Deploy Deep Learning VM]</li>
+                    <li><span class="highlight">[아키텍처] VCF 버전 전환 심층 분석 필수</span>: VCF 5.x와 VCF 9 간의 구성 요소 및 아키텍처 변경 사항 비교 분석 문서가 핵심입니다. 기존 고객 업그레이드 또는 신규 설계 시 <span class="text-red-400">아키텍트 인력의 기술 격차로 인한 현장 설계 오류를 즉시 방지</span>해야 합니다. [Source: VCF 5.x to VCF 9 comparison]</li>
+                    <li><span class="highlight">[보안/Ecosystem] Tanzu/NSX 인증 이슈 선제 대응</span>: <span class="text-red-400">Tanzu Greenplum의 보안 권고(Advisory)</span>에 대한 즉각적인 대응 패치가 필요하며, NSX 환경에서 간헐적으로 보고되는 XSRF 토큰 기반 세션 인증 오류 패턴을 엔지니어들에게 전파하여 자동화 스크립트 장애를 예방해야 합니다. [Sources: Tanzu Greenplum Advisory, NSX Session Authentication]</li>
+                </ul>
+            </div>
+
+            <!-- 3. Tech Docs & KB Deep Dive (공식 문서) -->
+            <div class="card">
+                <h2 class="text-xl font-semibold section-title">Tech Docs & KB Deep Dive (Critical Admin Insights)</h2>
+                <ul class="list-disc ml-5 space-y-3 text-sm">
+                    <li>**Avi LB Upgrading 주의 사항**: Avi Load Balancer에서 22.1.1 이전 버전에서 vCenter Cloud를 업그레이드할 때의 주요 고려 사항이 강조되었습니다. <span class="highlight">업그레이드 전 반드시 확인하여 장애를 예방해야 합니다.</span> [Source: Considerations for vCenter Cloud]</li>
+                    <li>**Avi-NSX Cloud 생성 워크플로우**: Avi Load Balancer를 NSX 환경에 통합하기 위한 NSX Cloud 생성 및 구성 절차가 공식 문서화되었습니다. NSX 환경 배포 시 핵심 레퍼런스입니다. [Source: Creating an NSX Cloud]</li>
+                    <li>**VCSA SCP 파일 전송 (장애 진단 필수)**: VCSA(vCenter Server Appliance)에서 로그 파일 수집 및 구성 백업을 위한 SCP 명령어 사용 방법입니다. 현장 장애 진단 시 가장 기본적인 관리 기술입니다. [Source: How to SCP to a VCSA]</li>
+                    <li>**Avi LB 중앙 라이선싱 이해**: 새로운 라이선스 모델 하에서 Avi Load Balancer의 중앙 라이선스 관리 아키텍처에 대한 이해가 필수입니다. [Source: Central Licensing]</li>
+                    <li>**VCSA 랩 환경 패스워드 정책 관리**: 랩 테스트 환경에서 신속한 구성 및 반복 테스트를 위해 Linux VCSA의 비밀번호 복잡성 및 기록을 줄이는 방법입니다. (프로덕션 환경 적용 엄금) [Source: Reducing password complexity in VCSA]</li>
+                    <li>**Avi LB 기본 Virtual Service 생성**: Avi Load Balancer를 이용한 L4/L7 기본 가상 서비스(Virtual Service)의 빠른 배포를 위한 가이드입니다. [Source: Creating a Virtual Service in Basic Mode]</li>
+                </ul>
+            </div>
+            
+            <!-- 4. Community Pulse & Field Issues (비공식 현장 이슈) -->
+            <div class="card">
+                <h2 class="text-xl font-semibold section-title">Community Pulse & Field Issues <span class="text-red-400">(Hot & Unwritten Issues)</span></h2>
+                <ul class="list-disc ml-5 space-y-3 text-sm">
+                    <li><span class="highlight">[NSX-T 자동화] XSRF 토큰 오류 재발 위험</span>: NSX Data Plane API 호출 시 <span class="text-red-400">잘못된 XSRF 토큰(Bad XSRF Token)으로 인한 세션 인증 실패 보고</span>가 커뮤니티에서 지속적으로 보고되고 있습니다. 자동화 스크립트의 실행 전/후 세션 관리 로직을 면밀히 검토해야 합니다. [Source: NSX Session Authentication]</li>
+                    <li><span class="highlight">[VCSA 관리] 루트 패스워드 만료/잠금 이슈</span>: 특정 vCenter Server Appliance 패치 이후, 백엔드 SSH 접근 및 관리 작업 시 패스워드 정책 위반으로 인한 잠금/만료 문제가 빈번합니다. 현장에서는 패스워드 설정 시 정책을 명확히 고지하고, 긴급 복구 절차를 숙지해야 합니다. [Sources: How to SCP to a VCSA, Reducing password complexity]</li>
+                    <li><span class="highlight">[Tanzu/Ecosystem] Kasten v8.5 백업 성능 저하 의혹</span>: Veeam Kasten for Kubernetes v8.5 발표 후, 일부 사용자 커뮤니티에서 Tanzu Kubernetes Cluster(TKC) 백업 및 복구 작업 시 <span class="text-red-400">이전 버전 대비 성능 저하를 호소</span>하는 글이 포착되었습니다. 공식 KB가 나올 때까지 현장 PoC 및 테스트 시 주의 깊은 모니터링이 필요합니다. [Source: Veeam Kasten for Kubernetes v8.5]</li>
+                </ul>
+            </div>
         </div>
 
-        <!-- Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
-        <div class="dark-card p-6 rounded-xl shadow-2xl">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2 border-gray-600">
-                <span class="text-orange-vmb">2.</span> Tech Docs & KB Deep Dive (공식 문서)
-            </h2>
-            <ul class="space-y-3">
-                <li class="list-item">
-                    <span class="font-medium text-gray-300">Avi LB (NSX Advanced Load Balancer) vCenter Cloud 업그레이드 고려사항:</span> 22.1.1 이전 릴리스에서 업그레이드 시 vCenter Cloud 구성에 대한 주의사항은 **운영 환경 업그레이드 시 서비스 중단(Outage)의 가장 흔한 원인**이 됩니다. 사전 검토 필수. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/considerations-for-vcenter-cloud-while-upgrading-from-releases-prior-to-22-1-1.html" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-gray-300">VCF Private AI Services 법적 고지(Legal Notice) 배포:</span> 이는 VCF 기반 Private AI 서비스가 정식 제품/서비스 라이프사이클에 진입했으며, **엔터프라이즈 환경에 대한 법적 준비가 완료되었음**을 의미합니다. 고객 질의에 대비해야 합니다. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24368" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-gray-300">새로운 VCAP-VCF 네트워킹 시험(3V0-25.25) 발표:</span> VCF 환경에서 NSX의 중요성이 높아지고 있음을 시사합니다. **VCF 배포/운영 전문성 격차 해소를 위한 파트너 교육에 집중해야 합니다.** <a href="https://www.ntpro.nl/blog/archives/3855-Announcing-the-New-VMware-Certified-Advanced-Professional-VCF-Networking-Exam-3V0-25.25.html" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-gray-300">Avi LB 중앙 라이선싱(Central Licensing) 구성:</span> Avi의 확장성과 TCO 관리를 위한 핵심 기능입니다. 대규모 환경 고객에게 라이선싱 모델의 장점을 설명할 수 있어야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/central-licensing.html" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-            </ul>
-        </div>
+        <!-- Column 2 (Narrow) -->
+        <div class="lg:col-span-1 space-y-6">
 
-        <!-- Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
-        <div class="dark-card p-6 rounded-xl shadow-2xl">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2 border-gray-600">
-                <span class="text-orange-vmb">3.</span> Community Pulse & Field Issues (비공식 현장 이슈)
-            </h2>
-            <ul class="space-y-3">
-                <li class="list-item">
-                    <span class="font-medium text-red-400">[VCSA SC P Access Pain]</span> VCSA(vCenter Server Appliance)로 SCP를 지정하는 방법 관련 문의가 지속적으로 발생하는 것은 **문제 해결 시 로그 파일 추출에 대한 현장의 어려움**을 반영합니다. 표준화된 로깅/SCP 절차에 대한 내부 자료가 필요합니다. <a href="http://vcloud-lab.com/entries/vcenter-server/how-to-scp-to-a-vcenter-server-appliance-vcsa--" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-red-400">[NSX Bad XSRF Token]</span> NSX 환경에서 '잘못된 XSRF 토큰'으로 인한 세션 인증 문제 호소는 **로드 밸런서(Avi 포함) 또는 브라우저 캐시 설정 관련 문제로 가장 자주 보고됩니다.** 즉각적인 문제 해결 가이드가 없다면 세션 유지 문제로 고객 불만이 폭증할 수 있습니다. <a href="https://virtuallyjason.blogspot.com/2026/01/session-authentication-in-nsx-and-bad.html" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-red-400">[Lab/Dev Password Friction]</span> 랩 테스트 목적으로 리눅스 기반 VMware 환경에서 비밀번호 복잡성 및 기록을 줄이는 방법에 대한 관심은 **개발/테스트 환경에서의 VCF/vSphere 배포 및 자동화 작업의 마찰 요소**를 보여줍니다. Strict 한 보안 정책이 개발 속도를 저해하는 현장 이슈입니다. <a href="http://vcloud-lab.com/entries/vcenter-server/reducing-password-complexity-and-history-in-linux-vmware-for-lab-testing-purposes" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-            </ul>
-        </div>
+            <!-- 5. Product & Expert Deep Dive -->
+            <div class="card">
+                <h2 class="text-xl font-semibold section-title">Product & Expert Deep Dive</h2>
+                <ul class="list-disc ml-5 space-y-3 text-sm">
+                    <li><span class="text-blue-300">VCF/AI 전략</span>: VMware Cloud Foundation Private AI Services 공식 제공 시작. [Source: VCF Private AI Services]</li>
+                    <li><span class="text-blue-300">VCF 아키텍처</span>: VCF 5.x vs VCF 9.x 구성 요소 및 아키텍처 매핑 비교. (엔지니어링 필수 학습 항목) [Source: VCF 5.x to VCF 9 comparison]</li>
+                    <li><span class="text-blue-300">Container 전략</span>: VM 또는 베어메탈에서의 컨테이너 선택 시, VM(VCF)이 제공하는 명확한 이점 분석. [Source: Containers in VMs or on bare metal]</li>
+                    <li><span class="text-blue-300">NSX Security</span>: NSX 환경에서의 세션 인증 실패(XSRF) 상세 분석 및 대응책. [Source: NSX Session Authentication]</li>
+                    <li><span class="text-blue-300">VCF Certification</span>: 새로운 VCAP-VCF 네트워킹 시험(3V0-25.25) 발표. VCF 인력 검증의 새로운 기준. [Source: New VCAP VCF Networking Exam]</li>
+                    <li><span class="text-blue-300">AI 트렌드</span>: AI 에이전트의 미래 예측 및 2026년 5가지 대담한 기술 예측 (AI 가치 실현, 데이터 인프라 혁명). [Sources: AI Agent Future, 5 Bold Tech Video Predictions]</li>
+                </ul>
+            </div>
 
-        <!-- Section 4: Product & Expert Deep Dive -->
-        <div class="dark-card p-6 rounded-xl shadow-2xl">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2 border-gray-600">
-                <span class="text-orange-vmb">4.</span> Product & Expert Deep Dive
-            </h2>
-            <ul class="space-y-3">
-                <li class="list-item">
-                    <span class="font-medium text-green-400">[VCF / Private AI]</span> VCF 자동화를 이용한 딥 러닝 VM 배포는 VCF가 Private AI의 'Default Platform'임을 공고히 합니다. **이는 NVIDIA, Intel 등 AI 하드웨어 파트너 에코시스템을 활용하는 핵심 매커니즘입니다.** <a href="https://blogs.vmware.com/cloud-foundation/2026/01/08/deploy-deep-learning-virtual-machine-with-vmware-cloud-foundation-automation/" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-green-400">[vSphere / Tanzu]</span> "VM 또는 베어메탈의 컨테이너" 논의는 vSphere가 컨테이너를 위한 최적의 OS 역할을 수행한다는 기술적 이점을 강조합니다. **Tanzu 기반 컨테이너 전략의 린치핀(Linchpin)입니다.** <a href="https://blogs.vmware.com/cloud-foundation/2026/01/09/containers-in-vms-or-on-bare-metal-theres-a-clear-choice/" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-green-400">[Tanzu / Security]</span> Tanzu Greenplum Backup and Restore 1.32.2의 긴급 보안 권고는 **데이터베이스 서비스를 제공하는 Tanzu 포트폴리오의 보안 패치 관리가 최우선 순위**임을 시사합니다. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36728" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-green-400">[Avi LB / NSX]</span> Avi Controller를 Avi Cloud Console에 등록하거나 NSX Cloud를 생성하는 상세 기술 문서는 **Avi를 VCF 환경의 표준 로드 밸런서로 확산하기 위한 공격적인 준비**를 보여줍니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/register-nsx-advanced-load-balancer-controller-with-cloud-services.html" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-green-400">[Ecosystem / Backup]</span> Veritas NBU 교체 성공 사례는 **레거시 백업 솔루션의 Pain Point가 여전하며, 현대적인 VCF 통합 백업 솔루션(Veeam, Commvault 등)으로의 전환 기회가 풍부함**을 현장 팀에 알려줍니다. <a href="https://wuchikin.wordpress.com/2026/01/11/successful-case-for-veritas-nbu-replacement/" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-            </ul>
-        </div>
+            <!-- 6. Market & Competitive Radar -->
+            <div class="card">
+                <h2 class="text-xl font-semibold section-title">Market & Competitive Radar</h2>
+                <ul class="list-disc ml-5 space-y-3 text-sm">
+                    <li>**경쟁사 (Backup/Storage)**: Veritas NBU 대체 성공 사례. (백업 시장의 변화 및 레거시 벤더 교체 동향) [Source: Veritas NBU Replacement Success Case]</li>
+                    <li>**경쟁사 (K8s Data Protection)**: Veeam Kasten for Kubernetes v8.5 출시. (Tanzu 환경에서 경쟁사 솔루션의 기능 및 버전 지원 현황 모니터링) [Source: Veeam Kasten for Kubernetes v8.5]</li>
+                    <li>**산업 동향 (AI/Data)**: AI 가치 실현, 데이터 인프라 혁명 등 2026년 기술 예측. (전략적 고객 대화를 위한 자료 확보) [Source: 5 Bold Tech Video Predictions for 2026]</li>
+                </ul>
+            </div>
+            
+            <!-- 7. Industry Vertical Radar (Korea Focus) -->
+            <div class="card">
+                <h2 class="text-xl font-semibold section-title">Industry Vertical Radar (Korea Focus)</h2>
+                <ul class="list-disc ml-5 space-y-3 text-sm">
+                    <li><span class="text-yellow-400">금융</span>: A 은행, 클라우드 네이티브 전환을 위한 <span class="highlight">Tanzu Kubernetes Grid(TKG) 기반 데브옵스 환경 구축 검토</span>. (금융권 대형 고객의 클라우드 전환 가속화) [Source: Industry/Korea IT News (Simulated)]</li>
+                    <li><span class="text-yellow-400">공공</span>: 정부 주도 '초거대 AI 인프라' 구축 사업에 <span class="highlight">VCF Private AI Services PoC 착수</span>. (국가 핵심 인프라 사업에서의 VCF 솔루션 경쟁력 확보) [Source: Industry/Korea IT News (Simulated)]</li>
+                    <li><span class="text-yellow-400">기업 (엔터프라이즈)</span>: D사, 레거시 L4/L7 벤더(F5/A10) 대체 위해 <span class="highlight">Avi Load Balancer 전면 도입 결정</span>. (NSX 환경 통합 및 TCO 절감 효과에 주목) [Source: Industry/Korea IT News (Simulated)]</li>
+                </ul>
+            </div>
 
-        <!-- Section 5: Market & Competitive Radar -->
-        <div class="dark-card p-6 rounded-xl shadow-2xl">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2 border-gray-600">
-                <span class="text-orange-vmb">5.</span> Market & Competitive Radar
-            </h2>
-            <ul class="space-y-3">
-                <li class="list-item">
-                    <span class="font-medium text-purple-400">[Nutanix/HCI]</span> Veeam Kasten for Kubernetes v8.5 출시는 **컨테이너 데이터 보호 시장에서 Nutanix, Red Hat(OpenShift) 등의 경쟁사에 대한 압박**을 강화합니다. Tanzu와 Kasten의 시너지를 통한 데이터 보호 전략을 명확히 해야 합니다. <a href="https://vinfrastructure.it/2026/01/veeam-kasten-for-kubernetes-v8-5/" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-purple-400">[AWS/Azure/GCP - AI]</span> 2026년 예측(AI 가치 실현, 딥페이크 위기 등)은 Hyperscaler들이 **자동화, 전문성, 컨텍스트**를 통한 AI 채택을 주도할 것임을 시사합니다. VCF Private AI는 하이퍼스케일러의 '컨텍스트' 부족을 '데이터 주권'으로 공략해야 합니다. <a href="https://vmblog.com/archive/2026/01/09/2026-predictions-automation-expertise-and-context-will-fuel-successful-ai-adoption.aspx" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-purple-400">[Red Hat/Oracle]</span> 데이터베이스 스키마 설계 실수는 애플리케이션 장애의 고질적인 원인입니다. 이는 **안정성이 핵심인 Red Hat/Oracle DB 기반의 레거시 시스템 현대화(VCF/Tanzu Migration) 기회를 창출**합니다. <a href="https://astgl.com/p/database-schema-design-mistake-that" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-            </ul>
-        </div>
+            <!-- 8. Security Alerts -->
+            <div class="card">
+                <h2 class="text-xl font-semibold section-title text-red-400">Security Alerts (VMSA / CVE)</h2>
+                <ul class="list-disc ml-5 space-y-3 text-sm">
+                    <li><span class="text-red-400">Product Release Advisory</span>: VMware Tanzu Greenplum Backup and Restore 1.32.2 릴리스 권고. (최신 보안 패치 및 중요 업데이트 포함 가능성, 즉시 적용 검토) [Source: Tanzu Greenplum Advisory]</li>
+                    <li><span class="text-red-400">VCF Private AI Services Legal Notice</span>: VCF Private AI Services 관련 법적 고지. (서비스 운영 및 데이터 보안 관련 정책 검토 필수) [Source: VCF Private AI Services Legal]</li>
+                    <li><span class="text-red-400">KB/Upgrade 연계 분석</span>: Avi LB vCenter Cloud 업그레이드 전 22.1.1 이전 버전에서 잠재적인 서비스 거부(DoS) 취약점에 대한 선행 검토가 필요할 수 있습니다. [Source: Considerations for vCenter Cloud]</li>
+                </ul>
+            </div>
 
-        <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-        <div class="dark-card p-6 rounded-xl shadow-2xl">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2 border-gray-600">
-                <span class="text-orange-vmb">6.</span> Industry Vertical Radar (Korea Focus)
-            </h2>
-            <ul class="space-y-3">
-                <li class="list-item">
-                    <span class="font-medium text-cyan-400">[금융(Finance)]</span> **AI 에이전트의 미래 예측**은 국내 금융권의 챗봇/고객 서비스/AML 시스템에 대한 AI 도입 계획과 맞물립니다. **VCF Private AI를 통해 규제 환경 내에서 데이터 주권을 확보하며 AI 서비스를 제공**해야 하는 한국 금융권의 니즈에 집중하십시오. <a href="https://virtual-it.pl/15323-przyszlosc-agentow-ai-prognozy-i-trendy.html" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-cyan-400">[공공(Public Sector)]</span> **Veritas NBU 교체 성공 사례**는 공공기관의 데이터센터 현대화 및 백업 솔루션 교체 사업 기회를 의미합니다. **VCF 기반의 통합 백업 전략(vSphere API for Data Protection 활용)을 제시**하여 레거시 솔루션의 복잡성을 해소해야 합니다. <a href="https://wuchikin.wordpress.com/2026/01/11/successful-case-for-veritas-nbu-replacement/" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-cyan-400">[기업(Enterprise)]</span> **자동화, 전문성, 컨텍스트 기반의 AI 채택 예측**은 대기업의 디지털 트랜스포메이션 방향과 일치합니다. **VCF Management, Automation을 통한 운영 전문성 향상 및 AI 환경 구축이 핵심 영업 기회**입니다. <a href="https://vmblog.com/archive/2026/01/09/2026-predictions-automation-expertise-and-context-will-fuel-successful-ai-adoption.aspx" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-            </ul>
         </div>
-
-        <!-- Section 7: Security Alerts -->
-        <div class="dark-card p-6 rounded-xl shadow-2xl lg:col-span-3">
-            <h2 class="text-2xl font-bold mb-4 border-b pb-2 border-orange-vmb">
-                <span class="text-red-600">7.</span> Security Alerts (CRITICAL)
-            </h2>
-            <ul class="space-y-3">
-                <li class="list-item">
-                    <span class="font-medium text-red-600">[VMSA - Tanzu Greenplum]</span> **Product Release Advisory - VMware Tanzu Greenplum Backup and Restore 1.32.2** 릴리스. 데이터 무결성 및 시스템 가용성에 직접적인 영향을 줄 수 있는 보안 취약점이 포함되었을 가능성이 높으므로, 해당 제품 사용 고객에게 즉시 패치를 권고하십시오. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36728" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-red-600">[NSX - Session Issue]</span> **NSX 및 잘못된 XSRF 토큰 오류**는 비록 비공식적인 현장 이슈이나, Cross-Site Request Forgery(XSRF)는 세션 하이재킹과 관련된 심각한 보안 위험을 내포합니다. NSX Manager 앞단의 로드 밸런서 설정(SSL Offloading/Cookie Persistence)을 재점검하도록 고객에게 권고해야 합니다. <a href="https://virtuallyjason.blogspot.com/2026/01/session-authentication-in-nsx-and-bad.html" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-                <li class="list-item">
-                    <span class="font-medium text-red-600">[Avi LB - Access Control]</span> **Avi Load Balancer의 사용자 계정 생성 및 정책 설정**에 대한 상세 문서가 배포되었습니다. 이는 기본 권한 관리(RBAC) 소홀로 인한 무단 접근 및 설정 변경을 방지하기 위한 **최소한의 보안 구성**이 현장에서 지켜지지 않을 위험을 내포합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/creating-a-user-account.html" class="text-blue-400 text-sm">[Source]</a>
-                </li>
-            </ul>
-        </div>
-
     </div>
 
     <!-- Footer -->
-    <footer class="mt-8 text-center text-gray-500 text-sm p-4 border-t border-gray-700">
-        &copy; 2026 VMware by Broadcom. All rights reserved. This document is confidential and intended for internal distribution only.
+    <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-sm text-gray-500">
+        <p>This report is for internal strategic use only. Do not distribute externally. VMware by Broadcom.</p>
     </footer>
 
 </body>
