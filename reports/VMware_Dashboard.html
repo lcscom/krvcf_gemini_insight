@@ -1,214 +1,225 @@
 <!DOCTYPE html>
-<html lang="ko" class="dark">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VMware Daily Strategic Intelligence</title>
+    <title>VMware Daily Strategic Intelligence Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom Tailwind Configuration for Dark Mode */
-        :root {
-            color-scheme: dark;
-        }
-        body {
-            background-color: #0f172a; /* slate-900 */
-            color: #f8fafc; /* slate-50 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .card {
-            background-color: #1e293b; /* slate-800 */
-            border-left: 4px solid #3b82f6; /* blue-500 */
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .source-link {
-            color: #93c5fd; /* blue-300 */
-            font-size: 0.8rem;
-            text-decoration: none;
-            margin-left: 0.5rem;
-        }
-        .source-link:hover {
-            text-decoration: underline;
-        }
-        .badge-confidential {
-            background-color: #dc2626; /* red-600 */
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-weight: bold;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
+            animation: fadeIn 0.5s ease-out;
         }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'vm-blue': '#007BFF',
+                        'vm-dark': '#1e293b',
+                        'vm-card': '#334155',
+                        'vm-border': '#475569',
+                        'vm-accent': '#3b82f6',
+                        'vm-critical': '#ef4444',
+                        'vm-warning': '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="p-4 md:p-8 font-sans">
+<body class="bg-gray-900 text-gray-100 p-4 md:p-8 dark">
 
     <!-- Header Section -->
-    <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-blue-500 pb-4">
-        <h1 class="text-4xl font-extrabold text-white">VMware Daily Strategic Intelligence</h1>
-        <div class="mt-4 md:mt-0 md:text-right">
-            <div class="text-lg font-medium text-slate-300">Generated at: 2026-01-15 19:00:15</div>
-            <span class="badge-confidential mt-1 inline-block">BROADCOM CONFIDENTIAL</span>
+    <header class="mb-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-vm-border pb-4">
+            <h1 class="text-4xl font-extrabold text-vm-blue">VMware Daily Intelligence</h1>
+            <div class="mt-2 md:mt-0 flex items-center space-x-4">
+                <span class="text-sm text-gray-400">Generated at: 2026-01-16 01:00:13</span>
+                <span class="inline-flex items-center px-3 py-1 text-xs font-semibold leading-5 rounded-full bg-red-800 text-red-100">
+                    Broadcom Confidential
+                </span>
+            </div>
         </div>
+        <p class="text-gray-400 italic mt-2">Top 100 Distinguished Architect & Community Incident Commander Report</p>
     </header>
 
     <!-- Main Content Grid -->
-    <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- Section 1: Top 3 Executive Takeaways -->
-        <div class="lg:col-span-3 card p-6 shadow-xl">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">🔥 Section 1: Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
-            <ul class="space-y-4 text-lg">
-                <li class="p-3 bg-slate-700 rounded-lg">
-                    <span class="font-semibold text-red-400">Critical Field Risk:</span> **라이선싱/갱신 불만 폭증 및 이탈 가속화.** Reddit 등 커뮤니티에서 **최대 7배**에 달하는 가격 인상 및 코어 수 감소 거절 사례가 연이어 보고되고 있으며, 주요 고객들이 2026년을 탈(脫) VMware 원년으로 선언하는 추세입니다. 이는 Nutanix가 Dell PowerFlex 통합 및 TCO 절감 전략을 공격적으로 펼치는 경쟁 구도와 직접적으로 연결됩니다. (Sec 3, 5 참조)
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEiQ2qNznOylzL4PT1oJo2EHlsk-1T4p7CIfg5vzTdFejvaMLmV58xCPosBHbt275dEOJdHDajx9fZzqugXwXRCg3Z6LjOPeZktwm1L4sGNaZzrndzWtJmGXlGfktKCHqNcd9Igq6W6QC4xaTa1UIx_buy0-EkAUY84U_zObH1ivJa2cgm_j0sMAA2J6csQhHXci44" class="source-link">[Source]</a>
-                </li>
-                <li class="p-3 bg-slate-700 rounded-lg">
-                    <span class="font-semibold text-yellow-400">Strategic Pivot:</span> **VCF 9 기반 클라우드 네이티브/Private AI 전략 선점 가속.** VCF 9.x를 통한 Kubernetes 격차 해소와 워크로드 컨테이너화 진화에 대한 공식 가이드가 주요 메시지입니다. 특히, 기업 지식 기반의 분야별 LLM(Domain-specific LLM) 전략 가이드라인은 Private AI 시장 주도를 위한 엔지니어링 및 컨설팅 역량 확보의 필요성을 시사합니다. (Sec 2, 4 참조)
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/closing-the-kubernetes-gap-mastering-cloud-native-operations-with-vcf-9/" class="source-link">[Source]</a>
-                </li>
-                <li class="p-3 bg-slate-700 rounded-lg">
-                    <span class="font-semibold text-cyan-400">Security Imperative:</span> **VMSA-2025-0004 (CVSS 9.3) 제로데이 취약점 패치 가이드 즉시 전파.** ESXi/Workstation의 치명적인 TOCTOU (Time-of-Check Time-of-Use) 취약점 (CVE-2025-22224)이 'in the wild'에서 악용된 정황이 있으며, 이는 VM 관리자 권한을 가진 공격자가 호스트의 VMX 프로세스로 코드를 실행할 수 있게 합니다. VCF 4.x/5.x 고객에게 즉시 패치 적용을 권고해야 합니다. (Sec 7 참조)
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9FJxwbsVY8PmyYDtHsb766d0rjX7qyy88Dh5IZOOKGkFfARl6C-yDJzGxVZDq151JD0_-qM7bmryWgjygHKmbasPEcabgKM9GiL2245niAZu2ieXloaRTqTVUIeNo2O6yDP1OCJXycY1EE25rZ7xY5B4RWsBVnqyAQranebSDJFb3hzMqkIdG5j1Od6hypTNRMi4nxyv19zj60WocDUF8nYzzJRPBQH9j" class="source-link">[Source]</a>
-                </li>
-            </ul>
+        <div class="lg:col-span-3">
+            <div class="card bg-vm-card p-6 rounded-lg shadow-xl border border-vm-border">
+                <h2 class="text-2xl font-bold mb-4 text-vm-accent">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
+                <ol class="space-y-4 list-decimal list-inside ml-2">
+                    <li class="border-l-4 border-vm-critical pl-4 py-1">
+                        <span class="font-semibold text-vm-critical">CRITICAL VMSA 대응의 시급성:</span> ESXi/Workstation/Fusion의 VMXNET3 및 PVSCSI 컨트롤러에서 CVSS 9.3에 해당하는 Critical 취약점(Host Code Execution 가능)이 발표되었으며, 이는 VM에서 호스트 탈출로 이어지는 심각한 보안 이슈이므로 즉각적인 패치가 필요합니다. [Source: 8, 11]
+                    </li>
+                    <li class="border-l-4 border-vm-warning pl-4 py-1">
+                        <span class="font-semibold text-vm-warning">VCF 9 및 AI 전략:</span> VCF 9를 통한 클라우드 네이티브 운영(Kubernetes Gap 해소) 및 LLM 기반 기업 지식 활용 전략이 공식적으로 강조되며, 이는 Broadcom 포트폴리오의 AI-Ready Private Cloud 전환 핵심 동력입니다. [Source: VCF, Management, vSphere]
+                    </li>
+                    <li class="border-l-4 border-vm-blue pl-4 py-1">
+                        <span class="font-semibold text-vm-blue">라이선싱 및 경쟁사 동향 주시:</span> 2026년 라이선스 만료 및 신규 정책(VVF/VCF 강제 편입, 최소 코어 증가)에 대한 고객 불만과 우려가 커뮤니티 전반에 확산되고 있으며, Nutanix, Sangfor, Wind River(Edge/Telco) 등 경쟁사들이 이를 활용해 공격적인 영업을 전개 중인 것이 확인되었습니다. [Source: 2, 3, 20, 13]
+                    </li>
+                </ol>
+            </div>
         </div>
 
-        <!-- Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
-        <div class="card p-6 shadow-xl">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">📚 Section 2: Tech Docs & KB Deep Dive</h2>
-            <ul class="space-y-3">
-                <li class="border-l-2 border-green-500 pl-3">
-                    **VCF 9: Kubernetes 격차 해소 마스터 가이드.** VCF 9 환경에서 클라우드 네이티브 운영을 위한 Kubernetes 통합 및 운영 전략의 핵심을 제시. (Management/vSphere 블로그 교차 게시됨)
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/closing-the-kubernetes-gap-mastering-cloud-native-operations-with-vcf-9/" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-green-500 pl-3">
-                    **워크로드 호스팅 진화: 컨테이너화로의 전환.** 기존 가상화 중심 워크로드를 컨테이너화하는 전략적 로드맵 제시. vSphere 관리자들에게 필요한 컨테이너 기초 지식 습득을 촉구.
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/evolution-of-workload-hosting-from-virtualization-to-containerization/" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-green-500 pl-3">
-                    **엔터프라이즈 LLM 전략: 분야별 '천재' LLM 가이드.** 기업 지식에 특화된 분야별(Domain-specific) LLM 도입 전략 제시. Private AI in VCF 환경에서 고객 컨설팅 시 활용 필수.
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/from-general-to-genius-your-strategic-guide-to-domain-specific-llms-for-enterprise-knowledge/" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-green-500 pl-3">
-                    **Product Release Advisory: Tanzu Greenplum B&R 1.32.2.** 특정 환경에서 데이터 백업 및 복원 시 안정성 및 보안이 향상된 최신 패치 릴리스 공지.
-                    <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36728" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-green-500 pl-3">
-                    **NSX Advanced Load Balancer (ALB) 31.2 사용자 계정 생성 공식 문서 업데이트.** 새 버전의 사용자 생성 절차에 대한 공식 기술 문서가 업데이트됨. (ALB 고객 지원 시 정확한 정보 제공 필요)
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/creating-a-user-account.html" class="source-link">[Source]</a>
-                </li>
-            </ul>
+        <!-- Section 2: Tech Docs & KB Deep Dive -->
+        <div class="lg:col-span-2">
+            <div class="card bg-vm-card p-6 rounded-lg shadow-xl border border-vm-border h-full">
+                <h2 class="text-2xl font-bold mb-4 text-vm-accent">2. Tech Docs & KB Deep Dive (공식 문서 분석)</h2>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">VCF 9의 클라우드 네이티브 운영 마스터:</span> VCF 9를 통해 Kubernetes 격차를 해소하고 클라우드 네이티브 애플리케이션 운영을 단순화하는 심층 가이드가 공개되었습니다. (엔지니어는 VCF의 Day 2 Operations 기능 변화에 주목해야 함)
+                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/closing-the-kubernetes-gap-mastering-cloud-native-operations-with-vcf-9/" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">워크로드 호스팅의 진화 (가상화 → 컨테이너화):</span> 전통적인 가상 머신(VM)에서 Kubernetes 기반 컨테이너로의 워크로드 진화 경로와 VCF가 이 전환을 어떻게 지원하는지에 대한 전략적 문서입니다. (VCF 컨테이너 워크로드 배포 시 아키텍처 재검토 필수)
+                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/evolution-of-workload-hosting-from-virtualization-to-containerization/" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">분야별 LLM 전략 가이드 (기업 지식 활용):</span> 일반 LLM이 아닌, 기업의 고유한 지식 기반(Domain-Specific)을 활용하는 LLM 전략 수립 방안을 제시하며 Private AI 분야의 접근을 구체화합니다. (Private AI 구축 전 단계로 활용 가능)
+                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/from-general-to-genius-your-strategic-guide-to-domain-specific-llms-for-enterprise-knowledge/" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">VMware NSX Advanced Load Balancer 31.2 사용자 생성 가이드:</span> NSX ALB (구 Avi Networks)의 최신 버전(31.2)에서 사용자 계정을 생성하는 절차에 대한 공식 기술 문서가 업데이트되었습니다. (보안 정책 강화에 따른 계정 관리 Best Practice 확인 필요)
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/creating-a-user-account.html" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">Product Release Advisory: Tanzu Greenplum Backup/Restore 1.32.2:</span> VMware Tanzu Greenplum의 백업 및 복원 컴포넌트에 대한 새로운 버전(1.32.2) 출시 알림. (Tanzu Greenplum 운영 환경은 버전 호환성 및 안정성을 위해 검토 필요)
+                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36728" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <!-- Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
-        <div class="card p-6 shadow-xl">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">🗣️ Section 3: Community Pulse & Field Issues</h2>
-            <ul class="space-y-3">
-                <li class="border-l-2 border-red-500 pl-3">
-                    **라이선싱 갱신 시 'Core Count 감소 거절' 문제.** Reddit에서 Broadcom이 고객의 코어 수 축소를 거절하고, 이전 가격 대비 **4배에서 7배** 높은 가격을 요구하여 고객 이탈이 가속화되고 있다는 보고가 다수 확인됨. <span class="text-red-400 font-semibold">(엔지니어는 영업팀과 협력하여 대체 옵션(Nutanix 등)에 대한 선제적 준비 필요)</span>
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEiQ2qNznOylzL4PT1oJo2EHlsk-1T4p7CIfg5vzTdFejvaMLmV58xCPosBHbt275dEOJdHDajx9fZzqugXwXRCg3Z6LjOPeZktwm1L4sGNaZzrndzWtJmGXlGfktKCHqNcd9Igq6W6QC4xaTa1UIx_buy0-EkAUY84U_O3O3oQGvI" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-red-500 pl-3">
-                    **vSphere Standard End of Sale(EOS) 루머 및 혼란.** 2025년 7월 31일부로 vSphere Standard SKU가 End-of-Sale 되고, 엔트리 포인트가 Enterprise Plus로 이동할 것이라는 파트너발 정보가 커뮤니티에 확산됨. 이에 따른 **VVF/VCF 강제 전환 압박**에 대한 불만이 증폭되고 있음.
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAUckkfdJw7gHWghDwkXyH7Re1S5iEXiC09P4kHUQKdvVvOnzT1u-i0X1TdRLIfWBBWwG1bWDDseIlaJgYGp5n6KvWdtDnXCmgjQdg58Z7DOwMRKw3ZVhLEh8AWVt_fEZeW5p0nWzmXEWtUdOvrcxMQ2WxQ9m6-_7zb_tv-DxoRDXDSSgxr6RdUH8DF9opwGXZOAyONEupjny-7n7p0A==" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-red-500 pl-3">
-                    **만료 임박 시 '환경 다운' 위협 영업 전술에 대한 고객 분노.** 일부 영업 담당자가 Perpetual License 고객에게 '라이선스 만료 시 환경이 다운될 것'이라는 허위 정보를 전달하여 갱신을 압박했다는 사례가 보고됨. <span class="text-red-400 font-semibold">(이는 고객 신뢰도에 치명적이며, 현장 엔지니어는 Perpetual License의 기술적 작동 방식에 대해 명확한 설명을 제공해야 함)</span>
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFa4MZUBzjshesudnlP5Uj8IZ-bIJGEcY3txmTPE2dXOs1iX1wPeEFR2yAll02TtP_xuQnYqZxYIsmgs3D2LDBEajEOOtXleWkqa-dhAjegF0NJNUnVKUqtQ7NY1qZ85fJ4JALR1zR2ZCslefS1GuLkzrECCOVeGtoyRGz2Hny8EffkQn7krfHpeGVmoLFJKLyUYedKU5tZmwU92jOpFEA==" class="source-link">[Source]</a>
-                </li>
-            </ul>
+        <!-- Section 3: Community Pulse & Field Issues -->
+        <div class="lg:col-span-1">
+            <div class="card bg-vm-card p-6 rounded-lg shadow-xl border border-vm-border h-full">
+                <h2 class="text-2xl font-bold mb-4 text-vm-accent">3. Community Pulse & Field Issues (비공식 현장 이슈)</h2>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150 border-l-4 border-vm-warning">
+                        <span class="font-medium text-vm-warning">ESX Agent Manager (EAM) 업그레이드 실패 (인증서):</span> vSphere EAM 업그레이드 시 'EAM URLs to check against trusted certificates by the System' 오류로 인해 업그레이드가 진행되지 않는 문제가 커뮤니티에서 빈번히 보고되며, 기존 KB의 재등록 스크립트가 작동하지 않는 사례가 발생하고 있습니다. (VCF 환경 업그레이드 전 EAM 컴포넌트 건전성 사전 점검 필수)
+                        <a href="https://www.reddit.com/r/vmware/" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 9]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150 border-l-4 border-vm-critical">
+                        <span class="font-medium text-vm-critical">2026년 라이선싱 EOL 및 비용 폭증 우려:</span> 2026년 4월 등 구 Perpetual 라이선스 지원 만료가 다가옴에 따라, VVF/VCF 구독 전환으로 인한 비용이 최대 600%까지 폭증했다는 사례가 보고되고 있습니다. (고객사 라이선스 만료일 및 신규 VVF/VCF Core Bundle 최소 요구사항 재확인 필요)
+                        <a href="https://www.reddit.com/r/vmware/" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 20, 13]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">vSAN 성능 진단: Congestion 보고 증가:</span> vSAN 성능 진단(Performance Diagnostics)에서 'vSAN is experiencing congestion' 경고가 다수 보고되며, 특히 Maintenance Mode 진입 시 vSAN과 vSphere의 Maintenance Mode 상태가 불일치하는 사례가 관찰되고 있습니다. (vSAN 클러스터의 디스크 그룹 건전성 및 네트워크 MTU 체크 필수)
+                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36728" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 21]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">Windows Server Secure Boot 인증서 업데이트 오류 (Error 1796):</span> ESXi 8.0.3 이상 VM에서 Windows Server 2022의 Secure Boot 인증서를 업데이트할 때 'Error 1796'이 발생한다는 보고가 있습니다. 이는 가상 펌웨어의 업데이트 기능 문제로 추정되며, Microsoft의 2026년 6월 Secure Boot 인증서 만료 대응에 병목 현상을 유발할 수 있습니다.
+                        <a href="https://www.reddit.com/r/vmware/" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 9, 15]</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <!-- Section 4: Product & Expert Deep Dive -->
-        <div class="card p-6 shadow-xl">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">🔬 Section 4: Product & Expert Deep Dive</h2>
-            <ul class="space-y-3">
-                <li class="border-l-2 border-cyan-500 pl-3">
-                    **[VCF/Tanzu] VCF 9로 Kubernetes Gap 해소.** VCF의 통합된 운영 모델이 분산된 클라우드 네이티브 환경의 복잡성을 해결하고, Kubernetes 운영을 단순화하는 핵심 전략으로 강조됨.
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/closing-the-kubernetes-gap-mastering-cloud-native-operations-with-vcf-9/" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-cyan-500 pl-3">
-                    **[vSphere/Field Tip] Synology/Apache/Nginx에서 HTTP Range Requests 비활성화.** William Lam이 vSphere 환경에서 특정 웹 서버(Synology) 사용 시 HTTP Range Request로 인해 발생할 수 있는 잠재적 문제를 방지하기 위한 기술적 해결책 제시. **(현장에서 알 수 없는 다운로드/전송 오류 발생 시 필수 확인 항목)**
-                    <a href="https://williamlam.com/2026/01/disable-http-range-requests-on-synology-webstation-apache-or-nginx.html" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-cyan-500 pl-3">
-                    **[Private AI] 기업 지식 기반 LLM을 위한 전략적 접근.** 일반 LLM 모델을 기업의 특정 도메인 지식으로 훈련하여 정확도와 보안을 높이는 접근법이 Cloud Foundation 환경에서 Private AI 구축의 핵심 가이드로 제시됨.
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/from-general-to-genius-your-strategic-guide-to-domain-specific-llms-for-enterprise-knowledge/" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-cyan-500 pl-3">
-                    **[EUC/AI] 2026년 AI와 EUC의 5가지 예측.** AI가 EUC 환경에서 제품 학습, 적응, 신뢰 획득 방식을 재정의할 것이며, Agentic AI의 등장으로 인한 IT 복잡성 증가에 대한 인프라 팀의 적응이 화두.
-                    <a href="https://vmblog.com/archive/2026/01/14/ai-and-euc-in-2026-five-predictions-for-what-s-really-coming.aspx" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-cyan-500 pl-3">
-                    **[NSX ALB] CSP 2100 Port Channel 문제 해결 가이드.** NSX Advanced Load Balancer의 CSP 2100 플랫폼에서 Port Channel 구성 관련 발생하는 문제에 대한 공식적인 트러블슈팅 문서 업데이트. **(현장 네트워크 구성 오류 예방)**
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/troubleshooting.html" class="source-link">[Source]</a>
-                </li>
-            </ul>
+        <div class="lg:col-span-2">
+            <div class="card bg-vm-card p-6 rounded-lg shadow-xl border border-vm-border h-full">
+                <h2 class="text-2xl font-bold mb-4 text-vm-accent">4. Product & Expert Deep Dive (제품/전문가 심층 분석)</h2>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">VCF 9: Kubernetes 격차 해소 집중:</span> VCF 9의 핵심 가치는 클라우드 네이티브 운영 관리 자동화에 있으며, 특히 클라우드 플랫폼 팀이 겪는 VM/Kubernetes 운영의 사일로(Silo)를 해결하는 데 초점을 맞추고 있습니다. (VCF 고객 대상 VCF+Tanzu 통합 시나리오 제안 강화 필요)
+                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/14/closing-the-kubernetes-gap-mastering-cloud-native-operations-with-vcf-9/" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">2026 AI/EUC 예측: Agentic AI의 부상:</span> 전문가들은 2026년 EUC 환경에서 AI가 에이전트(Agentic AI) 형태로 진화하여 사용자 작업을 능동적으로 자동화할 것으로 예측하고 있으며, 이는 EUC 보안 및 ID 관리의 근본적인 변화를 요구합니다. (Workspace ONE 전략에 AI 에이전트 도입 대비 필요)
+                        <a href="https://vmblog.com/archive/2026/01/14/ai-and-euc-in-2026-five-predictions-for-what-s-really-coming.aspx" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">AI는 새로운 인프라 계층:</span> AI 워크로드가 데이터센터의 새로운 인프라 계층으로 자리 잡고 있으며, 특히 코로케이션(Colocation) 환경이 2026년 엔터프라이즈 운영을 재정의할 핵심 요소로 언급됩니다. (Private AI Foundation with NVIDIA 전략과 직접 연관)
+                        <a href="https://vmblog.com/archive/2026/01/14/ai-as-the-new-infrastructure-layer-how-colocation-can-redefine-enterprise-operations-in-2026.aspx" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">NSX ALB (Avi) CSP 2100 포트 채널 문제 해결:</span> VMware NSX Advanced Load Balancer (Avi) CSP 2100 모델에서 포트 채널 구성 관련 문제 해결 문서가 업데이트되었습니다. (현장 엔지니어는 CSP 기반 물리 어플라이언스 환경의 트러블슈팅 절차 숙지 필수)
+                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/troubleshooting.html" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">Tanzu Greenplum Backup/Restore 1.32.2 출시:</span> Tanzu 포트폴리오의 데이터 솔루션에 대한 마이너 버전 업데이트가 진행되었습니다. (데이터 무결성 및 복구 시나리오 안정성 확보를 위해 업데이트 권장)
+                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36728" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 7: Security Alerts (Critical First) -->
+        <div class="lg:col-span-1">
+            <div class="card bg-vm-card p-6 rounded-lg shadow-xl border border-vm-border h-full">
+                <h2 class="text-2xl font-bold mb-4 text-vm-critical">7. Security Alerts (VMSA/CVE 정보 - CRITICAL)</h2>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-red-900 rounded-md hover:bg-red-800 transition duration-150 border-l-4 border-vm-critical">
+                        <span class="font-medium text-red-300">CRITICAL VMSA-2025-0013 (ESXi Host Escape):</span> VMXNET3 가상 네트워크 어댑터 및 PVSCSI 컨트롤러에서 Critical 등급(CVSS 9.3)의 Integer/Heap Overflow 취약점(CVE-2025-41236, CVE-2025-41238)이 발견되었습니다. (VM의 관리 권한을 가진 공격자가 호스트의 VMX 프로세스로 코드를 실행할 수 있으므로, **즉각적인 패치**가 필요합니다.)
+                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/35877" target="_blank" class="text-sm text-red-400 hover:text-red-300 ml-2">[Source: 11]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150 border-l-4 border-vm-critical">
+                        <span class="font-medium text-red-400">ESXi In-the-Wild Exploitation (VMSA-2025-0004):</span> HGFS 및 VMCI의 취약점을 이용한 ESXi Exploitation 사례가 2025년 12월에 관찰되었으며, 이는 VMX 샌드박스 탈출(Sandbox Escape)을 허용하는 CVE-2025-22225를 포함합니다. (실제 공격에 사용된 취약점이므로, 반드시 패치 여부를 확인해야 합니다.)
+                        <a href="https://www.huntress.com/blog/the-great-vm-escape-esxi-exploitation-in-the-wild" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 8]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150 border-l-4 border-vm-warning">
+                        <span class="font-medium text-vm-warning">Aria Operations/Tools 권한 상승 (Exploited):</span> VMware Aria Operations 및 VMware Tools에 로컬 권한 상승 취약점(CVE-2025-41244)이 존재하며, Broadcom은 해당 취약점이 야외에서 악용된 정황을 포착했음을 알렸습니다. (VMware Tools가 설치된 VM의 루트 권한 탈취 가능성이 있으므로, Aria Operations/Tools 사용자에게 중요 경고)
+                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36149" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 12]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">Tanzu Greenplum Backup/Restore 1.32.2 보안 업데이트:</span> Product Release Advisory를 통해 마이너 업데이트와 함께 보안 패치가 포함되었을 가능성이 높습니다. (Tanzu 환경의 데이터 계층 보안 강화를 위해 업데이트 권고)
+                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/36728" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source]</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <!-- Section 5: Market & Competitive Radar -->
-        <div class="card p-6 shadow-xl">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">🚀 Section 5: Market & Competitive Radar</h2>
-            <ul class="space-y-3">
-                <li class="border-l-2 border-orange-500 pl-3">
-                    **[Nutanix] "운영 모델" 기반 차별화 전략 강화.** Nutanix는 2026년 주요 전략으로 기술 스택이 아닌 '운영 모델(Operating Model)'을 핵심 경쟁 우위로 포지셔닝하며, 고객에게 단순성, 자동화된 운영을 통한 TCO 절감을 강조.
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrMQPIKr3vwC7MAa8d3ABItug1kb_bAD6GPfZ9QCsVHHD5ygmw1i9N2x95Y6H89P_2RM9fxr4tdfKRdO23t8aSbuRhyQ-bcp1nX5M6o1QmAwtJhIDFgSEHpLLvK94Ax-bUXdulye27GHLRxsd6hAC7Kldwhh1OGyqatPNNbSYpCvj7xi4Tsseq6bJO7pCbRzdMa4TdYA==" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-orange-500 pl-3">
-                    **[Nutanix] Dell PowerFlex 및 Pure Storage와의 전략적 통합 가속.** Nutanix는 Dell PowerFlex와의 통합(Q2 2025 GA) 및 Pure Storage와의 제휴를 통해 외부 스토리지 및 레거시 3-Tier 환경과의 호환성을 강화하며, VMware 라이선싱 불만을 가진 고객의 이탈을 적극 흡수 중.
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELaq3_5EcOpiPK-DoskVx9n27SgobsaoExk_QWKzRQo-uMF98UaY-Wlh-DCR1gWVvvx92cy7OcS3p6k-EdduJbYIik8jjabaaC8hwNyiRTkDwv_CD-RBHLAn9sMJdBM_pxQtv0ut2kH4N7LD8PAaW8S7c34PDLkg27l32cuf14Z4EU3Syit164FiTE3Mj19sp1jBuLIflcN-zIWbQ3S3be6wk2XoBqdVoYhzh_pKJOHJkqKqRysbAy2QIZ2yRupao-8nd9zS5UcNsh" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-orange-500 pl-3">
-                    **[Hyperscaler/AI] 코로케이션 기반 AI 인프라 부상.** AI가 새로운 인프라 계층으로 자리 잡으면서, 코로케이션 환경이 예측 가능한 비용과 데이터 주권(Sovereign Data) 준수를 위한 최적의 AI 서비스 배포 전략으로 강조됨. (Private AI in VCF의 주요 경쟁 환경)
-                    <a href="https://vmblog.com/archive/2026/01/14/ai-as-the-new-infrastructure-layer-how-colocation-can-redefine-enterprise-operations-in-2026.aspx" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-orange-500 pl-3">
-                    **[Red Hat/경쟁 대안] 오픈소스 DBMS의 공공/금융 공략 가속화.** EDB(PostgreSQL)가 네오클로바와의 파트너십을 통해 공공/금융 부문의 클라우드 전환 및 Oracle 레거시 DB 대체를 적극적으로 추진 중. **(Red Hat은 OpenShift/Open Source 포트폴리오로 이 시장을 지원하며, VCF 기반 DBaaS 경쟁에 직접적인 위협)**
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFCjfd1eBPautCZ3kixEZAZD12PJ8DC7pT5SySAM1CGEJj1PiN0sB-tP5KEqvBk4zzKz7013Q5gMszuSMae-bP-HTcIsNrErbaFBHVHR-ylNZ53XSEb0xnSej0tQ7kB5nl84WSlqPt9n-HbA9UyOa1kY8T-6A==" class="source-link">[Source]</a>
-                </li>
-            </ul>
+        <div class="lg:col-span-3">
+            <div class="card bg-vm-card p-6 rounded-lg shadow-xl border border-vm-border">
+                <h2 class="text-2xl font-bold mb-4 text-vm-accent">5. Market & Competitive Radar (경쟁사 동향)</h2>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150 border-l-4 border-vm-warning">
+                        <span class="font-medium text-vm-warning">Nutanix & HCI 경쟁사의 반사이익:</span> Broadcom의 구독 기반 라이선스 변경 및 비용 증가 우려로 인해 Nutanix, Sangfor HCI와 같은 풀 스택 HCI 및 가상화 플랫폼들이 VMware 대안으로 적극적으로 부상하고 있습니다. 특히 TCO 예측 가능성, 통합 보안, 엔터프라이즈 확장성이 주요 경쟁 포인트입니다.
+                        <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFIOXIFW8lkwUMOkDzpUqQ7119AuQKkVdixUL4L6AWfGHs7FoAbb7_HMg-6-7XnPf2Q_W5q21hupbC92PDa-st8C8hxvGg5UMhcCmt8D4rdw2fRHotAbE9TnHtp0Nblx_nzJkMwClHib9zVcNZtJuv0ekHlZEAfwOZ6y2sqqJ8RXGFwk-a2wbHKyGxMTA==" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 2, 5]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">Wind River의 Edge/Telco 클라우드 선전:</span> ABI Research는 Wind River를 통신사(Telco) 중심의 클라우드 네이티브 플랫폼 선두주자로 선정하며, Red Hat보다 높은 순위를 부여했습니다. 이는 AI 워크로드와 엣지 컴퓨팅의 성장에 따라 범용 가상화보다 특화된 솔루션이 부상하는 시장 분할 트렌드를 시사합니다.
+                        <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHstqfpnZnenrngNcTrK-ve5EHEMDhtoWdXiQqLgWRsJZQBYjMniA7XI0IJm7Zoz91TeZWBIM0CkCODWXZilNwQ2jUQvWENXnnEEZZQQ27BlVIObBkjaF37q1s7f4FFG0I2CdcVYt22-N6Xy-CeoThRrauswY5ChVqKs8mLNc3u3-Gl3qGTUAAqHLcK-cm2hpMCp0FF5PmUMTtZXOuShLtZxXDQNrrA9GvHrjDKbuBp2rPWJcsRig-C" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 3]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">Hyperscaler (AWS, GCP, OCI)의 AI 클라우드 인프라 경쟁 가열:</span> AWS, GCP, Oracle Cloud Infrastructure(OCI) 등 주요 하이퍼스케일러들은 VMware Cloud 환경을 포함한 엔터프라이즈 워크로드에 대해 AI/ML, Agentic AI, 데이터 분석 등의 고급 서비스를 통합하며 클라우드 전환을 가속화하고 있습니다.
+                        <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHkigzS8nhcaP8AeXZ0yc2PwQhpfgyNm6oB-9G9OnvCEv9NvvKG8zSUhSayA7w_UoONxX3g4V3lB8PCbxAwE9VJdqeXoVQTs-AoBMCbdGU6MEerFmU5BOH7Uz53H7kD0PZlv_FFom_K-YXSI8M2lyO5IBnZhpp6m2WVt5rO" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 4]</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-        <div class="card p-6 shadow-xl">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">🇰🇷 Section 6: Industry Vertical Radar (Korea Focus)</h2>
-            <ul class="space-y-3">
-                <li class="border-l-2 border-purple-500 pl-3">
-                    **[금융/공공] 2026년 공공·금융 IT 시장 대규모 수주전 개시.** 새해 예산 집행과 함께 한국은행 941억, 국세청 596억 규모 ITO 사업 및 **NH농협은행 6,000억** 차세대 프로젝트 등 대형 사업 발주 임박. **(VCF, Tanzu, NSX의 신규 클라우드 전환 사업 기회 포착 필수)**
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEWZJ9o1bHp_pVNN8VmIvaXSdd8eCG2kLKqZGnrt6h0LVxKuUSDLy283_aqyJK1VuIMrDxM3KvmzOgMwRu4CuTywgU-NHTvyayKW7YCtRDShuX8QACSvihwYThSOFJ-k3ktBxq_5y4ycCFOFokJNlDwrtM=" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-purple-500 pl-3">
-                    **[공공/엔터프라이즈] 레거시 현대화(Modernization) 가속화.** 기타 시중은행 및 한국자산관리공사, 법무부 등이 메인프레임/유닉스 환경을 x86 및 **클라우드 네이티브**로 전환하는 '레거시 현대화' 사업을 주요 과제로 추진 중. **(vSphere, VCF 기반의 x86 전환 시장은 여전히 건재)**
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEWZJ9o1bHp_pVNN8VmIvaXSdd8eCG2kLKqZGnrt6h0LVxKuUSDLy283_aqyJK1VuIMrDxM3KvmzOgMwRu4CuTywgU-NHTvyayKW7YCtRDShuX8QACSvihwYThSOFJ-k3ktBxq_5y4ycCFOFokJNlDwrtM=" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-purple-500 pl-3">
-                    **[기업/AX] 국내 SI 기업들의 AX(AI 전환) 신사업 강화.** 삼성SDS 등 국내 IT 서비스 기업들이 대형 SI 사업 정체기를 타개하고 AI와 클라우드 수요를 중심으로 조직 개편을 완료하고 **Agentic AI**를 활용한 비즈니스 모델 혁신에 집중. **(VCF Private AI 플랫폼의 국내 시장 확산에 유리한 환경 조성)**
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEhMAFqLmBB1X8ZgUvj-tcxntcjba7uJYnWDs_5pOYA4yBz7yy5dD51fdOBRnkfafBI_X6RR98P2TxiWB_bAdtc0gwn9k-rUhUUS3Pl2PKJ0YJuAoWJ5ZhT9qVEFMziR8YHR2_lARhGZMNvV7A2FimM" class="source-link">[Source]</a>, <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEBBT6g404GYUtiTi67E9Yx-e7s_rWO7-NlbiCvHJlkVTcc07Rzn72lf87YRierPIHLxkQou-pc8uos_XU-wwG9Yg2jF_LyNVabLP7X4GhMLwQ39LbgtEhriDDV-0qcOdR5kqdFhchkgoUh2SHpShRymYJxQLHiFgsOCS0uTm4Toyzhb3dtiwcdCOohljOfXr5hz46n2eY=" class="source-link">[Source]</a>
-                </li>
-            </ul>
+        <div class="lg:col-span-3">
+            <div class="card bg-vm-card p-6 rounded-lg shadow-xl border border-vm-border">
+                <h2 class="text-2xl font-bold mb-4 text-vm-accent">6. Industry Vertical Radar (Korea Focus - 금융/공공/기업 IT)</h2>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">금융권: AI 시대, 레거시 인프라 혁신에 집중 투자:</span> 국내 금융권은 AI 기반의 초개인화/초자동화 혁신을 가속하고 있으나, 성공적인 AI 구현을 위한 선행 조건으로 계정계/정보계를 포함한 IT 인프라 레거시 현대화에 절박하게 투자하고 있습니다. 특히 'AI 에이전트'가 2026년 핵심 키워드로 예상됩니다. (금융 고객 대상 VCF 기반 레거시 현대화 및 Private AI PoC 제안 필요)
+                        <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFuCOkjZMiwudjFZta5L-_aKMiInEH7jy9Vm136MdTT6eiPSieJod9rL0L7MLxpDtKdp56HjGcbqmbq0n-6VGmdoZB4MwHncYx28m-FnGT8shAc04HoidHCWGv-k3mM37qsWlOl2YGUFCGuwjQ2Zg==" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 17]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">공공/금융: 2026년 양자보안(PQC) 전환 로드맵 가속:</span> 한국 정부 및 고가치 데이터를 다루는 금융·공공기관들은 '지금 훔쳐서 나중에 푼다(HNDL)'와 같은 양자 위협에 대응하기 위해 2026년부터 양자내성암호(PQC)로의 PKI 인프라 전환 프로젝트를 단계적으로 착수할 예정입니다. (장기 프로젝트이므로, PQC 전환 계획 수립에 대한 선제적 기술 지원 전략 필요)
+                        <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGs1WIkigCxtsXRI9JV1eDn1AdOjazd1dbRghjfv-W8tWkvi7eia8zK9NUlTssR25L26Rj-enRDchMy4q7AVv582LLq5nIjBVZhD4vOmGj0ORVxg9-_3pmJBQ5q5UR7QVrBF1Bo0GT_2SdzHgEq4GOlHCL" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 16]</a>
+                    </li>
+                    <li class="p-3 bg-gray-700 rounded-md hover:bg-gray-600 transition duration-150">
+                        <span class="font-medium text-gray-200">SI 기업: 공공 ITO 및 금융 차세대 수주전 치열:</span> 2026년 새해 예산 집행과 함께 국내 SI 기업들은 한국은행 ITO 사업, 금융권 차세대 프로젝트 등 대형 수주전에 본격 돌입했으며, 조직 개편을 통해 AX(AI 전환) 및 클라우드 운영(Managed Service) 효율화에 집중하고 있습니다. (SI 파트너 대상 VCF 기반 AX 및 MSP 솔루션 지원 강화 필요)
+                        <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFAwdN5GuF2zGW5_I1HbIQNJBF2lqbB1WrMbgtiXWGZ5ef420FO9WA4HxZaarU2uBdQa6oZyMgfv34d2Q7qq7wmfQr4-9TUHopYFPchehErpgRsMmp4iV45QN6UYu1MCo-ZqRz3Bmb6XyT795eRtyLKlB8=" target="_blank" class="text-sm text-vm-blue hover:text-blue-400 ml-2">[Source: 7]</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <!-- Section 7: Security Alerts -->
-        <div class="card p-6 shadow-xl">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">🚨 Section 7: Security Alerts (VMSA/CVE)</h2>
-            <ul class="space-y-3">
-                <li class="border-l-2 border-red-600 pl-3">
-                    **[CRITICAL] VMSA-2025-0004: ESXi/Workstation Critical Zero-Day (CVSS 9.3).** CVE-2025-22224 (TOCTOU) 등 3건의 취약점이 ESXi 7.0/8.0 및 VCF 4.5.x/5.x에 영향. **공격자가 VM 내 관리자 권한을 이용하여 호스트의 VMX 프로세스 권한으로 코드 실행 가능.** **(CISA KEV List에 등록, 즉각적인 패치 적용 필수)**
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGWiYYeaIroin9FcOcz1-_W4W2qwt_jARmw_SMTuy8cKXw1aS7DsZjEOhYeASvRc7W7-KFfDnykWyhP4AkmVwucHLlhYXFIQMY9vYqZ4wOaIHqRFMROeKYBbfN3kf7WCpWurPrgTG4BeRVYwstEyWl-pncWhDG1s7PVWX8Yl8ZBQhFqFC3I2CXHWS3DyQiH7MreENFZLTIMH9EgWG7AmwEb7pmHXWmyQouWxhGgcq2Zw7v917oGMc=" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-red-600 pl-3">
-                    **[CRITICAL] VMSA-2025-0013: ESXi VMXNET3/PVSCSI 취약점 (CVSS 9.3).** CVE-2025-41238 (PVSCSI Heap-Overflow), CVE-2025-41237 (VMCI Integer-Underflow) 등이 포함되어 있으며, VM 내 관리자 권한 공격자가 호스트의 VMX 프로세스로 코드를 실행하여 샌드박스를 우회 가능.
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEbC1zf9rccvnmRjFq8oHBBLXtwj1LJHGqWJyvD47eFZwIos_3Dsc_iLtBG-MQYMU_ZKJCvygUcRcGqq0wuNIVWfc12dqNS2Cj1Ptl9FUX14yAfsjimVEZ5vqW4FjZTgr_LW_73sc5F7L5ejrHpkGPwkuNZX4gJlzSEMuimSkqQneHILxNfiWz1b6UOLMmdhAvMrcTBXy3GILpSAf8pryW4FzMhifu3vx7z" class="source-link">[Source]</a>
-                </li>
-                <li class="border-l-2 border-red-600 pl-3">
-                    **[IMPORTANT] VMSA-2025-0010: vCenter Server 인증 명령 실행 취약점 (CVSS 8.8).** CVE-2025-41225. 알람 생성/수정 및 스크립트 액션 실행 권한이 있는 악의적인 사용자가 vCenter Server에서 임의의 명령을 실행할 수 있음. **(vCenter 관리자 계정 권한 관리 및 패치 적용 필수)**
-                    <a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG9FJxwbsVY8PmyYDtHsb766d0rjX7qyy88Dh5IZOOKGkFfARl6C-yDJzGxVZDq151JD0_-qM7bmryWgjygHKmbasPEcabgKM9GiL2245niAZu2ieXloaRTqTVUIeNo2O6yDP1OCJXycY1EE25rZ7xY5B4RWsBVnqyAQranebSDJFb3hzMqkIdG5j1Od6hypTNRMi4nxyv19zj60WocDUF8nYzzJRPBQH9j" class="source-link">[Source]</a>
-                </li>
-            </ul>
-        </div>
-    </main>
+    </div>
 </body>
 </html>
