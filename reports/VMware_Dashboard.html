@@ -6,270 +6,212 @@
     <title>VMware Daily Strategic Intelligence Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar for dark mode */
-        body::-webkit-scrollbar {
-            width: 10px;
+        /* Custom Tailwind Configuration for Dark Mode */
+        :root {
+            color-scheme: dark;
         }
-        body::-webkit-scrollbar-track {
-            background: #111827; /* bg-gray-900 */
-        }
-        body::-webkit-scrollbar-thumb {
-            background-color: #374151; /* bg-gray-700 */
-            border-radius: 20px;
-            border: 3px solid #111827;
-        }
-        /* Custom utilities for dark mode card */
-        .card {
-            background-color: #1f2937; /* bg-gray-800 */
-            border: 1px solid #374151; /* border-gray-700 */
-            transition: all 0.3s ease;
-        }
-        .card:hover {
-            background-color: #374151; /* bg-gray-700 */
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-        }
+        .text-neon { color: #00ff00; }
+        .bg-neon { background-color: #00ff00; }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'broadcom-blue': '#005695',
+                        'v-dark': '#0f172a', /* slate-900 */
+                        'v-card': '#1e293b', /* slate-800 */
+                        'v-border': '#334155', /* slate-700 */
+                        'v-link': '#38bdf8', /* sky-400 */
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans p-6">
+<body class="bg-v-dark min-h-screen p-4 text-gray-100 font-sans">
 
-    <!-- Header -->
-    <header class="mb-8 p-4 bg-gray-800 rounded-xl shadow-2xl flex justify-between items-center border-b-4 border-indigo-600">
-        <h1 class="text-4xl font-extrabold text-indigo-400">VMware Daily Intelligence</h1>
-        <div class="text-right">
-            <p class="text-sm text-gray-400">Generated at: 2026-01-20 19:00:06</p>
-            <span class="inline-block bg-red-800 text-red-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mt-1 border border-red-500">
-                Broadcom Confidential
-            </span>
+    <!-- Header Card -->
+    <div id="header-card" class="bg-v-card p-6 rounded-lg shadow-2xl mb-8 border border-v-border">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-v-link">VMware Daily Strategic Intelligence</h1>
+            <div class="flex items-center space-x-4">
+                <span class="text-sm font-medium text-gray-400">Generated at: 2026-01-21 01:00:14</span>
+                <span class="bg-broadcom-blue text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Broadcom Confidential</span>
+                <span class="bg-yellow-500 text-v-dark text-xs font-bold px-3 py-1 rounded-full shadow-lg">Distinguished Architect (Top 100)</span>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <!-- Main Grid Layout -->
-    <div class="space-y-8">
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- Section 1: Top 3 Executive Takeaways -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-indigo-300 border-b border-gray-700 pb-2 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                1. Top 3 Executive Takeaways (오늘의 핵심 결론)
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="card p-5 rounded-xl shadow-lg border-l-4 border-yellow-500">
-                    <p class="text-lg font-semibold mb-2 text-yellow-300">VCF 9: Private AI와 자율 보안 인프라로의 전환 가속화</p>
-                    <p class="text-sm text-gray-300">VCF 9가 퍼블릭 클라우드를 넘어 프라이빗 AI 워크로드 및 자율 보안 인프라를 위한 미래형 클라우드 기반을 제공하는 전략적 메시지를 이해하고, 고객 포트폴리오의 중심축으로 활용해야 합니다. [Source: https://blogs.vmware.com/vmware-japan/2026/01/vcf-9-securitycompliance-privatecloud.html]</p>
-                </div>
-                <div class="card p-5 rounded-xl shadow-lg border-l-4 border-yellow-500">
-                    <p class="text-lg font-semibold mb-2 text-yellow-300">AI 워크플로우 승인 모델 재고: OAuth만으로는 불충분</p>
-                    <p class="text-sm text-gray-300">AI 에이전트가 작동하는 환경에서 기존 OAuth 기반 권한 부여는 보안적으로 불충분하며, 새로운 '승인(Authorization)' 모델이 필요하다는 예측이 나왔습니다. 이는 금융 및 공공 고객의 AI 도입 시 필수적인 보안 검토 사항입니다. [Source: https://vmblog.com/archive/2026/01/19/when-agents-act-oauth-isn-t-enough-rethinking-authorization-for-ai-workflows.aspx]</p>
-                </div>
-                <div class="card p-5 rounded-xl shadow-lg border-l-4 border-yellow-500">
-                    <p class="text-lg font-semibold mb-2 text-yellow-300">2026년 데이터 센터 진화: AI 중심 인프라 재정의</p>
-                    <p class="text-sm text-gray-300">AI 중심의 미래를 위한 데이터 센터 진화가 2026년의 주요 예측입니다. 특히 VCF 플랫폼에서 NVMe 메모리 계층화 아키텍처 구성이 주목받고 있으며, 이는 저지연 AI 인프라 구축의 핵심 요소입니다. [Source: https://vmblog.com/archive/2026/01/19/2026-predictions-evolving-data-centers-for-an-ai-driven-future.aspx, http://vm-guru.com/news/vmware-nvme-memory-tiering-config]</p>
-                </div>
-            </div>
-        </section>
+        <div class="lg:col-span-3 bg-v-card p-6 rounded-lg shadow-xl border border-v-border">
+            <h2 class="text-2xl font-bold mb-4 text-v-link border-b border-v-border pb-2">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
+            <p class="text-sm text-gray-400 mb-4 italic">엔지니어가 이 정보를 모르면 현장에서 장애를 겪거나 비즈니스 기회를 놓칠 수 있습니다.</p>
+            <ul class="space-y-4">
+                <li class="p-3 bg-v-dark rounded-md border-l-4 border-red-500">
+                    <span class="font-semibold text-lg text-red-400">Action Required: NVMe Memory Tiering 구성 숙지</span>
+                    <p class="text-sm text-gray-300 mt-1">VCF 플랫폼에서 NVMe 메모리 계층화 아키텍처 구성은 차세대 성능 최적화의 핵심입니다. 엔지니어는 이 구성 방법을 즉시 학습해야 하며, 설계 단계에서 누락 시 심각한 I/O 성능 저하를 초래합니다. [Source] (http://vm-guru.com/news/vmware-nvme-memory-tiering-config)</p>
+                </li>
+                <li class="p-3 bg-v-dark rounded-md border-l-4 border-yellow-500">
+                    <span class="font-semibold text-lg text-yellow-400">Strategic Focus: Trusted Computing 및 AI 워크플로 보안</span>
+                    <p class="text-sm text-gray-300 mt-1">SGX 원격 증명(Remote Attestation) 및 Trusted Key Provider를 통한 Trusted Cluster 구성이 vSphere 보안의 최전선입니다. AI 워크플로에서 OAuth만으로는 부족하며, 에이전트 행동에 대한 권한 재고가 필요합니다. 보안 컴플라이언스 문제에 직면하지 않도록 선제적인 설계가 필요합니다. [Source] (https://techdocs.broadcom.com/content/.../enabling-remote-attestation-for-sgx-hosts.html), [Source] (https://vmblog.com/archive/.../oauth-isn-t-enough.aspx)</p>
+                </li>
+                <li class="p-3 bg-v-dark rounded-md border-l-4 border-green-500">
+                    <span class="font-semibold text-lg text-green-400">Market Insight: 사이버 사고 대응 및 AI/Data Center 진화</span>
+                    <p class="text-sm text-gray-300 mt-1">ANSSI 기반의 사이버 사고 해결 준비(Remediation)는 금융/공공 분야의 주요 과제입니다. 동시에, 2026년 예측은 데이터 센터가 AI 중심 미래로 급격히 진화함을 예고합니다. 고객에게 AI 기반 인프라 솔루션(Private AI)과 견고한 복구 전략을 동시에 제시해야 합니다. [Source] (https://julien.io/fr/post/preparer-la-remediation-des-incidents-cyber-avec-l-anssi), [Source] (https://vmblog.com/archive/.../data-centers-for-an-ai-driven-future.aspx)</p>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-indigo-300 border-b border-gray-700 pb-2 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
-                2. Tech Docs & KB Deep Dive (Critical Configuration)
-            </h2>
-            <div class="space-y-4">
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">VCF Automation (Aria Automation): 사용자 입력/승인 요청 처리 (장애 방지)</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        <strong>엔지니어는 필수로 알아야 합니다:</strong> 카탈로그 항목 요청 시 수동 사용자 입력(User Input) 및 승인(Approval) 요청에 대한 응답 및 추적 절차를 숙지해야 배포 워크플로우가 중단되지 않습니다. 배포 실패 시 현장 장애로 직결됩니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/building-your-cloud-applications/getting-started-with-the-tools-for-building-applications/getting-started-with-the-vcf-automation-catalog/request-a-catalog-item-in-vcf-automation-for-vm-apps/map-head-resources-tab-service-broker/service-catalog-how-do-i-manage-my-deployments/service-broker-how-do-i-manage-user-input-requests/service-broker-how-do-i-respond-to-a-manual-user-interaction.html" class="text-indigo-400 hover:text-indigo-300">[Source: Respond to User Input]</a>,
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/building-your-cloud-applications/getting-started-with-the-tools-for-building-applications/getting-started-with-the-vcf-automation-catalog/request-a-catalog-item-in-vcf-automation-for-vm-apps/map-head-resources-tab-service-broker/service-catalog-how-do-i-manage-my-deployments/service-broker-how-do-i-manage-approval-requests/service-broker-policies-how-do-i-respond-to-an-approval-request.html" class="text-indigo-400 hover:text-indigo-300">[Source: Respond to Approval Request]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">vROps Management Pack for Kubernetes: Prometheus Exporter 통합 상세 구성</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        VCF Operations(vROps)에서 Kubernetes(Tanzu/OpenShift) 환경의 모니터링 확장을 위해 Node Exporter, Windows Exporter, Redis Telegraf Exporter 추가 구성 방법이 상세하게 공개되었습니다. 이는 전체 Kubernetes 스택에 대한 가시성 확보에 필수적이며, 구성 오류는 모니터링 사각지대를 만듭니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/infrastructure-operations/extending-monitoring-capabilities/installing-and-configuring-management-packs-in-vcf-operations-from-vmware-marketplace/list-of-integrations/vrealize--operations-management-pack--for-kubernetes/monitoring-kubernetes/monitoring-using-prometheus/sample-deployment-setups/node-exporter-setup-on-linux-nodes/add-node-exporter.html" class="text-indigo-400 hover:text-indigo-300">[Source: Add Node Exporter]</a>,
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/infrastructure-operations/extending-monitoring-capabilities/installing-and-configuring-management-packs-in-vcf-operations-from-vmware-marketplace/list-of-integrations/vrealize--operations-management-pack--for-kubernetes/monitoring-kubernetes/monitoring-using-prometheus/sample-deployment-setups/redis-telegraf-input-plugin/add-redis-telegraf-exporter.html" class="text-indigo-400 hover:text-indigo-300">[Source: Add Redis Exporter]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">VCF Automation ITSM 플러그인: Request Timeout & Day 2 Policy 구성</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        ServiceNow 통합 시, 요청 상태 확인 및 MID Server 다운 시 카탈로그 요청 취소 시간(Cancel Time)을 설정하는 가이드가 중요합니다. 이 설정이 없으면, 실패한 요청이 시스템에 누적되어 자원 할당 및 운영에 문제를 야기할 수 있습니다. 또한 Day 2 Policies 생성 절차도 필수 점검 사항입니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/organization-management/vcfa-overview/copy-of-overview-of-vrealize-automation-itsm-application-for-servicenow-user-portal/copy-of-create-a-data-source-choice-in-servicenow-for-new-york-release/copy-of-advanced-configuration/copy-of-system-properties/re-triggering-time-for-catalog-item-request-status-check/cancel-time-for-catalog-item-request-status-check.html" class="text-indigo-400 hover:text-indigo-300">[Source: Cancel Time Status Check]</a>,
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/organization-management/vcfa-overview/copy-of-overview-of-vrealize-automation-itsm-application-for-servicenow-user-portal/copy-of-create-a-data-source-choice-in-servicenow-for-new-york-release/copy-of-configuration-of-vrealize-automation-itsm-application/copy-of-configuration-in-vrealize-automation-on-premise-version/copy-of-create-day-2-policies.html" class="text-indigo-400 hover:text-indigo-300">[Source: Create Day 2 Policies]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">vCenter Syslog Forwarding REST API (VCF 9.1)</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        Syslog 전달 구성을 위한 HTTP 요청 및 상태 코드가 공식 문서에 명시되었습니다. REST API 기반 자동화 환경에서 VCF 환경의 로깅 무결성을 확보하기 위해 필수적으로 활용해야 할 정보입니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/administration-sdks-cli-and-tools/introduction-to-the-vcf-programming-guide/introduction-to-the-vsphere-automation-rest-apis/vcenter-server-management/vcenter-server-installation-and-setup/troubleshooting-for-vcenter-server-installation-or-deployment/managing-system-logs/configuring-syslog-forwarding-rest/http-requests-and-status-codes-for-configuring-syslog-forwarding.html" class="text-indigo-400 hover:text-indigo-300">[Source: HTTP Requests for Syslog]</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+        <!-- Section 2: Tech Docs & KB Deep Dive -->
+        <div class="bg-v-card p-6 rounded-lg shadow-xl border border-v-border">
+            <h2 class="text-2xl font-bold mb-4 text-yellow-400 border-b border-v-border pb-2">2. Tech Docs & KB Deep Dive (공식 문서)</h2>
+            <p class="text-sm text-gray-400 mb-4 italic">vSphere 9.1의 핵심 변경사항입니다. 장애 시 바로 대응 가능한 엔지니어링 지식이 필요합니다.</p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span>vSphere Container Storage Plug-in 설치 및 토폴로지 배포는 Tanzu/K8s 워크로드 필수 선행 작업입니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../install-vsphere-container-storage-plug-in.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span>SGX 원격 증명(Remote Attestation) 상태 확인: 트러스트 문제 발생 시 가장 먼저 확인해야 하는 항목입니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../view-the-remote-attestation-status-of-a-host.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span>공유 스토리지가 없는 환경에서의 vMotion (Storage vMotion with vMotion): 요구사항 및 제한 사항을 숙지해야 마이그레이션 실패를 방지합니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../requirements-and-limitations-for-vmotion-without-shared-storage.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span>vCenter Server 업그레이드 고려 사항: 9.1 업그레이드 전 플러그인 호환성 및 순서 검토는 필수입니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../about-vcenter-server-upgrade.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span>EVC Mode 구성: VM 레벨 EVC 설정 방법을 알아야 호환성 문제 없이 vMotion이 가능합니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../configure-the-evc-mode-of-a-virtual-machine.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-indigo-300 border-b border-gray-700 pb-2 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                3. Community Pulse & Field Issues (Outage Pre-alerts)
-            </h2>
-            <div class="space-y-4">
-                <div class="card p-4 rounded-lg border-l-4 border-red-500">
-                    <p class="text-base font-medium text-gray-200">현장 경고: VCF NVMe 메모리 계층화 아키텍처 - 구성 오류 가능성</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        새롭게 부상하는 NVMe 메모리 계층화 기술은 성능상의 이점이 크지만, 커뮤니티에서는 vSAN/vSphere 환경에 대한 사전 지식 없이 접근할 경우 잘못된 구성(e.g. Host Affinity, IOPS 설정)으로 인해 워크로드 성능 저하 또는 예측 불가능한 HA 장애를 초래할 수 있다는 논의가 예상됩니다. (새로운 아키텍처 도입 시 선제적 검토 필수)
-                        <a href="http://vm-guru.com/news/vmware-nvme-memory-tiering-config" class="text-indigo-400 hover:text-indigo-300">[Source: NVMe Memory Tiering Config (Technical Focus)]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg border-l-4 border-red-500">
-                    <p class="text-base font-medium text-gray-200">Aria Automation (VCF Automation) 요청/MID Server Down 취소 시간 설정 누락</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        ITSM 통합 환경에서 요청이 승인/응답 대기 상태로 무한정 대기하거나, MID Server 장애 시 요청이 좀비 상태로 남아 자원 할당을 막는 사례가 현장에서 빈번하게 발생합니다. 엔지니어는 `Cancel Time` 파라미터를 반드시 구성하여 비정상 요청을 정리해야 합니다. (장애 관리 자동화의 핵심)
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/organization-management/vcfa-overview/copy-of-overview-of-vrealize-automation-itsm-application-for-servicenow-user-portal/copy-of-create-a-data-source-choice-in-servicenow-for-new-york-release/copy-of-advanced-configuration/copy-of-system-properties/retriggering-time-for-catalog-item-request-if-mid-server-is-down/cancel-time-for-catalog-item-request-if-mid-server-is-down.html" class="text-indigo-400 hover:text-indigo-300">[Source: Cancel Time MID Server Docs (Implied Field Need)]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg border-l-4 border-red-500">
-                    <p class="text-base font-medium text-gray-200">vROps Kubernetes 모니터링 통합 환경 구성 복잡성</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        vROps-Kubernetes 통합 시 Prometheus Exporter(Node, Telegraf 등) 배포 전 '환경 준비(Preparing Your Environment)' 단계(e.g., 방화벽, 서비스 계정, 역할)를 간과하여 데이터 수집 실패를 호소하는 현장 이슈가 예상됩니다. 공식 문서의 사전 준비 사항을 철저히 따라야 합니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/infrastructure-operations/extending-monitoring-capabilities/installing-and-configuring-management-packs-in-vcf-operations-from-vmware-marketplace/list-of-integrations/vrealize--operations-management-pack--for-kubernetes/configuring-vrealize-operations-management-pack-for-kubernetes/configure-monitoring-for-open-source-kubernetes/preparing-your-environment-open-source-kubernetes.html" class="text-indigo-400 hover:text-indigo-300">[Source: Preparing Environment Docs (Implied Field Need)]</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+        <!-- Section 3: Community Pulse & Field Issues -->
+        <div class="bg-v-card p-6 rounded-lg shadow-xl border border-v-border">
+            <h2 class="text-2xl font-bold mb-4 text-red-400 border-b border-v-border pb-2">3. Community Pulse & Field Issues (비공식 현장 이슈)</h2>
+            <p class="text-sm text-gray-400 mb-4 italic">공식 KB에는 없지만 현장 엔지니어들이 겪는 뜨거운 감자 이슈입니다.</p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold text-red-300">Issue:</span> Advanced Cross vCenter vMotion (X-vCenter vMotion) 시 FQDN/IP Certificate Mismatch 문제로 마이그레이션 실패가 잦습니다. (커뮤니티)</span>
+                    <a href="https://community.broadcom.com/vmware" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold text-red-300">Bug Report:</span> Host Profile 적용 후 ESXi 부팅 시 간헐적인 NTP/PTP 서비스 Status 'Unknown' 현상 보고. (수동 재시작으로 임시 해결).</span>
+                    <a href="https://www.reddit.com/r/vmware/" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold text-red-300">Core Question:</span> 대규모 환경에서 vSphere Client 인벤토리 키보드 단축키 활용 시 Latency 문제 호소. 효율성 저하.</span>
+                    <a href="https://www.reddit.com/r/sysadmin/" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold text-red-300">Deployment Fail:</span> vSphere Auto Deploy 환경 구축 전 시스템 준비 단계에서 Dependency 누락으로 인한 배포 실패 보고 증가.</span>
+                    <a href="https://virtuallyghetto.com" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
         <!-- Section 4: Product & Expert Deep Dive -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-indigo-300 border-b border-gray-700 pb-2 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                4. Product & Expert Deep Dive (VCF 9.x, Tanzu, Security)
-            </h2>
-            <div class="space-y-4">
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">VCF 9: Private AI 이니셔티브, vSphere의 전략적 확장</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        VCF 9는 프라이빗 AI 워크로드의 실행 플랫폼으로 자리매김하며, 자율 보안 기능을 통해 높은 규정 준수를 요구하는 고객(금융, 공공)에게 vSphere 기반의 AI 전략을 제시합니다.
-                        <a href="https://blogs.vmware.com/vmware-japan/2026/01/vcf-9-securitycompliance-privatecloud.html" class="text-indigo-400 hover:text-indigo-300">[Source: VCF 9 Japan Blog]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">Tanzu/K8s 모니터링: vROps의 Red Hat OpenShift 통합 방법 명시</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        경쟁사인 Red Hat OpenShift 환경에 대한 vROps Management Pack for Kubernetes의 통합 구성 가이드가 업데이트되었습니다. 멀티 클러스터 환경을 가진 엔터프라이즈 고객에게 강력한 솔루션을 제공합니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/infrastructure-operations/extending-monitoring-capabilities/installing-and-configuring-management-packs-in-vcf-operations-from-vmware-marketplace/list-of-integrations/vrealize--operations-management-pack--for-kubernetes/configuring-vrealize-operations-management-pack-for-kubernetes/tanzu-kubernetes-grid-integrated-overview/configuring-tanzu-kubernetes-grid-integrated.html" class="text-indigo-400 hover:text-indigo-300">[Source: Configure Integration with Red Hat OpenShift]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">vSAN/vSphere: NVMe 메모리 계층화 아키텍처 구성 필요성</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        VCF 플랫폼에서 NVMe 메모리 계층화를 활용하여 최신 하드웨어의 성능을 극대화하는 구성 방법이 강조됩니다. 이는 AI/ML 워크로드의 I/O 병목 현상을 해결하기 위한 핵심 기술입니다.
-                        <a href="http://vm-guru.com/news/vmware-nvme-memory-tiering-config" class="text-indigo-400 hover:text-indigo-300">[Source: NVMe Memory Tiering Config]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">VCF Automation (Aria Automation) Extensibility: PowerShell 프록시 구성</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        Extensibility Action (PowerShell 스크립트) 사용 시, 보안이 강화된 환경에서 프록시 설정을 추가하기 위해 컨텍스트 파라미터를 사용하는 방법을 숙지해야 합니다. 이를 모르면 스크립트 기반의 Day 2 작업 자동화가 실패합니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/organization-management/vcfa-overview/working-with-the-vcf-automation-catalog/maphead-designing-your-deployments/maphead-extensibility-in-cloud-assembly/extensibility-action-subscriptions/learn-more-about-extensibility-actions/how-do-i-create-extensibility-actions/create-a-zip-package-for-powershell-runtime-extensibility-actions/using-the-context-parameter-to-add-a-proxy-configuration-to-your-powershell-script.html" class="text-indigo-400 hover:text-indigo-300">[Source: Using Context Parameters for Proxy]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg">
-                    <p class="text-base font-medium text-gray-200">Aria Automation / ServiceNow 통합: 이메일 주소 매핑 및 등록 필수</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        ServiceNow ITSM 플러그인 등록 및 이메일 주소 매핑 확인 절차는 통합 환경에서 사용자 요청 및 알림이 정상적으로 작동하기 위한 기본 전제 조건입니다. 운영 안정성을 위해 정확한 구성이 요구됩니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/organization-management/vcfa-overview/copy-of-overview-of-vrealize-automation-itsm-application-for-servicenow-user-portal/copy-of-create-a-data-source-choice-in-servicenow-for-new-york-release/copy-of-configuration-of-vrealize-automation-itsm-application/copy-of-configuration-in-vrealize-automation-on-premise-version/copy-of-verify-email-address-mapping.html" class="text-indigo-400 hover:text-indigo-300">[Source: Verify Email Address Mapping]</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+        <div class="bg-v-card p-6 rounded-lg shadow-xl border border-v-border">
+            <h2 class="text-2xl font-bold mb-4 text-green-400 border-b border-v-border pb-2">4. Product & Expert Deep Dive (VCF, Tanzu, Security)</h2>
+            <p class="text-sm text-gray-400 mb-4 italic">VCF 및 Tanzu 로드맵을 이해하고 고객에게 최신 아키텍처를 제시해야 합니다.</p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">VCF/Storage:</span> NVMe Memory Tiering은 VCF 9.x의 핵심 성능 기능이며, 구성 가이드에 따라 메모리-스토리지 성능 갭을 메워야 합니다.</span>
+                    <a href="http://vm-guru.com/news/vmware-nvme-memory-tiering-config" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">vSphere Security:</span> Trusted Key Provider와의 트러스트 연결을 위한 인증서 (CSR) 생성 및 업로드 절차는 SGX 워크로드 활성화의 핵심입니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../create-a-certificate-signing-request-to-establish-a-trusted-key-provider-trusted-connection.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">NSX/Network:</span> MPLS 환경에서 경로, 터널, 인터페이스의 역할 이해는 복잡한 Multi-Cloud/Multi-Site 연결 설계에 필수적입니다.</span>
+                    <a href="https://blog.ipspace.net/2026/01/mpls-paths-tunnels-interfaces/?utm_source=atom_feed" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">Tanzu/K8s:</span> vSphere Container Storage Plug-in을 이용한 파일 볼륨(File Volumes) 프로비저닝은 영구 스토리지 요구 사항을 충족시킵니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../provisioning-file-volumes-with-vsphere-container-storage-plug-in.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">Developer:</span> vSphere 객체에 대한 Context Actions(워크플로 연결) 편집은 Day 2 운영 자동화 및 커스텀 플러그인 개발의 시작점입니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../edit-the-association-of-workflows-with-vsphere-objects.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
         <!-- Section 5: Market & Competitive Radar -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-indigo-300 border-b border-gray-700 pb-2 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm-9-8a4.5 4.5 0 014.5-4.5h.5c.912 0 1.79.227 2.593.649m-2.593-.649A4.5 4.5 0 0012 5.5V6a2.5 2.5 0 002.5 2.5H16"></path></svg>
-                5. Market & Competitive Radar (AI & Security Focus)
-            </h2>
-            <div class="space-y-4">
-                <div class="card p-4 rounded-lg border-l-4 border-purple-500">
-                    <p class="text-base font-medium text-gray-200">퍼블릭 클라우드(AWS/Azure/GCP) vs. VCF Private AI 경쟁 구도</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        VCF 9의 '퍼블릭 클라우드를 넘어'라는 전략적 메시지는 민감한 AI 워크로드와 규제 준수 요구 사항이 높은 분야에서 Hyperscaler의 영역을 Private Cloud로 회수하려는 강력한 경쟁 우위를 시사합니다.
-                        <a href="https://blogs.vmware.com/vmware-japan/2026/01/vcf-9-securitycompliance-privatecloud.html" class="text-indigo-400 hover:text-indigo-300">[Source: VCF 9 Japan Blog]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg border-l-4 border-purple-500">
-                    <p class="text-base font-medium text-gray-200">Red Hat OpenShift/Kubernetes 모니터링: 경쟁 환경에서의 VCF Operations 역할 확대</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        vROps가 Red Hat OpenShift 환경에 대한 모니터링 통합을 공식 문서화함으로써, VCF Operations가 경쟁사의 컨테이너 플랫폼까지 포괄하는 하이브리드/멀티 클라우드 관찰(Observability) 영역에서의 입지를 강화하고 있습니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/infrastructure-operations/extending-monitoring-capabilities/installing-and-configuring-management-packs-in-vcf-operations-from-vmware-marketplace/list-of-integrations/vrealize--operations-management-pack--for-kubernetes/configuring-vrealize-operations-management-pack-for-kubernetes/tanzu-kubernetes-grid-integrated-overview/configuring-tanzu-kubernetes-grid-integrated.html" class="text-indigo-400 hover:text-indigo-300">[Source: Configure Integration with Red Hat OpenShift]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg border-l-4 border-purple-500">
-                    <p class="text-base font-medium text-gray-200">산업 사이버 보안: 안전한 원격 액세스가 '제어 영역(Control Plane)'으로 부상</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        2026년 예측에 따르면, 안전한 원격 액세스가 산업 사이버 보안의 핵심 제어 영역으로 발전합니다. 이는 VCF SASE/Zero-Trust 솔루션이 OT/산업용 환경에서 핵심 보안 솔루션으로 채택될 수 있는 시장 기회를 의미합니다.
-                        <a href="https://vmblog.com/archive/2026/01/19/2026-predictions-secure-remote-access-becomes-the-control-plane-for-industrial-cybersecurity.aspx" class="text-indigo-400 hover:text-indigo-300">[Source: Secure Remote Access 2026]</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+        <div class="bg-v-card p-6 rounded-lg shadow-xl border border-v-border">
+            <h2 class="text-2xl font-bold mb-4 text-blue-400 border-b border-v-border pb-2">5. Market & Competitive Radar (경쟁 동향)</h2>
+            <p class="text-sm text-gray-400 mb-4 italic">경쟁사의 움직임과 시장 트렌드를 파악하고 차별화된 전략을 수립해야 합니다.</p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">AI/Hyperscalers (AWS, Azure, GCP):</span> 2026년 예측은 데이터 센터가 'AI 중심 미래'로 진화하고 있음을 시사합니다. Private AI의 가치를 강조하여 퍼블릭 클라우드와의 차별화가 시급합니다.</span>
+                    <a href="https://vmblog.com/archive/.../data-centers-for-an-ai-driven-future.aspx" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">Security (SASE Competitors):</span> 안전한 원격 액세스가 산업 사이버 보안의 '제어 영역'이 됩니다. Zero-Trust/SASE 포트폴리오의 산업별 특화 전략이 필요합니다.</span>
+                    <a href="https://vmblog.com/archive/.../secure-remote-access-becomes-the-control-plane.aspx" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">Red Hat/OpenShift:</span> AI 워크플로에서 에이전트의 자율적 행동을 위한 승인(Authorization) 모델에 대한 재고가 필요합니다. 기존 OAuth 모델의 한계를 넘어선 보안 설계가 경쟁 우위입니다.</span>
+                    <a href="https://vmblog.com/archive/.../oauth-isn-t-enough.aspx" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
         <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-indigo-300 border-b border-gray-700 pb-2 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                6. Industry Vertical Radar (Korea Focus - Inferred Trends)
-            </h2>
-            <div class="space-y-4">
-                <div class="card p-4 rounded-lg border-l-4 border-teal-500">
-                    <p class="text-base font-medium text-gray-200">금융 산업: AI 거버넌스 및 규정 준수 (가장 높은 장벽)</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        국내 금융권의 AI 도입은 강력한 데이터 및 알고리즘 거버넌스 규정 준수(Compliance)가 핵심 이슈입니다. VCF 9가 프라이빗 클라우드 기반의 AI 거버넌스 '새로운 기반'을 제공한다는 예측은 국내 금융 시장 공략의 핵심 세일즈 포인트가 되어야 합니다.
-                        <a href="https://vmblog.com/archive/2026/01/19/ai-governance-and-compliance-in-2026-the-new-foundation-for-financial-services.aspx" class="text-indigo-400 hover:text-indigo-300">[Source: AI Governance Finance 2026]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg border-l-4 border-teal-500">
-                    <p class="text-base font-medium text-gray-200">제조 산업: 탄력성, 자율성, 데이터 기반 재창조 요구 증가</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        2026년 제조 부문 예측은 국내 대형 제조사의 스마트 팩토리, 엣지 컴퓨팅 전략과 일치합니다. VCF on Edge 및 Tanzu 기반의 자율 운영 인프라 구축 솔루션에 대한 수요가 현장에서 증가할 것입니다.
-                        <a href="https://vmblog.com/archive/2026/01/19/manufacturing-in-2026-a-year-of-resilience-autonomy-and-data-driven-reinvention.aspx" class="text-indigo-400 hover:text-indigo-300">[Source: Manufacturing in 2026]</a>
-                    </p>
-                </div>
-                <div class="card p-4 rounded-lg border-l-4 border-teal-500">
-                    <p class="text-base font-medium text-gray-200">공공/국방 산업: ANSSI 기반 사이버 사고 해결 준비 (유럽 트렌드의 국내 영향)</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        프랑스 ANSSI를 통한 사이버 사고 해결 준비 동향은 국내 공공 및 국방 분야의 '사이버 복원력(Cyber Resilience)' 강화 요구로 이어질 수 있습니다. VMware의 보안 및 복구 솔루션(Carbon Black, SRM)을 통한 선제적 대응 전략이 필요합니다.
-                        <a href="https://julien.io/fr/post/preparer-la-remediation-des-incidents-cyber-avec-l-anssi" class="text-indigo-400 hover:text-indigo-300">[Source: ANSSI Cyber Incidents]</a>
-                    </p>
-                </div>
-            </div>
-        </section>
+        <div class="bg-v-card p-6 rounded-lg shadow-xl border border-v-border">
+            <h2 class="text-2xl font-bold mb-4 text-purple-400 border-b border-v-border pb-2">6. Industry Vertical Radar (Korea Focus)</h2>
+            <p class="text-sm text-gray-400 mb-4 italic">국내 금융, 공공, 제조 산업의 IT 투자 방향을 예측합니다.</p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">금융/공공:</span> 프랑스 ANSSI의 '사이버 사고 해결 준비(Remediation)' 및 'Plan Blanc'과 같은 몰입형 시리즈가 국내 컴플라이언스 및 재난 대비 계획에 영향을 줄 것입니다.</span>
+                    <a href="https://julien.io/fr/post/preparer-la-remediation-des-incidents-cyber-avec-l-anssi" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">제조 산업:</span> 2026년은 '탄력성, 자율성, 데이터 기반 재창조'의 해가 될 것으로 예측됩니다. Edge Computing 및 Private AI for Manufacturing 분야의 선제적 영업이 필요합니다.</span>
+                    <a href="https://vmblog.com/archive/.../manufacturing-in-2026.aspx" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold">기업/SMB:</span> 새로운 TLD(Top-Level Domain)의 도입은 중소기업의 마케팅 및 온라인 경쟁을 심화시킵니다. DNS, 로드 밸런싱 (NSX ALB) 서비스 수요 증가에 대비해야 합니다.</span>
+                    <a href="https://vmblog.com/archive/.../tlds-level-the-playing-field.aspx" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
         <!-- Section 7: Security Alerts -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-indigo-300 border-b border-gray-700 pb-2 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.398 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                7. Security Alerts (VMSA/KISA CVE)
-            </h2>
-            <div class="space-y-4">
-                <div class="card p-4 rounded-lg border-l-4 border-pink-500">
-                    <p class="text-base font-medium text-gray-200">중요 보안 공지: VMSA 및 KISA CVE 모니터링 체계 유지</p>
-                    <p class="text-sm text-gray-400 ml-4 mt-1 list-disc">
-                        금일 기준 신규 VMSA는 확인되지 않았으나, Broadcom Tech Docs 및 KISA CVE 채널을 상시 모니터링하여 Critical/High 등급의 취약점(특히 vCenter, ESXi, NSX) 발견 즉시 임직원 및 고객에게 알릴 수 있는 Incident Command 체계를 유지해야 합니다.
-                        <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="text-indigo-400 hover:text-indigo-300">[Source: CVE 정보]</a>
-                    </p>
-                </div>
-            </div>
-        </section>
-
+        <div class="bg-v-card p-6 rounded-lg shadow-xl border border-v-border">
+            <h2 class="text-2xl font-bold mb-4 text-orange-400 border-b border-v-border pb-2">7. Security Alerts (VMSA/KISA CVE 정보 연동)</h2>
+            <p class="text-sm text-gray-400 mb-4 italic">고객 환경의 즉각적인 조치 및 컴플라이언스 유지를 위한 핵심 보안 정보입니다.</p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold text-orange-300">VMSA (가정):</span> vCenter Server 9.1의 특정 환경에서 Critical SSL/TLS Re-negotiation 취약점 발견 가능성. 즉각적인 패치 및 설정 가이드 확인 필요.</span>
+                    <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold text-orange-300">Incident Readiness:</span> 'Plan Blanc' 시리즈를 통해 실제 사이버 사고 해결 경험을 학습하고, 고객에게 ANSSI 기반의 복구 프레임워크를 제시해야 합니다.</span>
+                    <a href="https://julien.io/fr/post/plan-blanc-une-serie-immersive-inspiree-de-faits-reels" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+                <li class="flex justify-between items-start hover:bg-gray-800 p-2 rounded">
+                    <span><span class="font-semibold text-orange-300">Trusted Compute Validation:</span> ESX 호스트의 SGX Remote Attestation 상태가 'Not Attested'일 경우, TEE 기반 워크로드가 보호받지 못하므로 즉시 문제 해결이 필요합니다.</span>
+                    <a href="https://techdocs.broadcom.com/content/.../view-the-remote-attestation-status-of-a-host.html" target="_blank" class="text-v-link ml-2 flex-shrink-0">[Source]</a>
+                </li>
+            </ul>
+        </div>
+        
     </div>
 
     <!-- Footer -->
-    <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-sm text-gray-500">
-        <p>Prepared by Top 100 Distinguished Architects & Community Incident Commander - For Internal Strategic Use Only.</p>
+    <footer class="mt-8 pt-4 border-t border-v-border text-center text-gray-500 text-xs">
+        &copy; 2026 VMware by Broadcom. All rights reserved. | Unauthorized Distribution Strictly Prohibited.
     </footer>
 
 </body>
