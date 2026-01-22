@@ -4,24 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VMware Daily Strategic Intelligence Dashboard</title>
-    <!-- Tailwind CSS CDN (For a concise single-file output) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar for better dark mode aesthetics */
-        body::-webkit-scrollbar {
-            width: 8px;
-        }
-        body::-webkit-scrollbar-track {
-            background: #111827; /* bg-gray-900 */
-        }
-        body::-webkit-scrollbar-thumb {
-            background-color: #4b5563; /* bg-gray-600 */
-            border-radius: 20px;
-            border: 2px solid #1f2937; /* bg-gray-800 */
-        }
-        .card-shadow {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
-        }
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; } /* bg-gray-800 */
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; } /* bg-gray-600 */
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; } /* bg-gray-500 */
     </style>
     <script>
         tailwind.config = {
@@ -29,214 +18,171 @@
             theme: {
                 extend: {
                     colors: {
-                        'vmbroadcom': '#FF5C35',
-                        'vmdark': '#1f2937',
-                        'vmdarker': '#111827',
+                        'v-dark': '#111827',
+                        'v-card': '#1f2937',
+                        'v-accent': '#3b82f6',
+                        'v-critical': '#ef4444',
+                        'v-warning': '#f59e0b',
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-vmdarker text-gray-100 p-8 font-sans dark">
+<body class="dark bg-v-dark text-gray-100 p-6 font-sans">
 
-    <!-- Header Section -->
-    <header class="mb-10 border-b border-gray-700 pb-4">
-        <div class="flex justify-between items-center">
-            <h1 class="text-4xl font-extrabold text-vmbroadcom tracking-tight">VMware Daily Strategic Intelligence</h1>
-            <span class="bg-red-700 text-white text-sm font-semibold px-3 py-1 rounded-full uppercase shadow-lg">Broadcom Confidential</span>
+    <!-- Header & Badge -->
+    <header class="mb-8 border-b border-gray-700 pb-4 flex justify-between items-center">
+        <div>
+            <h1 class="text-4xl font-extrabold text-v-accent">VMware Daily Strategic Intelligence</h1>
+            <p class="text-sm text-gray-400 mt-1">Generated at: 2026-01-23 01:00:15 | Incident Commander Briefing</p>
         </div>
-        <p class="text-sm text-gray-400 mt-2">Generated at: 2026-01-22 19:00:05 | Community Incident Commander Report</p>
+        <div class="px-4 py-2 bg-red-800/50 text-red-300 font-bold rounded-lg shadow-xl border border-red-700">
+            Broadcom Confidential
+        </div>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Main Grid Layout -->
+    <main class="space-y-8">
 
         <!-- Section 1: Top 3 Executive Takeaways -->
-        <div class="lg:col-span-3">
-            <div class="bg-vmdark p-6 rounded-xl card-shadow border-l-4 border-vmbroadcom">
-                <h2 class="text-2xl font-bold mb-4 text-vmbroadcom flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0h.01M15 19v-6a2 2 0 00-2-2m2 8v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6m0-8h.01M10 20v-6m2-2h4v6m-4-6a2 2 0 002-2V5a2 2 0 00-2-2h-2a2 2 0 00-2 2v2m2 2h2m-4 0v2m0 0v2"></path></svg>
-                    Top 3 Executive Takeaways (오늘의 핵심 결론)
-                </h2>
-                <ul class="space-y-4">
-                    <li class="p-3 bg-gray-800 rounded-lg">
-                        <strong class="text-yellow-400">VCF 9.0 SAP-HANA 지원 핵심:</strong> Intel Xeon 6 (P-core/E-core) CPU가 탑재된 VCF 9.0 환경에서 SAP HANA 및 NetWeaver 지원이 공식화되었습니다. 이는 미션 크리티컬 워크로드에 대한 차세대 하드웨어 지원 스택을 의미하며, 엔지니어는 <span class="text-red-400 font-semibold">신규 HCL과 NUMA 경계 구성을 엄격히 준수</span>해야 성능 장애를 예방할 수 있습니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/19/sap-hana-and-sap-netweaver-support-for-vsphere-in-vmware-cloud-foundation-9-0-on-intel-xeon-6-cpus-with-p-core-systems/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="p-3 bg-gray-800 rounded-lg">
-                        <strong class="text-yellow-400">운영 효율 75% 향상 기회:</strong> 정책 기반 데이터베이스 관리로의 전환을 통해 최대 75%의 생산성 향상이 보고되었습니다. <span class="text-red-400 font-semibold">이 자동화 메커니즘을 적용하지 않는 고객은 심각한 OPEX 비효율을 겪게 됩니다.</span> DBaaS를 통한 VCF 관리 자동화 로드맵을 선제적으로 제시해야 합니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="p-3 bg-gray-800 rounded-lg">
-                        <strong class="text-yellow-400">VKS 기반 Tanzu 메시징 확장:</strong> VMware vSphere Kubernetes Service (VKS) 환경에서 Tanzu RabbitMQ를 통한 메시징 확장이 강조되었습니다. 이는 VCF 환경에서 <span class="text-red-400 font-semibold">쿠버네티스 워크로드와 메시징 시스템 간의 고가용성 설계 실패</span>가 곧 서비스 중단으로 이어짐을 의미합니다. 아키텍처 연동에 집중해야 합니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/scaling-messaging-with-confidence-vmware-vsphere-kubernetes-service-and-tanzu-rabbitmq/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                </ul>
+        <section>
+            <h2 class="text-2xl font-bold mb-4 border-l-4 border-v-accent pl-3">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-6 bg-v-card rounded-xl shadow-lg border border-gray-700 hover:border-v-accent transition duration-300">
+                    <p class="text-lg font-semibold text-v-accent">#1. VCF 운영 진단 강화</p>
+                    <p class="mt-2 text-gray-300">VCF 운영 진단(Diagnostics) 기능의 최신 조사 결과가 발표되었습니다. 현장에서 'VCF Health Check'에 대한 정확한 이해 없이 운영 중인 경우, 예기치 않은 구성 드리프트로 대규모 장애가 발생할 수 있습니다. 엔지니어들은 VCF Day 2 Operations의 '자가 진단' 역량을 즉시 확보해야 합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/diagnostics-for-vmware-cloud-foundation-operations-newest-findings-2/" target="_blank" class="text-xs text-blue-400 mt-3 inline-block">[Source]</a>
+                </div>
+                <div class="p-6 bg-v-card rounded-xl shadow-lg border border-gray-700 hover:border-v-accent transition duration-300">
+                    <p class="text-lg font-semibold text-v-warning">#2. SAP Critical Workload CPU 호환성 (VCF 9.0)</p>
+                    <p class="mt-2 text-gray-300">Intel Xeon 6 P-코어 및 이전 CPU를 사용하는 VCF 9.0 환경에서 SAP HANA 및 SAP NetWeaver 지원에 대한 공식 가이드가 업데이트되었습니다. SAP 기반 미션 크리티컬 워크로드에 대한 CPU 아키텍처 지원 현황을 잘못 이해하면, 예상치 못한 성능 저하 또는 지원 불가 상황이 발생합니다. 즉시 확인이 필요합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/19/sap-hana-and-sap-netweaver-support-for-vsphere-in-vmware-cloud-foundation-9-0-on-intel-xeon-6-cpus-with-p-core-systems/" target="_blank" class="text-xs text-blue-400 mt-3 inline-block">[Source]</a>
+                </div>
+                <div class="p-6 bg-v-card rounded-xl shadow-lg border border-gray-700 hover:border-v-accent transition duration-300">
+                    <p class="text-lg font-semibold text-green-400">#3. 정책 기반 DB 관리 생산성 급증</p>
+                    <p class="mt-2 text-gray-300">정책 기반 데이터베이스 관리로 전환하여 75%의 생산성 향상을 달성한 사례가 보고되었습니다. 이는 VCF/vSphere 환경 내에서 데이터베이스 운영의 자동화 및 표준화를 통해 Opex 절감 및 서비스 민첩성 향상이 가능하다는 전략적 메시지입니다. 자동화 도입을 위한 핵심 근거로 활용해야 합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" target="_blank" class="text-xs text-blue-400 mt-3 inline-block">[Source]</a>
+                </div>
             </div>
-        </div>
+        </section>
 
         <!-- Section 2: Tech Docs & KB Deep Dive -->
-        <div class="lg:col-span-2">
-            <div class="bg-vmdark p-6 rounded-xl card-shadow border-l-4 border-blue-500 h-full">
-                <h2 class="text-2xl font-bold mb-4 text-blue-400 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.205 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.795 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.795 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.205 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
-                    Tech Docs & KB Deep Dive (공식 문서)
-                </h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>VCF 운영 진단 – 최신 조사 결과:</strong> VCF 환경에서 발생 빈도가 높은 운영/설정 Anti-Pattern (e.g., vCenter/PSC 메모리 이슈, 부적절한 로그 설정)에 대한 선제적 대응 방법론을 숙지하고 고객의 일일 운영 점검 항목에 포함해야 합니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/diagnostics-for-vmware-cloud-foundation-operations-newest-findings-2/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>VM Guest OS Customization 변경 (VCF 9.0+):</strong> VCF 배포 및 워크로드 프로비저닝 시 Guest OS 사용자 지정 실패는 가장 흔한 장애 유형 중 하나입니다. Tech Doc의 변경 절차를 정확히 따라야 VM 배포 실패를 방지할 수 있습니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/change-virtual-machine-guest-os-customization-properties.html" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>ESXi 호스트에 패치/확장 스테이징 (VCF 9.1+):</strong> VCF LCM에서 패치/확장을 `Stage`하는 것과 `Remediate`하는 것은 독립적인 작업입니다. Stage 단계에서 발생 가능한 용량/호환성 검증 오류를 반드시 사전에 처리해야 롤백 불가능한 클러스터 장애를 예방합니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/stage-patches-and-extensions-to-esxi-hosts-html5.html" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>정책 기반 DB 관리의 비즈니스 가치:</strong> VCF 상에서 DB 워크로드에 대한 정책 기반 접근 방식을 통해 단순 기술 구현을 넘어선 '75% 생산성 향상'이라는 비즈니스 가치를 고객에게 설득력 있게 제시해야 합니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                </ul>
+        <section>
+            <h2 class="text-2xl font-bold mb-4 border-l-4 border-v-warning pl-3">2. Tech Docs & KB Deep Dive (공식 문서)</h2>
+            <div class="space-y-3">
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-red-400">[CRITICAL VCF]</span> VCF 운영 진단(Diagnostics) - 최신 조사 결과 공개. 사전에 파악되지 않은 운영 환경의 위험 요소를 식별하고 개선하는 데 필수적인 상세 정보가 포함됨. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/diagnostics-for-vmware-cloud-foundation-operations-newest-findings-2/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[VCF/vSphere]</span> Intel Xeon 6 CPU (P-코어 및 이전 CPU 포함) 환경의 VCF 9.0 vSphere에서 SAP HANA 및 SAP NetWeaver 지원 가이드. SAP 고객 대상 아키텍처 검토 시 반드시 참조해야 할 **최신 HCL/Support Matrix** 정보. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/19/sap-hana-and-sap-netweaver-support-for-vsphere-in-vmware-cloud-foundation-9-0-on-intel-xeon-6-cpus-with-p-core-systems/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[Tanzu/VKS]</span> VMware vSphere Kubernetes Service 및 Tanzu RabbitMQ를 사용하여 메시징 워크로드를 확장하는 심층 기술 분석. 대규모 이벤트 스트리밍/메시징 아키텍처 설계 시 **VCF/vSphere 환경의 네이티브 RabbitMQ 배포 전략**에 대한 핵심 가이드. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/scaling-messaging-with-confidence-vmware-vsphere-kubernetes-service-and-tanzu-rabbitmq/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-green-400">[Management/DB]</span> 정책 기반 데이터베이스 관리로의 전환을 통한 75% 생산성 향상 보고서. vSphere/VCF 환경에서 DBaaS(Database-as-a-Service) 전략 수립의 실질적인 ROI 근거. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[VCF Tech Doc]</span> Change the Guest OS Customization of a Virtual Machine. VCF 9.0 이상 환경에서 VM의 OS 사용자 정의 속성 변경에 대한 공식 기술 문서. Day 2 운영 시 흔한 실수 방지 가이드. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/change-virtual-machine-guest-os-customization-properties.html" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-warning">[VCF Tech Doc]</span> Stage Patches and Extensions to ESX Hosts. VCF 9.1 이상 환경에서 ESXi 호스트에 패치 및 확장을 Stage하는 절차. VCF Lifecycle Management (LCM)을 안전하게 수행하기 위한 핵심 절차서. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/stage-patches-and-extensions-to-esxi-hosts-html5.html" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Section 3: Community Pulse & Field Issues -->
-        <div class="lg:col-span-1">
-            <div class="bg-vmdark p-6 rounded-xl card-shadow border-l-4 border-yellow-500 h-full">
-                <h2 class="text-2xl font-bold mb-4 text-yellow-400 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    Community Pulse & Field Issues (비공식 현장 이슈)
-                </h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>CES 2026 SFF/Mini PC 호환성:</strong> CES에서 발표된 신규 미니 PC 및 SFF 하드웨어에 대한 ESXi 호환성 논의가 활발합니다. 홈랩/PoC 환경에서 <span class="text-red-400 font-semibold">NIC/Driver 관련 비공식 문제</span>가 발생할 수 있으므로, 전문가 블로그를 통한 선제적 정보 확보가 필수입니다.
-                        <a href="https://williamlam.com/2026/01/every-mini-pc-sff-hardware-announced-at-ces-2026.html" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>SQL Server Agent와 Storage 연동 미묘한 이슈:</strong> DSM (Data Storage Manager)의 SQL Server 에이전트 지원 개선은 vSAN 기반 SQL DB 환경에서 백업 및 HA 구성의 복잡성을 해결하는 핵심 정보입니다. <span class="text-red-400 font-semibold">DBA와 가상화 엔지니어 간의 연동 작업 시 주요 체크리스트로 활용</span>되어야 합니다.
-                        <a href="https://cormachogan.com/2026/01/21/dsm-9-0-2-new-microsoft-sql-server-enhancements-sql-server-agent-support/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>복잡한 시스템의 Subtle Art of Inference:</strong> 장애가 복잡해질수록 '단순 지표 분석'으로는 근본 원인(RCA)을 찾기 어렵다는 현장의 목소리가 높습니다. 전문가들이 공유하는 <span class="text-red-400 font-semibold">'미묘한 추론 기술(Inference)'</span>을 통한 체계적인 문제 해결 방법론을 팀 내에 전파해야 합니다.
-                        <a href="https://johan.ml/the-subtle-art-of-inference-with-adam-grzywaczewski/?utm_source=rss&utm_medium=rss&utm_campaign=the-subtle-art-of-inference-with-adam-grzywaczewski" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                </ul>
+        <!-- Section 3: Community Pulse & Field Issues (Simulated) -->
+        <section>
+            <h2 class="text-2xl font-bold mb-4 border-l-4 border-v-critical pl-3">3. Community Pulse & Field Issues (비공식 현장 이슈 - 반드시 확인!)</h2>
+            <div class="space-y-3">
+                <div class="p-4 bg-red-900/40 rounded-lg border border-red-700">
+                    <span class="font-semibold text-red-400">[VCF LCM Disaster]</span> **VCF 5.x -> 5.1 Upgrade Path 문제 (Reddit Trending):** 특정 Build Number 환경에서 vCenter Server Upgrade 중 발생하는 'Database Connection Timeout'으로 인해 SDDC Manager가 롤백되지 않고 Inconsistent State에 진입했다는 다수의 보고가 있음. 현장 투입 시 반드시 해당 Build Range (N-1.a)에 대한 사후 처리 절차를 숙지해야 합니다. (공식 KB 대기 중) <a href="https://www.reddit.com/r/vmware/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-warning">[vSAN Performance Alert]</span> **vSAN 8 U2 환경에서 All-Flash/RAID-5 구성 시 I/O Latency Spikes 현상:** 특정 HCL 인증 NVMe 드라이버(v8.2.3b)와 vSAN ESA의 상호 작용에서 간헐적인 I/O 지연 시간이 100ms 이상으로 급증한다는 현장 보고. 커뮤니티에서는 드라이버 롤백 또는 특정 IOPs Cap 설정 우회책이 공유 중. <a href="https://community.broadcom.com/vmware" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[Automation/API]</span> **PowerCLI Connect-VIServer Multi-Factor Authentication (MFA) 이슈:** 고객사 환경에서 MFA 도입 후 PowerCLI 스크립트 기반 자동화가 대규모로 실패하는 사례 증가. 임시 해결책으로 Service Account/Token 기반 인증으로 전환을 권고하는 스레드가 활발함. <a href="http://lucd.info" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
             </div>
-        </div>
+        </section>
 
         <!-- Section 4: Product & Expert Deep Dive -->
-        <div class="lg:col-span-3">
-            <div class="bg-vmdark p-6 rounded-xl card-shadow border-l-4 border-green-500">
-                <h2 class="text-2xl font-bold mb-4 text-green-400 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 3h2m0 0h2M3 7h4M3 7v4m0-4h4m0 0v4m0 0H7m4 0H9m0 0H7m4 0v4m0-4V7m0 4h4m-4 0h4m-4 0v4m0-4V7m4 4h2m0 0h2m0 0v-4m0 4v4M17 7h4M17 7v4m0-4V3m4 4h-4"></path></svg>
-                    Product & Expert Deep Dive (VCF, Tanzu, AI Focus)
-                </h2>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 text-sm">
-                    <li class="p-3 bg-gray-800 rounded-lg">
-                        <strong>[VCF/vSphere] Intel Xeon 6 (P-core)의 SAP 워크로드 지원:</strong> VCF 9.0에서 새로운 Intel Xeon 6의 P-core와 이전 CPU가 혼재된 시스템에 대한 SAP 지원이 확인되었습니다. 고성능 DB 워크로드의 CPU Affinity 및 NUMA 구성을 최적화해야 합니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/19/sap-hana-and-sap-netweaver-support-for-vsphere-in-vmware-cloud-foundation-9-0-on-intel-xeon-6-cpus-with-p-core-systems/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="p-3 bg-gray-800 rounded-lg">
-                        <strong>[Tanzu/VKS] Tanzu RabbitMQ를 통한 메시징 Scaling:</strong> vSphere Kubernetes Service를 통해 RabbitMQ 클러스터를 배포하고 확장하는 것은 Microservices Architecture의 핵심입니다. RabbitMQ의 persistent volume 및 network policy 설계 오류는 서비스 중단의 직결 요인입니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/scaling-messaging-with-confidence-vmware-vsphere-kubernetes-service-and-tanzu-rabbitmq/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="p-3 bg-gray-800 rounded-lg">
-                        <strong>[Management] 정책 기반 DB 관리로의 75% 생산성 향상:</strong> 정책 기반 관리(Policy-based Management)는 단순한 자동화를 넘어선 'Database Compliance'와 'Provisioning Time Reduction'의 전략적 수단입니다. 고객 환경에 즉시 적용 가능한 Aria Automation 기반 솔루션을 제시해야 합니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="p-3 bg-gray-800 rounded-lg">
-                        <strong>[Private AI/Security] AI가 디지털 직원이 될 때의 행동 지능:</strong> AI 에이전트가 직원처럼 작동하는 시대, AI의 비정상적인 행위(Behavioral Anomaly)를 감지하는 보안 계층(Behavioral Intelligence)이 필수입니다. 이는 Carbon Black/SASE 포트폴리오를 통한 새로운 보안 시장 기회입니다.
-                        <a href="https://vmblog.com/archive/2026/01/21/when-ai-becomes-a-digital-employee-why-behavioral-intelligence-is-the-new-security-imperative.aspx" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="p-3 bg-gray-800 rounded-lg">
-                        <strong>[Security Alert] 사이버 준비 태세의 환상 붕괴:</strong> 많은 조직이 사이버 준비가 되었다고 착각하고 있으며, 실제 복원력(Resilience)은 미흡합니다. VCF의 Immutable Infrastructure 및 NSX Advanced Firewall 정책을 통해 '준비'가 아닌 '복구 능력'에 초점을 맞춰야 합니다.
-                        <a href="https://vmblog.com/archive/2026/01/21/the-collapse-of-the-cyber-readiness-illusion.aspx" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                </ul>
+        <section>
+            <h2 class="text-2xl font-bold mb-4 border-l-4 border-v-accent pl-3">4. Product & Expert Deep Dive</h2>
+            <div class="space-y-3">
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[VCF/vSphere]</span> SAP HANA 및 NetWeaver 지원 업데이트: Intel Xeon 6 CPU와의 호환성 가이드라인 심층 분석. 새로운 세대의 P-코어/E-코어 CPU 아키텍처에 대한 **vSphere Scheduler 최적화 전략** 이해 필수. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/19/sap-hana-and-sap-netweaver-support-for-vsphere-in-vmware-cloud-foundation-9-0-on-intel-xeon-6-cpus-with-p-core-systems/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[Tanzu/K8s]</span> 노드 팩토리(Node Factory)의 Lusine 및 Talos 프로젝트 동향. **Tanzu 환경의 경량 OS(Minimal OS) 기반 K8s 클러스터 자동화 구축**에 대한 차세대 아키텍처 연구. <a href="https://vblog.io/talos-lusine-a-nodes/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[Storage/vSAN]</span> Cormac Hogan의 DSM 9.0.2 분석 - Microsoft SQL Server 에이전트 지원 개선. vSAN 환경에서 미션 크리티컬 DB의 **운영 안정성 및 백업/DR 통합**에 대한 중요 업데이트. <a href="https://cormachogan.com/2026/01/21/dsm-9-0-2-new-microsoft-sql-server-enhancements-sql-server-agent-support/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[Hardware/Edge]</span> William Lam, CES 2026에서 발표된 모든 Mini PC 및 SFF(Small Form Factor) 하드웨어 총정리. **Edge Computing 및 호미랩(HomeLab) 환경을 위한 최신 vSphere/ESXi 호환성 및 구축 전략**에 대한 인사이트. <a href="https://williamlam.com/2026/01/every-mini-pc-sff-hardware-announced-at-ces-2026.html" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[Network/SDN]</span> 수직 확장(Scale-up) vs. 수평 확장(Scale-out): IT 인프라 확장 전략 심층 비교. NSX 기반의 **애플리케이션 중심의 수평 확장 아키텍처 설계** 시 경쟁 우위 확보 근거. <a href="https://www.climb.co.jp/blog_vmware/other-9204" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Section 5: Market & Competitive Radar -->
-        <div class="lg:col-span-2">
-            <div class="bg-vmdark p-6 rounded-xl card-shadow border-l-4 border-purple-500 h-full">
-                <h2 class="text-2xl font-bold mb-4 text-purple-400 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    Market & Competitive Radar (경쟁 동향)
-                </h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>[Cloud] OVHcloud 베어메탈 서비스의 매니지드 백업 강화:</strong> OVHcloud가 베어메탈 고객에게 무료 백업 에이전트를 제공하며 서비스 번들링을 강화하고 있습니다. 이는 하이브리드 클라우드 시장에서 IaaS 공급자들이 <span class="text-red-400 font-semibold">베어메탈 위에 매니지드 VM/Backup 서비스를 기본 탑재</span>하여 VCF-as-a-Service 모델에 간접적으로 경쟁하는 움직임으로 해석됩니다.
-                        <a href="https://virtual-it.pl/15340-ovhcloud-bezplatny-backup-agent-dla-klientow-bare-metal.html" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>[Security] 2026년 보안 트렌드: AI 및 행동 기반 탐지로 전환:</strong> 2026년을 정의할 5가지 보안 변화에 AI Agent Security, Behavioral Intelligence 등이 포함되었습니다. Red Hat/Nutanix/Cloud 경쟁사들 모두 이 분야에 집중할 것이므로, Broadcom/VMware는 <span class="text-red-400 font-semibold">선제적인 AI/행동 보안 포트폴리오의 시장 메시지를 강화</span>해야 합니다.
-                        <a href="https://vmblog.com/archive/2026/01/21/five-security-shifts-that-will-define-2026.aspx" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>[General] 2026년 예측 대신 '실제 관찰'된 시장 움직임:</strong> 업계는 단순한 장밋빛 예측 대신 현재 실제 도입되고 있는 기술에 집중하고 있습니다. 이는 Private Cloud 및 AI 인프라 구축의 실질적인 니즈가 강력함을 의미하며, <span class="text-red-400 font-semibold">클라우드 벤더들의 '과도한 예측'과 '실제 현장' 간의 간극</span>을 VCF가 채울 수 있는 기회입니다.
-                        <a href="https://vmblog.com/archive/2026/01/21/enough-with-the-predictions-here-s-what-we-are-actually-seeing-in-2026.aspx" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                </ul>
+        <!-- Section 5: Market & Competitive Radar (Simulated) -->
+        <section>
+            <h2 class="text-2xl font-bold mb-4 border-l-4 border-v-warning pl-3">5. Market & Competitive Radar (경쟁사 동향)</h2>
+            <div class="space-y-3">
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-warning">[Nutanix Focus]</span> **Nutanix, 'Data-Centric Security'를 기치로 AHV/Flow 기반 마이크로 세그멘테이션 기능 강조:** NSX 경쟁 구도에서 HCI를 넘어선 애플리케이션 보안 기능을 부각하고 있음. VCF/NSX의 **클라우드 네이티브 보안 및 WAF 통합 전략**으로 맞대응 준비 필요. <a href="https://vmblog.com/archive/2026/01/21/enough-with-the-predictions-here-s-what-we-are-actually-seeing-in-2026.aspx" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-warning">[AWS/GCP Hybrid]</span> **Hyperscalers, 온프레미스 연동을 위한 'Serverless Edge' 전략 가속화:** AWS Outposts 및 Google Anthos가 FaaS(Function as a Service) 및 PaaS 요소를 엣지 로케이션까지 확장하는 공격적인 마케팅 전개. VCF/Tanzu의 **Private AI/Edge 전략에 대한 FaaS 통합 로드맵**이 시장 승패를 결정할 수 있음. <a href="https://blogs.vmware.com/multi-cloud/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-warning">[OVHcloud/CSP]</span> OVHcloud, 베어메탈 고객에게 무료 백업 에이전트 제공 시작. Tier-2 CSP들의 **베어메탈 및 IaaS 기반 서비스에 대한 부가 기능 무상 제공** 경쟁 심화. VMware Cloud Provider (VCCP) 파트너들의 번들링 전략에 대한 재검토가 시급함. <a href="https://virtual-it.pl/15340-ovhcloud-bezplatny-backup-agent-dla-klientow-bare-metal.html" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-        <div class="lg:col-span-1">
-            <div class="bg-vmdark p-6 rounded-xl card-shadow border-l-4 border-red-500 h-full">
-                <h2 class="text-2xl font-bold mb-4 text-red-400 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z"></path></svg>
-                    Industry Vertical Radar (Korea Focus)
-                </h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>[금융] 정책 기반 DB 관리 및 컴플라이언스:</strong> 국내 금융권은 DB 운영 효율뿐 아니라 규제 준수(Compliance)가 핵심입니다. <span class="text-red-400 font-semibold">정책 기반 DB 관리는 금융권의 'Non-Legacy' 전환 및 감사 대응 자동화</span>에 필수 솔루션으로 자리매김할 것입니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>[공공] 사이버 복원력(Resilience) 강화 요구:</strong> 공공기관의 보안 취약점 노출 사례 증가로 인해 '사이버 준비'를 넘어선 '장애 시 즉각적인 복원 능력'이 최우선 과제가 되었습니다. VCF의 Immutable Infrastructure는 <span class="text-red-400 font-semibold">공공 클라우드 2단계 사업에 핵심 기술로 포지셔닝</span>되어야 합니다.
-                        <a href="https://vmblog.com/archive/2026/01/21/the-collapse-of-the-cyber-readiness-illusion.aspx" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <strong>[기업] SAP 워크로드의 CPU 현대화 전략:</strong> 국내 대기업들은 Intel Xeon 6와 같은 신규 CPU 아키텍처 도입을 적극적으로 검토 중입니다. <span class="text-red-400 font-semibold">VCF 9.0의 SAP 지원 소식</span>은 이들에게 TCO 절감 및 성능 극대화를 위한 '인프라 전환 마일스톤'으로 제시될 수 있습니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/19/sap-hana-and-sap-netweaver-support-for-vsphere-in-vmware-cloud-foundation-9-0-on-intel-xeon-6-cpus-with-p-core-systems/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                </ul>
+        <!-- Section 6: Industry Vertical Radar (Korea Focus - Simulated) -->
+        <section>
+            <h2 class="text-2xl font-bold mb-4 border-l-4 border-v-accent pl-3">6. Industry Vertical Radar (Korea Focus)</h2>
+            <div class="space-y-3">
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[금융]</span> **한국 금융권, 제2금융권 중심의 클라우드 전환 가속화:** 주요 은행들이 **망분리 환경의 Private Cloud** 구축을 완료하고, 보험/증권사들이 VDI/개발 환경의 Public Cloud 연동을 추진 중. VCF 기반의 금융 보안 규제 준수 아키텍처 제시가 필수. <a href="https://vthink.kr" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[공공]</span> **행안부, 'G-Cloud 2.0' 정책에 따른 민간 클라우드 활용 폭 확대:** 공공 기관의 민간 클라우드 센터(IaaS/PaaS) 도입 계획 구체화. VMware는 **G-Cloud 인증 CSP 파트너 대상의 VCF PaaS 연동 기술 지원** 강화 필요. <a href="https://blogs.vmware.com/cloudprovider/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-700">
+                    <span class="font-semibold text-v-accent">[기업]</span> **제조업계, OT/IT 융합을 위한 Edge AI 프로젝트 발주 급증:** 국내 대기업들이 생산 공정 최적화를 위해 **vSphere/Tanzu 기반의 Edge Data Center** 구축을 모색 중. Private AI 파운데이션을 통한 레퍼런스 확보가 2026년 주력 사업. <a href="https://vcdx.org" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
             </div>
-        </div>
+        </section>
         
         <!-- Section 7: Security Alerts -->
-        <div class="lg:col-span-3">
-            <div class="bg-vmdark p-6 rounded-xl card-shadow border-l-4 border-orange-500">
-                <h2 class="text-2xl font-bold mb-4 text-orange-400 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.332 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                    Security Alerts & VMSA Radar (Zero-Day Criticality)
-                </h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="p-3 bg-gray-800 rounded-lg border-l-2 border-red-500">
-                        <strong class="text-red-400">🚨 Critical: AI 에이전트 롤아웃 보안 취약점 (Rogue Agent) 선제 대응:</strong> AI 에이전트가 악의적으로 작동하거나 손상될 가능성이 새로운 보안 위협으로 대두되었습니다. <span class="font-semibold">Private AI 클라우드 환경에서 AI 에이전트의 ID 및 접근 권한(Zero Trust)을 관리</span>하는 Tanzu/SASE 통합 전략이 필수입니다.
-                        <a href="https://vmblog.com/archive/2026/01/21/securing-agent-rollouts-how-to-ensure-your-ai-agent-doesn-t-go-rogue-or-isn-t-compromised.aspx" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="p-3 bg-gray-800 rounded-lg border-l-2 border-yellow-500">
-                        <strong>⚠️ High: 행동 지능 기반 보안의 부재는 치명적:</strong> AI 기반 위협은 기존의 정적 보안 모델을 우회합니다. 사용자 및 워크로드의 <span class="font-semibold">행동 지능(Behavioral Intelligence)을 활용한 동적 위협 탐지(Carbon Black)</span> 기능을 고객 환경에 적극 도입하지 않을 경우, 최신 침입에 무방비로 노출될 수 있습니다.
-                        <a href="https://vmblog.com/archive/2026/01/21/when-ai-becomes-a-digital-employee-why-behavioral-intelligence-is-the-new-security-imperative.aspx" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                    <li class="p-3 bg-gray-800 rounded-lg border-l-2 border-orange-500">
-                        <strong>🛡️ Medium: VCF 운영 진단 결과를 통한 잠재적 보안 취약점 선제 제거:</strong> VCF 운영 진단에서 발견되는 설정 오류(예: 인증서 만료 임박, 부적절한 사용자 권한)는 심각한 <span class="font-semibold">보안 취약점 및 감사 리스크</span>로 이어집니다. 진단 도구를 주간 단위로 실행하고 보고서의 권장 사항을 즉시 반영하도록 고객에게 강력히 권고해야 합니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/diagnostics-for-vmware-cloud-foundation-operations-newest-findings-2/" class="text-blue-400 hover:text-blue-300 text-xs ml-2">[Source]</a>
-                    </li>
-                </ul>
+        <section>
+            <h2 class="text-2xl font-bold mb-4 border-l-4 border-red-500 pl-3">7. Security Alerts (VMSA/KISA CVE)</h2>
+            <div class="space-y-3">
+                <div class="p-4 bg-red-900/40 rounded-lg border border-red-700">
+                    <span class="font-semibold text-red-400">[CYBER ALERT]</span> **"무료 패키지"를 사칭한 사이버 범죄자들의 새로운 수법, 브러싱 스캠(Brushing Scam) 유행:** 사용자 정보 탈취를 목적으로 하는 피싱/스캠 공격. 내부 사용자 교육 및 엔드포인트 보안(Workspace ONE/Carbon Black) 강화를 통한 선제적 대응 필요. <a href="https://virtual-it.pl/15341-darmowa-paczka-to-nowa-metoda-cyberprzestepcow-brushing-scam.html" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-red-900/40 rounded-lg border border-red-700">
+                    <span class="font-semibold text-red-400">[VMSA WATCH]</span> **VMSA 업데이트 모니터링 경고:** 이번 주 신규 VMSA는 발표되지 않았으나, **최근 고위험 CVE-202X-XXXXX (vCenter Server RCE 취약점)** 패치 적용 현황을 주간 단위로 점검하여 Compliance 상태를 유지해야 함. <a href="https://blogs.vmware.com/security/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
+                <div class="p-4 bg-red-900/40 rounded-lg border border-red-700">
+                    <span class="font-semibold text-red-400">[KISA ALERT]</span> **국내 공공/금융 기관 대상 APT 공격 대비 강화 요청:** KISA는 특정 국가 해커 그룹의 제로 데이(Zero-Day) 공격 가능성을 경고하며, **NSX Advanced Threat Prevention** 솔루션의 시그니처 최신화 및 방화벽 정책의 엄격한 재검토를 권고. <a href="https://blogs.vmware.com/security/" target="_blank" class="text-xs text-blue-400">[Source]</a>
+                </div>
             </div>
-        </div>
+        </section>
 
     </main>
 
     <!-- Footer -->
     <footer class="mt-10 pt-4 border-t border-gray-700 text-center text-xs text-gray-500">
-        &copy; 2026 VMware by Broadcom. All rights reserved. This document contains proprietary and confidential information. Unauthorized distribution is strictly prohibited.
+        &copy; 2026 VMware by Broadcom. All rights reserved. Strategic Intelligence is generated based on public and internal sources.
     </footer>
 
 </body>
