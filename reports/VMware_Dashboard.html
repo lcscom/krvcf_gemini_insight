@@ -1,214 +1,236 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VMware Daily Strategic Intelligence Dashboard</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom Tailwind Configuration for Dark Mode */
+        /* Custom Dark Mode Configuration */
+        .dark {
+            color-scheme: dark;
+        }
         :root {
-            --color-primary: #3b82f6; /* blue-500 */
-            --color-card-bg: #1f2937; /* gray-800 */
-            --color-bg: #111827; /* gray-900 */
-            --color-text: #f3f4f6; /* gray-100 */
-            --color-accent: #10b981; /* emerald-500 */
+            --color-primary: #007cff; /* VeloCloud Blue */
+            --color-secondary: #ff5722; /* Accent Orange */
+            --color-background: #121212;
+            --color-card: #1e1e1e;
+            --color-text: #e0e0e0;
+            --color-text-subtle: #a0a0a0;
+        }
+        .dark {
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+        .card {
+            background-color: var(--color-card);
+            border-left: 4px solid var(--color-primary);
+        }
+        .badge-confidential {
+            background-color: #a00000;
+            color: #ffffff;
+        }
+        .source-link {
+            color: var(--color-primary);
+            font-weight: 600;
         }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'v-primary': '#3b82f6',
-                        'v-card': '#1f2937',
-                        'v-bg': '#111827',
-                        'v-text': '#f3f4f6',
-                        'v-accent': '#10b981',
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="bg-v-bg text-v-text p-6 antialiased">
+<body class="dark p-4 md:p-8 font-sans">
 
-    <!-- 1. Header -->
-    <header class="mb-8 flex justify-between items-center border-b border-gray-700 pb-4">
-        <h1 class="text-4xl font-extrabold text-v-primary">VMware Daily Strategic Intelligence</h1>
-        <div class="text-right">
-            <p class="text-sm text-gray-400">Generated at: 2026-01-24 19:00:06</p>
-            <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-red-800 text-v-text shadow-lg">Broadcom Confidential</span>
+    <!-- Header Section -->
+    <header class="mb-8 border-b border-gray-700 pb-4 flex justify-between items-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-white">VMware Daily Intelligence</h1>
+        <div class="flex items-center space-x-4">
+            <span class="text-sm font-light text-gray-400">Generated at: 2026-01-25 01:00:09</span>
+            <span class="badge-confidential px-3 py-1 text-sm rounded-full font-bold shadow-lg">Broadcom Confidential</span>
         </div>
     </header>
 
-    <main class="space-y-8">
-        
-        <!-- 2. Section 1: Top 3 Executive Takeaways -->
-        <div class="v-card p-6 rounded-xl shadow-2xl border-t-4 border-v-primary">
-            <h2 class="text-2xl font-bold mb-4 text-v-accent">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
-            <ul class="list-disc ml-5 space-y-3 text-lg">
-                <li class="hover:text-v-primary transition duration-150">
-                    <span class="font-semibold">VCF/클라우드 운영 안정성 집중:</span> VMC on AWS SDDC 1.26 릴리스 및 VCF 운영 진단 결과는 클라우드 인프라의 *지속적인 안정성* 및 *운영 최적화*에 대한 투자를 강조합니다. 현장 엔지니어는 VCF 운영 진단 결과를 반드시 숙지하여 선제적인 장애 예방에 집중해야 합니다. [Source: Cloud Foundation]
-                </li>
-                <li class="hover:text-v-primary transition duration-150">
-                    <span class="font-semibold">Agentic AI 전략 수립 시급:</span> 2026년 AI 보안 예측에 따르면 'Agentic AI'가 기존 보안 모델을 붕괴시키고 취약성 위험을 재구성하고 있습니다. 이는 단순한 기술 트렌드가 아닌 *엔터프라이즈 보안의 패러다임 변화*를 의미하며, 즉각적인 AI 보안 전략 검토가 필요합니다. [Source: VMblog/Security]
-                </li>
-                <li class="hover:text-v-primary transition duration-150">
-                    <span class="font-semibold">Critical Path 버그 사전 대응 강화:</span> William Lam의 VCF 9.0.2 업그레이드 시 NSX Edge DNS 사전 확인 실패 Quick Tip에서 보이듯이, *공식 문서에 포함되지 않은 Critical Path 버그*가 현장 프로젝트의 진행을 멈출 수 있습니다. 커뮤니티 이슈를 통한 사전 점검(Pre-check) 절차를 모든 프로젝트에 의무화해야 합니다. [Source: William Lam]
-                </li>
-            </ul>
+    <!-- Commander Role -->
+    <div class="mb-8 p-4 bg-gray-800 rounded-lg shadow-xl">
+        <p class="text-md font-semibold text-gray-300">
+            Role: <span class="text-blue-400">Top 100 Distinguished Architect</span> & <span class="text-orange-400">Community Incident Commander</span>
+        </p>
+    </div>
+
+    <!-- Main Grid Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- SECTION 1: Top 3 Executive Takeaways (Colspan 3) -->
+        <div class="lg:col-span-3">
+            <div class="card p-6 rounded-xl shadow-2xl transition duration-300 ease-in-out hover:shadow-blue-500/50" style="border-left-color: var(--color-secondary);">
+                <h2 class="text-2xl font-bold mb-4 text-white flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Top 3 Executive Takeaways (오늘의 핵심 결론)
+                </h2>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="border-b border-gray-700 pb-2">
+                        <strong class="text-red-500">[Critical Security Alert]</strong> vCenter Server 긴급 패치(VMSA-2024-0012)가 발표되었습니다. CVE-2024-37079/80/81(Heap-overflow 및 권한 에스컬레이션)을 포함하며, 이 취약점을 모르면 대규모 인프라 장애를 유발할 수 있습니다. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" class="source-link">[Source]</a>
+                    </li>
+                    <li class="border-b border-gray-700 pb-2">
+                        <strong class="text-green-500">[Cloud & VCF Stability]</strong> VMware Cloud on AWS SDDC 1.26 릴리스와 더불어, 'VMware Cloud Foundation 운영 진단'을 통해 인프라 안정성 강화에 주력하고 있습니다. VCF 배포 환경 엔지니어는 반드시 최신 진단 툴의 결과를 숙지하고 Day-2 Operation에 반영해야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/23/vmware-cloud-on-aws-sddc-version-1-26-release/" class="source-link">[Source]</a>, <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/diagnostics-for-vmware-cloud-foundation-operations-newest-findings-2/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong class="text-yellow-500">[Strategic AI Shift]</strong> 2026년 예측의 핵심은 'Agentic AI'로의 전환입니다. 이는 기존 보안 모델을 깨고(breaking traditional security models), 모든 엔터프라이즈 아키텍처 재구성을 요구하는 전략적 변곡점이므로, 모든 제품 로드맵 및 고객 환경 설계에 반영해야 합니다. <a href="https://vmblog.com/archive/2026/01/23/2026-ai-security-predictions-revealed-why-agentic-ai-is-breaking-traditional-security-models.aspx" class="source-link">[Source]</a>, <a href="https://vmblog.com/archive/2026/01/23/prediction-2026-is-a-year-of-rebuilding-around-agentive-ai-not-another-business-model.aspx" class="source-link">[Source]</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <!-- Dashboard Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- 3. Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
-            <div class="lg:col-span-1 v-card p-6 rounded-xl shadow-2xl border-l-4 border-yellow-500">
-                <h2 class="text-xl font-bold mb-4 text-yellow-500">2. Tech Docs & KB Deep Dive</h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">VMC on AWS: SDDC 버전 1.26 릴리스</p>
-                        <p class="text-gray-400">클라우드 기반의 최신 기능 및 버그 수정 사항 확인. 현장의 모든 VMC 고객에게 필수적인 업데이트 사항입니다.</p>
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/23/vmware-cloud-on-aws-sddc-version-1-26-release/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
+        <!-- SECTION 2: Tech Docs & KB Deep Dive -->
+        <div class="lg:col-span-1">
+            <div class="card p-6 rounded-xl shadow-lg h-full">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.206 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.832 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.832 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.168 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                    Tech Docs & KB Deep Dive (공식 문서)
+                </h2>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li>
+                        <strong>VMSA-2024-0012: vCenter Server 취약점 업데이트:</strong> Heap-overflow 및 권한 에스컬레이션 취약점을 해결합니다. 엔지니어는 즉시 패치 버전을 확인하고 고객에게 권고해야 합니다. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" class="source-link">[Source]</a>
                     </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">VMware Cloud Foundation 운영 진단 – 최신 조사 결과</p>
-                        <p class="text-gray-400">VCF 환경의 잠재적 운영 문제 및 최적화 방안에 대한 상세 분석. 운영 장애를 줄이기 위한 선제적 점검 자료.</p>
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/diagnostics-for-vmware-cloud-foundation-operations-newest-findings-2/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
+                    <li>
+                        <strong>VCF Operations 로그용 AD 그룹 구성:</strong> vIDM 그룹을 Log Insight로 가져와 VCF Operations 로그 관리에 Active Directory 그룹을 사용하는 방법을 상세히 설명합니다. (운영 난이도 감소) <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/import-a-vidm-group-to-log-insight.html" class="source-link">[Source]</a>
                     </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">정책 기반 DB 관리로 75% 생산성 향상</p>
-                        <p class="text-gray-400">vSphere 및 Management Layer를 활용한 데이터베이스 워크로드 자동화 전략. 고부가가치 워크로드의 TCO 절감 근거.</p>
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
+                    <li>
+                        <strong>VCF Operations에서 Launch in Context:</strong> VCF 운영 진단 툴에서 Log Insight로의 컨텍스트 기반 이동(Drill-down) 방법을 다룹니다. 신속한 트러블슈팅을 위해 필수적인 기능입니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/log-insight-launch-in-context.html" class="source-link">[Source]</a>
                     </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Tanzu/vSphere: vSphere K8s Service와 Tanzu RabbitMQ를 이용한 메시징 확장</p>
-                        <p class="text-gray-400">vSphere 환경에서 고성능 메시징 시스템을 구축하는 아키텍처 가이드. 개발팀과의 협업 시 필수 참고 자료.</p>
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/scaling-messaging-with-confidence-vmware-vsphere-kubernetes-service-and-tanzu-rabbitmq/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
+                    <li>
+                        <strong>VCF용 vRealize Operations 통합 요건:</strong> VCF 환경에서 vRealize Operations(vROps) 통합을 위한 정확한 전제 조건 및 아키텍처 요구 사항을 명시합니다. 대규모 환경 설계 시 필수 검토 사항입니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/requirements-for-integrating-with-vrealize-operations.html" class="source-link">[Source]</a>
                     </li>
                 </ul>
             </div>
-            
-            <!-- 4. Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
-            <div class="lg:col-span-1 v-card p-6 rounded-xl shadow-2xl border-l-4 border-red-500">
-                <h2 class="text-xl font-bold mb-4 text-red-500">3. Community Pulse & Field Issues <span class="text-xs text-gray-400">(장애 위험)</span></h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">VCF 9.0.2 Upgrade: NSX Edge DNS Pre-check 실패 경고</p>
-                        <p class="text-gray-400">VCF 9.0.2 업그레이드 시 특정 환경에서 NSX Edge의 DNS 사전 확인이 실패하여 업그레이드가 중단되는 케이스 발생. 반드시 KB/공식 패치 확인 전 William Lam의 팁 확인 필요.</p>
-                        <a href="https://williamlam.com/2026/01/quick-tip-nsx-edge-fails-dns-pre-check-as-part-of-vcf-9-0-2-upgrade.html" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Keycloak 인증 문제 해결: 커뮤니티 질의 증가</p>
-                        <p class="text-gray-400">클라우드 네이티브 환경에서 ID 관리 솔루션으로 Keycloak 사용 증가. 인증 토큰/세션 관련 장애 호소 증가에 따라 문제 해결 가이드 공유.</p>
-                        <a href="https://www.jpaul.me/2026/01/troubleshooting-keycloak-authentication/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">vSphere 8.x + AI/ML Workload I/O 성능 질의</p>
-                        <p class="text-gray-400">MCP(Multi-Cloud Private) 환경에서 Codex와 같은 AI/ML 모델을 운영할 때 Homelab 수준에서 성능 최적화에 대한 상세 질문 증가. Private AI 워크로드 설계 시 성능에 대한 깊은 고민 필요.</p>
-                        <a href="https://www.vcloudinfo.com/2026/01/mcps-in-my-homelab-codex-ops-dev-copilot.html" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 5. Section 4: Product & Expert Deep Dive -->
-            <div class="lg:col-span-1 v-card p-6 rounded-xl shadow-2xl border-l-4 border-v-accent">
-                <h2 class="text-xl font-bold mb-4 text-v-accent">4. Product & Expert Deep Dive</h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Aria Automation: DSM 9.0.2의 새로운 RBAC 지원</p>
-                        <p class="text-gray-400">Cormac Hogan 발: Aria Automation Plugin이 DSM 9.0.2의 강화된 RBAC(역할 기반 접근 제어)를 지원하도록 업데이트. 자동화 워크플로우의 보안 모델 재설계 필수.</p>
-                        <a href="https://cormachogan.com/2026/01/23/dsm-9-0-2-aria-automation-plugin-changes-to-support-new-rbac-features/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Telco Cloud Platform: GitOps를 이용한 CNF Day 2 자동화</p>
-                        <p class="text-gray-400">Telco 고객 대상: GitOps 방법론을 VMware Telco Cloud Platform에 적용하여 CNF(Containerized Network Function)의 Day 2 운영을 자동화하는 핵심 전략.</p>
-                        <a href="https://blogs.vmware.com/telco/gitops-day2-operations/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Tanzu Platform: 엔터프라이즈 MCP 서버 마켓플레이스 구축</p>
-                        <p class="text-gray-400">Private AI 및 Multi-Cloud 환경을 위한 Tanzu 기반 서버 마켓플레이스 사례. 개발자 셀프 서비스 환경 구축의 모범 사례.</p>
-                        <a href="https://blogs.vmware.com/tanzu/building-an-enterprise-mcp-server-marketplace-with-tanzu-platform/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Windows 업데이트 및 자동 패치의 미래 (클라우드 속의 창)</p>
-                        <p class="text-gray-400">VDI 환경 및 클라우드에서의 Windows 패치 전략 변화 분석. 패치 관리 자동화가 핵심적인 운영 이슈로 부상.</p>
-                        <a href="https://www.youtube.com/watch?v=XnCW8GAuCr0" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- 6. Section 5: Market & Competitive Radar -->
-            <div class="lg:col-span-2 v-card p-6 rounded-xl shadow-2xl border-t-4 border-indigo-500">
-                <h2 class="text-xl font-bold mb-4 text-indigo-500">5. Market & Competitive Radar</h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Hyperscaler (AWS, Azure, GCP): 엔터프라이즈별 AI 인텔리전스 경쟁 심화</p>
-                        <p class="text-gray-400">AI 트렌드가 기초 모델(Foundation Models)에서 엔터프라이즈 특화 AI로 전환됨에 따라, Hyperscaler들이 각 산업별 맞춤형 AI 서비스 제공 경쟁 가속화. 우리의 Private AI/Tanzu 전략과 연계하여 대응 필요.</p>
-                        <a href="https://vmblog.com/archive/2026/01/23/the-next-era-of-ai-from-foundation-models-to-enterprise-specific-intelligence.aspx" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Red Hat/OpenShift: Agentic AI 기반 보안 위협 및 ID 취약점 재구성</p>
-                        <p class="text-gray-400">Agentive AI가 보안 모델을 깨고 있다는 예측은 Red Hat OpenShift와 같은 경쟁 클라우드 플랫폼에서도 동일하게 적용됩니다. 경쟁사의 AI 보안 전략을 분석하고 우리의 강점을 부각해야 합니다.</p>
-                        <a href="https://vmblog.com/archive/2026/01/23/2026-ai-security-predictions-revealed-why-agentic-ai-is-breaking-traditional-security-models.aspx" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">Nutanix/HCI Market: 정책 기반 관리 효율성 메시지 강화</p>
-                        <p class="text-gray-400">정책 기반 DB 관리로 75% 생산성 향상을 달성했다는 메시지는 HCI/클라우드 플랫폼 경쟁(Nutanix 등)에서 '자동화 및 효율성' 우위를 점하기 위한 핵심 근거로 활용 가능합니다.</p>
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 7. Section 6: Industry Vertical Radar (Korea Focus) -->
-            <div class="lg:col-span-1 v-card p-6 rounded-xl shadow-2xl border-t-4 border-teal-500">
-                <h2 class="text-xl font-bold mb-4 text-teal-500">6. Industry Vertical Radar (Korea Focus)</h2>
-                <ul class="space-y-3 text-sm">
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">금융 IT: 정책 기반 자동화 도입 검토 증가</p>
-                        <p class="text-gray-400">국내 금융권 차세대 사업에서 DB 및 인프라 운영의 75% 생산성 향상 사례에 주목. 전통적인 운영 방식에서 벗어나 자동화된 정책 기반 관리 도입 가능성 높음.</p>
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/20/the-75-productivity-gain-moving-to-policy-based-database-management/" class="text-xs text-v-primary hover:text-blue-400">[Source: Industry Synthesis]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">공공/지자체: Windows 클라우드 패치 환경으로의 전환 모색</p>
-                        <p class="text-gray-400">공공기관 망 분리 환경에서 VDI 및 서버 OS의 패치 관리 효율성 확보가 주요 이슈. 클라우드 기반 자동 패치 기술 도입에 대한 관심 증폭.</p>
-                        <a href="https://www.youtube.com/watch?v=XnCW8GAuCr0" class="text-xs text-v-primary hover:text-blue-400">[Source: Industry Synthesis]</a>
-                    </li>
-                    <li class="border-b border-gray-700 pb-2">
-                        <p class="font-medium text-v-text">기업 IT (Telco): GitOps 기반 5G/6G CNF 자동화 가속</p>
-                        <p class="text-gray-400">국내 통신사들의 5G/6G망 현대화 작업에서 Telco Cloud Platform과 GitOps를 활용한 CNF Day 2 운영 자동화가 핵심 과제로 부상. 컨테이너 인프라 관리의 표준화 시도.</p>
-                        <a href="https://blogs.vmware.com/telco/gitops-day2-operations/" class="text-xs text-v-primary hover:text-blue-400">[Source: Industry Synthesis]</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- 8. Section 7: Security Alerts -->
-            <div class="lg:col-span-3 v-card p-6 rounded-xl shadow-2xl border-t-4 border-orange-500">
-                <h2 class="text-2xl font-bold mb-4 text-orange-500">7. Security Alerts (VMSA & CVE Critical Check)</h2>
-                <ul class="list-disc ml-5 space-y-3 text-lg">
-                    <li class="hover:text-v-primary transition duration-150">
-                        <span class="font-semibold">VMSA/KISA CVE 최신 현황 점검 필수:</span> 매일 업데이트되는 VMSA 및 KISA의 CVE 정보를 확인하여 제품 취약점에 대한 *즉각적인 패치 및 Mitigation* 계획을 수립해야 합니다. 공식 보안 포털의 최신 정보를 확인하십시오.
-                        <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="text-xs text-v-primary hover:text-blue-400">[Source: CVE 정보]</a>
-                    </li>
-                    <li class="hover:text-v-primary transition duration-150">
-                        <span class="font-semibold">2026년 AI 보안 예측: Agentic AI의 공격 벡터화</span> 에이전트 AI는 *자동화된 공격*을 가능하게 하여 익스플로잇 속도를 급격히 높일 것으로 예측됩니다. 기존 방화벽/IPS 중심의 보안 모델은 무력화될 수 있습니다. AI 기반 워크로드 보안 전략으로의 전환이 필수입니다.
-                        <a href="https://vmblog.com/archive/2026/01/23/2026-ai-security-predictions-revealed-why-agentic-ai-is-breaking-traditional-security-models.aspx" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                    <li class="hover:text-v-primary transition duration-150">
-                        <span class="font-semibold">외부 인증 컴포넌트(Keycloak 등)의 설정 오류 위험 증대:</span> ID/Access Management 솔루션의 문제 해결 사례 증가는 *복잡한 인증 플로우*에서 발생하는 설정 오류나 잠재적 취약점 노출 위험을 시사합니다. 고객 환경의 인증 시스템에 대한 보안 심층 점검(Hardening Check)이 시급합니다.
-                        <a href="https://www.jpaul.me/2026/01/troubleshooting-keycloak-authentication/" class="text-xs text-v-primary hover:text-blue-400">[Source]</a>
-                    </li>
-                </ul>
-            </div>
-            
         </div>
-    </main>
-    
+
+        <!-- SECTION 3: Community Pulse & Field Issues -->
+        <div class="lg:col-span-1">
+            <div class="card p-6 rounded-xl shadow-lg h-full">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V8m-2-2h-2m-2-2H9m1.414 5.414L8 10h4m-4 0v4m0 0l-3 3"></path></svg>
+                    Community Pulse & Field Issues (비공식 현장 이슈)
+                </h2>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li>
+                        <strong>VCF 9.0.2 NSX Edge DNS 사전 확인 실패:</strong> VCF 업그레이드 시 NSX Edge에서 DNS 사전 확인이 실패하여 업그레이드가 중단되는 현장이슈가 보고되었습니다. 즉각적인 임시 해결책이 필수입니다. <a href="https://williamlam.com/2026/01/quick-tip-nsx-edge-fails-dns-pre-check-as-part-of-vcf-9-0-2-upgrade.html" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>Keycloak 인증 문제 해결:</strong> Tanzu/Kubernetes 환경에서 Keycloak을 IDP로 사용하는 경우 발생하는 인증 구성 및 토큰 문제에 대한 상세한 트러블슈팅 가이드가 공유되고 있습니다. (Tanzu 플랫폼 도입 시 주의) <a href="https://www.jpaul.me/2026/01/troubleshooting-keycloak-authentication/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>Aria Automation DSM 9.0.2 RBAC 변경:</strong> Aria Automation Plugin이 DSM 9.0.2의 새로운 RBAC(Role-Based Access Control) 기능을 지원하도록 업데이트되면서, 기존 자동화 워크플로우에 영향을 미치는지에 대한 문의가 활발합니다. <a href="https://cormachogan.com/2026/01/23/dsm-9-0-2-aria-automation-plugin-changes-to-support-new-rbac-features/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>Homelab의 MCP(Codex) 활용 논의:</strong> 커뮤니티에서 Multi-Cloud Platform (MCP)을 Homelab에 구현하고, Codex(AI)를 운영/개발자 부조종사로 사용하는 사례가 공유되며 실제 필드 적용 가능성에 대한 논의가 확대되고 있습니다. <a href="https://www.vcloudinfo.com/2026/01/mcps-in-my-homelab-codex-ops-dev-copilot.html" class="source-link">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Product & Expert Deep Dive -->
+        <div class="lg:col-span-1">
+            <div class="card p-6 rounded-xl shadow-lg h-full">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-3-2v-3.333c0-1.488.54-2.91 1.5-4h2.5L20 10V4h-4v4l-4 4-4-4V4H4v6l4 4 4 4z"></path></svg>
+                    Product & Expert Deep Dive (VCF, Tanzu, Telco)
+                </h2>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li>
+                        <strong>VMC on AWS SDDC 1.26 릴리스:</strong> 새로운 기능 및 버그 수정 사항이 포함된 SDDC 버전 1.26이 출시되었습니다. 고객과의 기술 검토 시 주요 변경 사항을 숙지해야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/23/vmware-cloud-on-aws-sddc-version-1-26-release/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>VCF 운영 진단 – 최신 조사 결과:</strong> VMware Cloud Foundation 환경의 건전성(Health) 유지에 대한 최신 모범 사례와 자동화된 진단 툴의 결과를 공유합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/diagnostics-for-vmware-cloud-foundation-operations-newest-findings-2/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>vSphere Kube Service & Tanzu RabbitMQ:</strong> vSphere Kubernetes Service 환경에서 Tanzu RabbitMQ를 사용하여 메시징을 확장하는 아키텍처 및 구현 가이드. 클라우드 네이티브 애플리케이션 전략 수립에 중요합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/21/scaling-messaging-with-confidence-vmware-vsphere-kubernetes-service-and-tanzu-rabbitmq/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>Tanzu 플랫폼 MCP 서버 마켓플레이스 구축:</strong> Tanzu 플랫폼을 활용하여 엔터프라이즈 환경에서 Multi-Cloud Platform(MCP) 서버 마켓플레이스를 구축하는 심층 분석. 고객 환경 설계의 핵심 트렌드입니다. <a href="https://blogs.vmware.com/tanzu/building-an-enterprise-mcp-server-marketplace-with-tanzu-platform/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>Telco Cloud Platform GitOps 자동화:</strong> VMware Telco Cloud Platform에서 GitOps를 도입하여 CNF(Cloud-Native Function)의 2일차(Day 2) 운영 수명 주기를 자동화하는 방안. 통신사 고객 대응 시 필수적인 주제입니다. <a href="https://blogs.vmware.com/telco/gitops-day2-operations/" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>Windows 업데이트 및 자동 패치의 미래 (클라우드 속의 창):</strong> 엔터프라이즈 워크로드의 가장 큰 관리 부담 중 하나인 Windows 패치 관리에 대한 통찰을 제공합니다. (vSphere/VMC 고객 논의에 활용) <a href="https://www.youtube.com/watch?v=XnCW8GAuCr0" class="source-link">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 5: Market & Competitive Radar -->
+        <div class="lg:col-span-1">
+            <div class="card p-6 rounded-xl shadow-lg h-full">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v14l-12 3zm0 0V3m12 11h2m-2-4h2m-2-4h2"></path></svg>
+                    Market & Competitive Radar (경쟁 동향)
+                </h2>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li>
+                        <strong>에이전트 AI 중심의 시장 재구성 (Hyperscaler 대응):</strong> 2026년은 Agentic AI를 중심으로 비즈니스 모델이 재구축되는 해가 될 것이라는 예측은 AWS, Azure, GCP 등 Hyperscaler들의 AI 전략에 대한 우리의 차별화된 접근(Private AI)을 강화할 기회를 시사합니다. <a href="https://vmblog.com/archive/2026/01/23/prediction-2026-is-a-year-of-rebuilding-around-agentive-ai-not-another-business-model.aspx" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>AI 보안 모델 파괴 임박 (전통 보안 벤더 경고):</strong> Agentic AI가 기존의 보안 모델을 깨고 있다는 예측은 Red Hat, Nutanix 등 경쟁사의 보안 솔루션에 대한 고객의 불확실성을 가중시키며, 우리가 제공하는 End-to-End 보안 플랫폼의 가치를 부각할 필요성을 높입니다. <a href="https://vmblog.com/archive/2026/01/23/2026-ai-security-predictions-revealed-why-agentic-ai-is-breaking-traditional-security-models.aspx" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>AI의 다음 시대: 기초 모델에서 엔터프라이즈별 인텔리전스:</strong> 범용 기초 모델(Foundation Models)에 집중하는 경쟁사 대비, 우리는 엔터프라이즈별 특화된 인텔리전스(Enterprise-specific Intelligence)로의 전환을 강조하여 고객 비즈니스 요구에 더 깊이 맞춤으로써 시장 우위를 확보해야 합니다. <a href="https://vmblog.com/archive/2026/01/23/the-next-era-of-ai-from-foundation-models-to-enterprise-specific-intelligence.aspx" class="source-link">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 6: Industry Vertical Radar (Korea Focus) -->
+        <div class="lg:col-span-1">
+            <div class="card p-6 rounded-xl shadow-lg h-full">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m-3 0h3m0 0a8 8 0 018-8m-8 8a8 8 0 008 8m-8-8H3"></path></svg>
+                    Industry Vertical Radar (Korea Focus)
+                </h2>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li>
+                        <strong>금융권: VMSA-2024-0012 긴급 패치 권고:</strong> 국내 금융 기관은 보안 컴플라이언스(Compliance)가 매우 엄격하므로, vCenter Server의 Critical 취약점(CVE-2024-37079 등)에 대한 즉각적인 패치 적용을 최우선 영업/기술 과제로 설정해야 합니다. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>공공/기업: Windows 워크로드 자동 패치 전략:</strong> 국내 공공 및 대기업 환경에서 가장 많은 부분을 차지하는 Windows 워크로드의 자동 업데이트 및 패치 전략은 운영 효율화의 핵심입니다. 클라우드 속 Windows 솔루션을 통한 자동화 전략을 고객에게 제안해야 합니다. <a href="https://www.youtube.com/watch?v=XnCW8GAuCr0" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong>통신사(Telco): GitOps 기반 2일차 운영 자동화 확산:</strong> 국내 통신사들은 5G/6G 환경에서 CNF 도입을 가속화하고 있으며, GitOps를 활용한 Day-2 Operations 자동화는 서비스 안정성과 신속성 확보를 위한 핵심 기술로, VMware Telco Cloud Platform의 경쟁력을 높입니다. <a href="https://blogs.vmware.com/telco/gitops-day2-operations/" class="source-link">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 7: Security Alerts (Colspan 3) -->
+        <div class="lg:col-span-3">
+            <div class="card p-6 rounded-xl shadow-2xl transition duration-300 ease-in-out hover:shadow-red-500/50" style="border-left-color: #ff0000;">
+                <h2 class="text-2xl font-bold mb-4 text-white flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.39 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    Security Alerts (VMSA / Strategic CVE)
+                </h2>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="border-b border-gray-700 pb-2">
+                        <strong class="text-red-500">CRITICAL VMSA-2024-0012: vCenter Server 취약점:</strong>
+                        <p><strong>CVE-2024-37079, CVE-2024-37080, CVE-2024-37081</strong>을 해결합니다. 이는 Heap-overflow 및 권한 에스컬레이션 취약점으로, 공격자가 인증 없이 코드를 실행하거나 권한을 상승시킬 수 있는 심각한 문제입니다. 즉각적인 패치가 필요합니다.</p>
+                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" class="source-link">[Source]</a>
+                    </li>
+                    <li class="border-b border-gray-700 pb-2">
+                        <strong class="text-yellow-500">2026년 AI 보안 예측: Agentic AI의 등장:</strong>
+                        <p>Agentic AI(자율 에이전트 AI)가 기존의 경계 보안 모델(Perimeter Security Models)을 무력화시키고 있습니다. 이는 단순한 패치 이상의 근본적인 보안 아키텍처 재설계를 요구합니다. <span class="font-bold">향후 보안 대책의 핵심 축</span>입니다.</p>
+                        <a href="https://vmblog.com/archive/2026/01/23/2026-ai-security-predictions-revealed-why-agentic-ai-is-breaking-traditional-security-models.aspx" class="source-link">[Source]</a>
+                    </li>
+                    <li>
+                        <strong class="text-yellow-500">2026년 예측: AI/Exploit 속도 및 ID 기반 위험 재구성:</strong>
+                        <p>AI가 익스플로잇 개발 속도를 가속화하고, 단순 취약점 관리보다 ID(Identity) 기반의 취약성 위험 관리가 중요해지고 있습니다. 이는 Zero Trust 아키텍처 설계에 대한 고객 논의에서 반드시 선제적으로 다뤄야 할 주제입니다.</p>
+                        <a href="https://vmblog.com/archive/2026/01/23/2026-predictions-how-ai-exploit-velocity-and-identity-are-reshaping-vulnerability-risk.aspx" class="source-link">[Source]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
     <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-sm text-gray-500">
-        <p>Prepared by VMware by Broadcom Top 100 Distinguished Architect & Community Incident Commander.</p>
-        <p>This report is for internal strategic intelligence only. Do not redistribute externally. | Broadcom Confidential</p>
+        <p>Copyright &copy; 2026 VMware by Broadcom. All rights reserved. Unauthorized distribution is strictly prohibited.</p>
     </footer>
 
 </body>
