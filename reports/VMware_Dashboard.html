@@ -1,36 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VMware Daily Strategic Intelligence</title>
+    <title>VMware Daily Strategic Intelligence Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom Tailwind Configuration for Dark Mode & Font */
-        :root {
-            color-scheme: dark;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .card {
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-        }
-        .source-link {
-            font-size: 0.75rem; /* text-xs */
-            font-weight: 500;
-            color: #6366f1; /* indigo-500 */
-            text-decoration: none;
-            margin-left: 0.5rem;
-        }
-        .source-link:hover {
-            text-decoration: underline;
-            color: #818cf8; /* indigo-400 */
-        }
+        .dark { color-scheme: dark; }
     </style>
     <script>
         tailwind.config = {
@@ -38,227 +14,179 @@
             theme: {
                 extend: {
                     colors: {
-                        'vm-blue': '#0070BA',
-                        'broadcom-red': '#D30000',
-                        'dark-bg': '#1e293b', /* slate-800 */
-                        'card-bg': '#334155', /* slate-700 */
+                        'vmware-blue': '#0070ba',
+                        'broadcom-purple': '#623592',
+                        'dark-bg': '#1e293b',
+                        'card-bg': '#334155',
+                        'card-border': '#475569',
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-gray-900 text-gray-200 dark:bg-dark-bg p-4 md:p-8">
+<body class="bg-dark-bg text-gray-100 p-6 font-sans">
 
-    <!-- Header Section -->
-    <header class="mb-8 border-b border-vm-blue pb-4">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <h1 class="text-3xl font-extrabold text-vm-blue">VMware Daily Strategic Intelligence</h1>
-            <div class="mt-2 md:mt-0 flex items-center space-x-4">
-                <span class="text-sm font-medium text-gray-400">Generated at: 2026-01-28 01:00:17</span>
-                <span class="px-3 py-1 bg-broadcom-red text-white text-xs font-bold rounded-full shadow-lg">Broadcom Confidential</span>
-            </div>
+    <!-- Header: VMware Daily Intelligence -->
+    <header class="mb-8 p-4 border-b border-broadcom-purple flex justify-between items-center bg-gray-900 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-extrabold text-vmware-blue">
+            VMware Daily Strategic Intelligence
+        </h1>
+        <div class="text-right">
+            <p class="text-sm text-gray-400">Generated at: 2026-01-28 07:00:07</p>
+            <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-white bg-broadcom-purple rounded-full uppercase shadow-md">
+                Broadcom Confidential
+            </span>
         </div>
-        <p class="text-lg font-semibold text-gray-400 mt-2">Top 100 Distinguished Architect & Community Incident Commander Report</p>
     </header>
 
-    <!-- Main Content Grid -->
-    <div class="space-y-8">
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- Section 1: Top 3 Executive Takeaways -->
-        <div class="bg-card-bg p-6 rounded-xl shadow-2xl card">
-            <h2 class="text-xl font-bold mb-4 text-broadcom-red flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+        <div class="lg:col-span-3 card bg-card-bg p-6 rounded-xl shadow-2xl border border-vmware-blue/50">
+            <h2 class="text-2xl font-bold mb-4 text-vmware-blue border-b border-gray-600 pb-2">
                 1. Top 3 Executive Takeaways (오늘의 핵심 결론)
             </h2>
-            <ul class="list-disc space-y-3 pl-5">
-                <li class="border-l-4 border-yellow-500 pl-3">
-                    <strong class="text-yellow-400">CRITICAL VMSA-2024-0012 즉시 패치 권고:</strong> vCenter Server의 힙 오버플로 및 권한 상승 취약점(CVE-2024-37079 등)이 확인되었습니다. 엔지니어는 모든 고객 환경에서 **최우선 순위**로 즉시 패치를 적용해야 합니다. 패치 미적용 시 시스템 접근 권한을 획득할 수 있는 치명적인 장애를 유발합니다.
-                    <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="source-link">[Source]</a>
+            <ul class="space-y-4">
+                <li class="p-3 bg-gray-700/50 rounded-lg border-l-4 border-red-500 hover:bg-gray-700 transition duration-300">
+                    <span class="font-semibold text-red-400">Critical Security Alert (VMSA-2024-0012) Immediate Action Required</span>: vCenter Server에서 심각한 Heap-Overflow 및 권한 상승 취약점(CVE-2024-37079/37080/37081)이 발견되었습니다. 즉각적인 패치가 필요하며, 미조치 시 인프라 전체의 통제권 상실로 이어질 수 있습니다. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="text-vmware-blue hover:text-blue-400 font-medium">[Source]</a>
                 </li>
-                <li class="border-l-4 border-vm-blue pl-3">
-                    <strong class="text-vm-blue">온프레미스 DBaaS를 통한 비용 관리(Repatriation) 전략 강화:</strong> CFO의 사례 연구를 통해 클라우드에서 VCF 기반 온프레미스 DBaaS로의 회귀(송환)가 TCO 절감 및 운영 통제에 유리하다는 비즈니스 근거가 공식화되었습니다. 이는 하이브리드 클라우드 영업 전략의 핵심 자료로 활용해야 합니다.
-                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" target="_blank" class="source-link">[Source]</a>
+                <li class="p-3 bg-gray-700/50 rounded-lg border-l-4 border-green-500 hover:bg-gray-700 transition duration-300">
+                    <span class="font-semibold text-green-400">전략적 화두: On-Prem DBaaS를 통한 비용 송환(Repatriation) 부상</span>: CFO 차원의 클라우드 비용 통제 전략이 부상하며, VCF 기반의 온프레미스 DBaaS는 클라우드 워크로드를 다시 가져와(송환) TCO를 절감하는 핵심 근거가 됩니다. 금융권 및 대기업 영업에 필수적인 아젠다입니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" target="_blank" class="text-vmware-blue hover:text-blue-400 font-medium">[Source]</a>
                 </li>
-                <li class="border-l-4 border-green-500 pl-3">
-                    <strong class="text-green-400">Avi Load Balancer 인증서 및 DDoS 보안 구성 점검:</strong> Avi LB 관련 Tech Docs가 인증서 자동 갱신(Let's Encrypt), 클라이언트 인증 및 HTTP/2 DoS/Desync 방어에 집중되고 있습니다. 이는 대규모 운영 환경에서 로드 밸런싱 인프라의 보안 취약점 점검이 필수적임을 시사합니다.
-                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/certificate-management-integration-for-csr-automation/integrating-let-s-encrypt-certificate-authority-with-avi-vantage-system.html" target="_blank" class="source-link">[Source]</a>
+                <li class="p-3 bg-gray-700/50 rounded-lg border-l-4 border-yellow-500 hover:bg-gray-700 transition duration-300">
+                    <span class="font-semibold text-yellow-400">AI Factory 구축을 위한 VCF 엣지 역할 확대</span>: 제조업 분야에서 '소프트웨어 정의 생산(Software-Defined Production)'을 통한 AI 지원 공장 구축이 새로운 대형 프로젝트 기회로 떠오르고 있습니다. VCF는 엣지 및 코어 환경에서 이 전략의 핵심 인프라를 제공합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/building-an-ai-ready-factory-how-software-defined-production-is-transforming-manufacturing/" target="_blank" class="text-vmware-blue hover:text-blue-400 font-medium">[Source]</a>
                 </li>
             </ul>
         </div>
 
-        <!-- Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="bg-card-bg p-6 rounded-xl shadow-2xl card">
-                <h2 class="text-xl font-bold mb-4 text-indigo-400 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-5 4h4a2 2 0 002-2V7a2 2 0 00-2-2H9a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-                    2. Tech Docs & KB Deep Dive (공식 문서)
-                </h2>
-                <ul class="space-y-3">
-                    <li class="text-sm">
-                        <span class="font-semibold text-red-400">VMSA-2024-0012:</span> vCenter Server Critical 업데이트 - 힙 오버플로 및 권한 상승 취약점(CVE-2024-37079, 37080, 37081) 해결. <span class="text-yellow-400">**장애 방지를 위해 즉시 적용 필수.**</span>
-                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">Avi LB: 클라이언트 인증서 인증 활성화(Client Cert Auth):</span> 고도의 보안이 요구되는 환경을 위한 L7 인증 강화 방법.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/certificate-management-integration-for-csr-automation/how-to-enable-client-certificate-authentication-on-nsx-advanced-load-balancer.html" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">Avi LB: Let's Encrypt CA 통합 및 자동 갱신:</span> 수동 인증서 갱신으로 인한 운영 오류를 줄이기 위한 자동화 구성 상세 가이드.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/certificate-management-integration-for-csr-automation/integrating-let-s-encrypt-certificate-authority-with-avi-vantage-system.html" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">VCF 및 VCF Edge SPD 업데이트:</span> VMware Cloud Foundation 및 VCF Edge의 최신 서비스 팩 문서 확인. 운영 전 구성 요소별 지원 범위 및 Known Issues 확인 필수.
-                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24359" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold text-yellow-400">Avi LB: HTTP/2 DoS 공격 완화:</span> HTTP/2 프로토콜의 취약점을 이용한 DoS 공격에 대한 완화 조치 및 설정 가이드.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/ddos-attack-mitigation/http-2-denial-of-service-advisory.html" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">Avi LB: HTTP Desync Attack 방어:</span> 프론트엔드/백엔드 서버 간 HTTP 요청 불일치 공격(Desync Attack) 방어 설정.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/ddos-attack-mitigation/protection-from-http-desync-attack.html" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
-            <div class="bg-card-bg p-6 rounded-xl shadow-2xl card">
-                <h2 class="text-xl font-bold mb-4 text-pink-400 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" /></svg>
-                    3. Community Pulse & Field Issues (비공식 현장 이슈)
-                </h2>
-                <ul class="space-y-3">
-                    <li class="text-sm">
-                        <span class="font-semibold">vSphere/vGPU 환경 Device Disconnection:</span> vSphere 8.x 환경에서 vGPU를 사용하는 VM 재부팅 시 가상 디바이스 연결이 끊어지는(Device Disconnection) 현상에 대한 장애 호소 증가. 이는 특정 드라이버 버전 또는 호환성 문제일 가능성이 높습니다.
-                        <a href="https://www.reddit.com/r/vmware/" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">Avi LB/VCF Service Engine 재배치 실패:</span> VCF 환경에서 NSX-T/VDS 마이그레이션 후 Avi Load Balancer Service Engine(SE)이 예상대로 재배치되거나 연결되지 않는 문제 보고. 복잡한 네트워크 변경 후 즉각적인 SE 상태 점검 필수.
-                        <a href="https://community.broadcom.com/vmware" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">vSAN I/O Latency 급증:</span> 특정 벤더의 HBA(Host Bus Adapter) 펌웨어 업데이트 후 vSAN 클러스터의 I/O 대기 시간이 비정상적으로 급증했다는 현장 보고. HCL을 통한 펌웨어 버전 확인 및 롤백 준비 필요.
-                        <a href="https://www.reddit.com/r/sysadmin/" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">SDDC Manager Pre-Check Warning 오탐:</span> SDDC Manager를 통한 핫픽스 적용 후, 불필요한 Configuration Warning이 계속 표시되어 다음 패치 진행에 혼란을 초래하는 버그 리포트. (이는 운영자들이 신뢰도 문제로 이어질 수 있음)
-                        <a href="https://community.broadcom.com/vmware" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                </ul>
-            </div>
+        <!-- Section 2: Tech Docs & KB Deep Dive -->
+        <div class="card bg-card-bg p-6 rounded-xl shadow-2xl border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 text-gray-200 border-b border-gray-600 pb-2">
+                2. Tech Docs & KB Deep Dive (공식 문서)
+                <span class="text-sm text-gray-400 block font-normal mt-1">엔지니어의 현장 장애 예방을 위한 필수 숙지 항목.</span>
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="hover:text-vmware-blue transition duration-300">
+                    VMSA-2024-0012: vCenter Server 긴급 패치 및 심각한 취약점(CVE-2024-37079, 37080, 37081) 분석. **(Critical)** <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    **Avi LB: 인증서 만료 장애 방지를 위한 Let's Encrypt 통합 및 자동 갱신 구성 가이드**. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/certificate-management-integration-for-csr-automation/configuring-certificate-management-integration/use-the-certificate-management-profile-to-get-signed-certificates/automatic-certificate-renewal.html" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    **Avi LB: Client Certificate Authentication 활성화 방법**. 강화된 보안 환경을 위한 Avi Load Balancer 클라이언트 인증서 구성 상세 절차. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/certificate-management-integration-for-csr-automation/how-to-enable-client-certificate-authentication-on-nsx-advanced-load-balancer.html" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    **VCF 및 VCF Edge의 최신 서비스 정책 문서(SPD) 업데이트**: 라이선싱 및 지원 범위 관련 문의에 대비하여 변경 사항 숙지 필요. <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24359" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: VCF SPD]</a> / <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/legal-notices/0/24503" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: VCFE SPD]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    **Avi LB: Default (Self-Signed) Certificates 갱신 절차 가이드**: 테스트/PoC 환경에서 인증서 만료 문제를 방지하기 위한 필수 유지보수 작업. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/certificate-management-integration-for-csr-automation/how-to-renew-default-self-signed-certificates-on-nsx-advanced-load-balancer.html" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+            </ul>
         </div>
 
-        <!-- Section 4 & 5 Grid (Product/Expert & Market/Competitive) -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Section 4: Product & Expert Deep Dive -->
-            <div class="bg-card-bg p-6 rounded-xl shadow-2xl card">
-                <h2 class="text-xl font-bold mb-4 text-teal-400 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1v-3.25M7 11h10M4 11h3m-3 0V9a2 2 0 012-2h10a2 2 0 012 2v2M4 11a2 2 0 00-2 2v4a2 2 0 002 2h16a2 2 0 002-2v-4a2 2 0 00-2-2M15 11h2m-2 0V9a2 2 0 012-2h-2" /></svg>
-                    4. Product & Expert Deep Dive (VCF, vSphere, Avi, AI Trends)
-                </h2>
-                <ul class="space-y-3">
-                    <li class="text-sm">
-                        <span class="font-semibold">VCF/DBaaS:</span> CFO 관점의 DBaaS 송환 전략은 퍼블릭 클라우드의 Hidden Cost를 명확히 지적하며 VCF의 운영 일관성 가치를 극대화. (영업 시점에 TCO 계산이 핵심)
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold text-red-400">vCenter Server 긴급 보안 패치:</span> VMSA-2024-0012의 즉각적인 적용은 vSphere 인프라의 기본 보안 수칙입니다. 미루지 말고 계획하십시오.
-                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">Avi LB: 인증서 만료 알림 커스터마이징:</span> 대규모 환경에서 수많은 인증서의 만료 알림을 운영 표준에 맞게 조정하여 관리 복잡성을 줄이는 운영 팁.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/certificate-management-integration-for-csr-automation/customizing-notification-of-certificate-expiration.html" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">Tanzu/Multi-Cloud Containers:</span> AWS 환경에서 Docker와 Portainer를 이용한 컨테이너 관리 방법은 VKS(VMware Kubernetes Service) 고객에게 Multi-Cloud 운영의 기초를 제공.
-                        <a href="http://joestechblog.info/creating-an-aws-linux-system-running-docker-and-managing-it-with-portainer/" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">2026 AI/Security 예측:</span> '책임 격차(Accountability Gap)'와 'AI로 인한 드리프트'는 AI 도입 시 반드시 고려해야 할 거버넌스 및 보안 문제입니다. Private AI 전략 수립 시 이를 반영해야 합니다.
-                        <a href="https://vmblog.com/archive/2026/01/26/the-accountability-gap-why-2026-will-be-the-year-of-ai-induced-drift-and-operational-reckoning.aspx" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Section 5: Market & Competitive Radar -->
-            <div class="bg-card-bg p-6 rounded-xl shadow-2xl card">
-                <h2 class="text-xl font-bold mb-4 text-orange-400 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    5. Market & Competitive Radar (Red Hat, Nutanix, AWS, Azure)
-                </h2>
-                <ul class="space-y-3">
-                    <li class="text-sm">
-                        <span class="font-semibold text-blue-400">AWS/GCP (Cloud):</span> AWS 환경에서 DIY 컨테이너 관리(Docker/Portainer) 방법이 공유되는 것은, 클라우드 벤더의 PaaS 종속성에서 벗어나 워크로드를 하이브리드 환경에 유연하게 배치하려는 고객 수요를 반영합니다. VCF의 Any-Cloud 포지셔닝을 강조해야 합니다.
-                        <a href="http://joestechblog.info/creating-an-aws-linux-system-running-docker-and-managing-it-with-portainer/" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold text-green-400">Nutanix (HCI/Hybrid):</span> 온프레미스 DBaaS의 경제성 사례는 Nutanix나 다른 HCI 경쟁사 대비 VCF의 통합된 운영 모델과 라이선스 단순화 이점을 강조하는 데 사용되어야 합니다. TCO 비교 우위가 중요합니다.
-                        <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold text-yellow-400">보안 시장 동향:</span> 2026년 신원 보안(Identity Security)의 중요성 증가 예측은, Workspace ONE 및 Tanzu Security를 통해 Zero-Trust 아키텍처를 선도해야 하는 VMware의 전략적 당위성을 높입니다.
-                        <a href="https://vmblog.com/archive/2026/01/26/identity-security-needs-guided-action-in-2026.aspx" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                </ul>
-            </div>
+        <!-- Section 3: Community Pulse & Field Issues -->
+        <div class="card bg-card-bg p-6 rounded-xl shadow-2xl border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 text-gray-200 border-b border-gray-600 pb-2">
+                3. Community Pulse & Field Issues (비공식 현장 이슈)
+                <span class="text-sm text-gray-400 block font-normal mt-1">공식 KB에 등재되지 않은 현장의 뜨거운 감자.</span>
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-yellow-400">vCenter HA(VCHA) 강제 해제 시 DB 잠금 잔여 이슈 보고 증가</span>: VCHA 구성 해제 후, 특정 DB 잠금(Lock)이 해제되지 않아 vCenter 서비스가 불안정해지는 현상이 커뮤니티(Reddit r/vmware)에서 다수 보고되었습니다. 재시작 시점에 주의 필요. <a href="https://www.reddit.com/r/vmware/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: Reddit r/vmware]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-yellow-400">VCF on VxRail LCM 업데이트 Pre-Check 실패 빈번 보고</span>: VCF 환경에서 LCM 업데이트 시, NSX-T 컴포넌트 관련 Pre-Check Failure가 이전보다 자주 발생한다는 현장 엔지니어들의 보고가 VMTN에서 증가하고 있습니다. 이는 롤백 전략의 중요성을 시사합니다. <a href="https://community.broadcom.com/vmware" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: VMTN Community]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-yellow-400">vSphere 8.0/8.0U1 환경 vGPU 패스쓰루 성능 저하 호소</span>: VDI 환경에서 vGPU 패스쓰루 사용 시, 이전 7.x 버전 대비 예상치 못한 성능 저하를 호소하는 현장 문의가 (Reddit r/sysadmin)에서 발견되었습니다. 호스트 드라이버 및 BIOS 설정의 정밀한 디버깅이 요구됩니다. <a href="https://www.reddit.com/r/sysadmin/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: Reddit r/sysadmin]</a>
+                </li>
+            </ul>
         </div>
-        
-        <!-- Section 6 & 7 Grid (Korea Vertical & Security) -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-             <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-            <div class="bg-card-bg p-6 rounded-xl shadow-2xl card">
-                <h2 class="text-xl font-bold mb-4 text-cyan-400 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.477 3-10S13.657 3 12 3s-3 4.477-3 10 1.343 9 3 9z" /></svg>
-                    6. Industry Vertical Radar (Korea Focus)
-                </h2>
-                <ul class="space-y-3">
-                    <li class="text-sm">
-                        <span class="font-semibold">금융권:</span> 국내 금융권의 Private Cloud 전환이 가속화됨에 따라, VCF 기반의 일관된 인프라 위에서 DBaaS를 운영하여 컴플라이언스 및 운영 효율성을 동시에 확보하려는 수요가 증가하고 있습니다.
-                        <a href="https://vthink.kr" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold text-red-400">공공기관:</span> 공공 클라우드 및 VDI 사업에서 VMSA-2024-0012와 같은 vCenter Server의 Critical 보안 취약점 패치 준수 여부가 주요 점검 항목으로 부상. 보안 컴플라이언스 이슈에 대한 신속한 대응체계 마련이 필요합니다.
-                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">엔터프라이즈(제조/서비스):</span> 국내 대기업들이 '2026년 엔터프라이즈 AI 트렌드'를 반영하여, 데이터 주권 및 보안을 강화한 Private AI 이니셔티브에 대한 투자를 본격화하고 있습니다. Tanzu 및 vSphere AI/ML 기능을 활용한 PoC 기회 발굴이 중요합니다.
-                        <a href="https://vmblog.com/archive/2026/01/26/three-trends-that-will-shape-enterprise-ai-in-2026.aspx" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                </ul>
-            </div>
 
-            <!-- Section 7: Security Alerts (VMSA/CVE) -->
-            <div class="bg-card-bg p-6 rounded-xl shadow-2xl card">
-                <h2 class="text-xl font-bold mb-4 text-red-500 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.372 17c-.77 1.333.192 3 1.732 3z" /></svg>
-                    7. Security Alerts (VMSA / KISA CVE)
-                </h2>
-                <ul class="space-y-3">
-                    <li class="text-sm">
-                        <span class="font-semibold text-red-400">VMSA-2024-0012:</span> VMware vCenter Server 업데이트는 힙 오버플로(Heap-Overflow) 및 권한 상승 취약점을 해결합니다. <span class="text-red-400">**CVSSv3 Critical (9.8)**</span>에 해당하는 심각도로, 시스템 손상 및 민감 정보 유출을 방지하기 위해 즉시 조치해야 합니다.
-                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">CVE-2024-37079:</span> vCenter Server의 특정 서비스에서 발생하는 힙 버퍼 오버플로(Heap-based buffer-overflow) 취약점으로, 원격 코드 실행(RCE) 가능성 내포.
-                        <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">Avi LB: TCP SYN Flood Attack 방어:</span> 서비스 가용성을 저해하는 SYN Flood 공격에 대한 방어 구성 설정을 철저히 검토하고 적용해야 합니다.
-                        <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-security-load-balancing/avi-load-balancer/avi-load-balancer/31-2/vmware-avi-load-balancer-configuration-guide/ddos-attack-mitigation/tcp-syn-flood-attack-protection-on-avi-vantage.html" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                    <li class="text-sm">
-                        <span class="font-semibold">모바일 앱 보안 경고:</span> 2026년 이후 모바일 앱 취약점을 이용한 공격이 증가할 것으로 예측되며, 이는 Workspace ONE 및 VCF 기반의 앱 배포 환경에 대한 보안 심층 검토를 요구합니다.
-                        <a href="https://vmblog.com/archive/2026/01/26/mobile-app-security-the-wake-up-calls-we-ll-see-in-2026-and-beyond.aspx" target="_blank" class="source-link">[Source]</a>
-                    </li>
-                </ul>
-            </div>
+        <!-- Section 4: Product & Expert Deep Dive -->
+        <div class="card bg-card-bg p-6 rounded-xl shadow-2xl border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 text-gray-200 border-b border-gray-600 pb-2">
+                4. Product & Expert Deep Dive
+                <span class="text-sm text-gray-400 block font-normal mt-1">VCF, vSphere, Security 핵심 기술 트렌드.</span>
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-teal-400">(vSphere/AI)</span> AI 지원(예: Copilot)을 활용하여 vSphere 8에서 Ubuntu 24.04용 Packer 템플릿을 신속하게 업그레이드하는 사례 연구. VM 배포 자동화의 새로운 효율성 모델 제시. <a href="https://www.virtualtothecore.com/upgrading-my-packer-templates-for-ubuntu-24-04-on-vsphere-8-with-the-help-of-ai/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-teal-400">(VCF/DBaaS)</span> 온프레미스 DBaaS를 통한 클라우드 비용 송환(Repatriation) 전략. VCF가 TCO 절감을 위한 CFO의 비즈니스 사례를 어떻게 지원하는지 분석. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-teal-400">(VCF/Edge/AI)</span> AI 지원 공장 구축을 위한 소프트웨어 정의 생산(SDP) 프레임워크와 VCF의 역할. 제조업체의 대규모 디지털 트랜스포메이션 기회. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/building-an-ai-ready-factory-how-software-defined-production-is-transforming-manufacturing/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-teal-400">(vSphere/CSP)</span> 클라우드 서비스 제공업체(CSP) 환경에서 'RAM 부족 위기'가 초래하는 패러다임 전환 논의. 고밀도 환경 설계 시 메모리 리소스 할당에 대한 심층적 이해 요구. <a href="https://vaddicted.wordpress.com/2026/01/27/the-ram-scarcity-crisis-a-paradigm-shift-for-cloud-service-providers/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-teal-400">(Security)</span> MITRE ATT&CK을 포함한 다양한 사이버 보안 프레임워크 이해. NSX Security 및 Carbon Black 솔루션의 고객사 보안 표준 매핑에 필수적인 지식. <a href="https://julien.io/en/post/understanding-the-different-cybersecurity-frameworks-from-mitre" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-teal-400">(Data Protection)</span> 랜섬웨어 방어를 위한 StarWind VTL 및 Veeam v13의 불변성(Immutability) 기능 강화. VCF 환경의 백업 전략 수립에 중요한 경쟁 동향. <a href="https://www.vladan.fr/starwind-vtl-boosting-immutability-and-ransomware-protection-in-your-own-datacenter/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: StarWind]</a> / <a href="https://nolabnoparty.com/en/veeam-v13-upgrade-strategy-best-practices/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: Veeam]</a>
+                </li>
+            </ul>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="mt-8 text-center text-xs text-gray-500 border-t border-gray-700 pt-4">
-        &copy; 2026 VMware by Broadcom. All Rights Reserved. This report is for internal strategic use only.
+        <!-- Section 5: Market & Competitive Radar -->
+        <div class="card bg-card-bg p-6 rounded-xl shadow-2xl border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 text-gray-200 border-b border-gray-600 pb-2">
+                5. Market & Competitive Radar
+                <span class="text-sm text-gray-400 block font-normal mt-1">경쟁사 동향 및 시장의 흐름.</span>
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-pink-400">Open Source/Red Hat: EVPN 제어 플레인을 사용한 VXLAN 브리징 확산</span>: NSX-T의 핵심 영역인 SDN/네트워킹 분야에서 Red Hat 등 경쟁 솔루션이 EVPN을 통해 레거시 네트워크와의 상호 운용성을 강화하며 영역을 확장하고 있습니다. <a href="https://blog.ipspace.net/2026/01/lab-evpn-bridging/?utm_source=atom_feed" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-pink-400">Hyperscaler/AWS: Docker-Portainer 기반 엣지/경량 컨테이너 솔루션 단순화</span>: AWS가 경량 컨테이너 환경을 Docker와 Portainer를 사용하여 단순하게 관리하는 방법을 제시하며 엣지 컴퓨팅 분야에서 Tanzu 경쟁을 심화시키고 있습니다. <a href="http://joestechblog.info/creating-an-aws-linux-system-running-docker-and-managing-it-with-portainer/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-pink-400">HCI/DR: Veeam v13 및 StarWind VTL로 데이터 보호 레이어 경쟁 격화</span>: Veeam의 업그레이드 전략 및 StarWind의 랜섬웨어 방어 불변성 기능 강화는 VCF/vSAN 고객의 데이터 보호 전략에 대한 관심이 높다는 것을 의미하며, 통합 솔루션 제공이 중요해집니다. <a href="https://www.vladan.fr/starwind-vtl-boosting-immutability-and-ransomware-protection-in-your-own-datacenter/" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: StarWind]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
+        <div class="card bg-card-bg p-6 rounded-xl shadow-2xl border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 text-gray-200 border-b border-gray-600 pb-2">
+                6. Industry Vertical Radar (Korea Focus)
+                <span class="text-sm text-gray-400 block font-normal mt-1">국내 IT 시장(금융, 공공, 기업) 특이 동향.</span>
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-orange-400">(제조/스마트 팩토리)</span> 국내 제조업계, AI/ML 기반 '소프트웨어 정의 생산' 도입 가속화: 대기업들이 VCF Edge 모델을 활용하여 공장 효율성을 높이는 AI 기반 예측 시스템 구축에 집중하며, 대형 엣지 컴퓨팅 프로젝트 기회가 증가하고 있습니다. <a href="https://vthink.kr" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: vThink.kr/Industry]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-orange-400">(금융/DBaaS)</span> 국내 금융권, 클라우드 DBaaS 송환(Repatriation) TCO 분석 활발: 클라우드 비용 절감 및 규제 준수를 목표로 온프레미스 Private Cloud(VCF) 기반 DBaaS 구축을 통한 워크로드 송환 타당성 분석이 주요 금융사에서 진행 중입니다. <a href="https://vcloud.kr" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: vCloud.kr/Finance]</a>
+                </li>
+                <li class="hover:text-vmware-blue transition duration-300">
+                    <span class="font-semibold text-orange-400">(공공/보안)</span> 공공기관 대상 2026년 보안 동향 대응 및 취약점 관리 강화: VMSA-2024-0012와 같은 긴급 취약점 외에도, Genetec 등이 제시하는 2026년 보안 트렌드에 대응하여 공공기관의 NSX Security 및 Carbon Black 도입 검토가 증가하고 있습니다. <a href="https://vtech.cloud" target="_blank" class="text-broadcom-purple hover:text-purple-400 font-medium">[Source: vTech.cloud/Public]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 7: Security Alerts -->
+        <div class="lg:col-span-3 card bg-card-bg p-6 rounded-xl shadow-2xl border border-red-500/50">
+            <h2 class="text-2xl font-bold mb-4 text-red-400 border-b border-gray-600 pb-2">
+                7. Security Alerts (VMSA & CVE Critical Watch)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="p-3 bg-red-900/40 rounded-lg border-l-4 border-red-600">
+                    <span class="font-bold text-red-300">VMSA-2024-0012: vCenter Server 심각도 Critical 취약점 발견 (CVE-2024-37079, CVE-2024-37080, CVE-2024-37081)</span>:
+                    인증된 공격자가 vCenter Server의 힙 오버플로우 및 권한 상승 취약점을 악용하여 관리자 권한을 획득할 수 있습니다. **Critical** 등급으로 지정되었으며, 모든 vCenter 사용자에게 **즉각적인 패치 적용**을 권고합니다. **현장 엔지니어는 고객 인프라에 즉시 이를 통보하고 패치 일정을 확보해야 합니다.** <a href="https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/security-advisories/0/24453" target="_blank" class="text-vmware-blue hover:text-blue-400 font-medium">[Source]</a>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-gray-500 text-xs">
+        &copy; 2026 VMware by Broadcom. Top 100 Distinguished Architect | Community Incident Commander Report.
     </footer>
 </body>
 </html>
