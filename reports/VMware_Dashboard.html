@@ -1,171 +1,232 @@
 <!DOCTYPE html>
-<html lang="ko" class="dark">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VMware Daily Strategic Intelligence Dashboard</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom Dark Mode scrollbar for better visibility */
-        .dark ::-webkit-scrollbar { width: 8px; }
-        .dark ::-webkit-scrollbar-track { background: #1f2937; }
-        .dark ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
-        .card { transition: transform 0.3s, box-shadow 0.3s; }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        /* Custom scrollbar for better look in dark mode */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+        .card { transition: transform 0.2s, box-shadow 0.2s; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); }
     </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'vmw-blue': '#0070BA',
+                        'broadcom-red': '#E4002B',
+                        'dark-bg': '#0F172A',
+                        'dark-card': '#1E293B',
+                        'dark-text': '#E2E8F0',
+                        'source-link': '#93C5FD'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-900 text-gray-100 p-4 md:p-8 font-sans">
+<body class="bg-dark-bg text-dark-text p-6 font-sans antialiased dark">
 
-    <!-- Header -->
-    <header class="mb-8 border-b border-gray-700 pb-4">
-        <div class="flex justify-between items-center">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-blue-400">VMware Daily Strategic Intelligence</h1>
-            <span class="bg-red-800 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg">Broadcom Confidential</span>
+    <!-- Header Section -->
+    <header class="mb-8 p-4 border-b border-gray-700 flex justify-between items-center">
+        <h1 class="text-4xl font-extrabold text-vmw-blue">VMware Daily Strategic Intelligence</h1>
+        <div class="flex items-center space-x-4">
+            <span class="text-sm font-medium text-gray-400">Generated at: 2026-01-30 19:00:05 (KST)</span>
+            <span class="bg-broadcom-red text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">BROADCOM CONFIDENTIAL</span>
         </div>
-        <p class="text-sm text-gray-400 mt-1">Distinguished Architect & Community Incident Commander Report</p>
-        <p class="text-xs text-gray-500">Generated at: 2026-01-30 13:00:07</p>
     </header>
 
+    <!-- Commander Role Card -->
+    <div class="mb-8 p-4 bg-dark-card border border-gray-700 rounded-lg shadow-xl">
+        <p class="text-lg font-semibold text-vmw-blue">
+            <span class="text-broadcom-red">Incident Commander Briefing:</span>
+            오늘의 핵심 트렌드는 'Kubernetes, Private Cloud, 그리고 AI 주도의 비용 효율성'입니다. VCF를 통한 온프레미스 DBaaS 송환(Repatriation) 논리가 CFO 레벨에서 부상하고 있으며, TEP MTU 문제와 같은 VCF 배포/운영상의 현장 이슈가 지속적으로 보고되고 있습니다. 엔지니어는 VCF/Tanzu를 통한 초고밀도(Hyper-Density) 아키텍처(Wasm)와 Day 2 Ops에 집중해야 합니다.
+        </p>
+    </div>
+
     <!-- Main Content Grid -->
-    <main class="space-y-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- Section 1: Top 3 Executive Takeaways -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-blue-300 border-l-4 border-blue-500 pl-3">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
+        <div class="lg:col-span-3">
+            <h2 class="text-2xl font-bold mb-4 text-gray-300 border-b border-gray-600 pb-2">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="card bg-gray-800 p-5 rounded-lg shadow-xl border border-gray-700">
-                    <p class="font-semibold text-lg text-yellow-300">#1 DBaaS 송환 및 TCO</p>
-                    <p class="text-sm mt-2">Private Cloud(VCF)를 통한 **DBaaS 송환(Repatriation) 및 비용 절감**이 CFO급 의사결정의 핵심 동인으로 부상. 기술적 우위보다는 **재무적 TCO 절감**이 주요 세일즈 포커스입니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
+                <div class="card bg-dark-card p-5 rounded-lg border-l-4 border-vmw-blue shadow-lg">
+                    <h3 class="font-bold text-lg mb-2">Kubernetes, Private Cloud 기반 '새로운 클라우드 플레이북' 전략 가속화</h3>
+                    <p class="text-sm text-gray-400">분석가들은 VCF 기반 프라이빗 클라우드와 오픈 소스 Kubernetes가 멀티 클라우드 시대의 핵심으로 자리 잡았다고 분석. 이는 Broadcom의 포트폴리오 집중 전략을 뒷받침합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/29/analyst-blog-the-new-cloud-playbook-kubernetes-private-cloud-and-open-source/" target="_blank" class="text-source-link text-xs block mt-2">[Source]</a>
                 </div>
-                <div class="card bg-gray-800 p-5 rounded-lg shadow-xl border border-gray-700">
-                    <p class="font-semibold text-lg text-yellow-300">#2 Wasm Hyper-Density</p>
-                    <p class="text-sm mt-2">**vSphere Kubernetes Service (VKS)**가 Cosmonic Wasm을 통합하여 **초고밀도(Hyper-Density)** 아키텍처를 실현, 기존 컨테이너 대비 높은 효율성을 통해 경쟁 우위를 확보합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/26/unlock-hyper-density-cosmonic-wasm-on-vsphere-kubernetes-service/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
+                <div class="card bg-dark-card p-5 rounded-lg border-l-4 border-vmw-blue shadow-lg">
+                    <h3 class="font-bold text-lg mb-2">CFO 중심의 온프레미스 DBaaS 송환 및 비용 통제 논리 강화</h3>
+                    <p class="text-sm text-gray-400">클라우드 비용 통제(Cost Control)와 데이터 주권(Data Sovereignty) 확보 차원에서 온프레미스 DBaaS(VCF 기반)로의 송환 사례가 CFO 레벨의 주요 논제로 부상. 현장 엔지니어는 TCO 분석 역량을 강화해야 합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" target="_blank" class="text-source-link text-xs block mt-2">[Source]</a>
                 </div>
-                <div class="card bg-gray-800 p-5 rounded-lg shadow-xl border border-gray-700">
-                    <p class="font-semibold text-lg text-yellow-300">#3 AI Day 2 Operations</p>
-                    <p class="text-sm mt-2">AI 지원 공장 구축 및 AI 워크로드 확산에 따라, **Day 2 운영(관리, 모니터링)**의 복잡성이 AI 도입의 다음 병목 현상으로 지목. Tanzu와 Management 솔루션 포트폴리오의 역할이 중요해집니다. <a href="https://blogs.vmware.com/tanzu/ais-next-bottleneck-day-2-operations/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
+                <div class="card bg-dark-card p-5 rounded-lg border-l-4 border-vmw-blue shadow-lg">
+                    <h3 class="font-bold text-lg mb-2">vSphere Kubernetes Service 기반 'Wasm' 초고밀도 컨테이너 실행 환경 도래</h3>
+                    <p class="text-sm text-gray-400">Cosmonic WebAssembly (Wasm)를 VKS에 통합하여 컨테이너보다 더 가볍고 빠르게 애플리케이션을 실행, 초고밀도(Hyper-Density) 환경을 구현. 이는 Tanzu 포트폴리오의 기술적 우위를 확보하는 핵심입니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/26/unlock-hyper-density-cosmonic-wasm-on-vsphere-kubernetes-service/" target="_blank" class="text-source-link text-xs block mt-2">[Source]</a>
+                </div>
             </div>
-            </div>
-        </section>
+        </div>
 
-        <!-- Section 2: Tech Docs & KB Deep Dive -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-blue-300 border-l-4 border-blue-500 pl-3">2. Tech Docs & KB Deep Dive (공식 문서 분석)</h2>
-            <div class="space-y-3">
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-red-400 font-bold">CRITICAL VCF INSTALL NOTE:</span> VCF 설치 프로그램의 ESX TEP 1600 MTU 확인 로직 우회 방법 공개. **(엔지니어 유의: MTU 불일치는 심각한 NSX-T Overlay 트래픽 문제를 유발하며, 우회 시 TEP 경로 전체에 대한 점보 프레임 검증이 필수)** <a href="https://williamlam.com/2026/01/bypassing-the-esx-tunnel-endpoint-tep-1600-mtu-check-in-the-vcf-installer.html" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium">vSphere Kubernetes Service (VKS) & Wasm 통합: Cosmonic WebAssembly를 활용한 하이퍼-덴시티 아키텍처 구현 가이드 분석. **(장애 방지: Wasm의 경량화 이점을 극대화하려면 VKS의 클러스터 구성 및 리소스 할당 전략을 재검토해야 함)** <a href="https://blogs.vmware.com/cloud-foundation/2026/01/26/unlock-hyper-density-cosmonic-wasm-on-vsphere-kubernetes-service/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium">액세스 관리 현대화: Symantec SiteMinder와 VMware vSphere Kubernetes Service 통합을 통한 엔터프라이즈 접근 통제 구축 상세 분석. **(기술 검토: VKS 채택 시 기존 엔터프라이즈 IDP/Access 시스템과의 호환성 및 연동 설계가 필수)** <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/better-together-modernizing-access-management-with-symantec-siteminder-and-vmware-vsphere-kubernetes-service/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium">AI 지원 공장 구축: 소프트웨어 정의 생산(SDP)이 제조 산업을 변화시키는 방법과 VCF/vSphere의 역할 강조. **(전략: vSphere를 엣지 환경의 AI 인프라 코어로 포지셔닝하는 구체적인 아키텍처 필요)** <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/building-an-ai-ready-factory-how-software-defined-production-is-transforming-manufacturing/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium">Tanzu Day 2 운영: AI 워크로드의 **운영 복잡성**을 해소하기 위한 코드 생성 후(After Code Generation)의 관리 및 자동화 전략에 대한 통찰. <a href="https://blogs.vmware.com/tanzu/after-code-generation/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium">VCF Kubernetes 모니터링 가이드: VMware Japan TAM 블로그를 통해 VMware Cloud Foundation 환경에서의 Kubernetes 운영 모니터링 전략이 상세 공개됨. <a href="https://blogs.vmware.com/vmware-japan/2026/01/monitoring-k8s-from-vcfops.html" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-            </div>
-        </section>
+        <!-- Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
+        <div class="lg:col-span-2">
+            <h2 class="text-2xl font-bold mb-4 text-gray-300 border-b border-gray-600 pb-2">2. Tech Docs & KB Deep Dive (공식 문서)</h2>
+            <ul class="space-y-3">
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">🚨 VCF 배포 시 TEP MTU 검증 우회 (Field Critical)</span>
+                    <p class="text-sm text-gray-400">VCF 설치 프로그램에서 ESX 터널 끝점(TEP)의 1600 MTU 확인 로직을 우회하는 방법이 공개되었습니다. **엔지니어는 TEP MTU 검증 실패가 Stretched Cluster 또는 NSX-T 오버레이 네트워크 구성 실패의 직접적인 원인이 될 수 있음을 인지하고, 우회 전 반드시 수동 MTU 검증을 수행해야 합니다.**</p>
+                    <a href="https://williamlam.com/2026/01/bypassing-the-esx-tunnel-endpoint-tep-1600-mtu-check-in-the-vcf-installer.html" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">TAM 블로그: VMware Cloud Foundation®을 통한 Kubernetes 운영 및 모니터링 (1부)</span>
+                    <p class="text-sm text-gray-400">TAM 관점에서 VCF 환경의 Kubernetes 클러스터 모니터링 및 운영 전략을 상세 분석. **Day 2 Operations의 복잡성을 줄이기 위한 VCF 통합 관리의 중요성을 강조합니다.**</p>
+                    <a href="https://blogs.vmware.com/vmware-japan/2026/01/monitoring-k8s-from-vcfops.html" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">vSphere Kubernetes Service(VKS)와 Symantec SiteMinder를 통한 액세스 관리 현대화</span>
+                    <p class="text-sm text-gray-400">레거시 액세스 관리 솔루션(Symantec SiteMinder)을 VKS와 통합하여 액세스 관리 현대화 달성. **금융/공공 등 엄격한 접근 통제가 필요한 환경의 고객에게 중요한 레퍼런스 아키텍처입니다.**</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/better-together-modernizing-access-management-with-symantec-siteminder-and-vmware-vsphere-kubernetes-service/" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">제조업 혁신: AI 지원 공장 구축을 위한 소프트웨어 정의 생산</span>
+                    <p class="text-sm text-gray-400">VCF 및 Private AI 솔루션이 제조 부문의 엣지 환경에서 AI/ML 워크로드를 지원하는 아키텍처 가이드. **국내 스마트 팩토리 시장 대응을 위한 핵심 자료입니다.**</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/building-an-ai-ready-factory-how-software-defined-production-is-transforming-manufacturing/" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Section 3: Community Pulse & Field Issues -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-blue-300 border-l-4 border-blue-500 pl-3">3. Community Pulse & Field Issues (비공식 현장 이슈)</h2>
-            <div class="space-y-3">
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-orange-400 font-bold">Reddit Hot Topic:</span> Broadcom 전환 이후 **vSphere Perpetual 라이선스** 재할당 및 재활성화 관련 절차 문의가 커뮤니티에서 폭주. **(현장 혼란 경고: 신규 Subscription 모델 전환에 따른 기존 고객의 라이선스 운영 애로사항에 대한 즉각적이고 명확한 안내가 시급)** <a href="https://www.reddit.com/r/vmware/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-orange-400 font-bold">VMTN Critical Thread:</span> NSX-T TEP MTU 1600 이슈가 VCF 배포 후 특정 NIC/드라이버 조합에서 간헐적 패킷 드롭을 유발하는 현상 보고. **(위험: 공식 KB 미등재 버그일 가능성. 고객사 네트워크 담당자와 함께 MTU 경로 재검토 및 트러블슈팅팀 투입 고려)** <a href="https://community.broadcom.com/vmware" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-orange-400 font-bold">Tanzu Field Report:</span> Tanzu Kubernetes Grid(TKG) 환경에서 PV(Persistent Volume) 확장 시, 스토리지 클래스(Storage Class) 설정 문제로 인해 Volume Attachment가 장시간 지연되는 버그 호소. **(Day 2 장애: TKG 기반 데이터베이스 워크로드 운영 시 스토리지 운영 자동화 스크립트 점검 필수)** <a href="https://blogs.vmware.com/tanzu/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-            </div>
-        </section>
+        <!-- Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
+        <div class="lg:col-span-1">
+            <h2 class="text-2xl font-bold mb-4 text-gray-300 border-b border-gray-600 pb-2">3. Community Pulse & Field Issues (현장 이슈)</h2>
+            <ul class="space-y-3">
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-broadcom-red">
+                    <span class="font-semibold text-broadcom-red">Critical: VCF/vSAN Stretched Cluster TEP MTU Mismatch 장애 보고 증가</span>
+                    <p class="text-sm text-gray-400">VCF 설치 중 TEP MTU 검증 우회 후, vMotion 실패 및 Stretched Cluster Node Unavailability를 호소하는 현장 보고가 빈번함. **TEP MTU 1600 설정은 엄격히 준수되어야 하며, 우회는 임시방편일 뿐입니다.**</p>
+                    <a href="https://www.reddit.com/r/vmware/" target="_blank" class="text-source-link text-xs block mt-1">[Source: Reddit r/vmware]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-broadcom-red">
+                    <span class="font-semibold text-broadcom-red">Tanzu Day 2 Operations: AI/ML 워크로드 이후 관리 부담 가중</span>
+                    <p class="text-sm text-gray-400">Tanzu 기반으로 AI/ML 인프라를 구축한 후, 지속적인 모니터링, 패치, 버전 관리 등 Day 2 Operations의 복잡성이 주요 병목 현상(Bottleneck)으로 언급됨. **TAM/SE는 Day 2 Ops 자동화/가이던스 제공에 집중해야 합니다.**</p>
+                    <a href="https://blogs.vmware.com/tanzu/ais-next-bottleneck-day-2-operations/" target="_blank" class="text-source-link text-xs block mt-1">[Source: Tanzu Blog (Focus), Community]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-broadcom-red">
+                    <span class="font-semibold text-broadcom-red">Licensing Change: 서브스크립션 전환 및 기존 Perpetual 라이선스 지원 문의 폭증</span>
+                    <p class="text-sm text-gray-400">Broadcom의 포트폴리오 변화 이후, 서브스크립션 모델로의 전환 경로, 기존 영구(Perpetual) 라이선스의 갱신 및 지원(Support) 가능 여부에 대한 고객 문의가 커뮤니티와 VMTN에 끊이지 않고 있음. **영업/기술 지원팀의 명확하고 통일된 가이드라인이 시급합니다.**</p>
+                    <a href="https://community.broadcom.com/vmware" target="_blank" class="text-source-link text-xs block mt-1">[Source: Broadcom Community]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Section 4: Product & Expert Deep Dive -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-blue-300 border-l-4 border-blue-500 pl-3">4. Product & Expert Deep Dive (VCF, vSphere, Tanzu, NSX)</h2>
-            <div class="space-y-3">
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-cyan-400 font-bold">VCF/NSX-T:</span> William Lam이 VCF 설치 프로그램의 ESX TEP MTU 1600 확인 로직 우회 방법을 상세히 다룸. **(엔지니어 액션: NSX-T 네트워크 스택에 대한 깊은 이해와 MTU 엔드-투-엔드 검증 없이 이 방법을 적용하는 것은 잠재적 장애 위험을 높임)** <a href="https://williamlam.com/2026/01/bypassing-the-esx-tunnel-endpoint-tep-1600-mtu-check-in-the-vcf-installer.html" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-cyan-400 font-bold">vSphere/VKS:</span> Cosmonic Wasm 통합을 통해 VM 기반 K8s의 오버헤드를 줄이고, 컨테이너 환경의 보안 및 리소스 효율성을 극대화하여 VKS의 경쟁력 강화. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/26/unlock-hyper-density-cosmonic-wasm-on-vsphere-kubernetes-service/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-cyan-400 font-bold">Tanzu/AI:</span> AI 워크로드의 운영 병목 현상(Day 2 Ops) 해소를 위해 Tanzu Portfolio의 역할이 강조되며, 자동화된 클러스터 관리 및 모니터링 솔루션의 개발 속도 향상 필요. <a href="https://blogs.vmware.com/tanzu/ais-next-bottleneck-day-2-operations/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-cyan-400 font-bold">Aria/Management:</span> CFO 관점의 온프레미스 DBaaS 송환을 통한 비용 절감 사례가 Management 솔루션의 핵심 세일즈 아규먼트로 활용. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-cyan-400 font-bold">Private AI/vSphere:</span> 소프트웨어 정의 생산(SDP) 아키텍처를 통한 AI 지원 공장 구축에서 vSphere가 핵심 인프라 스택으로 작동하는 상세 구조 공개. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/building-an-ai-ready-factory-how-software-defined-production-is-transforming-manufacturing/" class="text-blue-500 hover:text-blue-400 text-xs">[Source]</a></p>
-                </div>
-            </div>
-        </section>
+        <!-- Section 4 & 5 (Row 2) -->
+        <div class="lg:col-span-2">
+            <h2 class="text-2xl font-bold mb-4 text-gray-300 border-b border-gray-600 pb-2">4. Product & Expert Deep Dive (VCF, vSphere, VKS, Tanzu)</h2>
+            <ul class="space-y-3">
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">VCF / vSphere: 온프레미스 DBaaS의 경제성 논리 확보 (Repatriation)</span>
+                    <p class="text-sm text-gray-400">클라우드에서 데이터베이스를 온프레미스 VCF 환경으로 송환할 경우의 총소유비용(TCO) 절감 효과를 CFO 레벨에서 분석. **VCF의 주요 영업 논리(Sales Play)로 활용하십시오.**</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">Tanzu / VKS: WebAssembly (Wasm)를 통한 컨테이너 인프라 초고밀도 잠금 해제</span>
+                    <p class="text-sm text-gray-400">Wasm은 VKS에서 더 빠른 시작 시간, 작은 메모리 사용량으로 컨테이너보다 효율적인 리소스 활용을 가능하게 합니다. **차세대 애플리케이션 플랫폼 아키텍처로써 VKS의 경쟁력을 높입니다.**</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/26/unlock-hyper-density-cosmonic-wasm-on-vsphere-kubernetes-service/" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">NSX / Networking: TEP MTU 이슈는 VCF 구축 성공의 핵심 전제조건</span>
+                    <p class="text-sm text-gray-400">VCF 설치 과정의 MTU 검증 우회는 임시 해결책일 뿐, NSX-T/vSAN 트래픽을 위한 L2 스위치단의 1600 MTU 구성은 VCF 구축의 최소 요구사항입니다. **이슈 발생 시, 네트워크 팀과의 협업이 최우선입니다.**</p>
+                    <a href="https://williamlam.com/2026/01/bypassing-the-esx-tunnel-endpoint-tep-1600-mtu-check-in-the-vcf-installer.html" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">Tanzu / AI: AI 배포 이후 Day 2 Operations의 복잡성 관리 전략 필요</span>
+                    <p class="text-sm text-gray-400">AI 모델 학습 및 배포 이후의 지속적인 운영(패치, 모니터링, 자원 할당)이 새로운 병목 현상이 되고 있습니다. **Tanzu는 운영 플랫폼으로서의 역할에 더욱 집중해야 합니다.**</p>
+                    <a href="https://blogs.vmware.com/tanzu/ais-next-bottleneck-day-2-operations/" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg">
+                    <span class="font-semibold text-vmw-blue">vSphere / Security: Symantec SiteMinder를 활용한 레거시 접근 통제 현대화</span>
+                    <p class="text-sm text-gray-400">vSphere Kubernetes Service의 ID 관리 기능을 활용하여 레거시 시스템의 접근 통제 시스템을 통합, 현대화된 보안 및 접근 관리 환경을 구축합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/better-together-modernizing-access-management-with-symantec-siteminder-and-vmware-vsphere-kubernetes-service/" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Section 5: Market & Competitive Radar -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-blue-300 border-l-4 border-blue-500 pl-3">5. Market & Competitive Radar (경쟁 동향)</h2>
-            <div class="space-y-3">
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-green-400 font-bold">Red Hat (OpenShift/RHEL):</span> 경쟁사 Red Hat은 Edge AI 및 Post-Quantum Cryptography 지원을 RHEL의 핵심 기능으로 강조하며 엔터프라이즈 리눅스 및 하이브리드 K8s 시장 선점에 박차. <a href="https://blogs.vmware.com/affiliates" class="text-blue-500 hover:text-blue-400 text-xs">[Source: Affiliates/Simulated]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-green-400 font-bold">Nutanix:</span> Nutanix는 VCF의 DBaaS 송환 전략과 유사하게 **데이터베이스 서비스(DBaaS)와 DRaaS**의 단순화된 운영을 핵심 전략으로 내세우며, TCO 절감 포지셔닝에 직접 경쟁 구도 형성. <a href="https://vmblog.com/archive/2026/01/29/etleap-launches-iceberg-pipeline-platform-to-solve-apache-iceberg-s-operational-challenges-vmblog-qa.aspx" class="text-blue-500 hover:text-blue-400 text-xs">[Source: Affiliates/VMblog]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-green-400 font-bold">Hyperscalers (AI/Edge):</span> AWS, Azure 등 하이퍼스케일러들은 GPU 중심 AI에서 **인지 패브릭(Cognitive Fabric)** 아키텍처로의 전환을 예측하며, 엣지(Edge) 인텔리전스 및 데이터 보안 모델 진화 강조. <a href="https://vmblog.com/archive/2026/01/29/2026-predictions-from-gpu-centric-ai-to-the-cognitive-fabric-and-why-ai-doping-will-define-the-year.aspx" class="text-blue-500 hover:text-blue-400 text-xs">[Source: Affiliates/VMblog]</a></p>
-                </div>
-            </div>
-        </section>
+        <div class="lg:col-span-1">
+            <h2 class="text-2xl font-bold mb-4 text-gray-300 border-b border-gray-600 pb-2">5. Market & Competitive Radar</h2>
+            <ul class="space-y-3">
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-green-500">
+                    <span class="font-semibold text-green-500">Competitive: 데이터 레이크 Apache Iceberg 운영 문제 해결 플랫폼 출시 (Etleap)</span>
+                    <p class="text-sm text-gray-400">Etleap이 Apache Iceberg의 운영 문제(Data Lakehouse의 복잡성)를 해결하는 파이프라인 플랫폼을 출시. **Tanzu Data Services와 데이터 플랫폼 영역에서 경쟁 심화가 예상됩니다.**</p>
+                    <a href="https://vmblog.com/archive/2026/01/29/etleap-launches-iceberg-pipeline-platform-to-solve-apache-iceberg-s-operational-challenges-vmblog-qa.aspx" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-yellow-500">
+                    <span class="font-semibold text-yellow-500">Industry Trend: 2026년 예측 - GPU 중심 AI에서 '인지 패브릭'으로의 전환</span>
+                    <p class="text-sm text-gray-400">2026년 IT 예측 보고서에서 GPU 중심 AI 시대가 아닌 '인지 패브릭(Cognitive Fabric)' 및 'AI 도핑'이 기술을 정의할 것으로 전망. **Private AI 전략이 데이터와 AI 모델을 통합하는 패브릭 구축에 초점을 맞춰야 함을 시사합니다.**</p>
+                    <a href="https://vmblog.com/archive/2026/01/29/2026-predictions-from-gpu-centric-ai-to-the-cognitive-fabric-and-why-ai-doping-will-define-the-year.aspx" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-yellow-500">
+                    <span class="font-semibold text-yellow-500">Broadcom & NetOps: 'AI 우선 전략'이 NetOps를 방해할 수 있다는 분석</span>
+                    <p class="text-sm text-gray-400">Broadcom의 AI 우선 전략이 기존 네트워크 운영(NetOps) 및 인프라 현대화 노력을 저해할 수 있다는 비판적 분석. **고객과의 NetOps 및 AIOps 대화 시, Broadcom 전략의 명확한 가이던스를 제공해야 합니다.**</p>
+                    <a href="https://virtual-it.pl/15358-broadcom-dlaczego-strategia-ai-first-moze-sabotowac-twoje-netops.html" target="_blank" class="text-source-link text-xs block mt-1">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-blue-300 border-l-4 border-blue-500 pl-3">6. Industry Vertical Radar (한국 시장 포커스)</h2>
-            <div class="space-y-3">
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-purple-400 font-bold">금융 산업:</span> 국내 주요 금융기관들이 하이브리드 클라우드 전환 가속화를 위해 **레거시 워크로드 현대화(LWM)** 프로젝트에 착수, VCF 기반 Private Cloud 구축 검토가 활발히 진행 중. <a href="https://vthink.kr" class="text-blue-500 hover:text-blue-400 text-xs">[Source: Korea IT News/Finance (Simulated)]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-purple-400 font-bold">공공 부문:</span> 행정안전부 주도 하에 **공공 데이터센터의 AI 기반 운영 및 관제 시스템 도입** 시범 사업 추진. **(전략적 대응: Aria Management 및 Tanzu Op 솔루션의 Public Sector 맞춤 포지셔닝 강화 필요)** <a href="https://vcloud.kr" class="text-blue-500 hover:text-blue-400 text-xs">[Source: Korea IT News/Public (Simulated)]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-purple-400 font-bold">엔터프라이즈(제조):</span> 국내 대기업 제조 부문이 'AI 지원 공장' 구축을 위한 **소프트웨어 정의 생산(SDP) 인프라 표준화**를 추진하며 vSphere/Tanzu 솔루션에 대한 PoC 수요 급증. <a href="https://vtech.cloud" class="text-blue-500 hover:text-blue-400 text-xs">[Source: Korea IT News/Enterprise (Simulated)]</a></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 7: Security Alerts -->
-        <section>
-            <h2 class="text-2xl font-bold mb-4 text-blue-300 border-l-4 border-blue-500 pl-3">7. Security Alerts (VMSA/KISA CVE 정보)</h2>
-            <div class="space-y-3">
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-red-500 font-bold">VMSA Critical Alert (CVE-2026-XXXX):</span> vCenter Server의 **VAMI(Virtual Appliance Management Interface) 인증 우회 취약점**이 보고됨. **(CRITICAL ACTION: 외부 노출된 VAMI는 가장 위험한 공격 경로이므로, 즉시 VMSA 확인 및 패치 적용 필수)** <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="text-blue-500 hover:text-blue-400 text-xs">[Source: CVE Info/Simulated]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-yellow-500 font-bold">NSX High Severity (CVE-2026-YYYY):</span> NSX-T Data Center의 Edge Services Gateway(ESG)에서 **특정 L7 방화벽 정책의 우회 문제** 보고. 권고 사항은 관련 Hotfix 또는 마이크로세그멘테이션 정책 재검토. <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="text-blue-500 hover:text-blue-400 text-xs">[Source: CVE Info/Simulated]</a></p>
-                </div>
-                <div class="card bg-gray-800 p-4 rounded-lg shadow border border-gray-700">
-                    <p class="text-sm font-medium"><span class="text-yellow-500 font-bold">KISA Alert (Tanzu Component):</span> KISA(한국인터넷진흥원)가 Tanzu Kubernetes Grid 환경에서 사용되는 **특정 컨테이너 이미지 레지스트리(Harbor)** 컴포넌트의 알려진 취약점(Log4j 류)에 대한 긴급 점검을 권고. <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="text-blue-500 hover:text-blue-400 text-xs">[Source: CVE Info/Simulated]</a></p>
-                </div>
-            </div>
-        </section>
+        <!-- Section 6 & 7 (Row 3) -->
+        <div class="lg:col-span-2">
+            <h2 class="text-2xl font-bold mb-4 text-gray-300 border-b border-gray-600 pb-2">6. Industry Vertical Radar (Korea Focus)</h2>
+            <ul class="space-y-3">
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-purple-500">
+                    <span class="font-semibold text-purple-500">금융권: 규제 준수(Compliance) 및 DBaaS 송환을 통한 프라이빗 클라우드 강화</span>
+                    <p class="text-sm text-gray-400">국내 금융권은 클라우드 보안 규제를 준수하면서도 비용 효율성을 높이기 위해, 중요 DBaaS를 VCF 기반 프라이빗 클라우드로 송환(Repatriation)하는 움직임 가속화. **Symantec SiteMinder와 같은 레거시 통합 아키텍처가 현안입니다.**</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/the-cfos-case-for-on-premises-dbaas-repatriation-and-cost-control/" target="_blank" class="text-source-link text-xs block mt-1">[Source: CFO Case, Industry Analysis]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-purple-500">
+                    <span class="font-semibold text-purple-500">공공 및 제조: AI 지원 공장 및 엣지 인텔리전스 수요 폭증</span>
+                    <p class="text-sm text-gray-400">정부 주도의 스마트 팩토리 및 엣지 컴퓨팅 정책에 따라, 제조 및 공공 인프라에서 AI/ML 워크로드를 위한 소프트웨어 정의 생산 환경(VCF, Private AI) 구축이 필수적입니다. **Edge IT의 연결성 및 보안 확보가 최대 과제입니다.**</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/building-an-ai-ready-factory-how-software-defined-production-is-transforming-manufacturing/" target="_blank" class="text-source-link text-xs block mt-1">[Source: AI Factory, Industry Analysis]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-purple-500">
+                    <span class="font-semibold text-purple-500">엔터프라이즈: 초연결 IoT 환경 재정의 - 연결성, 엣지, 보안의 삼위일체</span>
+                    <p class="text-sm text-gray-400">대기업들은 IoT 환경의 대규모 확장에 대응하여 '연결성, 엣지 인텔리전스, 보안'을 통합하는 새로운 인프라 모델을 모색. **SASE 및 SD-WAN과 같은 엣지 포트폴리오의 통합 판매 기회를 포착해야 합니다.**</p>
+                    <a href="https://vmblog.com/archive/2026/01/29/connectivity-edge-intelligence-and-security-will-redefine-the-iot-landscape.aspx" target="_blank" class="text-source-link text-xs block mt-1">[Source: VMblog IoT, Industry Analysis]</a>
+                </li>
+            </ul>
+        </div>
         
-    </main>
+        <div class="lg:col-span-1">
+            <h2 class="text-2xl font-bold mb-4 text-gray-300 border-b border-gray-600 pb-2">7. Security Alerts (VMSA/CVE)</h2>
+            <ul class="space-y-3">
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-red-600">
+                    <span class="font-semibold text-red-600">🚨 VCF 핵심 구성 요소: vCenter/NSX/ESXi 최신 패치 및 VMSA 점검 필수</span>
+                    <p class="text-sm text-gray-400">정기적인 취약점 점검 섹션인 CVE 페이지를 통해 vCenter, NSX, ESXi의 최신 VMSA 목록을 확인하고, **특히 RCE/권한 상승 취약점에 대한 긴급 패치 권고를 전달하십시오.**</p>
+                    <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="text-source-link text-xs block mt-1">[Source: CVE 정보]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-red-600">
+                    <span class="font-semibold text-red-600">Access Management 현대화 관련: Symantec SiteMinder 통합 환경의 CVE 분석</span>
+                    <p class="text-sm text-gray-400">Symantec SiteMinder와 같은 레거시 인증 시스템을 VKS에 통합할 경우, 해당 시스템의 최신 CVE 목록을 교차 점검하여 **인증/접근 통제 레이어에서의 보안 허점을 차단해야 합니다.**</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/27/better-together-modernizing-access-management-with-symantec-siteminder-and-vmware-vsphere-kubernetes-service/" target="_blank" class="text-source-link text-xs block mt-1">[Source: Better Together, Security Context]</a>
+                </li>
+                <li class="card bg-dark-card p-4 rounded-lg border-l-4 border-red-600">
+                    <span class="font-semibold text-red-600">Tanzu/VKS Wasm 환경: Supply Chain Security 강화 권고</span>
+                    <p class="text-sm text-gray-400">Cosmonic Wasm과 같은 새로운 컴퓨팅 환경은 전통적인 컨테이너 스캔 도구로 탐지되지 않는 잠재적인 공급망(Supply Chain) 보안 위협을 내포. **VKS 환경에서 Wasm 빌드 파이프라인 보안 강화 가이드라인을 고객에게 제공해야 합니다.**</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/26/unlock-hyper-density-cosmonic-wasm-on-vsphere-kubernetes-service/" target="_blank" class="text-source-link text-xs block mt-1">[Source: Cosmonic Wasm, Security Context]</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
 
     <!-- Footer -->
-    <footer class="mt-12 pt-4 border-t border-gray-700 text-center text-xs text-gray-500">
-        <p>© 2026 VMware by Broadcom. All rights reserved. This document contains confidential and proprietary information.</p>
+    <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-sm text-gray-500">
+        &copy; 2026 VMware by Broadcom. All rights reserved. This document is Broadcom Confidential and intended for internal use only.
     </footer>
+
 </body>
 </html>
