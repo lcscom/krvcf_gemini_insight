@@ -1,227 +1,234 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VMware Daily Strategic Intelligence Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Tailwind CSS 설정 (Dark Mode & Customization) */
-        :root {
-            color-scheme: dark;
-        }
-        
-        body {
-            @apply bg-gray-900 text-gray-100;
-        }
-        
-        .card {
-            @apply bg-gray-800 p-6 rounded-xl shadow-2xl transition duration-300 hover:shadow-cyan-500/50 border border-gray-700;
-        }
-        
-        .section-title {
-            @apply text-2xl font-bold text-cyan-400 mb-4 border-b border-cyan-700 pb-2;
-        }
-        
-        .item {
-            @apply mb-3 p-3 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition duration-150;
-        }
-        
-        .source-link {
-            @apply text-cyan-500 hover:text-cyan-400 text-sm ml-2 font-mono;
-        }
-        
-        .badge-confidential {
-            @apply inline-flex items-center px-3 py-1 bg-red-800 text-red-100 text-xs font-semibold rounded-full shadow-lg;
+        /* Custom Tailwind Configuration for Professional Dark Mode */
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'vm-blue': '#007C89',
+                        'vm-dark': '#111827', /* Gray-900 */
+                        'vm-card': '#1F2937', /* Gray-800 */
+                        'vm-text-light': '#F3F4F6', /* Gray-100 */
+                        'vm-text-secondary': '#9CA3AF', /* Gray-400 */
+                    },
+                }
+            }
         }
     </style>
 </head>
-<body class="p-6">
+<body class="bg-vm-dark text-vm-text-light p-4 md:p-8">
 
-    <!-- 1. Header -->
-    <header class="mb-8 flex justify-between items-center pb-4 border-b border-gray-700">
-        <div class="flex items-center space-x-4">
-            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l-2 1h-2V6l-2-1v13a2 2 0 002 2h8a2 2 0 002-2h-2zm-5 0h12a2 2 0 002-2V6h-4l-2-1-2 1h-2v13z"></path></svg>
-            <h1 class="text-3xl font-extrabold text-white">VMware Daily Intelligence</h1>
-            <span class="badge-confidential">Broadcom Confidential</span>
+    <!-- Header Section -->
+    <header class="mb-8 border-b border-vm-card pb-4">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <h1 class="text-4xl font-extrabold text-vm-blue tracking-tight">VMware Daily Strategic Intelligence</h1>
+            <div class="mt-4 md:mt-0 text-right">
+                <span class="inline-block bg-red-700 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase shadow-lg">Broadcom Confidential</span>
+                <p class="text-sm text-vm-text-secondary mt-1">Generated at: 2026-02-03 19:00:05</p>
+                <p class="text-sm font-medium mt-1">Distinguished Architect & Community Incident Commander</p>
+            </div>
         </div>
-        <p class="text-sm text-gray-400">Generated at: 2026-02-03 13:00:05 (KST)</p>
     </header>
 
     <!-- Main Content Grid -->
-    <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        <!-- 2. Section 1: Top 3 Executive Takeaways (Colspan 3 for prominence) -->
-        <section class="card md:col-span-3">
-            <h2 class="section-title">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
-            <p class="text-gray-400 mb-4">VCF 9.x AI 성능과 VCDX/Expert 인사이트를 융합한 오늘자 핵심 전략 방향입니다. 엔지니어는 잠재적 배포 장애 이슈를 필히 검토해야 합니다.</p>
-            
-            <div class="space-y-3">
-                <div class="item border-l-4 border-red-500">
-                    <p class="font-semibold text-lg text-red-400">1. Private AI 주도권 확보: VCF 9.x의 AI 추론 성능 벤치마크 공격적 활용</p>
-                    <p class="text-gray-300">VCF 9.x 환경에서 AI 추론 워크로드에 대한 익스트림 퍼포먼스 시리즈가 공개되었습니다. 이는 'Private AI' 전략의 기술적 근거를 제시하며, NVIDIA 등 파트너십 기반으로 경쟁사 대비 성능 우위를 시장에 공격적으로 알려야 하는 핵심 세일즈 포인트입니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/extreme-performance-series-2026-ai-inference-performance-on-vcf-9/" class="source-link">[Source]</a></p>
-                </div>
-                <div class="item border-l-4 border-yellow-500">
-                    <p class="font-semibold text-lg text-yellow-400">2. Critical Path 운영 안정성 경고: VCF 9.0 Import 시 'VMWARE_COMPAT' 파일 누락 이슈</p>
-                    <p class="text-gray-300">VCF 9.0 환경 도입 시 필수 파일(VMWARE_COMPAT)을 찾을 수 없어 배포가 실패하는 잠재적 Critical Path 버그가 커뮤니티에서 보고되었습니다. 현장 엔지니어들은 Upgrade/Migration 전 공식 Tech Docs 및 커뮤니티의 'Day 0' 이슈를 최우선으로 검토하고, 우회 방안을 숙지해야 합니다. (Section 3 참고) <a href="http://lmoglie.blogspot.com/2026/02/vcf-90-import-vmwarecompat-is-not-found.html" class="source-link">[Source]</a></p>
-                </div>
-                <div class="item border-l-4 border-green-500">
-                    <p class="font-semibold text-lg text-green-400">3. Modern App 리더십 공고화: Avi Load Balancer, 혁신상 최종 후보 선정</p>
-                    <p class="text-gray-300">VMware Avi Load Balancer가 SiliconANGLE Media의 Tech Innovation CUBEd Awards 최종 후보로 선정되며, L4-L7 영역에서 Tanzu 기반 Modern Apps의 핵심 구성요소임을 재확인했습니다. Cloud Smart 전략과 Avi의 역할을 연계하여 L4-L7 시장 리더십을 강화해야 합니다. <a href="https://blogs.vmware.com/load-balancing/2026/01/30/avi-finalist-in-siliconangle-medias-2026-tech-innovation-cubed-awards/" class="source-link">[Source]</a></p>
-                </div>
-            </div>
-        </section>
+        <!-- Card Component: Top 3 Executive Takeaways -->
+        <div class="lg:col-span-3 bg-vm-card p-6 rounded-xl shadow-2xl border border-vm-blue/30 hover:shadow-vm-blue/50 transition duration-300">
+            <h2 class="text-2xl font-bold mb-4 flex items-center text-vm-blue">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v14M9 19h12M9 19c-3.486 0-6.368-2.585-6.848-6H5V6h10V4.5M3 12h18"></path></svg>
+                Section 1: Top 3 Executive Takeaways (오늘의 핵심 결론)
+            </h2>
+            <ul class="space-y-4">
+                <li class="border-b border-vm-card/50 pb-2">
+                    <span class="font-semibold text-lg text-green-400">1. VCF 9 기반 AI/ML 인프라 성능 우위 확보:</span> VCF 9.x의 AI 추론 성능 검증이 공식화되었습니다. 이는 엔터프라이즈 AI 시장 공략을 위한 핵심 퍼포먼스 레퍼런스로 즉시 활용하여 경쟁사 대비 우위를 점해야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/extreme-performance-series-2026-ai-inference-performance-on-vcf-9/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
+                </li>
+                <li class="border-b border-vm-card/50 pb-2">
+                    <span class="font-semibold text-lg text-green-400">2. 고보안 고객 대상 VMC BYOK 지원:</span> VMware Cloud on AWS에서 BYOK(Bring Your Own Key)를 통한 VM 암호화 기능이 도입되었습니다. 금융, 공공 등 고도의 보안 및 컴플라이언스를 요구하는 고객사 영업의 핵심 보안 요소로 활용하십시오. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/02/byok-vm-encryption-vmware-cloud-aws/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
+                </li>
+                <li>
+                    <span class="font-semibold text-lg text-green-400">3. Avi(NSX ALB)의 혁신성 입증과 버티컬 확장:</span> VMware Avi Load Balancer가 Tech Innovation CUBEd Awards 최종 후보로 선정되었으며, 동시에 현대 의료를 위한 '클라우드 스마트 전략'이 발표되었습니다. 이는 L4-L7 시장의 기술 리더십과 헬스케어 버티컬 시장에서의 솔루션 포트폴리오 강화의 시그널입니다. <a href="https://blogs.vmware.com/load-balancing/2026/01/30/avi-finalist-in-siliconangle-medias-2026-tech-innovation-cubed-awards/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>, <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/a-cloud-smart-strategy-for-modern-healthcare/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- 3. Section 2: Tech Docs & KB Deep Dive -->
-        <section class="card md:col-span-1">
-            <h2 class="section-title">2. Tech Docs & KB Deep Dive (공식 문서)</h2>
-            <p class="text-gray-400 mb-4">현장 엔지니어가 Day 1/Day 2 운영 시 반드시 숙지해야 할 공식 기술 문서 업데이트입니다.</p>
-            <div class="space-y-3">
-                <!-- Item 1: VCF 9.0 Release -->
-                <div class="item">
-                    <p class="font-semibold">VCF 9.0 중심으로 릴리스 방향 명확화</p>
-                    <p class="text-sm text-gray-400">vSphere Supervisor의 다음 릴리스가 VCF 9.0의 일부임을 명시. VCF 중심의 제품 통합 및 배포 전략을 고객에게 명확히 전달해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/next-release-is-part-of-vcf-9.html" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 2: Active/Active Networking -->
-                <div class="item">
-                    <p class="font-semibold">vSphere Supervisor Active/Active 네트워킹 구성</p>
-                    <p class="text-sm text-gray-400">Supervisor Active/Active 배포 모드에 대한 상세 네트워킹 구성 가이드 업데이트. L4-L7 서비스 장애 방지를 위한 네트워크 토폴로지 설계 숙지가 필수입니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/configure-networking-for-active-active-deployment-modes.html" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 3: WCP & Feature Names -->
-                <div class="item">
-                    <p class="font-semibold">WCP 용어 업데이트 및 제품/기능 이름 통일</p>
-                    <p class="text-sm text-gray-400">WCP(Workload Control Plane)를 포함한 용어 및 제품/기능 이름의 공식 업데이트. 고객 커뮤니케이션 혼선을 막기 위해 최신 용어를 정확히 사용해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/wcp-product-names.html" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 4: Deactivate Host Encryption -->
-                <div class="item">
-                    <p class="font-semibold">API를 통한 Host Encryption Mode 비활성화 절차</p>
-                    <p class="text-sm text-gray-400">vSphere의 Host Encryption Mode를 API를 사용하여 비활성화하는 방법이 문서화되었습니다. 긴급 상황에서의 복구/운영 절차를 위해 이 관리 방법의 숙지가 필요합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/disable-host-encryption-mode.html" class="source-link">[Source]</a></p>
-                </div>
-            </div>
-        </section>
+        <!-- Card Component: Tech Docs & KB Deep Dive -->
+        <div class="bg-vm-card p-6 rounded-xl shadow-lg border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-orange-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.464 9.213 5 7.5 5S4.168 5.464 3 6.253M12 6.253C13.168 5.464 14.787 5 16.5 5s3.332.464 4.5 1.253M12 6.253V13m-6 3H6m-2 3h4m-2 3h4m-2-3H6m-2 3h4m-2-3h4m-2-3H6m-2 3h4"></path></svg>
+                Section 2: Tech Docs & KB Deep Dive (공식 문서)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="p-2 border-l-4 border-orange-400 bg-vm-card/50">
+                    <p class="font-semibold">vSphere 9.1: VM 레벨 EVC 모드 구성 상세 절차</p>
+                    <p class="text-vm-text-secondary mt-1">하이브리드 클라우드 또는 이기종 호스트 환경에서 vMotion 안정성을 확보하기 위한 핵심 절차입니다. 엔지니어는 반드시 VM의 EVC 설정 가이드를 숙지하여 호환성 오류를 방지해야 합니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/configure-the-evc-mode-of-a-virtual-machine.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: EVC Config]</a>
+                </li>
+                <li class="p-2 border-l-4 border-orange-400 bg-vm-card/50">
+                    <p class="font-semibold">vSphere 9.1: vSphere Container Storage Plug-in 설치 가이드</p>
+                    <p class="text-vm-text-secondary mt-1">Tanzu/VCF 환경에서 Kubernetes 워크로드를 위한 영구 스토리지 구성의 필수 구성요소입니다. 설치 과정의 오류는 컨테이너 서비스 장애로 직결될 수 있으므로, 공식 절차를 엄격히 따라야 합니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/install-vsphere-container-storage-plug-in.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: vCSP Install]</a>
+                </li>
+                <li class="p-2 border-l-4 border-orange-400 bg-vm-card/50">
+                    <p class="font-semibold">vSphere 9.1: ESX 호스트의 SGX(기밀 컴퓨팅) 등록 상태 확인</p>
+                    <p class="text-vm-text-secondary mt-1">보안 워크로드 배포 시, 하드웨어 기반의 기밀 컴퓨팅 기능(Intel SGX)이 올바르게 활성화되었는지 검증하는 필수 절차입니다. 보안 컴플라이언스 이행 시 확인해야 합니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/view-the-remote-attestation-status-of-a-host.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: SGX Status]</a>
+                </li>
+                <li class="p-2 border-l-4 border-orange-400 bg-vm-card/50">
+                    <p class="font-semibold">vSphere 9.1: 템플릿을 가상 머신으로 변환하기</p>
+                    <p class="text-vm-text-secondary mt-1">템플릿 기반 배포가 실패하거나 문제가 발생했을 때, 템플릿 자체를 VM으로 변환하여 문제의 원인을 진단할 수 있는 절차입니다. 불필요한 재작업 시간을 줄일 수 있는 유용한 진단 팁입니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/convert-a-template-to-a-virtual-machine.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: Convert Template]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- 4. Section 3: Community Pulse & Field Issues -->
-        <section class="card md:col-span-1">
-            <h2 class="section-title">3. Community Pulse & Field Issues (비공식 현장 이슈)</h2>
-            <p class="text-gray-400 mb-4">공식 KB에 앞서 현장에서 발생하는 'Hot Issues'입니다. 장애 사전 방지 차원에서 필히 확인해야 합니다.</p>
-            <div class="space-y-3">
-                <!-- Item 1: VCF 9.0 VMWARE_COMPAT Error -->
-                <div class="item border-l-4 border-orange-500">
-                    <p class="font-semibold text-orange-400">🚨 VCF 9.0 초기 배포/Import Critical Issue: VMWARE_COMPAT Not Found</p>
-                    <p class="text-sm text-gray-400">VCF 9.0 환경에서 Import 작업 중 `VMWARE_COMPAT` 파일 누락으로 인해 배포가 실패하는 사례가 보고됨. VCF 9.0 초기 도입 고객에게 이 버그가 전달되지 않도록 사전 우회/패치 방안을 확인해야 합니다. <a href="http://lmoglie.blogspot.com/2026/02/vcf-90-import-vmwarecompat-is-not-found.html" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 2: VCD/vCenter/Distributed Catalogs -->
-                <div class="item">
-                    <p class="font-semibold">vCenter - VCD 분산 카탈로그 동기화 복잡성</p>
-                    <p class="text-sm text-gray-400">vCenter, VMware Cloud Director 및 분산 카탈로그 간의 구성 및 동기화 문제에 대한 VCDX 커뮤니티 논의 증가. Cloud Provider 환경의 서비스 안정성을 위한 핵심 통합 지점입니다. <a href="https://ifitisnotbroken.wordpress.com/2026/02/02/vcenter-vmware-cloud-director-and-distributed-catalogs/" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 3: Tanzu Grafana Installation -->
-                <div class="item">
-                    <p class="font-semibold">vSphere with Tanzu (TKr) Grafana 설치 가이드 요청</p>
-                    <p class="text-sm text-gray-400">vSphere 7.x TKr(Tanzu Kubernetes Release) 환경에서 Grafana 설치에 대한 상세 가이드가 꾸준히 조회 및 논의됨. Kubernetes 워크로드 모니터링은 Day 2 Operation의 핵심이므로, 간소화된 배포 가이드가 필요합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/install-grafana-on-tkr-for-vsphere-7-x.html" class="source-link">[Source]</a></p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 5. Section 4: Product & Expert Deep Dive -->
-        <section class="card md:col-span-1">
-            <h2 class="section-title">4. Product & Expert Deep Dive</h2>
-            <p class="text-gray-400 mb-4">VCF, Avi, vSphere, Tanzu 등 핵심 제품군별 심층 분석 정보입니다.</p>
-            <div class="space-y-3">
-                <!-- Item 1: VCF AI Inference -->
-                <div class="item">
-                    <p class="font-semibold">VCF 9.x: AI 추론 워크로드 성능 극대화 방안</p>
-                    <p class="text-sm text-gray-400">VCF 9에서 AI 추론 성능을 최적화하기 위한 H/W 및 S/W 구성 요소 분석이 발표됨. Private AI 도입 고객에게 제공할 수 있는 가장 강력한 성능 레퍼런스 아키텍처입니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/extreme-performance-series-2026-ai-inference-performance-on-vcf-9/" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 2: Avi Award -->
-                <div class="item">
-                    <p class="font-semibold">Avi Load Balancer의 혁신성 공식 인정</p>
-                    <p class="text-sm text-gray-400">Avi가 SiliconANGLE Tech Innovation CUBEd Awards 최종 후보로 선정된 것은, 기존 F5/Citrix 시장의 판도를 바꾸는 Modern Apps L4-L7 지원 능력을 공식 인정받은 핵심 마케팅 포인트입니다. <a href="https://blogs.vmware.com/load-balancing/2026/01/30/avi-finalist-in-siliconangle-medias-2026-tech-innovation-cubed-awards/" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 3: Healthcare Cloud Smart -->
-                <div class="item">
-                    <p class="font-semibold">의료 산업 특화 Cloud Smart 전략 제시</p>
-                    <p class="text-sm text-gray-400">현대 의료 분야에 초점을 맞춘 Cloud Smart 전략이 vSphere/Cloud Foundation 기반으로 제시. 데이터 주권과 규정 준수를 요구하는 수직 산업 영업에 즉시 활용해야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/a-cloud-smart-strategy-for-modern-healthcare/" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 4: vSphere Tanzu Management (kubectl) -->
-                <div class="item">
-                    <p class="font-semibold">vSphere Supervisor의 kubectl 에디터 구성</p>
-                    <p class="text-sm text-gray-400">vSphere Supervisor 환경에서 `kubectl`을 위한 텍스트 에디터 구성 가이드 업데이트. Kubernetes 네이티브 관리를 위한 Day 2 Operation 효율화에 직접적으로 기여합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere-supervisor/8-0/configure-a-text-editor-for-kubectl.html" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 5: Edge Vision & Acumera -->
-                <div class="item">
-                    <p class="font-semibold">엣지 컴퓨팅 시장 동향: Scale Computing의 Acumera 인수</p>
-                    <p class="text-sm text-gray-400">Scale Computing이 Acumera를 인수하며 엣지/HCI 시장에서 솔루션 범위를 확장. VMware Edge 전략의 경쟁 우위 포인트를 고객에게 명확히 재설정하고 전달해야 합니다. <a href="https://vmblog.com/archive/2026/02/02/scale-computing-s-edge-vision-how-the-acumera-acquisition-reshapes-the-edge-market.aspx" class="source-link">[Source]</a></p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 6. Section 5: Market & Competitive Radar -->
-        <section class="card md:col-span-2">
-            <h2 class="section-title">5. Market & Competitive Radar (경쟁 동향 분석)</h2>
-            <p class="text-gray-400 mb-4">경쟁사 및 시장의 주요 움직임을 통해 영업 및 기술 전략을 재검토해야 합니다.</p>
-            <div class="space-y-3 grid grid-cols-1 lg:grid-cols-2 gap-3">
-                <!-- Item 1: Nutanix/HCI Edge -->
-                <div class="item border-l-4 border-teal-500">
-                    <p class="font-semibold text-teal-400">Nutanix/HCI 경쟁 심화: 엣지 시장의 통합 움직임 (Scale Computing)</p>
-                    <p class="text-sm text-gray-400">Scale Computing의 Acumera 인수 및 엣지 비전 발표는 Nutanix, Cisco 등과 HCI 엣지 영역에서 직접적인 경쟁이 심화됨을 시사합니다. HCI-Edge 전략의 차별화된 TCO 우위를 강조해야 합니다. <a href="https://vmblog.com/archive/2026/02/02/scale-computing-s-edge-vision-how-the-acumera-acquisition-reshapes-the-edge-market.aspx" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 2: Snowflake/Observability -->
-                <div class="item border-l-4 border-teal-500">
-                    <p class="font-semibold text-teal-400">AWS/GCP 간접 경쟁: Snowflake의 Observe 인수로 인한 Observability 시장 재편</p>
-                    <p class="text-sm text-gray-400">Snowflake가 Observe를 인수하며 Data Cloud를 넘어 Observability 시장으로 영역을 확장. 이는 AWS/GCP의 Cloud Native Monitoring 툴뿐만 아니라 Tanzu Observability에 대한 간접적 압박 요인으로 작용할 수 있습니다. <a href="https://virtual-it.pl/15365-snowflake-oglasza-przejecie-observe-nowy-standard-obserwowalnosci.html" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 3: AI/Convergence Era -->
-                <div class="item border-l-4 border-teal-500 lg:col-span-2">
-                    <p class="font-semibold text-teal-400">범용 시장: 'AI Reckoning' 및 'Convergence 시대' 도래</p>
-                    <p class="text-sm text-gray-400">2026년 AI 계산의 중요성과 융합(Convergence) 시대의 도래가 언급됨. 이는 멀티 클라우드 환경에서 VCF 및 Tanzu 기반의 통합 플랫폼만이 해답임을 강조하는 전략적 기회로 활용해야 합니다. <a href="https://vmblog.com/archive/2026/02/02/the-ai-reckoning-is-coming-in-2026.aspx" class="source-link">[Source]</a> <a href="https://vmblog.com/archive/2026/02/02/the-dawn-of-the-era-of-convergence.aspx" class="source-link">[Source]</a></p>
-                </div>
-            </div>
-        </section>
+        <!-- Card Component: Community Pulse & Field Issues -->
+        <div class="bg-vm-card p-6 rounded-xl shadow-lg border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-yellow-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-3H17v3zm0-10h5v-3H17v3zM4 20h5v-3H4v3zM4 10h5v-3H4v3zM4 4h18v-3H4v3zm0 3h18v-3H4v3z"></path></svg>
+                Section 3: Community Pulse & Field Issues (비공식 현장 이슈)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="p-2 border-l-4 border-yellow-400 bg-vm-card/50">
+                    <p class="font-semibold text-red-400">[Hot Issue] VCF 9.0 Import 시 'VMWARE_COMPAT' 미발견 에러</p>
+                    <p class="text-vm-text-secondary mt-1">VCF 9.0 환경에서 Import 작업 시 필수적인 호환성 파일을 찾을 수 없다는 비공식 리포트가 확인되었습니다. VCF 9.x 마이그레이션 및 배포 현장에서 발생할 수 있는 주요 장애 포인트이므로, 사전 구성 요소 및 로그를 반드시 점검해야 합니다.</p>
+                    <a href="http://lmoglie.blogspot.com/2026/02/vcf-90-import-vmwarecompat-is-not-found.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: Affiliate Blog]</a>
+                </li>
+                <li class="p-2 border-l-4 border-yellow-400 bg-vm-card/50">
+                    <p class="font-semibold">vCenter/VCD 환경에서 분산 카탈로그 일관성 문제 논의</p>
+                    <p class="text-vm-text-secondary mt-1">VCD(Cloud Director)를 사용하는 클라우드 프로바이더(VCPP) 환경에서 vCenter와의 연동 및 분산 카탈로그 사용 시 구성 복잡성에 대한 현장의 문의가 지속되고 있습니다. 대규모 환경에서는 서비스 카탈로그의 안정적인 관리를 위해 연동 아키텍처를 면밀히 검토해야 합니다.</p>
+                    <a href="https://ifitisnotbroken.wordpress.com/2026/02/02/vcenter-vmware-cloud-director-and-distributed-catalogs/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: Affiliate Blog]</a>
+                </li>
+                <li class="p-2 border-l-4 border-yellow-400 bg-vm-card/50">
+                    <p class="font-semibold">AI 시대의 심각한 보안 문제 및 데이터 무결성 우려</p>
+                    <p class="text-vm-text-secondary mt-1">인공지능의 급격한 도입은 데이터 프라이버시 침해, 모델 무결성 손상 등 새로운 형태의 보안 문제를 야기하고 있다는 외부 전문가 경고입니다. Private AI 솔루션을 제안할 때 보안 아키텍처의 중요성을 강조해야 합니다.</p>
+                    <a href="https://virtual-it.pl/15366-swiat-sztucznej-inteligencji-ma-powazny-problem-z-bezpieczenstwem.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: Affiliate Blog]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- 7. Section 6: Industry Vertical Radar (Korea Focus) -->
-        <section class="card md:col-span-1">
-            <h2 class="section-title">6. Industry Vertical Radar (Korea Focus)</h2>
-            <p class="text-gray-400 mb-4">한국 시장의 금융/공공/엔터프라이즈 IT 동향입니다.</p>
-            <div class="space-y-3">
-                <!-- Item 1: Healthcare (Finance/Public inference) -->
-                <div class="item border-l-4 border-indigo-500">
-                    <p class="font-semibold">의료/공공: Cloud Smart 기반 데이터 주권 확보 전략</p>
-                    <p class="text-sm text-gray-400">엄격한 규제와 데이터 주권 요구 사항을 가진 의료 산업에 대한 Cloud Smart 전략이 핵심 아키텍처로 제시됨. 이는 규제를 받는 국내 공공 및 금융 기관의 프라이빗 클라우드 영업에 즉시 적용되어야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/a-cloud-smart-strategy-for-modern-healthcare/" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 2: Enterprise AI -->
-                <div class="item border-l-4 border-indigo-500">
-                    <p class="font-semibold">엔터프라이즈: VCF 9.x 기반 Private AI/MLOps 수요 폭증 예상</p>
-                    <p class="text-sm text-gray-400">AI 계산 시대가 본격화됨에 따라, 국내 대기업 및 금융권의 MLOps 플랫폼 구축 수요가 급증할 것으로 예측. VCF 9.x의 AI 성능 우위를 핵심 영업 전략으로 삼아야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/extreme-performance-series-2026-ai-inference-performance-on-vcf-9/" class="source-link">[Source]</a></p>
-                </div>
-                <!-- Item 3: Public Sector/Migration -->
-                <div class="item border-l-4 border-indigo-500">
-                    <p class="font-semibold">공공/금융: VCF 9.0 초기 도입 및 마이그레이션 이슈 사전 교육 시급</p>
-                    <p class="text-sm text-gray-400">국내 전문가 블로그 및 파트너 채널에서 VCF 9.0 관련 이슈가 보고되기 시작함은, 국내 대규모 마이그레이션이 임박했음을 시사. 현장 기술 지원 인력에 대한 사전 교육을 강화해야 합니다. <a href="http://lmoglie.blogspot.com/2026/02/vcf-90-import-vmwarecompat-is-not-found.html" class="source-link">[Source]</a></p>
-                </div>
-            </div>
-        </section>
+        <!-- Card Component: Product & Expert Deep Dive (VCF, vSphere, Tanzu, Avi) -->
+        <div class="lg:col-span-2 bg-vm-card p-6 rounded-xl shadow-lg border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-indigo-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-0.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                Section 4: Product & Expert Deep Dive
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="p-2 border-l-4 border-indigo-400 bg-vm-card/50">
+                    <p class="font-semibold">[VCF 9.x/AI] NVIDIA GPU 기반 AI 추론 워크로드 성능 극대화</p>
+                    <p class="text-vm-text-secondary mt-1">VCF 9 환경에서 GPU를 활용한 AI 추론 성능 벤치마크 결과가 공개되었습니다. 이는 대규모 AI/ML 프로젝트 제안 시 VCF가 온프레미스 인프라를 통해 최적의 성능을 제공함을 입증하는 핵심 자료입니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/extreme-performance-series-2026-ai-inference-performance-on-vcf-9/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source]</a>
+                </li>
+                <li class="p-2 border-l-4 border-indigo-400 bg-vm-card/50">
+                    <p class="font-semibold">[vSphere/Security] VMC on AWS에서 BYOK(고객 키 관리) 지원 확대</p>
+                    <p class="text-vm-text-secondary mt-1">VM 암호화에 필요한 키를 고객의 KMS(Key Management System)에서 직접 관리할 수 있게 되면서, 규제 산업 고객의 보안 및 컴플라이언스 요구사항을 충족시키고 클라우드 도입 장벽을 낮추었습니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/02/byok-vm-encryption-vmware-cloud-aws/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source]</a>
+                </li>
+                <li class="p-2 border-l-4 border-indigo-400 bg-vm-card/50">
+                    <p class="font-semibold">[Load Balancing/Avi] 혁신상을 통한 L4-L7 서비스 자동화 리더십 공고화</p>
+                    <p class="text-vm-text-secondary mt-1">Avi Load Balancer의 수상 후보 선정은 경쟁사 대비 뛰어난 자동화, 확장성, 멀티클라우드 지원 능력을 대외적으로 인정받은 것입니다. 차세대 애플리케이션 서비스 시장에서 핵심 경쟁력입니다.</p>
+                    <a href="https://blogs.vmware.com/load-balancing/2026/01/30/avi-finalist-in-siliconangle-medias-2026-tech-innovation-cubed-awards/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source]</a>
+                </li>
+                <li class="p-2 border-l-4 border-indigo-400 bg-vm-card/50">
+                    <p class="font-semibold">[Vertical/Strategy] 현대 의료 분야 클라우드 스마트 전략 가이드 공개</p>
+                    <p class="text-vm-text-secondary mt-1">의료 영상(PACS), EMR 등 민감 데이터를 다루는 헬스케어 기관을 위한 클라우드 전환 로드맵이 제시되었습니다. 이 가이드를 통해 국내 대형 병원 프로젝트에 대한 맞춤형 전략을 수립하십시오.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/a-cloud-smart-strategy-for-modern-healthcare/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source]</a>
+                </li>
+                <li class="p-2 border-l-4 border-indigo-400 bg-vm-card/50">
+                    <p class="font-semibold">[Affiliate Watch] OpenClaw(오픈소스 데이터센터) 테스트 방법론 공유</p>
+                    <p class="text-vm-text-secondary mt-1">경쟁사 동향 분석의 일환으로 오픈소스 데이터센터 플랫폼(OpenClaw)에 대한 비공식 테스트 리포트가 공유되었습니다. 엔지니어는 이러한 플랫폼의 장단점을 파악하여 VMware 솔루션과의 비교 우위를 명확히 할 수 있어야 합니다.</p>
+                    <a href="http://tekhead.it/blog/2026/02/testing-openclaw-without-losing-your-mind-money-or-data/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source]</a>
+                </li>
+            </ul>
+        </div>
 
-        <!-- 8. Section 7: Security Alerts (Colspan 3 for visibility) -->
-        <section class="card md:col-span-3">
-            <h2 class="section-title text-red-400">7. Security Alerts (VMSA / CVE)</h2>
-            <p class="text-gray-400 mb-4">모든 보안 이슈는 최우선 순위로 처리해야 합니다. 현장 장애를 막는 가장 중요한 일입니다.</p>
-            <div class="space-y-3">
-                <div class="item border-l-4 border-red-600">
-                    <p class="font-semibold text-red-400">🔥 VMSA 및 KISA CVE 상시 모니터링 경고</p>
-                    <p class="text-sm text-gray-300">현재 보고된 Critical VMSA는 없으나, Broadcom Tech Docs 및 KISA CVE 채널에 대한 상시 모니터링을 통해 vSphere/vCenter/NSX의 Critical Patch 레벨을 고객 환경에 즉시 적용할 수 있도록 선제적인 패치 계획을 수립해야 합니다.</p>
-                    <ul class="mt-2 text-sm">
-                        <li><span class="font-semibold">Official VMSA:</span> <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="source-link">[Source: CVE 정보]</a></li>
-                        <li><span class="font-semibold">Community Security:</span> <a href="https://community.broadcom.com/vmware" class="source-link">[Source: VMTN Security]</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
+        <!-- Card Component: Market & Competitive Radar -->
+        <div class="bg-vm-card p-6 rounded-xl shadow-lg border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-red-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Section 5: Market & Competitive Radar
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="p-2 border-l-4 border-red-400 bg-vm-card/50">
+                    <p class="font-semibold">[Edge 경쟁사] Scale Computing, Acumera 인수로 엣지 비전 강화</p>
+                    <p class="text-vm-text-secondary mt-1">경쟁사 Scale Computing이 Acumera 인수를 통해 엣지 컴퓨팅 시장의 입지를 확대하고 있습니다. HCI 기반 엣지 솔루션의 경쟁 심화에 대비하여 VCF 및 vSAN 기반 엣지 전략의 명확한 차별점을 고객에게 전달해야 합니다.</p>
+                    <a href="https://vmblog.com/archive/2026/02/02/scale-computing-s-edge-vision-how-the-acumera-acquisition-reshapes-the-edge-market.aspx" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: Scale/Acumera]</a>
+                </li>
+                <li class="p-2 border-l-4 border-red-400 bg-vm-card/50">
+                    <p class="font-semibold">[SaaS/Data 경쟁사] Snowflake, Observe 인수로 관측성(Observability) 시장 진출</p>
+                    <p class="text-vm-text-secondary mt-1">데이터 웨어하우스 강자인 Snowflake가 관측성 솔루션 기업 Observe를 인수하며 통합 모니터링/분석 시장으로 영역을 확장하고 있습니다. 클라우드 네이티브 환경의 통합 운영관리(Management) 솔루션 경쟁 격화에 대비해야 합니다.</p>
+                    <a href="https://virtual-it.pl/15365-snowflake-oglasza-przejecie-observe-nowy-standard-obserwowalnosci.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: Snowflake/Observe]</a>
+                </li>
+                <li class="p-2 border-l-4 border-red-400 bg-vm-card/50">
+                    <p class="font-semibold">[Cloud Storage] Zettalane Systems, 클라우드 스토리지 현대화 동향</p>
+                    <p class="text-vm-text-secondary mt-1">클라우드 스토리지 분야의 새로운 경쟁자 출현 및 기술 현대화 움직임이 포착되었습니다. 대규모 데이터 환경에서 vSAN, VCF의 소프트웨어 정의 스토리지 우위를 지속적으로 강조해야 합니다.</p>
+                    <a href="https://vmblog.com/archive/2026/02/02/zettalane-systems-brings-cloud-storage-into-the-modern-era.aspx" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: Zettalane]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Card Component: Industry Vertical Radar (Korea Focus) -->
+        <div class="lg:col-span-3 bg-vm-card p-6 rounded-xl shadow-2xl border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-purple-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m18 0a9 9 0 00-9-9m-3 9h3m-3 9h3m-3-9h3m-3 9h3m-3 9h3"></path></svg>
+                Section 6: Industry Vertical Radar (Korea Focus)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="p-2 border-l-4 border-purple-400 bg-vm-card/50">
+                    <p class="font-semibold">[금융/공공] VMC on AWS BYOK를 활용한 규제 충족 전략</p>
+                    <p class="text-vm-text-secondary mt-1">한국 금융/공공기관은 개인정보 보호 및 클라우드 이용 가이드라인에 따라 강력한 암호화 및 키 관리를 요구합니다. VMC on AWS의 BYOK 기능은 이들 기관의 민감 워크로드 클라우드 전환을 위한 핵심적인 근거 자료로 즉시 활용해야 합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/02/byok-vm-encryption-vmware-cloud-aws/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source]</a>
+                </li>
+                <li class="p-2 border-l-4 border-purple-400 bg-vm-card/50">
+                    <p class="font-semibold">[의료/헬스케어] VCF 기반 EMR/PACS 현대화 로드맵 확보</p>
+                    <p class="text-vm-text-secondary mt-1">글로벌 '현대 의료를 위한 클라우드 스마트 전략' 발표는 국내 대형 병원의 레거시 EMR/PACS 시스템을 VCF 기반의 하이브리드 클라우드로 전환하는 프로젝트에 명확한 아키텍처 및 전략 가이드를 제공합니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/a-cloud-smart-strategy-for-modern-healthcare/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source]</a>
+                </li>
+                <li class="p-2 border-l-4 border-purple-400 bg-vm-card/50">
+                    <p class="font-semibold">[엔터프라이즈] 국내 대기업 AI 도입 초기 단계에서의 VCF 9 우위 강조</p>
+                    <p class="text-vm-text-secondary mt-1">제조업, 통신 등 국내 대기업들이 AI 도입을 가속화함에 따라, VCF 9의 검증된 AI 추론 성능은 초기 인프라 설계 단계에서 타사 대비 확실한 성능 우위를 점할 수 있는 핵심 경쟁 요소입니다.</p>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/01/30/extreme-performance-series-2026-ai-inference-performance-on-vcf-9/" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Card Component: Security Alerts -->
+        <div class="bg-vm-card p-6 rounded-xl shadow-lg border border-gray-600">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-pink-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.332 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                Section 7: Security Alerts (VMSA/CVE Radar)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="p-2 border-l-4 border-pink-400 bg-vm-card/50">
+                    <p class="font-semibold text-red-500">AI 시스템 취약점에 대한 외부 전문가의 심각한 경고</p>
+                    <p class="text-vm-text-secondary mt-1">데이터 오염, 모델 무단 탈취(Model Theft) 등 인공지능에 내재된 잠재적인 보안 위험이 대두되고 있습니다. AI 관련 프로젝트 설계 시, 기존 보안 모델 외에 새로운 위협에 대한 방어 전략을 반드시 포함해야 합니다.</p>
+                    <a href="https://virtual-it.pl/15366-swiat-sztucznej-inteligencji-ma-powazny-problem-z-bezpieczenstwem.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: AI Security]</a>
+                </li>
+                <li class="p-2 border-l-4 border-pink-400 bg-vm-card/50">
+                    <p class="font-semibold">vSphere 9.1 SGX Attestation 절차를 통한 기밀 컴퓨팅 무결성 확보</p>
+                    <p class="text-vm-text-secondary mt-1">보안 워크로드 배포 시, ESXi 호스트의 SGX 등록 상태 확인은 인프라의 신뢰 체인(Trust Chain)을 검증하는 중요한 단계입니다. 보안 관련 문의 시 이 절차를 고객에게 안내해야 합니다.</p>
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/view-the-remote-attestation-status-of-a-host.html" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: SGX Tech Doc]</a>
+                </li>
+                <li class="p-2 border-l-4 border-pink-400 bg-vm-card/50">
+                    <p class="font-semibold">VMSA/KISA 최신 CVE 정보에 대한 실시간 모니터링 필수</p>
+                    <p class="text-vm-text-secondary mt-1">일일 점검 시 공식 VMSA(VMware Security Advisory) 및 KISA 취약점 정보를 주기적으로 확인하여, 심각한 RCE(Remote Code Execution) 또는 권한 상승(Privilege Escalation) 취약점에 대한 즉각적인 패치 계획을 수립해야 합니다.</p>
+                    <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="text-vm-blue hover:text-blue-400 text-xs">[Source: CVE Portal]</a>
+                </li>
+            </ul>
+        </div>
+
     </main>
 
-    <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-sm text-gray-500">
-        &copy; 2026 VMware by Broadcom. All rights reserved. Prepared by Top 100 Distinguished Architect & Community Incident Commander.
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-vm-text-secondary text-xs pt-4 border-t border-vm-card">
+        <p>© 2026 VMware by Broadcom. All rights reserved. Reproduction and distribution of this confidential report are strictly prohibited.</p>
     </footer>
 
 </body>
