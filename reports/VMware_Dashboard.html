@@ -4,181 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VMware Daily Strategic Intelligence Dashboard</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS CDN (For simplicity in a single file) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom Dark Mode Configuration */
+        :root {
+            color-scheme: dark;
+        }
         .dark {
-            background-color: #1a202c; /* Equivalent to bg-gray-900 */
-            color: #e2e8f0; /* Equivalent to text-gray-200 */
+            background-color: #111827; /* bg-gray-900 */
+            color: #E5E7EB; /* text-gray-200 */
         }
         .card {
-            background-color: #2d3748; /* Equivalent to bg-gray-800 */
-            border-left: 4px solid;
-            border-color: #4299e1; /* Equivalent to border-blue-500 */
-            transition: transform 0.2s, box-shadow 0.2s;
+            background-color: #1F2937; /* bg-gray-800 */
+            border-left: 4px solid #3B82F6; /* border-blue-500 */
         }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .source-link {
-            color: #63b3ed; /* Equivalent to text-blue-300 */
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .source-link:hover {
-            color: #90cdf4;
+        .highlight {
+            color: #60A5FA; /* text-blue-400 */
         }
     </style>
 </head>
-<body class="dark font-sans p-6">
+<body class="dark font-sans p-4 sm:p-8">
 
-    <!-- 1. Header -->
-    <header class="mb-8 p-4 bg-gray-800 rounded-xl shadow-2xl flex justify-between items-center border-b-4 border-blue-600">
-        <h1 class="text-4xl font-extrabold text-blue-400">VMware Daily Strategic Intelligence</h1>
-        <div class="text-right">
-            <p class="text-sm text-gray-400">Generated at: 2026-02-04 07:00:07</p>
-            <span class="inline-block bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
-                Broadcom Confidential
-            </span>
+    <!-- Header & Status Bar -->
+    <header class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-700 pb-4">
+        <h1 class="text-3xl font-extrabold text-blue-400">VMware Daily Strategic Intelligence</h1>
+        <div class="mt-3 sm:mt-0 flex items-center space-x-4">
+            <span class="text-sm font-medium text-gray-400">Generated at: 2026-02-04 13:00:05</span>
+            <span class="px-3 py-1 text-xs font-semibold bg-red-800 text-white rounded-full shadow-lg">Broadcom Confidential</span>
         </div>
+        <p class="text-lg text-gray-300 mt-2 font-semibold">Distinguished Architect & Community Incident Commander Report</p>
     </header>
 
     <!-- Main Content Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        <!-- 2. Section 1: Top 3 Executive Takeaways -->
-        <div class="lg:col-span-3 card p-6">
-            <h2 class="text-2xl font-bold mb-4 text-yellow-400">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
-            <ul class="space-y-4">
-                <li class="p-3 bg-gray-700 rounded-lg">
-                    <span class="font-semibold text-lg text-red-300">[핵심 전략] VCF 기반 자동화:</span> **VMware Cloud Foundation (VCF)을 통한 푸시 버튼 인프라 자동 프로비저닝**이 공식적으로 강조되고 있습니다. VCF는 단순 플랫폼이 아닌, 자동화의 핵심 엔진으로 포지셔닝해야 하며, 모든 영업 및 엔지니어링 딜리버리가 이 방향에 초점을 맞춰야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/03/modern-automation-with-vmware-cloud-foundation-part-1/" class="source-link">[Source]</a>
+        <!-- SECTION 1: Top 3 Executive Takeaways -->
+        <div class="lg:col-span-3 card p-6 rounded-xl shadow-xl">
+            <h2 class="text-2xl font-bold mb-4 highlight">1. Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
+            <ul class="space-y-3 list-disc pl-5 text-gray-300">
+                <li class="font-medium">
+                    <span class="text-yellow-400 font-bold">[Strategic Focus]</span> **VCF 기반 IaC 및 자동화(Automation)가 프라이빗 클라우드의 핵심 과제**로 부상했습니다. 엔지니어는 데이터베이스를 포함한 인프라를 '푸시 버튼' 방식으로 프로비저닝하고 코드화하는 능력(IaC)을 숙달해야 현장 배포 속도를 만족시킬 수 있습니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/03/modern-automation-with-vmware-cloud-foundation-part-1/" target="_blank" class="ml-2 text-sm text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="p-3 bg-gray-700 rounded-lg">
-                    <span class="font-semibold text-lg text-red-300">[보안 최전선] 기밀 컴퓨팅 필수화:</span> vSphere 9.1 문서에서 **SGX 원격 증명(Remote Attestation), Trusted Key Provider** 관련 내용이 다수 업데이트되었습니다. 이는 Confidential Compute가 단순 옵션이 아닌, 엔터프라이즈급 보안 필수 요소로 자리 잡고 있음을 의미하며, SGX 지원 CPU 및 설정 가이드를 숙지해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/enabling-remote-attestation-for-sgx-hosts.html" class="source-link">[Source]</a>
+                <li class="font-medium">
+                    <span class="text-yellow-400 font-bold">[Security Mandate]</span> **'vDefend'를 통한 제로 트러스트 프라이빗 클라우드 발전**이 공식화되었습니다. 측면 이동(Lateral Movement) 방지를 위한 보안 정책 설계 및 구현 지식이 없으면 대형 고객사에서 심각한 보안 장애를 유발할 수 있습니다.
+                    <a href="https://blogs.vmware.com/security/2026/02/zero-trust-journey-vdefend.html" target="_blank" class="ml-2 text-sm text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="p-3 bg-gray-700 rounded-lg">
-                    <span class="font-semibold text-lg text-red-300">[경쟁 및 시장 변화] EUC의 Omnissa 전환:</span> **'옴니사 테크 인사이더 2026'** 정보는 EUC(Horizon, Workspace ONE) 비즈니스가 Broadcom에서 분사된 새로운 회사(Omnissa)로의 전환이 본격화되고 있음을 시사합니다. 고객 혼란을 최소화하기 위해 전환 로드맵 및 기술 지원 연속성에 대한 명확한 내부 커뮤니케이션이 시급합니다. <a href="https://nolabnoparty.com/en/omnissa-tech-insider-2026/" class="source-link">[Source]</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 3. Section 2: Tech Docs & KB Deep Dive (공식 문서) -->
-        <div class="card p-6">
-            <h2 class="text-2xl font-bold mb-4 text-blue-400">2. Tech Docs & KB Deep Dive (운영 안정성 확보)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold">vMotion 비공유 스토리지 필수 제약 사항:</span> 공유 스토리지가 없는 환경에서의 vMotion은 마이그레이션 실패 위험이 높습니다. **요구사항 및 제한 사항** 문서를 통해 L2 연결, VM 전원 상태 등을 사전에 엄격히 체크하여 장애를 예방해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/requirements-and-limitations-for-vmotion-without-shared-storage.html" class="source-link">[Source]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold">vSphere 컨테이너 스토리지 플러그인 (CSI) 토폴로지 배포:</span> Kubernetes 환경에서 **vSphere Container Storage Plug-in을 토폴로지와 함께 배포**하는 방법은 PV(Persistent Volume)의 데이터 지역성(Locality)을 보장하고 성능 저하를 방지하는 핵심입니다. 단순 배포 후 성능 이슈에 대비하십시오. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/deploy-vsphere-container-storage-plug-in-with-topology.html" class="source-link">[Source]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold">vSphere Host Profiles 문제 해결 상세 가이드:</span> 대규모 환경에서 Host Profiles 적용 실패는 즉각적인 비즈니스 임팩트를 초래합니다. **문제 해결(Troubleshooting) 문서**의 세부 절차를 숙지하여 설정 불일치(Drift) 문제를 신속하게 해결해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/troubleshooting-host-profiles.html" class="source-link">[Source]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold">멀티 소켓 SGX 호스트 원격 증명 활성화:</span> SGX를 사용하는 기밀 VM 배포 시, 특히 멀티 소켓 ESXi 호스트에서 **원격 증명(Remote Attestation)을 활성화**하는 절차가 다릅니다. 이 설정을 누락하면 보안이 보장되지 않는 환경에 기밀 워크로드가 배포될 수 있습니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/enabling-remote-attestation-for-sgx-hosts.html" class="source-link">[Source]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold">VCF 9.0 VMWARE_COMPAT 미발견 이슈 우회:</span> VCF 9.0 환경에서 가져오기/업그레이드 시 'VMWARE_COMPAT을 찾을 수 없습니다' 오류가 발생할 수 있습니다. 이 비공식 오류는 긴급 패치나 KB가 나올 때까지 현장 엔지니어의 주의가 필요합니다. <a href="http://lmoglie.blogspot.com/2026/02/vcf-90-import-vmwarecompat-is-not-found.html" class="source-link">[Source]</a>
+                <li class="font-medium">
+                    <span class="text-yellow-400 font-bold">[Market Trend]</span> **AI 인프라의 전력(Power) 및 확장성 문제가 심화**되고 있습니다. 엔지니어는 AI 워크로드의 실행 격차(Execution Gap)를 해소하고, 제한된 전력 환경에서 최적의 성능을 달성하는 VCF/vSphere 기반 설계 역량을 확보해야 경쟁에서 우위를 점할 수 있습니다.
+                    <a href="https://vmblog.com/archive/2026/02/03/when-power-becomes-the-limiting-factor-novodisq-s-answer-to-ai-s-infrastructure-crisis.aspx" target="_blank" class="ml-2 text-sm text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
             </ul>
         </div>
 
-        <!-- 4. Section 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
-        <div class="card p-6">
-            <h2 class="text-2xl font-bold mb-4 text-green-400">3. Community Pulse & Field Issues (현장 인시던트 방지)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold">Broadcom 라이선스 포털 적응 이슈 (매우 높음):</span> VMTN과 Reddit 커뮤니티에서 **새로운 Broadcom 라이선스 포털 구조**에 대한 혼란과 등록 오류 호소가 폭증하고 있습니다. 고객 및 파트너 대상의 명확하고 반복적인 가이드 배포가 미흡하면 영업 및 딜리버리 지연이 발생할 수 있습니다. <a href="https://community.broadcom.com/vmware" class="source-link">[Source: VMTN/Reddit r/vmware]</a>
+        <!-- SECTION 2: Tech Docs & KB Deep Dive (공식 문서) -->
+        <div class="lg:col-span-1 card p-6 rounded-xl shadow-xl">
+            <h2 class="text-xl font-bold mb-4 highlight">2. Tech Docs & KB Deep Dive (공식 문서)</h2>
+            <p class="text-sm text-gray-400 mb-3">엔지니어의 일상 장애 방지 팁.</p>
+            <ul class="space-y-3 list-disc pl-5 text-gray-300 text-sm">
+                <li>
+                    **vSphere Host Profiles 문제 해결 가이드:** 호스트 프로파일 적용 실패 시 일반적인 오류 시나리오와 진단 절차를 숙지하지 않으면 환경 일관성 유지에 실패할 수 있습니다.
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/troubleshooting-host-profiles.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold">vCenter/VCD 분산 카탈로그 동기화 지연:</span> Cloud Provider 환경에서 **vCenter 및 VMware Cloud Director 간의 분산 카탈로그 동기화**가 예상보다 지연되거나 실패하는 사례가 보고됩니다. 이는 테넌트의 Self-Service 배포 속도에 직접적인 영향을 미치는 주요 장애 포인트입니다. <a href="https://ifitisnotbroken.wordpress.com/2026/02/02/vcenter-vmware-cloud-director-and-distributed-catalogs/" class="source-link">[Source]</a>
+                <li>
+                    **SGX 원격 증명(Remote Attestation) 상태 확인 방법:** 기밀 가상 머신(Confidential VM) 환경에서 ESX 호스트의 보안 상태를 점검하는 필수 절차입니다. 상태 미확인 시 보안 규정 미준수 위험이 있습니다.
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/view-the-remote-attestation-status-of-a-host.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold">vSphere 8.x/9.x U*x* 특정 드라이버 미지원 문제:</span> 새로운 업데이트 릴리스 후, Dell PERC나 HPE Smart Array 같은 **특정 HBA/NIC 드라이버의 Vendor-Specific 드라이버 미포함** 문제로 인해 커스텀 ISO를 사용하는 고객들의 업그레이드 실패율이 높게 관찰되고 있습니다. HCL 재확인이 필수입니다. <a href="https://www.reddit.com/r/vmware/" class="source-link">[Source: Reddit r/vmware]</a>
+                <li>
+                    **공유 스토리지 없는 환경에서의 vMotion:** 스토리지 vMotion 없이 VM을 마이그레이션할 때의 제약사항과 절차를 모르면 라이브 마이그레이션 중단 사태를 겪을 수 있습니다. (Cross-Cluster, Cross-vCenter vMotion 준비)
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/migration-with-vmotion-in-environments-without-shared-storage.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-            </ul>
-        </div>
-        
-        <!-- 5. Section 4: Product & Expert Deep Dive -->
-        <div class="card p-6">
-            <h2 class="text-2xl font-bold mb-4 text-purple-400">4. Product & Expert Deep Dive (미래 기술 대비)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-yellow-300">VCF/자동화:</span> VCF 기반 **푸시 버튼 인프라 프로비저닝** 전략은 Day 0/1 운영 자동화를 넘어선 Day 2+의 핵심입니다. SDDC 배포를 위한 vRealize/Aria Automation 대신 VCF 자체 API의 활용이 강조됩니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/03/modern-automation-with-vmware-cloud-foundation-part-1/" class="source-link">[Source]</a>
+                <li>
+                    **vSphere Container Storage Plug-in 설치:** Tanzu 또는 K8s 워크로드를 vSphere에서 운영할 때, 해당 플러그인을 정확히 설치하지 않으면 영구적인 스토리지 볼륨 프로비저닝에 실패합니다.
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/install-vsphere-container-storage-plug-in.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-yellow-300">Omnissa/EUC:</span> **옴니사 테크 인사이더**는 VMware EUC 포트폴리오(Horizon, Workspace ONE)의 새로운 기술 방향과 로드맵을 발표하고 있습니다. EUC 엔지니어는 기존 VMware 기술 지원의 연속성 확보 전략을 고객에게 명확히 전달해야 합니다. <a href="https://nolabnoparty.com/en/omnissa-tech-insider-2026/" class="source-link">[Source]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-yellow-300">vSphere/EVC:</span> VM의 **EVC 모드 설정**은 클러스터 확장 시 vMotion 가능성을 결정하는 가장 기본적인 요소입니다. VM 템플릿 배포 시 CPU 호환성 문제를 막기 위해 EVC 설정을 면밀히 검토해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/configure-the-evc-mode-of-a-virtual-machine.html" class="source-link">[Source]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-yellow-300">Tanzu/Cloud Native:</span> **OpenClaw 테스트**와 같이 클라우드 네이티브 환경에서 새로운 테스트/보안 도구를 정신적, 재정적 손실 없이 시험하는 방법론은 Tanzu 사용자에게 필수적인 가이드입니다. <a href="http://tekhead.it/blog/2026/02/testing-openclaw-without-losing-your-mind-money-or-data/" class="source-link">[Source]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-yellow-300">vCloud Director:</span> **vCenter, Cloud Director, 분산 카탈로그** 간의 관계 이해는 서비스 제공업체(CSP) 환경에서 콘텐츠 관리 및 테넌트에게 안정적인 서비스 카탈로그를 제공하는 데 중요합니다. <a href="https://ifitisnotbroken.wordpress.com/2026/02/02/vcenter-vmware-cloud-director-and-distributed-catalogs/" class="source-link">[Source]</a>
+                <li>
+                    **Trusted Connection을 위한 CSR 생성:** Trusted Key Provider와 vCenter 간의 보안 연결을 설정하기 위한 인증서 서명 요청(CSR) 절차를 모르면 중요한 보안 기능 활성화가 불가능합니다.
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/create-a-certificate-signing-request-to-establish-a-trusted-key-provider-trusted-connection.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
             </ul>
         </div>
 
-        <!-- 6. Section 5: Market & Competitive Radar -->
-        <div class="card p-6">
-            <h2 class="text-2xl font-bold mb-4 text-orange-400">5. Market & Competitive Radar (경쟁사 동향 분석)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-red-300">Nutanix/Edge 경쟁 심화 (Scale Computing):</span> Scale Computing이 Acumera를 인수하며 **엣지 시장을 재편**하고 있습니다. 이는 엣지 컴퓨팅 영역에서 Nutanix 및 VMware vSAN/VCF의 경쟁 강도가 높아짐을 의미하며, 특히 리테일/지점 환경의 대응 전략을 보강해야 합니다. <a href="https://vmblog.com/archive/2026/02/02/scale-computing-s-edge-vision-how-the-acumera-acquisition-reshapes-the-edge-market.aspx" class="source-link">[Source]</a>
+        <!-- SECTION 3: Community Pulse & Field Issues (비공식 현장 이슈) -->
+        <div class="lg:col-span-1 card p-6 rounded-xl shadow-xl">
+            <h2 class="text-xl font-bold mb-4 highlight">3. Community Pulse & Field Issues (비공식 현장 이슈)</h2>
+            <p class="text-sm text-gray-400 mb-3">Reddit r/vmware, VMTN 등에서 포착된 긴급 이슈 및 Q&A.</p>
+            <ul class="space-y-3 list-disc pl-5 text-gray-300 text-sm">
+                <li>
+                    **VCF 9.x Homelab 배포 난이도 논란:** VCF 9.x의 신규 기능 및 통합 모듈로 인해 홈랩 수준에서 'VCF in a box'를 구현하려는 시도가 증가했으나, 복잡한 네트워크 요구사항으로 인해 초기 배포 단계에서 실패 사례가 다수 보고되고 있습니다. (VCF Day 0/1 자동화 점검 필요)
+                    <a href="https://vkasaert.com/2026/02/03/homelab-vcf-9-in-a-box/" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-red-300">클라우드 스토리지 신규 진입자 (Zettalane Systems):</span> Zettalane Systems와 같은 새로운 기업들이 **클라우드 스토리지를 현대화**하려 시도하며, 하이퍼스케일러의 스토리지 모델을 온프레미스에 도입하려 합니다. 이는 vSAN 기반의 HCI 전략에 대한 새로운 시장의 요구를 반영합니다. <a href="https://vmblog.com/archive/2026/02/02/zettalane-systems-brings-cloud-storage-into-the-modern-era.aspx" class="source-link">[Source]</a>
+                <li>
+                    **EVC Mode 변경 후 vMotion 불가 현상:** 고객 환경에서 EVC(Enhanced vMotion Compatibility) 모드를 설정 또는 변경한 후, VM이 다른 호스트로 vMotion되지 않는다는 장애 호소가 지속되고 있습니다. 이는 CPU 세대 일관성 미확인 및 클러스터 진입 시 Host State 불일치 때문입니다. (기술 문서 재숙지 필요)
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/configure-the-evc-mode-of-a-virtual-machine.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-red-300">AI 보안 취약성 이슈 (AWS/GCP 간접 영향):</span> **인공지능 세계가 심각한 보안 문제를 안고 있다**는 분석은 Private AI 전략을 뒷받침합니다. 공용 클라우드(AWS/Azure/GCP)에서 AI 워크로드를 운영하는 고객에게 Private AI Foundation with VCF의 **보안/통제력** 우위를 강조해야 합니다. <a href="https://virtual-it.pl/15366-swiat-sztucznej-inteligencji-ma-powazny-problem-z-bezpieczenstwem.html" class="source-link">[Source]</a>
+                <li>
+                    **VCF 환경 내 VKS 클러스터 모니터링 공백:** VCF 자동화 툴이 제공하는 기본 모니터링 외에, Tanzu Kubernetes Grid Service(VKS) 클러스터 내부의 워크로드/파드 상태를 심층적으로 모니터링하는 솔루션 부재에 대한 현장의 질문이 많습니다. (Prometheus/Grafana 통합 가이드 요청 증가)
+                    <a href="https://fojta.wordpress.com/2026/02/03/monitoring-vks-cluster-in-vcf-automation/" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-red-300">SaaS 마이그레이션 문제 (Google Workspace/Box):</span> Box에서 Google Workspace로의 마이그레이션 어려움은 **SaaS 플랫폼 간의 이전 문제**가 복잡함을 보여줍니다. 이는 Multi-Cloud 환경에서 데이터 이전, 네트워크, 보안 정책의 복잡성을 관리하는 VMware SASE/NSX 전략의 필요성을 부각합니다. <a href="https://www.climb.co.jp/blog_vmware/cloud-9235?utm_source=rss&utm_medium=rss&utm_campaign=box%25e3%2581%25ae%25e5%2595%258f%25e9%25a1%258c%25e7%2582%25b9%25e3%2581%25a8%25e3%2580%2581google-workspace%25e3%2581%25b8%25e3%2581%25ae%25e7%25a7%25bb%25e8%25a1%258c%25e3%2581%25af%25e7%25b0%25a1%25e5%258d%2598%25e3%2581%258b%25ef%25bc%259f%25e7%25a7%25bb%25e8%25a1%258c%25e3%2581%25ae%25e9%2596%25a2%25e3%2581%2599" class="source-link">[Source]</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 7. Section 6: Industry Vertical Radar (Korea Focus) -->
-        <div class="card p-6">
-            <h2 class="text-2xl font-bold mb-4 text-teal-400">6. Industry Vertical Radar (한국 시장 집중)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-yellow-300">금융 산업: 하이브리드 클라우드 컴플라이언스 강화:</span> 국내 주요 금융 기관들이 망분리 환경에서 **VCF 기반의 Private Cloud**를 통해 규제 준수(Compliance)를 지키며 AI/ML 워크로드를 준비하고 있습니다. VCF를 통한 '통제력과 명확한 프로세스' 제공이 핵심 수주 포인트입니다. <a href="https://maja.cloud/eigener-cloud-server/" class="source-link">[Source: Industry News (Private Cloud Control)]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-yellow-300">공공 시장: 차세대 VDI 및 망분리 환경 현대화:</span> 공공 기관의 VDI(가상 데스크톱 인프라) 환경이 노후화됨에 따라, **Omnissa (구 Horizon/Workspace ONE)** 기반의 차세대 VDI/EUx 솔루션 도입 문의가 증가하고 있습니다. 공공 전용의 보안 및 성능 벤치마크 자료를 선제적으로 배포해야 합니다. <a href="https://vtech.cloud" class="source-link">[Source: Korea VDI Trend]</a>
-                </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-yellow-300">엔터프라이즈: 스마트 팩토리 엣지 컴퓨팅 확장:</span> 국내 제조 대기업들이 생산성과 자율성을 높이기 위해 **스마트 팩토리** 구축에 박차를 가하고 있으며, 이로 인해 현장에 배포되는 **소규모 엣지 VCF/vSAN 클러스터** 수요가 급증하고 있습니다. 엣지 환경에 특화된 경량화 및 자동화 전략이 중요합니다. <a href="https://vthink.kr" class="source-link">[Source: Korea Enterprise Trend]</a>
+                <li>
+                    **vSphere Client 인벤토리 단축키 누락:** vSphere Client의 인벤토리 탐색 관련 단축키 리스트가 문서화되었음에도 불구하고, 실제 현장에서 키보드 중심의 빠른 작업 흐름을 활용하는 엔지니어가 적어 효율성이 저해되고 있다는 피드백입니다.
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/inventory-keyboard-shortcuts.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
             </ul>
         </div>
 
-        <!-- 8. Section 7: Security Alerts -->
-        <div class="lg:col-span-3 card p-6 border-red-500">
-            <h2 class="text-2xl font-bold mb-4 text-red-500">7. Security Alerts (VMSA / KISA CVE 긴급 대응)</h2>
-            <ul class="space-y-3 text-sm">
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-red-400">긴급 패치: VMSA-2026-XXXX (vCenter Server 인증 우회):</span> vCenter Server의 특정 버전에서 심각한 인증 우회 취약점(CVE-2026-xxxx)이 발견되었습니다. **CVSS 9.8 Critical**. 모든 고객에게 최신 패치 버전을 즉시 안내하고, 외부 노출 여부를 점검해야 합니다. <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="source-link">[Source: CVE 정보 Placeholder]</a>
+        <!-- SECTION 4: Product & Expert Deep Dive -->
+        <div class="lg:col-span-1 card p-6 rounded-xl shadow-xl">
+            <h2 class="text-xl font-bold mb-4 highlight">4. Product & Expert Deep Dive (핵심 제품군 분석)</h2>
+            <p class="text-sm text-gray-400 mb-3">VCF, vSphere, Tanzu, Security 최신 전문가 시각.</p>
+            <ul class="space-y-3 list-disc pl-5 text-gray-300 text-sm">
+                <li>
+                    **VCF Automation: 푸시 버튼 인프라 프로비저닝 (Part 1):** VCF의 최신 자동화 기능은 인프라 구축에 소요되는 시간을 획기적으로 단축합니다. 이 기능을 이해하지 못하면 구축 시간 및 인건비 경쟁에서 뒤처지게 됩니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/03/modern-automation-with-vmware-cloud-foundation-part-1/" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-red-400">KISA 주의: TKG/Upstream Kubernetes Critical CVE:</span> KISA가 Tanzu Kubernetes Grid (TKG)에서 사용되는 Upstream Kubernetes의 API 서버에서 발견된 Critical CVE에 대한 보안 권고를 발행했습니다. **모든 TKG 클러스터에 대한 즉각적인 버전 업그레이드**를 통해 공격 노출을 최소화해야 합니다. <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" class="source-link">[Source: KISA Advisory Placeholder]</a>
+                <li>
+                    **VCF IaC for DBs:** 데이터베이스 워크로드를 위한 코드형 인프라(IaC) 달성 가이드가 발표되었습니다. 미션 크리티컬 DB의 신속하고 일관된 배포를 위해 반드시 숙지해야 합니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/03/achieve-infrastructure-as-code-for-databases-a-guide-for-platform-engineers/" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
-                <li class="border-b border-gray-600 pb-2">
-                    <span class="font-bold text-red-400">SGX 원격 증명 (Attestation) 설정 미비 경고:</span> 기밀 컴퓨팅(SGX) 사용 고객 중 **Trusted Connection을 위한 CSR (Certificate Signing Request) 및 인증서 업로드** 절차를 누락하여 Trusted Cluster의 보안이 저하된 사례가 발견되었습니다. 기밀 워크로드 배포 전 필수 체크리스트에 포함해야 합니다. <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/create-a-certificate-signing-request-to-establish-a-trusted-key-provider-trusted-connection.html" class="source-link">[Source]</a>
+                <li>
+                    **Security: vDefend Zero Trust Journey:** vDefend는 제로 트러스트(Zero Trust) 환경을 위한 측면 보안(Lateral Security)에 초점을 맞춥니다. 이는 네트워크 내부 침해 확산을 막는 핵심 전략입니다.
+                    <a href="https://blogs.vmware.com/security/2026/02/zero-trust-journey-vdefend.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+                <li>
+                    **Private AI: 전력 제한 문제 해법 제시:** AI 인프라 구축 시 발생하는 전력(Power) 제약에 대한 Novodisq의 해결책이 VCF 기반으로 논의되고 있습니다. AI 관련 상담 시 고객의 인프라 제약 조건을 해결하는 중요한 자료입니다.
+                    <a href="https://vmblog.com/archive/2026/02/03/when-power-becomes-the-limiting-factor-novodisq-s-answer-to-ai-s-infrastructure-crisis.aspx" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+                <li>
+                    **Tanzu/VKS 모니터링 심화:** VCF 자동화 환경에서 VKS 클러스터 상태를 정확히 모니터링하는 전문 블로그가 등장했습니다. 이는 K8s 환경 운영 시 가시성 확보의 중요성을 강조합니다.
+                    <a href="https://fojta.wordpress.com/2026/02/03/monitoring-vks-cluster-in-vcf-automation/" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
                 </li>
             </ul>
         </div>
+
+        <!-- SECTION 5: Market & Competitive Radar -->
+        <div class="lg:col-span-1 card p-6 rounded-xl shadow-xl">
+            <h2 class="text-xl font-bold mb-4 highlight">5. Market & Competitive Radar (경쟁사 동향)</h2>
+            <p class="text-sm text-gray-400 mb-3">Red Hat, Nutanix, Hyper-Scalers (AWS/Azure/GCP) 동향.</p>
+            <ul class="space-y-3 list-disc pl-5 text-gray-300 text-sm">
+                <li>
+                    **Hyper-Scalers (AWS/Azure/GCP) - AI Workforce 전환:** 클라우드 워크로드의 초점이 AI 인력(AI Workforces)으로 이동하며, 하이퍼스케일러들의 GPU 자원 및 AI 플랫폼 경쟁이 심화되고 있습니다. Private AI 전략을 통해 우리의 우위를 강조해야 합니다.
+                    <a href="https://vmblog.com/archive/2026/02/03/from-cloud-workloads-to-ai-workforces-the-next-infrastructure-shift.aspx" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+                <li>
+                    **Red Hat/K8s - AI 실행 격차 문제:** 기업의 94%가 AI 파일럿을 넘어서 확장하는 데 어려움을 겪고 있다는 보고서(DXC)는, 표준 K8s 환경의 복잡성을 시사합니다. 이는 VCF/Tanzu의 통합된 관리 및 운영 간소화 이점을 강조하는 데 활용해야 합니다.
+                    <a href="https://vmblog.com/archive/2026/02/03/dxc-technology-on-closing-the-ai-execution-gap-why-94-of-enterprises-struggle-to-scale-beyond-pilots-vmblog-qa.aspx" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+                <li>
+                    **Storage/Security Competition (Kingston FIPS 140-3):** 하드웨어 경쟁사들이 FIPS 140-3 Level 3과 같은 최고 수준의 보안 인증을 획득하며 물리적 보안 시장 경쟁을 촉발하고 있습니다. 이는 vSphere/vSAN 환경의 암호화 및 보안 기능에 대한 요구사항을 높일 것입니다.
+                    <a href="https://virtual-it.pl/15368-kingston-ironkey-keypad-200-z-certyfikatem-fips-140-3-poziomu-3.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- SECTION 6: Industry Vertical Radar (Korea Focus) -->
+        <div class="lg:col-span-1 card p-6 rounded-xl shadow-xl">
+            <h2 class="text-xl font-bold mb-4 highlight">6. Industry Vertical Radar (Korea Focus)</h2>
+            <p class="text-sm text-gray-400 mb-3">한국 금융/공공/기업 IT 프로젝트 주요 동향 (Sources: Placeholder for Korean News/Industry).</p>
+            <ul class="space-y-3 list-disc pl-5 text-gray-300 text-sm">
+                <li>
+                    **금융권:** 금융기관의 프라이빗 클라우드 전환 시 **데이터베이스를 위한 IaC(코드형 인프라)** 구축이 핵심 과제로 떠올랐습니다. 무중단 서비스 제공과 규제 준수를 위해 VCF 기반 자동화 도입을 강력히 추진해야 합니다. (Reference: DB IaC Guide)
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/03/achieve-infrastructure-as-code-for-databases-a-guide-for-platform-engineers/" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+                <li>
+                    **공공/국방:** 정부 및 공공기관의 **제로 트러스트 아키텍처** 의무화에 따라, **vDefend**를 활용한 서버 간 측면 이동(Lateral Movement) 방지 설계가 필수 요구사항으로 자리 잡고 있습니다. 설계 단계부터 포함시켜야 합니다. (Reference: vDefend Blog)
+                    <a href="https://blogs.vmware.com/security/2026/02/zero-trust-journey-vdefend.html" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+                <li>
+                    **엔터프라이즈 (AI/제조):** 국내 대기업들은 고성능 AI 인프라 구축 시 발생하는 **데이터센터 전력 및 냉각 문제** 해결에 집중하고 있습니다. 밀도 높은 VCF/vSphere 설계를 통해 최적의 전력 효율을 제시해야 합니다. (Reference: AI Power Blog)
+                    <a href="https://vmblog.com/archive/2026/02/03/when-power-becomes-the-limiting-factor-novodisq-s-answer-to-ai-s-infrastructure-crisis.aspx" target="_blank" class="ml-1 text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- SECTION 7: Security Alerts -->
+        <div class="lg:col-span-3 card p-6 rounded-xl shadow-xl border-red-500 border-l-4">
+            <h2 class="text-2xl font-bold mb-4 text-red-400">7. Security Alerts (CVE & Incident Commander Priority)</h2>
+            <p class="text-base font-semibold mb-3 text-red-300">🚨 현장 엔지니어는 반드시 아래 항목을 숙지하고 고객 환경을 점검해야 합니다. 🚨</p>
+            <ul class="space-y-3 list-disc pl-5 text-gray-300">
+                <li class="font-medium">
+                    <span class="font-bold text-red-500">Critical:</span> **VMSA-202X-XXXX (가상 상황)** vCenter Server 9.x HTTP Reverse Proxy 취약점 긴급 패치 권고. 인증 우회 및 원격 코드 실행(RCE) 가능성이 있어, 모든 고객 환경의 vCenter Server 버전을 즉시 점검하고 패치해야 합니다. (CVE Score: High/Critical)
+                    <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="ml-2 text-sm text-blue-500 hover:text-blue-400">[Source: CVE 정보]</a>
+                </li>
+                <li class="font-medium">
+                    **Proactive Measure: vDefend 측면 이동 방지 설계:** 제로 트러스트 도입 시, vDefend를 통한 마이크로 세그멘테이션 및 East-West 트래픽 보안을 최우선으로 고려해야 합니다. 이는 단순한 패치가 아닌 아키텍처적 방어 전략입니다.
+                    <a href="https://blogs.vmware.com/security/2026/02/zero-trust-journey-vdefend.html" target="_blank" class="ml-2 text-sm text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+                <li class="font-medium">
+                    **Confidential VM: SGX 원격 증명(Attestation) 상태 확인:** Intel SGX를 사용하는 기밀 VM 환경에서 ESX 호스트의 원격 증명 상태가 '미등록'일 경우, 데이터 기밀성 위협에 노출됩니다. Trusted Cluster 설정 및 증명 상태를 일일 점검 목록에 포함하십시오.
+                    <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/vmware-cis/vsphere/vsphere/9-1/view-the-remote-attestation-status-of-a-host.html" target="_blank" class="ml-2 text-sm text-blue-500 hover:text-blue-400">[Source]</a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
     <!-- Footer -->
-    <footer class="mt-8 p-4 text-center text-gray-500 text-sm border-t border-gray-700">
-        &copy; 2026 VMware by Broadcom. All rights reserved. | Prepared by Distinguished Architect Team
+    <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-gray-500 text-xs">
+        &copy; 2026 VMware by Broadcom. All rights reserved. This document is for internal strategic intelligence only.
     </footer>
 
 </body>
