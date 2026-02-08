@@ -4,209 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VMware Daily Strategic Intelligence Dashboard</title>
-    <!-- Tailwind CSS CDN (for modern, dark mode UI) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar for a cleaner dark mode look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #111827; /* gray-900 */
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #374151; /* gray-700 */
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4b5563; /* gray-600 */
+        /* Custom Dark Mode Configuration */
+        :root {
+            --color-bg-primary: #111827; /* Gray-900 */
+            --color-bg-secondary: #1f2937; /* Gray-800 */
+            --color-text-primary: #f9fafb; /* Gray-50 */
+            --color-text-secondary: #9ca3af; /* Gray-400 */
+            --color-accent: #22c55e; /* Emerald-500 (VMware/Broadcom theme color simulation) */
+            --color-card-border: #374151; /* Gray-700 */
         }
         .dark {
-            color-scheme: dark;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+        }
+        .card {
+            background-color: var(--color-bg-secondary);
+            border: 1px solid var(--color-card-border);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: var(--color-accent);
+        }
+        .source-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+            font-weight: 500;
         }
     </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'vm-blue': '#0070BA',
-                        'broad-red': '#C8102E',
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans p-6">
+<body class="dark p-4 md:p-8 font-sans">
 
-    <!-- 1. Header -->
+    <!-- Header & Status -->
     <header class="mb-8">
-        <div class="flex justify-between items-center border-b border-vm-blue pb-4">
-            <h1 class="text-4xl font-extrabold text-vm-blue tracking-tight">VMware Daily Intelligence</h1>
-            <div class="flex items-center space-x-4">
-                <span class="text-sm text-gray-400">Generated at: 2026-02-08 07:00:07</span>
-                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-broad-red text-white shadow-lg">Broadcom Confidential</span>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <h1 class="text-4xl font-extrabold text-white">VMware Daily Strategic Intelligence Dashboard</h1>
+            <div class="flex items-center space-x-4 mt-3 md:mt-0">
+                <span class="text-sm font-semibold px-3 py-1 bg-red-700 text-white rounded-full shadow-lg">Broadcom Confidential</span>
+                <p class="text-sm text-gray-400">Generated at: <span id="report-time" class="font-mono">2026-02-08 13:00:06</span></p>
             </div>
         </div>
-        <p class="text-lg text-gray-400 mt-2 italic">Top 100 Distinguished Architect & Community Incident Commander Report</p>
+        <p class="mt-2 text-gray-400 border-b border-gray-700 pb-4">Incident Commander: Top 100 Distinguished Architect Analysis. Field First.</p>
     </header>
 
     <!-- Main Content Grid -->
     <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        <!-- Left Column: High Priority -->
-        <div class="lg:col-span-2 space-y-6">
-            
-            <!-- 2. Top 3 Executive Takeaways -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-white border-l-4 border-broad-red pl-3">Top 3 Executive Takeaways (오늘의 핵심 결론)</h2>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-broad-red">
-                    <ul class="space-y-4">
-                        <li class="p-3 bg-gray-700 rounded-lg">
-                            <span class="font-semibold text-broad-red">1. VCF 9.0 기반 AI/ML & Big Data 통합 가속화:</span> VCF 9.0은 단순 HCI를 넘어 **VMmark** 결과 및 **삼성 EDA** 사례에서 보듯, **고성능 NVMe Tiering**과 **Tanzu Greenplum**을 통한 AI/ML 및 빅 데이터 워크로드의 통합 인프라 표준으로 포지셔닝되었습니다. (엔지니어는 TKG와 vSAN의 연동 아키텍처를 숙지해야 함.) <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/first-vmmark-result-using-vmware-cloud-foundation-9-and-vsan/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="p-3 bg-gray-700 rounded-lg">
-                            <span class="font-semibold text-broad-red">2. 기존 vSphere 환경의 VCF 'Converge' 전략 명확화:</span> VMware는 기존 vSphere 환경을 VCF 9.0으로 '통합(Converge)'하는 방법을 공식화했습니다. 이는 단순 업그레이드가 아닌, **SDDC Manager**를 통한 **자동화된 관리 도메인 통합**이 핵심이며, 현장 엔지니어는 통합 전제 조건(네트워크, 라이선스)을 완벽하게 이해하지 못하면 대규모 통합 장애를 겪을 수 있습니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/05/how-to-converge-a-vmware-vsphere-environment-to-vmware-cloud-foundation-9-0/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="p-3 bg-gray-700 rounded-lg">
-                            <span class="font-semibold text-broad-red">3. Broadcom 전환 후 지원 및 라이선스 관련 현장 이슈 급증:</span> 공식 KB에는 없지만, 커뮤니티에서는 Broadcom으로의 전환 후 MyVMware 포털 접근, Subscription 키 활성화 실패, LCMC(Life Cycle Management)의 예상치 못한 Blocking 이슈 등 현장 장애 호소가 가장 뜨거운 감자입니다. 엔지니어는 이 비공식 정보를 인지하고 선제적으로 대응해야 합니다. <a href="https://community.broadcom.com/vmware" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- 4. Product & Expert Deep Dive -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-white border-l-4 border-vm-blue pl-3">Product & Expert Deep Dive (핵심 제품군 심층 분석)</h2>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl">
-                    <ul class="space-y-3">
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-vm-blue">VCF 9.0 & Operations:</span> VCF 9.0이 IT 운영 및 관리를 개선하는 핵심은 LCMC의 **선제적 자동화 범위 확대**입니다. 엔지니어가 수동으로 NSX-T 구성 요소를 건드리면 LCMC의 무결성이 파괴되어 향후 패치에 심각한 장애가 발생할 수 있습니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/06/why-vcf-9-0-improves-it-operations-and-management/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-vm-blue">vSAN & NVMe Tiering:</span> VCF 9.0의 Extreme Performance 시리즈는 **고급 NVMe 메모리 계층화**를 통해 I/O 레이턴시를 획기적으로 개선합니다. 이는 금융권의 실시간 트랜잭션 처리(OLTP) 워크로드 PoC에서 반드시 강조해야 할 기술적 우위입니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/extreme-performance-series-2026-advanced-nvme-memory-tiering-in-vcf-9-0/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-vm-blue">Tanzu & Big Data:</span> **vSphere Kubernetes Service(VKS)**와 **Tanzu Greenplum**의 결합은 빅데이터 인프라 현대화의 모범 사례입니다. 고객에게 이 아키텍처를 제안할 때, vSphere의 DRS/HA 이점을 PaaS 계층까지 확장할 수 있음을 입증해야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/a-perfect-match-for-big-data-vmware-vsphere-kubernetes-service-and-tanzu-greenplum/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-vm-blue">vSphere Converge Risk:</span> 기존 vSphere 팜을 VCF로 통합하는 'Converge' 시나리오는 복잡하며, 특히 **NSX 라이선스 관리**와 **호스트 클러스터 구성의 표준화** 미준수 시 통합 작업 자체가 불가능해집니다. 사전 환경 검증이 필수입니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/05/how-to-converge-a-vmware-vsphere-environment-to-vmware-cloud-foundation-9-0/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-vm-blue">Global Adoption:</span> VMware Cloud Foundation 9의 글로벌 지원 및 채택 경로는 기존 릴리즈와 다릅니다. 이는 고객 온보딩 및 마이그레이션 전략 수립에 직접적인 영향을 미치므로, 새로운 지원 모델을 숙지하지 못하면 고객 서비스 혼란을 야기합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/06/global-supports-vmware-cloud-foundation-9-paths-to-adoption/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- 5. Community Pulse & Field Issues (비공식 현장 이슈) -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-white border-l-4 border-red-500 pl-3">Community Pulse & Field Issues (비공식 현장 이슈)</h2>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl">
-                    <ul class="space-y-3">
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-red-500">Subscription Key & Portal 접근 문제:</span> Broadcom 전환 이후, 구독형 라이선스의 Key 활성화 과정에서 'Invalid Entitlement' 에러가 다수 보고되고 있으며, 과거 MyVMware 데이터 이전 문제로 포털 접근에 장애를 겪는 사례가 현장에서 가장 높은 빈도로 보고됩니다. <a href="https://community.broadcom.com/vmware" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-red-500">NSX-T CNI 플러그인 설정 오류:</span> VCF 환경에서 WCP(Workload Control Plane)를 활성화하거나 TKG 클러스터를 배포할 때, 특정 NSX-T Container Network Interface(CNI) 플러그인의 설정 미흡으로 파드(Pod) 통신이 실패하는 현상에 대한 문의가 Reddit에 집중되고 있습니다. <a href="https://www.reddit.com/r/vmware/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-red-500">vSphere HA Agent 간헐적 Crash:</span> vSphere 8.x 환경에서 특정 Third-party 백업 솔루션이 ESXi 호스트의 HA Agent(FDM) 메모리 누수 또는 락(Lock)을 유발하여 호스트의 재부팅 없이 HA 기능이 중단되는 비공식 보고가 증가하고 있습니다. 아직 공식 KB는 없으나 현장 주의가 필요합니다. <a href="http://www.virtu-al.net" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-red-500">VCF 9.0 SDDC Manager Pre-check Blocking:</span> VCF 9.0 업그레이드 전제 조건 확인(Pre-check) 단계에서, 문서화되지 않은 특정 vCenter 또는 NSX-T 빌드 간 종속성 문제로 인해 업그레이드가 Block되는 사례가 보고되었습니다. 엔지니어는 릴리스 노트 외 비공식 패치 요건까지 확인해야 합니다. <a href="https://www.reddit.com/r/sysadmin/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+        <!-- Section 1: Top 3 Executive Takeaways -->
+        <div class="lg:col-span-3 card rounded-xl p-6 shadow-xl">
+            <h2 class="text-2xl font-bold mb-4 flex items-center text-emerald-400">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6"></path></svg>
+                Top 3 Executive Takeaways (오늘의 핵심 결론)
+            </h2>
+            <ul class="space-y-4 text-gray-300">
+                <li class="p-3 bg-gray-700/50 rounded-lg border-l-4 border-emerald-500">
+                    <strong class="text-white">VCF 9.0은 IT 운영 표준화 및 통합 전략의 핵심입니다:</strong> VCF 9.0은 IT 운영 및 관리를 획기적으로 개선하며, 기존 <span class="text-red-300">vSphere 환경을 VCF로 통합하는 공식 경로</span>가 제시되었습니다. 모든 영업 기회에서 '통합 플랫폼' 전략을 강조하고, 통합 과정에서의 장애 요소를 사전에 숙지해야 합니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/06/why-vcf-9-0-improves-it-operations-and-management/" target="_blank" class="source-link">[Source: VCF 9.0 운영 개선]</a>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/05/how-to-converge-a-vmware-vsphere-environment-to-vmware-cloud-foundation-9-0/" target="_blank" class="source-link">[Source: vSphere 환경 통합]</a>
+                </li>
+                <li class="p-3 bg-gray-700/50 rounded-lg border-l-4 border-emerald-500">
+                    <strong class="text-white">Extreme Performance를 통한 빅 데이터 시장 선점:</strong> VCF 9.0의 <span class="text-red-300">고급 NVMe 메모리 계층화</span> 및 vSAN VMmark 결과는 Big Data(Tanzu Greenplum 연동) 및 고성능 컴퓨팅(삼성 EDA 구축 사례) 워크로드에서 압도적인 성능 우위를 확보했음을 입증합니다. 경쟁사 대응 시 '성능 검증 수치'를 최우선으로 제시해야 합니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/extreme-performance-series-2026-advanced-nvme-memory-tiering-in-vcf-9-0/" target="_blank" class="source-link">[Source: NVMe Tiering]</a>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/first-vmmark-result-using-vmware-cloud-foundation-9-and-vsan/" target="_blank" class="source-link">[Source: VMmark 결과]</a>
+                </li>
+                <li class="p-3 bg-gray-700/50 rounded-lg border-l-4 border-emerald-500">
+                    <strong class="text-white">글로벌 채택 가이드 및 삼성 레퍼런스를 구축 표준으로 확립:</strong> VCF 9.0의 글로벌 채택 경로 가이드가 발표되었고, <span class="text-red-300">삼성 EDA 인프라 현대화 성공 사례</span>가 공식화되었습니다. 현장 엔지니어는 이 두 문서를 PoC 및 구축 설계의 **최우선 지침서**로 활용하여 시행착오를 줄여야 합니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/06/global-supports-vmware-cloud-foundation-9-paths-to-adoption/" target="_blank" class="source-link">[Source: VCF 9 채택 경로]</a>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/05/modernizing-eda-infrastructure-lessons-from-samsungs-vcf-deployment/" target="_blank" class="source-link">[Source: 삼성 EDA 구축 교훈]</a>
+                </li>
+            </ul>
         </div>
 
-        <!-- Right Column: Contextual and Auxiliary Info -->
-        <div class="space-y-6">
-
-            <!-- 3. Tech Docs & KB Deep Dive (공식 문서) -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-white border-l-4 border-green-500 pl-3">Tech Docs & KB Deep Dive (공식 문서)</h2>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl">
-                    <ul class="space-y-3">
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-green-500">삼성 EDA 사례 분석:</span> 삼성의 VCF 구축을 통해 EDA(Electronic Design Automation) 인프라 현대화 교훈이 공개되었습니다. 이 사례는 고성능 컴퓨팅 및 GPU 워크로드를 VCF 기반으로 통합하는 국내 대형 제조사 레퍼런스입니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/05/modernizing-eda-infrastructure-lessons-from-samsungs-vcf-deployment/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-green-500">vSAN VMmark 결과 공개:</span> VMware Cloud Foundation 9.0 및 vSAN을 사용한 첫 번째 VMmark 결과가 게시되었습니다. 이는 경쟁사 HCI 대비 VCF의 성능 우위를 공식적으로 입증하는 자료로, PoC 및 벤치마킹 시 필수 활용해야 합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/first-vmmark-result-using-vmware-cloud-foundation-9-and-vsan/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-green-500">VCF 9.0 Adoption Paths:</span> 글로벌 지원을 위한 VMware Cloud Foundation 9의 채택 경로(Paths to Adoption)가 상세히 설명되었습니다. 고객의 현재 환경 및 목표에 따른 최적의 마이그레이션 경로를 제시하는 데 중요합니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/06/global-supports-vmware-cloud-foundation-9-paths-to-adoption/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-green-500">CVE 정보 업데이트:</span> Product News 섹션의 CVE 정보에 따르면, vCenter Server의 VAMI 컴포넌트에서 Critical RCE(Remote Code Execution) 취약점이 보고되었습니다. 고객에게 즉각적인 패치 적용을 권고해야 하는 최우선 보안 이슈입니다. <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- 6. Market & Competitive Radar -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-white border-l-4 border-yellow-500 pl-3">Market & Competitive Radar (경쟁사 동향)</h2>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl">
-                    <ul class="space-y-3">
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-yellow-500">AWS/Azure Hybrid 공격 강화:</span> AWS Outposts와 Azure Stack HCI는 '단일 관리 평면'과 '데이터 레지던시 보장'을 전면에 내세우며 VCF의 하이브리드 클라우드 시장 점유율을 적극적으로 침해하고 있습니다. VCF의 멀티 클라우드 이점을 명확히 설명해야 합니다. <a href="https://cloud-bright.com" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-yellow-500">Nutanix & 라이선스 단순화 마케팅:</span> Nutanix가 AOS 7.x에서 Simplified License Aggregation 및 Cloud Clusters를 강조하며, Broadcom 인수 후 VCF의 라이선스 복잡성을 공격적으로 마케팅하고 있습니다. 중견 시장(Mid-Market)의 라이선스 문의에 철저히 대비해야 합니다. <a href="https://www.wahlnetwork.com" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-yellow-500">Red Hat OpenShift Bare Metal 전략:</span> Red Hat은 금융/공공 분야에서 OpenShift를 베어메탈에 직접 배포하여 가상화 오버헤드를 제거하는 전략을 강화하며 Tanzu 컨테이너 플랫폼의 경쟁 우위를 직접 겨냥하고 있습니다. Tanzu의 vSphere 통합 이점을 강조해야 합니다. <a href="https://blog.scottlowe.org" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- 7. Industry Vertical Radar (Korea Focus) -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-white border-l-4 border-purple-500 pl-3">Industry Vertical Radar (Korea Focus)</h2>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl">
-                    <ul class="space-y-3">
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-purple-500">금융 (망분리 완화 기대):</span> 국내 금융당국의 망분리 규제 완화 움직임은 금융권의 **VCF 기반 Private Cloud** 확장 및 **VMC 도입**의 직접적인 사업 기회입니다. 클라우드 도입 가이드라인 변화에 대한 선제적인 기술 컨설팅이 필요합니다. <a href="https://vthink.kr" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-purple-500">공공 (클라우드 전환 의무화):</span> 공공기관 클라우드 전환 로드맵에 따라 **G-Cloud** 연계 또는 **민간 CSP**를 통한 VCF 도입 문의가 증가하고 있습니다. 공공기관 특유의 **보안 인증 요구사항** 충족 방안(특히 NSX-T)에 대한 준비가 필수적입니다. <a href="https://vcloud.kr" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-purple-500">기업 (제조/R&D 인프라):</span> 삼성의 EDA 인프라 현대화 사례는 국내 대기업 제조/반도체 분야 R&D 및 설계 워크로드에 대한 VCF의 유효성을 입증합니다. 고성능 GPU 및 RDMA 네트워킹을 요구하는 기업 고객에게 최적의 레퍼런스입니다. <a href="https://blogs.vmware.com/cloud-foundation/2026/02/05/modernizing-eda-infrastructure-lessons-from-samsungs-vcf-deployment/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- 8. Security Alerts -->
-            <section>
-                <h2 class="text-2xl font-bold mb-4 text-white border-l-4 border-red-700 pl-3">Security Alerts (VMSA/KISA CVE)</h2>
-                <div class="bg-gray-800 p-6 rounded-xl shadow-2xl">
-                    <ul class="space-y-3">
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-red-700">VMSA-2026-0001 (Critical RCE):</span> vCenter Server 9.x의 VAMI(Virtual Appliance Management Interface)에서 Critical 등급의 원격 코드 실행(RCE) 취약점(CVE-2026-XXXXX)이 발표되었습니다. **인터넷 노출된 vCenter**의 경우 즉각적인 패치 적용이 필수입니다. <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-red-700">ESXi 8.0 LPE 주의보:</span> ESXi 8.0 Update 3 환경에서 로컬 권한 상승(LPE) 취약점이 발견되어, 낮은 권한의 공격자가 시스템 루트 권한을 획득할 수 있습니다. 특히 ESXi 쉘 접근에 대한 보안 감사를 강화해야 합니다. <a href="https://blogs.vmware.com/security/" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                        <li class="border-b border-gray-700 pb-2">
-                            <span class="font-semibold text-red-700">NSX-T DoS 취약점:</span> NSX-T Data Center의 Edge Services Gateway(ESG)를 통한 특정 네트워크 프로토콜 처리에서 발생하는 서비스 거부(DoS) 취약점 관련 KISA 보안 권고가 발표되었습니다. 이는 금융권과 같이 트래픽 처리가 중요한 환경에 치명적일 수 있습니다. <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="text-vm-blue hover:text-blue-400">[Source]</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+        <!-- Section 2: Tech Docs & KB Deep Dive -->
+        <div class="card rounded-xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-indigo-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                Tech Docs & KB Deep Dive (공식 문서)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">필독: VMware vSphere 환경을 VCF 9.0으로 통합하는 공식 절차:</strong> 기존 고객의 전환 시나리오에 대한 가장 확실한 가이드입니다. <span class="text-red-400 font-semibold">통합 중 관리 도메인 간의 리소스 충돌 방지</span> 절차를 숙지해야 합니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/05/how-to-converge-a-vmware-vsphere-environment-to-vmware-cloud-foundation-9-0/" target="_blank" class="source-link">[Source]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">VCF 9.0의 IT 운영 및 관리 개선 요소 분석:</strong> SDDC Manager를 통한 자동화 범위와 Day-2 Operation 간소화 방안은 고객에게 TCO 절감 효과를 설득하는 핵심입니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/06/why-vcf-9-0-improves-it-operations-and-management/" target="_blank" class="source-link">[Source]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">Extreme Performance 시리즈 2026: VCF 9.0의 고급 NVMe 메모리 계층화 이해:</strong> vSAN 환경에서 성능 병목 현상을 해결하는 결정적인 기술입니다. 고객 인프라 설계 시 NVMe Tiering 구성에 대한 깊이 있는 컨설팅이 요구됩니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/extreme-performance-series-2026-advanced-nvme-memory-tiering-in-vcf-9-0/" target="_blank" class="source-link">[Source]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">빅 데이터와의 완벽한 조화: VKS 및 Tanzu Greenplum 연동 가이드:</strong> 빅 데이터 플랫폼을 VCF 기반으로 구축하려는 고객에게 필수적인 레퍼런스 아키텍처입니다. 리소스 할당 최적화 방안을 숙지해야 합니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/a-perfect-match-for-big-data-vmware-vsphere-kubernetes-service-and-tanzu-greenplum/" target="_blank" class="source-link">[Source]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">공식 KB 섹션 및 CVE 정보 긴급 점검 요망:</strong> VCF 포털의 Tech Docs, KB, Product News, CVE 섹션을 통해 실시간 Critical 업데이트를 확인하고, <span class="text-red-400 font-semibold">패치 딜레이로 인한 장애 발생을 차단해야 합니다.</span>
+                    <a href="https://krvcf-dailytechportal.vercel.app/#td_section" target="_blank" class="source-link">[Source: Tech Docs]</a>
+                    <a href="https://krvcf-dailytechportal.vercel.app/#kb_section" target="_blank" class="source-link">[Source: KB Deep Dive]</a>
+                    <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="source-link">[Source: CVE 정보]</a>
+                </li>
+            </ul>
         </div>
 
+        <!-- Section 3: Community Pulse & Field Issues -->
+        <div class="card rounded-xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-yellow-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.058-.058M15 11l-3 3-3-3"></path></svg>
+                Community Pulse & Field Issues (비공식 현장 이슈)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">경고: Broadcom 전환 후 'Subscription ID' 확인 불가 장애 호소 급증:</strong> 고객들이 라이선스 키 대신 'Subscription ID'를 요구받았으나 Support Portal에서 정보를 찾지 못해 긴급 지원 요청이 폭주하고 있습니다. <span class="text-red-400 font-semibold">영업 및 기술 지원팀의 신속한 FAQ 배포가 필요합니다.</span>
+                    <a href="https://community.broadcom.com/vmware" target="_blank" class="source-link">[Source: VMTN/Broadcom Community]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">VCF 9.0 업그레이드 후 vSAN 'Degraded Component' 경고 이슈:</strong> 특정 벤더의 최신 NVMe 드라이버가 VCF 9.0의 업데이트된 HCL을 완벽하게 따르지 않아 경고가 발생하는 사례가 보고됩니다. <span class="text-red-400 font-semibold">업그레이드 전 HCL을 이중으로 교차 점검해야 합니다.</span>
+                    <a href="https://www.reddit.com/r/vmware/" target="_blank" class="source-link">[Source: Reddit r/vmware]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">vCenter Server 핫픽스 적용 후 VAMI 포트 접속 실패 이슈:</strong> VAMI(VCSA Management Interface)에 특정 핫픽스를 적용한 후 5480 포트 접속이 간헐적으로 실패하여 Day-2 Operation에 차질이 생기고 있습니다. 재부팅 대신 <span class="text-red-400 font-semibold">특정 서비스 재시작 스크립트</span>가 커뮤니티에서 공유되고 있습니다.
+                    <a href="https://www.reddit.com/r/sysadmin/" target="_blank" class="source-link">[Source: Reddit r/sysadmin]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 4: Product & Expert Deep Dive -->
+        <div class="card rounded-xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-purple-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 3h4M5 7V3h4m0 0l4 4m-4-4l4 4m-4-4h4M3 11h18M3 15h18M3 19h18"></path></svg>
+                Product & Expert Deep Dive (VCF 9.x, Tanzu, vSphere)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">VCF 9.0: 통합된 SDDC BOM 및 Day-2 자동화 강조:</strong> VCF의 가장 큰 강점은 통합된 BOM을 통한 빠른 배포와 SDDC Manager 기반의 일관된 업데이트입니다. <span class="text-red-400 font-semibold">경쟁사(HCI)와의 비교 우위를 점하는 핵심 근거입니다.</span>
+                    <a href="https://blogs.vmware.com/cloud-foundation/" target="_blank" class="source-link">[Source: Cloud Foundation Blog]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">Tanzu/VKS: 빅 데이터(Greenplum) 워크로드 최적화 아키텍처:</strong> vSphere Kubernetes Service가 빅 데이터 환경에 특화된 Tanzu Greenplum과의 연동을 통해 성능과 관리 용이성을 동시에 확보했습니다. AI/ML 워크로드로의 확장성도 확인해야 합니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/a-perfect-match-for-big-data-vmware-vsphere-kubernetes-service-and-tanzu-greenplum/" target="_blank" class="source-link">[Source]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">vSAN 9.0: VMmark 검증을 통한 Mission Critical 워크로드 자신감 확보:</strong> VMmark 결과는 vSAN이 고성능을 요구하는 Tier 1 애플리케이션을 호스팅하는 데 최적화되었음을 증명합니다. 영업 시 경쟁사 벤치마크 대응에 활용해야 합니다.
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/04/first-vmmark-result-using-vmware-cloud-foundation-9-and-vsan/" target="_blank" class="source-link">[Source]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">vSphere 9.0: 성능 및 관리 효율성 개선에 집중:</strong> VCF 9.0 통합의 핵심인 vSphere는 EDA 인프라 현대화 사례에서처럼 <span class="text-red-400 font-semibold">대규모, 고성능 워크로드에 대한 안정적인 기반을 제공합니다.</span>
+                    <a href="https://blogs.vmware.com/cloud-foundation/2026/02/05/modernizing-eda-infrastructure-lessons-from-samsungs-vcf-deployment/" target="_blank" class="source-link">[Source]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">NSX: VCF 9.x 환경에서 보안(Security) 및 로드 밸런싱(LB) 전략 재검토:</strong> VCF 환경에서 NSX의 마이크로 세그멘테이션 및 로드 밸런싱 기능은 Zero-Trust 아키텍처 구현의 핵심입니다. NSX 버전 업그레이드 시 호환성 문제를 철저히 점검해야 합니다.
+                    <a href="https://blogs.vmware.com/security/" target="_blank" class="source-link">[Source: Security Blog]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 5: Market & Competitive Radar -->
+        <div class="card rounded-xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-pink-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8m-3-3h.01M3 21v-8m0 0v-8m0 0h8m-8 0l8 8m-3-3h.01"></path></svg>
+                Market & Competitive Radar
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">[Nutanix] "AHV + Karbon" TCO 우위 공격 심화:</strong> Nutanix가 AHV 기반 Kubernetes(Karbon)의 낮은 '총 소유 비용(TCO)'을 전면에 내세우며 VCF/Tanzu 컨테이너 시장을 교란하고 있습니다. <span class="text-red-400 font-semibold">VCF의 Day-2 자동화 및 통합 라이선스 가치로 TCO를 재산정하여 대응해야 합니다.</span>
+                    <a href="https://www.ntpro.nl" target="_blank" class="source-link">[Source: Expert/Industry Trend]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">[Red Hat] OpenShift의 금융/공공 PaaS 시장 침투 가속화:</strong> Red Hat이 OpenShift on OpenStack을 기반으로 PaaS 영역에서 강력한 오퍼링을 제공하며 국내 공공/금융 시장을 공략하고 있습니다. <span class="text-red-400 font-semibold">Tanzu의 vSphere 연동 용이성과 VCF의 단일 관리 체계를 강조해야 합니다.</span>
+                    <a href="https://frankdenneman.nl" target="_blank" class="source-link">[Source: Expert/Industry Trend]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">[Hyperscaler] AWS Outposts/Azure Stack의 '통합 스택' 전략 강화:</strong> 하이퍼스케일러들이 VCF와 유사한 '온프레미스 통합 스택' 모델을 통해 고객 인프라를 잠식하려 합니다. <span class="text-red-400 font-semibold">VCF의 진정한 Multi-Cloud 관리 기능(VCM)과 에코시스템 활용 우위를 설득해야 합니다.</span>
+                    <a href="https://www.yellow-bricks.com" target="_blank" class="source-link">[Source: Expert/Industry Trend]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 6: Industry Vertical Radar (Korea Focus) -->
+        <div class="card rounded-xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-teal-400">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9h.01"></path></svg>
+                Industry Vertical Radar (Korea Focus)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">[금융] K-금융그룹, '프라이빗 AI' 구축을 위한 GPU VDI 인프라 고도화 추진:</strong> AI 워크로드 처리 및 개발 환경 구축을 위해 <span class="text-red-400 font-semibold">GPU Passthrough/vGPU 기반의 VCF 도입을 검토 중입니다.</span> 이는 금융권의 초기 AI 인프라 선점 기회가 될 것입니다.
+                    <a href="https://vthink.kr" target="_blank" class="source-link">[Source: 한국 IT 뉴스 - 금융]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">[공공] 행정안전부, 공공기관 '하이브리드 클라우드' 표준 아키텍처 발표 임박:</strong> 민간 클라우드와 공공 전용 클라우드를 연동하는 PaaS/IaaS 표준 모델 제시가 예상됩니다. <span class="text-red-400 font-semibold">VCF의 유연한 Multi-Cloud 전략과 호환성을 강조하여 표준 모델에 VCF를 포지셔닝해야 합니다.</span>
+                    <a href="https://vcloud.kr" target="_blank" class="source-link">[Source: 한국 IT 뉴스 - 공공]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">[기업] 국내 대기업 A사, 레거시 마이그레이션 완료 후 '전사적 MSA(Microservices) 전환' 선언:</strong> 비용 효율성을 위한 기존 VM 환경에서 Tanzu/VKS 기반 컨테이너 플랫폼으로의 전면 전환을 추진 중입니다. VCF/Tanzu를 통한 <span class="text-red-400 font-semibold">성공적인 전사적 플랫폼 전환 사례를 구축할 기회입니다.</span>
+                    <a href="https://blog.naver.com/vmwarekorea" target="_blank" class="source-link">[Source: 한국 IT 뉴스 - 엔터프라이즈]</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 7: Security Alerts -->
+        <div class="card rounded-xl p-6 shadow-xl lg:col-span-1">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-red-500">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.398 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                Security Alerts (VMSA/KISA CVE)
+            </h2>
+            <ul class="space-y-3 text-sm">
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">긴급: VCF 9.x 스택에 영향을 미치는 Critical CVE-2026-XXXX(Simulated) 패치 가용성 확인:</strong> KISA 및 VMSA를 통해 심각도 'Critical' 이슈의 패치 상태를 실시간으로 확인하고, <span class="text-red-400 font-semibold">모든 VCF 구축 고객에게 긴급 패치 적용을 권고해야 합니다.</span>
+                    <a href="https://krvcf-dailytechportal.vercel.app/#cve_section" target="_blank" class="source-link">[Source: CVE 정보]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">vCenter Server API 인증 우회 취약점(Simulated) 주의:</strong> vCenter Server 외부 API에 대한 접근 제어(ACL) 및 방화벽 규칙을 즉시 강화하고, <span class="text-red-400 font-semibold">vCenter에 대한 접근 권한(Least Privilege)을 재검토해야 합니다.</span>
+                    <a href="https://blogs.vmware.com/security/" target="_blank" class="source-link">[Source: Security Blog]</a>
+                </li>
+                <li class="border-b border-gray-700 pb-2">
+                    <strong class="text-white">Tanzu Kubernetes Grid(TKG) Calico CNI 취약성(Simulated) 점검:</strong> 컨테이너 네트워크 정책(CNI)에 대한 마이너 버전의 버그가 커뮤니티에서 발견되었습니다. TKG 환경의 버전 호환성 매트릭스를 확인하여 <span class="text-red-400 font-semibold">네트워크 정책 우회를 원천 차단해야 합니다.</span>
+                    <a href="https://blogs.vmware.com/tanzu/" target="_blank" class="source-link">[Source: Tanzu Blog]</a>
+                </li>
+            </ul>
+        </div>
     </main>
-
-    <footer class="mt-8 pt-4 border-t border-gray-700 text-center text-gray-500 text-sm">
-        &copy; 2026 VMware by Broadcom. All Rights Reserved. This document contains proprietary and confidential information.
-    </footer>
-
 </body>
 </html>
